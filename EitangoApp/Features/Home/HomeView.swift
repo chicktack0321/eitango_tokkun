@@ -114,6 +114,8 @@ struct HomeView: View {
             }
         }
         .buttonStyle(.plain)
+        // カード内の文字列が連結されてラベルになるため、UIテストからは識別子で引く
+        .accessibilityIdentifier("historyCardLink")
     }
 
     private var masteryCard: some View {

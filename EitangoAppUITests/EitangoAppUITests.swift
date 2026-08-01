@@ -16,17 +16,24 @@ final class EitangoAppUITests: XCTestCase {
 
         capture(app, "01_Home")
 
-        // ホームから学習の記録へ push して戻る
-        let historyLink = app.buttons["学習の記録"].firstMatch
+        // ホームから学習の記録へ push して戻る。
+        // カードは画面下方にあり初期表示では隠れていることがあるので、必要なら送る。
+        let historyLink = app.buttons["historyCardLink"]
         if historyLink.waitForExistence(timeout: 5) {
-            historyLink.tap()
-            settle()
-            capture(app, "01b_StudyHistory")
-
-            let backButton = app.navigationBars.buttons.element(boundBy: 0)
-            if backButton.waitForExistence(timeout: 5) {
-                backButton.tap()
+            if !historyLink.isHittable {
+                app.swipeUp()
                 settle()
+            }
+            if historyLink.isHittable {
+                historyLink.tap()
+                settle()
+                capture(app, "01b_StudyHistory")
+
+                let backButton = app.navigationBars.buttons.element(boundBy: 0)
+                if backButton.waitForExistence(timeout: 5) {
+                    backButton.tap()
+                    settle()
+                }
             }
         }
 
