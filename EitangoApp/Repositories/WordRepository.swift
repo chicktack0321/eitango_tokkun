@@ -33,11 +33,4 @@ struct WordRepository {
 
         return (try? context.fetch(descriptor)) ?? []
     }
-
-    /// クイズの誤答選択肢用に、指定語以外からランダムにN件の意味を取得する
-    func randomDistractorMeanings(excluding wordId: String, count: Int) -> [String] {
-        var pool = fetchAll().filter { $0.wordId != wordId }.map(\.meaning)
-        pool.shuffle()
-        return Array(pool.prefix(count))
-    }
 }

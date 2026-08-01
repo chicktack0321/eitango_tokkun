@@ -47,12 +47,12 @@ final class QuizViewModel {
 
     func startNewQuiz() {
         guard let wordRepository else { return }
-        let pool = wordRepository.fetchAll().shuffled()
-        let sampled = Array(pool.prefix(Self.questionCount))
+        // 単語一覧の取得は1回だけ。問題ごとにフェッチすると出題数に比例して
+        // 全件スキャンが走り、語彙数が増えたときに開始が目に見えて遅くなる。
+        let pool = wordRepository.fetchAll()
+        let sampled = pool.shuffled().prefix(Self.questionCount)
 
-        questions = sampled.map { word in
-            buildQuestion(for: word, wordRepository: wordRepository)
-        }
+        questions = sampled.map { buildQuestion(for: $0, pool: pool) }
         currentQuestionIndex = 0
         correctAnswerCount = 0
         selectedChoiceIndex = nil
@@ -60,14 +60,32 @@ final class QuizViewModel {
         startTimer()
     }
 
-    private func buildQuestion(for word: WordMaster, wordRepository: WordRepository) -> QuizQuestion {
-        let distractors = wordRepository.randomDistractorMeanings(
-            excluding: word.wordId,
-            count: Self.choiceCount - 1
-        )
-        var choices = distractors + [word.meaning]
-        choices.shuffle()
-        let correctIndex = choices.firstIndex(of: word.meaning) ?? 0
+    private func buildQuestion(for word: WordMaster, pool: [WordMaster]) -> QuizQuestion {
+        // 別々の単語が同じ和訳を持つことは珍しくない（「改善する」など）。
+        // 正解と同じ文字列がダミーに紛れると、正しい選択肢を選んでも不正解になりうるため、
+        // 意味の重複を除外したうえでダミーを集める。
+        var usedMeanings: Set<String> = [word.meaning]
+        var distractors: [String] = []
+
+        // 全体をシャッフルすると1問ごとに語彙数分のコストがかかるので、
+        // ランダムに引いて必要な数だけ集める。重複だらけで終わらない場合に備えて試行回数を制限する。
+        let maxAttempts = max(pool.count * 2, Self.choiceCount * 8)
+        var attempts = 0
+        while distractors.count < Self.choiceCount - 1, attempts < maxAttempts {
+            attempts += 1
+            guard let candidate = pool.randomElement() else { break }
+            guard candidate.wordId != word.wordId,
+                  !usedMeanings.contains(candidate.meaning) else { continue }
+            usedMeanings.insert(candidate.meaning)
+            distractors.append(candidate.meaning)
+        }
+
+        // 正解の位置は挿入時に決めて保持する。文字列検索で探すと、
+        // 同じ文字列が複数あった場合に誤った位置を正解と見なしてしまう。
+        let correctIndex = Int.random(in: 0...distractors.count)
+        var choices = distractors
+        choices.insert(word.meaning, at: correctIndex)
+
         return QuizQuestion(id: word.wordId, word: word, choices: choices, correctIndex: correctIndex)
     }
 

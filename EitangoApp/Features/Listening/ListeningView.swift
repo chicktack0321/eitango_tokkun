@@ -5,7 +5,9 @@ import AVFoundation
 struct ListeningView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel = ListeningViewModel()
-    @State private var audioManager = AudioPlaybackManager()
+    // 画面ごとに生成するとオーディオセッションを奪い合うため、アプリ全体で1つを共有する。
+    // 速度スライダーのBindingを得るために @State で保持している（実体は常に同じインスタンス）。
+    @State private var audioManager = AudioPlaybackManager.shared
 
     var body: some View {
         NavigationStack {
@@ -70,14 +72,24 @@ struct ListeningView: View {
     }
 
     private var controls: some View {
-        HStack(spacing: 32) {
+        HStack(spacing: 24) {
             Button {
                 audioManager.stop()
             } label: {
                 Image(systemName: "stop.fill")
-                    .font(.title2)
+                    .font(.title3)
             }
             .disabled(audioManager.state == .stopped)
+            .accessibilityLabel("停止")
+
+            Button {
+                audioManager.skipToPrevious()
+            } label: {
+                Image(systemName: "backward.end.fill")
+                    .font(.title2)
+            }
+            .disabled(audioManager.state == .stopped || audioManager.currentIndex == 0)
+            .accessibilityLabel("前の単語")
 
             Button {
                 togglePlayPause()
@@ -86,6 +98,7 @@ struct ListeningView: View {
                     .font(.system(size: 44))
             }
             .disabled(viewModel.words.isEmpty)
+            .accessibilityLabel(audioManager.state == .playing ? "一時停止" : "再生")
 
             Button {
                 audioManager.skipToNext()
@@ -94,6 +107,7 @@ struct ListeningView: View {
                     .font(.title2)
             }
             .disabled(audioManager.state == .stopped)
+            .accessibilityLabel("次の単語")
         }
     }
 

@@ -5,7 +5,9 @@ struct WordDetailView: View {
     let word: WordMaster
 
     @Environment(\.modelContext) private var modelContext
-    @State private var audioManager = AudioPlaybackManager()
+    // 単語詳細を開くたびに生成すると、そのつどオーディオセッションを奪って
+    // ユーザーが聴いていた音楽を止めてしまうため、共有インスタンスを使う
+    @State private var audioManager = AudioPlaybackManager.shared
     @State private var progress: UserProgress?
 
     var body: some View {

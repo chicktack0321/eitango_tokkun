@@ -6,17 +6,17 @@ import Observation
 @MainActor
 final class HomeViewModel {
     private(set) var totalWordCount = 0
-    private(set) var statusCounts: [LearningStatus: Int] = [:]
+    private(set) var summary: ProgressSummary = .empty
     private(set) var todayStudiedCount = 0
     private(set) var todayAccuracy: Double = 0
-    private(set) var overallAccuracy: Double = 0
 
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
 
-    var memorizedCount: Int { statusCounts[.memorized] ?? 0 }
-    var needsReviewCount: Int { statusCounts[.needsReview] ?? 0 }
-    var notStudiedCount: Int { statusCounts[.notStudied] ?? 0 }
+    var memorizedCount: Int { summary.count(of: .memorized) }
+    var needsReviewCount: Int { summary.count(of: .needsReview) }
+    var notStudiedCount: Int { summary.count(of: .notStudied) }
+    var overallAccuracy: Double { summary.accuracy }
 
     var masteredFraction: Double {
         totalWordCount == 0 ? 0 : Double(memorizedCount) / Double(totalWordCount)
@@ -32,8 +32,7 @@ final class HomeViewModel {
     func reload() {
         guard let wordRepository, let progressRepository else { return }
         totalWordCount = wordRepository.fetchCount()
-        statusCounts = progressRepository.statusBreakdown()
-        overallAccuracy = progressRepository.overallAccuracy()
+        summary = progressRepository.summarize()
 
         let log = progressRepository.todayLog()
         todayStudiedCount = log?.studiedWordCount ?? 0

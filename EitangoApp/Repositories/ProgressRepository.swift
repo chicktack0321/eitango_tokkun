@@ -47,15 +47,6 @@ struct ProgressRepository {
         return created
     }
 
-    /// ホーム画面のステータス内訳表示用。存在しないステータスも0件として返す。
-    func statusBreakdown() -> [LearningStatus: Int] {
-        var counts: [LearningStatus: Int] = [.notStudied: 0, .memorized: 0, .needsReview: 0]
-        for progress in allProgress().values {
-            counts[progress.status, default: 0] += 1
-        }
-        return counts
-    }
-
     /// 当日分の StudyLog を取得する（未学習日は nil。record時のように新規作成はしない）
     func todayLog(date: Date = .now) -> StudyLog? {
         let day = Calendar.current.startOfDay(for: date)
@@ -63,12 +54,48 @@ struct ProgressRepository {
         return try? context.fetch(descriptor).first
     }
 
-    /// これまでに一度でも出題された語の累計正答率
-    func overallAccuracy() -> Double {
-        let attempted = allProgress().values.filter { $0.attemptCount > 0 }
-        guard !attempted.isEmpty else { return 0 }
-        let totalCorrect = attempted.reduce(0) { $0 + $1.correctCount }
-        let totalAttempts = attempted.reduce(0) { $0 + $1.attemptCount }
-        return totalAttempts == 0 ? 0 : Double(totalCorrect) / Double(totalAttempts)
+    /// ホーム画面が必要とする集計をまとめて返す。
+    /// ステータス内訳と累計正答率を別々に求めると `UserProgress` の全件取得が2回走るため、
+    /// 1回のフェッチで両方を組み立てる。
+    ///
+    /// - Note: SwiftDataには集計クエリが無く、正答率の算出には全行の materialize が避けられない。
+    ///   語彙数が数千規模になり体感できるほど遅くなったら、集計値を別モデルに持たせて
+    ///   解答時に加算する方式へ切り替える。
+    func summarize() -> ProgressSummary {
+        let all = (try? context.fetch(FetchDescriptor<UserProgress>())) ?? []
+
+        var statusCounts: [LearningStatus: Int] = [.notStudied: 0, .memorized: 0, .needsReview: 0]
+        var totalCorrect = 0
+        var totalAttempts = 0
+
+        for progress in all {
+            statusCounts[progress.status, default: 0] += 1
+            totalCorrect += progress.correctCount
+            totalAttempts += progress.attemptCount
+        }
+
+        return ProgressSummary(
+            statusCounts: statusCounts,
+            totalCorrect: totalCorrect,
+            totalAttempts: totalAttempts
+        )
+    }
+}
+
+/// `UserProgress` 全体を1回走査して得られる集計値
+struct ProgressSummary {
+    var statusCounts: [LearningStatus: Int]
+    var totalCorrect: Int
+    var totalAttempts: Int
+
+    static let empty = ProgressSummary(statusCounts: [:], totalCorrect: 0, totalAttempts: 0)
+
+    func count(of status: LearningStatus) -> Int {
+        statusCounts[status] ?? 0
+    }
+
+    /// 出題されたことのある語に対する累計正答率
+    var accuracy: Double {
+        totalAttempts == 0 ? 0 : Double(totalCorrect) / Double(totalAttempts)
     }
 }
