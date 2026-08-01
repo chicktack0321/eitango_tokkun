@@ -28,6 +28,9 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.eitango.app
         PRODUCT_NAME: 英検2級 英単語特訓
+        # PRODUCT_NAME が日本語のままだとSwiftモジュール名が記号に潰れて
+        # テスト側の `@testable import EitangoApp` が通らないため、明示的に固定する
+        PRODUCT_MODULE_NAME: EitangoApp
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
@@ -36,6 +39,23 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         SWIFT_STRICT_CONCURRENCY: complete
         ENABLE_PREVIEWS: YES
+
+  EitangoAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.app.tests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoApp
 
   EitangoAppUITests:
     type: bundle.ui-testing
@@ -59,12 +79,14 @@ schemes:
     build:
       targets:
         EitangoApp: all
+        EitangoAppTests: [test]
         EitangoAppUITests: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
+        - EitangoAppTests
         - EitangoAppUITests
     archive:
       config: Release

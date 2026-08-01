@@ -57,8 +57,12 @@ final class TypingViewModel {
     }
 
     func start() {
-        guard let wordRepository else { return }
-        let pool = wordRepository.fetchAll().shuffled()
+        guard let wordRepository, let progressRepository else { return }
+        // クイズと同じく、復習期限が来た語から先に出題する
+        let pool = StudyQueue.prioritize(
+            words: wordRepository.fetchAll(),
+            progress: progressRepository.allProgress()
+        )
         guard !pool.isEmpty else {
             words = []
             phase = .finished

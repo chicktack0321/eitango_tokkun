@@ -27,17 +27,37 @@ struct HomeView: View {
 
     private var todayCard: some View {
         DashboardCard(title: "今日の学習") {
-            HStack(spacing: 12) {
-                StatTile(
-                    value: "\(viewModel.todayStudiedCount)問",
-                    label: "解答した単語数",
-                    tint: .blue
-                )
-                StatTile(
-                    value: percentString(viewModel.todayAccuracy),
-                    label: "今日の正答率",
-                    tint: .green
-                )
+            VStack(spacing: 12) {
+                HStack(spacing: 12) {
+                    StatTile(
+                        value: "\(viewModel.todayStudiedCount)問",
+                        label: "解答した単語数",
+                        tint: .blue
+                    )
+                    StatTile(
+                        value: percentString(viewModel.todayAccuracy),
+                        label: "今日の正答率",
+                        tint: .green
+                    )
+                }
+
+                // 復習期限が来た語がある日は、まずそこから手を付けてもらう
+                if viewModel.dueCount > 0 {
+                    Button {
+                        router.selectedTab = .quiz
+                    } label: {
+                        HStack {
+                            Label("復習する単語が\(viewModel.dueCount)語あります", systemImage: "arrow.clockwise")
+                                .font(.subheadline)
+                            Spacer()
+                            Image(systemName: "chevron.right").font(.caption)
+                        }
+                        .foregroundStyle(.orange)
+                        .padding(12)
+                        .background(Color.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
+                    }
+                    .buttonStyle(.plain)
+                }
             }
         }
     }

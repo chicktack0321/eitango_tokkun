@@ -46,11 +46,13 @@ final class QuizViewModel {
     }
 
     func startNewQuiz() {
-        guard let wordRepository else { return }
+        guard let wordRepository, let progressRepository else { return }
         // 単語一覧の取得は1回だけ。問題ごとにフェッチすると出題数に比例して
         // 全件スキャンが走り、語彙数が増えたときに開始が目に見えて遅くなる。
         let pool = wordRepository.fetchAll()
-        let sampled = pool.shuffled().prefix(Self.questionCount)
+        // 復習期限が来た語を優先して出題する（ランダム出題では忘れかけた語に当たらない）
+        let ordered = StudyQueue.prioritize(words: pool, progress: progressRepository.allProgress())
+        let sampled = ordered.prefix(Self.questionCount)
 
         questions = sampled.map { buildQuestion(for: $0, pool: pool) }
         currentQuestionIndex = 0
