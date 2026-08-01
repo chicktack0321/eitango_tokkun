@@ -20,6 +20,10 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<!-- 完全オフライン・通信ゼロで独自の暗号化も行わないため輸出規制の対象外。
+	     宣言しておかないとTestFlight配信のたびに輸出コンプライアンスの手動回答を求められる -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<!-- SwiftUI App lifecycle: Storyboard不要。空dictで自動生成のランチ画面を使う -->
@@ -35,9 +39,11 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<!-- iOS 17以降の対応端末はすべてarm64。armv7(32bit)を指定すると
+	     deployment targetと矛盾し、App Store Connectの検証で弾かれる -->
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

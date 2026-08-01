@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import os
 
 /// SwiftDataの ModelContainer を一元管理する。
 /// スキーマ変更（カラム追加等）は SwiftData の軽量マイグレーションで多くは自動対応できるが、
@@ -7,6 +8,8 @@ import SwiftData
 /// `SchemaMigrationPlan` を実装したVersionedSchemaに切り替える前提の置き場所として分離している。
 @MainActor
 enum AppContainer {
+    private static let logger = Logger(subsystem: "com.eitango.app", category: "AppContainer")
+
     static let shared: ModelContainer = {
         let schema = Schema([
             WordMaster.self,
@@ -14,17 +17,40 @@ enum AppContainer {
             StudyLog.self
         ])
 
-        let configuration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: false
-        )
+        let container = makeContainer(schema: schema)
 
+        // シードの失敗（同梱JSONの破損など）は致命的ではない。
+        // ここでクラッシュさせるとアプリが二度と起動しなくなるため、記録だけして起動を続ける。
+        // 単語が0件でも各画面は空状態を表示できる。
         do {
-            let container = try ModelContainer(for: schema, configurations: [configuration])
             try WordMasterSeeder.seedIfNeeded(context: container.mainContext)
-            return container
         } catch {
-            fatalError("ModelContainerの初期化に失敗しました: \(error)")
+            logger.error("単語マスターの初期化に失敗しました: \(error.localizedDescription, privacy: .public)")
         }
+
+        return container
     }()
+
+    /// 永続ストアの生成を試み、失敗した場合はインメモリにフォールバックする。
+    /// ストアが壊れている・ディスクが逼迫している等で永続化できない状況でも、
+    /// 「起動すらしない」よりは「今回の学習履歴は保存されないが使える」方が損害が小さいと判断している。
+    private static func makeContainer(schema: Schema) -> ModelContainer {
+        do {
+            return try ModelContainer(
+                for: schema,
+                configurations: [ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)]
+            )
+        } catch {
+            logger.error("永続ストアの初期化に失敗したためインメモリで起動します: \(error.localizedDescription, privacy: .public)")
+            do {
+                return try ModelContainer(
+                    for: schema,
+                    configurations: [ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)]
+                )
+            } catch {
+                // インメモリすら生成できないのはスキーマ定義自体の不整合であり、実行時に回復する手段がない
+                fatalError("ModelContainerの初期化に失敗しました: \(error)")
+            }
+        }
+    }
 }

@@ -36,13 +36,27 @@ enum WordMasterSeeder {
         let seedFile = try loadSeedFile(bundle: bundle)
 
         let appliedVersion = UserDefaults.standard.integer(forKey: appliedVersionKey)
-        guard seedFile.version > appliedVersion else { return }
+        // 適用済みバージョンは UserDefaults、実データは SwiftData と保存先が分かれているため、
+        // 両者が食い違うことがある（ストアの作り直し、バックアップからの復元など）。
+        // 単語が1件も無ければバージョンに関わらず作り直して、空のまま復旧しない状態を防ぐ。
+        let existingWordCount = (try? context.fetchCount(FetchDescriptor<WordMaster>())) ?? 0
+        let storeIsEmpty = existingWordCount == 0
+        guard seedFile.version > appliedVersion || storeIsEmpty else { return }
 
-        try upsert(entries: seedFile.words, context: context)
-        try ensureProgressRowsExist(for: seedFile.words, context: context)
+        do {
+            try upsert(entries: seedFile.words, context: context)
+            try ensureProgressRowsExist(for: seedFile.words, context: context)
+            try context.save()
+        } catch {
+            // 中途半端に適用された変更を残すと次回以降の判定が狂うため、破棄してから投げ直す
+            context.rollback()
+            throw error
+        }
 
+        // 保存が成功して初めてバージョンを記録する。
+        // 逆順にすると save 失敗時に「バージョンだけ進んで単語が空」の状態が永続化され、
+        // 以降シードがスキップされて二度と復旧しなくなる。
         UserDefaults.standard.set(seedFile.version, forKey: appliedVersionKey)
-        try context.save()
     }
 
     private static func loadSeedFile(bundle: Bundle) throws -> WordSeedFile {
