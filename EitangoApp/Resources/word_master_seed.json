@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "words": [
     {
       "wordId": "EIKEN_G2_0001",
@@ -45,6 +45,411 @@
       "frequencyCount": 5,
       "category": "C",
       "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0006",
+      "word": "achieve",
+      "meaning": "達成する",
+      "example": "She worked hard to achieve her goal of becoming a doctor.",
+      "frequencyCount": 14,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0007",
+      "word": "announce",
+      "meaning": "発表する",
+      "example": "The company will announce its new product next week.",
+      "frequencyCount": 9,
+      "category": "B",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0008",
+      "word": "appropriate",
+      "meaning": "適切な",
+      "example": "Please wear appropriate clothing for the interview.",
+      "frequencyCount": 13,
+      "category": "A",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0009",
+      "word": "avoid",
+      "meaning": "避ける",
+      "example": "You should avoid eating too much sugar.",
+      "frequencyCount": 16,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0010",
+      "word": "benefit",
+      "meaning": "利益、恩恵",
+      "example": "Regular exercise has many benefits for your health.",
+      "frequencyCount": 15,
+      "category": "A",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0011",
+      "word": "campaign",
+      "meaning": "キャンペーン、運動",
+      "example": "The city launched a campaign to reduce plastic waste.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0012",
+      "word": "various",
+      "meaning": "さまざまな",
+      "example": "The store sells various kinds of fruit.",
+      "frequencyCount": 12,
+      "category": "A",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0013",
+      "word": "effective",
+      "meaning": "効果的な",
+      "example": "This medicine is very effective against headaches.",
+      "frequencyCount": 14,
+      "category": "A",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0014",
+      "word": "expand",
+      "meaning": "拡大する",
+      "example": "The company plans to expand its business overseas.",
+      "frequencyCount": 8,
+      "category": "B",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0015",
+      "word": "financial",
+      "meaning": "財政の、金融の",
+      "example": "He received financial support from his parents.",
+      "frequencyCount": 10,
+      "category": "B",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0016",
+      "word": "global",
+      "meaning": "地球規模の、世界的な",
+      "example": "Climate change is a global problem.",
+      "frequencyCount": 12,
+      "category": "A",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0017",
+      "word": "immediate",
+      "meaning": "即座の",
+      "example": "We need an immediate solution to this issue.",
+      "frequencyCount": 7,
+      "category": "B",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0018",
+      "word": "involve",
+      "meaning": "巻き込む、伴う",
+      "example": "The project will involve students from several schools.",
+      "frequencyCount": 13,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0019",
+      "word": "majority",
+      "meaning": "大多数",
+      "example": "The majority of students agreed with the new rule.",
+      "frequencyCount": 9,
+      "category": "B",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0020",
+      "word": "negotiate",
+      "meaning": "交渉する",
+      "example": "The two companies negotiated a new contract.",
+      "frequencyCount": 6,
+      "category": "C",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0021",
+      "word": "obtain",
+      "meaning": "得る、獲得する",
+      "example": "It is difficult to obtain a visa on short notice.",
+      "frequencyCount": 8,
+      "category": "B",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0022",
+      "word": "participate",
+      "meaning": "参加する",
+      "example": "Many people participated in the marathon.",
+      "frequencyCount": 15,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0023",
+      "word": "permanent",
+      "meaning": "永久の",
+      "example": "He moved to Canada and got a permanent job there.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0024",
+      "word": "promote",
+      "meaning": "促進する、昇進させる",
+      "example": "The store is running a sale to promote its new products.",
+      "frequencyCount": 11,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0025",
+      "word": "reduce",
+      "meaning": "減らす",
+      "example": "We should reduce the amount of plastic we use.",
+      "frequencyCount": 17,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0026",
+      "word": "region",
+      "meaning": "地域",
+      "example": "This region is famous for its beautiful mountains.",
+      "frequencyCount": 9,
+      "category": "B",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0027",
+      "word": "relevant",
+      "meaning": "関連性のある",
+      "example": "Please provide information that is relevant to the topic.",
+      "frequencyCount": 4,
+      "category": "C",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0028",
+      "word": "require",
+      "meaning": "必要とする",
+      "example": "This job requires excellent communication skills.",
+      "frequencyCount": 16,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0029",
+      "word": "resource",
+      "meaning": "資源",
+      "example": "Water is a valuable natural resource.",
+      "frequencyCount": 13,
+      "category": "A",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0030",
+      "word": "significant",
+      "meaning": "重要な、著しい",
+      "example": "There has been a significant increase in sales this year.",
+      "frequencyCount": 14,
+      "category": "A",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0031",
+      "word": "similar",
+      "meaning": "類似した",
+      "example": "Her opinion is similar to mine.",
+      "frequencyCount": 10,
+      "category": "B",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0032",
+      "word": "solution",
+      "meaning": "解決策",
+      "example": "We need to find a solution to this problem quickly.",
+      "frequencyCount": 13,
+      "category": "A",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0033",
+      "word": "strategy",
+      "meaning": "戦略",
+      "example": "The team discussed a new strategy to win the game.",
+      "frequencyCount": 8,
+      "category": "B",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0034",
+      "word": "sufficient",
+      "meaning": "十分な",
+      "example": "We didn't have sufficient time to finish the project.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0035",
+      "word": "survive",
+      "meaning": "生き残る",
+      "example": "Few animals can survive in such a cold climate.",
+      "frequencyCount": 7,
+      "category": "B",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0036",
+      "word": "threat",
+      "meaning": "脅威",
+      "example": "Pollution is a serious threat to our environment.",
+      "frequencyCount": 4,
+      "category": "C",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0037",
+      "word": "volunteer",
+      "meaning": "ボランティア（をする）",
+      "example": "She volunteers at the animal shelter every weekend.",
+      "frequencyCount": 9,
+      "category": "B",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0038",
+      "word": "wealthy",
+      "meaning": "裕福な",
+      "example": "He comes from a wealthy family.",
+      "frequencyCount": 4,
+      "category": "C",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0039",
+      "word": "accurate",
+      "meaning": "正確な",
+      "example": "Please give me an accurate report of what happened.",
+      "frequencyCount": 8,
+      "category": "B",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0040",
+      "word": "adapt",
+      "meaning": "適応する",
+      "example": "It took him a while to adapt to his new school.",
+      "frequencyCount": 7,
+      "category": "B",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0041",
+      "word": "approach",
+      "meaning": "取り組み方、近づく",
+      "example": "We need a different approach to solve this problem.",
+      "frequencyCount": 12,
+      "category": "A",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0042",
+      "word": "assist",
+      "meaning": "助ける",
+      "example": "The nurse assisted the doctor during the operation.",
+      "frequencyCount": 7,
+      "category": "B",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0043",
+      "word": "attitude",
+      "meaning": "態度",
+      "example": "Her positive attitude helped the whole team.",
+      "frequencyCount": 8,
+      "category": "B",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0044",
+      "word": "average",
+      "meaning": "平均の",
+      "example": "The average temperature in July is quite high.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0045",
+      "word": "behavior",
+      "meaning": "行動",
+      "example": "The teacher praised the students for their good behavior.",
+      "frequencyCount": 9,
+      "category": "B",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0046",
+      "word": "capable",
+      "meaning": "能力がある",
+      "example": "She is capable of solving difficult math problems.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0047",
+      "word": "challenge",
+      "meaning": "難題、挑戦する",
+      "example": "Learning a new language can be a big challenge.",
+      "frequencyCount": 15,
+      "category": "A",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0048",
+      "word": "contribute",
+      "meaning": "貢献する",
+      "example": "Everyone in the team contributed to the project's success.",
+      "frequencyCount": 12,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0049",
+      "word": "decade",
+      "meaning": "10年間",
+      "example": "The population has doubled over the past decade.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0050",
+      "word": "demonstrate",
+      "meaning": "実証する、示す",
+      "example": "The scientist demonstrated how the experiment works.",
+      "frequencyCount": 6,
+      "category": "B",
+      "partOfSpeech": "verb"
     }
   ]
 }
