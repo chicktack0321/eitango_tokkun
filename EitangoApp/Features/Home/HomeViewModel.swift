@@ -11,6 +11,10 @@ final class HomeViewModel {
     private(set) var todayAccuracy: Double = 0
     /// 復習期限が来ている語の数。学習を再開する動機付けとしてホームに出す。
     private(set) var dueCount = 0
+    /// ホームのミニグラフ用（直近1週間）
+    private(set) var weeklySeries: [DailyStudy] = []
+    /// 連続学習日数
+    private(set) var streak = 0
 
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
@@ -43,5 +47,8 @@ final class HomeViewModel {
         let log = progressRepository.todayLog()
         todayStudiedCount = log?.studiedWordCount ?? 0
         todayAccuracy = log?.accuracy ?? 0
+
+        weeklySeries = StudyHistory.series(logs: progressRepository.recentLogs(days: 7), days: 7)
+        streak = StudyHistory.currentStreak(logs: progressRepository.logsForStreak())
     }
 }

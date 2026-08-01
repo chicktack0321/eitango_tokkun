@@ -16,6 +16,20 @@ final class EitangoAppUITests: XCTestCase {
 
         capture(app, "01_Home")
 
+        // ホームから学習の記録へ push して戻る
+        let historyLink = app.buttons["学習の記録"].firstMatch
+        if historyLink.waitForExistence(timeout: 5) {
+            historyLink.tap()
+            settle()
+            capture(app, "01b_StudyHistory")
+
+            let backButton = app.navigationBars.buttons.element(boundBy: 0)
+            if backButton.waitForExistence(timeout: 5) {
+                backButton.tap()
+                settle()
+            }
+        }
+
         let wordListTab = app.tabBars.buttons["単語帳"]
         if wordListTab.waitForExistence(timeout: 10) {
             wordListTab.tap()

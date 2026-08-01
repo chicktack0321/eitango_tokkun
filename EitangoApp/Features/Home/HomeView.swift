@@ -1,5 +1,11 @@
 import SwiftUI
 import SwiftData
+import Charts
+
+/// ホームから push する画面。増えても `navigationDestination` を1か所にまとめられるよう列挙にしている。
+enum HomeDestination: Hashable {
+    case history
+}
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
@@ -11,6 +17,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     todayCard
+                    historyCard
                     masteryCard
                     quickActionsCard
                 }
@@ -18,6 +25,11 @@ struct HomeView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("ホーム")
+            .navigationDestination(for: HomeDestination.self) { destination in
+                switch destination {
+                case .history: StudyHistoryView()
+                }
+            }
             .task { viewModel.configure(context: modelContext) }
             .onChange(of: router.selectedTab) { _, newValue in
                 if newValue == .home { viewModel.reload() }
@@ -60,6 +72,48 @@ struct HomeView: View {
                 }
             }
         }
+    }
+
+    /// 直近1週間の推移をミニグラフで見せ、詳しい記録は専用画面へ送る
+    private var historyCard: some View {
+        NavigationLink(value: HomeDestination.history) {
+            DashboardCard(title: "学習の記録") {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack {
+                        Label("\(viewModel.streak)日連続", systemImage: "flame.fill")
+                            .font(.subheadline).bold()
+                            .foregroundStyle(.orange)
+                        Spacer()
+                        Text("詳しく見る")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Image(systemName: "chevron.right")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if viewModel.weeklySeries.contains(where: \.didStudy) {
+                        Chart(viewModel.weeklySeries) { day in
+                            BarMark(
+                                x: .value("日", day.date, unit: .day),
+                                y: .value("解答数", day.studiedWordCount)
+                            )
+                            .foregroundStyle(Color.blue.gradient)
+                            .cornerRadius(2)
+                        }
+                        .chartXAxis(.hidden)
+                        .chartYAxis(.hidden)
+                        .frame(height: 60)
+                    } else {
+                        Text("今週はまだ記録がありません")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+            }
+        }
+        .buttonStyle(.plain)
     }
 
     private var masteryCard: some View {

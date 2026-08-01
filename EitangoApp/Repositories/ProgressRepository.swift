@@ -47,6 +47,24 @@ struct ProgressRepository {
         return created
     }
 
+    /// 直近 `days` 日分の日次ログを取得する。
+    /// 全期間を読むと記録が増えるほど重くなるため、グラフに映る範囲だけを日付で絞る。
+    func recentLogs(days: Int, endingOn today: Date = .now, calendar: Calendar = .current) -> [StudyLog] {
+        let endDay = calendar.startOfDay(for: today)
+        guard let startDay = calendar.date(byAdding: .day, value: -(days - 1), to: endDay) else { return [] }
+
+        let descriptor = FetchDescriptor<StudyLog>(
+            predicate: #Predicate { $0.date >= startDay },
+            sortBy: [SortDescriptor(\.date)]
+        )
+        return (try? context.fetch(descriptor)) ?? []
+    }
+
+    /// 連続学習日数の判定用。途切れを跨いで数えないよう、直近1年分あれば足りる。
+    func logsForStreak(today: Date = .now, calendar: Calendar = .current) -> [StudyLog] {
+        recentLogs(days: 366, endingOn: today, calendar: calendar)
+    }
+
     /// 当日分の StudyLog を取得する（未学習日は nil。record時のように新規作成はしない）
     func todayLog(date: Date = .now) -> StudyLog? {
         let day = Calendar.current.startOfDay(for: date)
