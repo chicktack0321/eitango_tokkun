@@ -27,10 +27,10 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.eitango.app
-        PRODUCT_NAME: 英検2級 英単語特訓
-        # PRODUCT_NAME が日本語のままだとSwiftモジュール名が記号に潰れて
-        # テスト側の `@testable import EitangoApp` が通らないため、明示的に固定する
-        PRODUCT_MODULE_NAME: EitangoApp
+        # 日本語＋スペースの PRODUCT_NAME はバンドル名・モジュール名・ビルドパスに波及し、
+        # テストターゲットの TEST_HOST 解決に失敗する。ホーム画面に出る名前は
+        # Info.plist の CFBundleDisplayName（英検2級 英単語特訓）が担うため、ここはASCIIで固定する。
+        PRODUCT_NAME: EitangoApp
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
