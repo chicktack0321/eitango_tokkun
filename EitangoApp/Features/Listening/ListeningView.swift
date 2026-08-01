@@ -11,35 +11,81 @@ struct ListeningView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 28) {
-                categoryPicker
-
-                nowPlayingCard
-
-                controls
-
-                speedControl
-
-                Spacer()
+            ScrollView {
+                VStack(spacing: 16) {
+                    filterCard
+                    nowPlayingCard
+                    controls
+                    speedCard
+                }
+                .padding()
             }
-            .padding()
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("聞き流し")
+            .navigationBarTitleDisplayMode(.inline)
             .task { viewModel.configure(context: modelContext) }
-            .onChange(of: viewModel.selectedCategory) { _, _ in
+            // 対象が変わったら再生を止める。今聞こえている語が一覧から消えた状態で
+            // 再生が続くと、どこを流しているのか分からなくなるため。
+            .onChange(of: viewModel.filter) { _, _ in
                 audioManager.stop()
-                viewModel.reload()
             }
         }
     }
 
-    private var categoryPicker: some View {
-        Picker("頻出度", selection: $viewModel.selectedCategory) {
-            Text("すべて").tag(FrequencyRank?.none)
-            ForEach(FrequencyRank.allCases) { rank in
-                Text(rank.displayName).tag(FrequencyRank?.some(rank))
+    /// 単語帳と同じ軸で絞り込む。「要復習だけ流す」が聞き流しの主な使い道になる。
+    private var filterCard: some View {
+        DashboardCard(title: "再生する単語（\(viewModel.words.count)語）") {
+            VStack(spacing: 12) {
+                Picker("学習ステータス", selection: $viewModel.filter.status) {
+                    Text("すべて").tag(LearningStatus?.none)
+                    ForEach(LearningStatus.allCases) { status in
+                        Text(status.displayName).tag(LearningStatus?.some(status))
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                HStack {
+                    filterMenu(
+                        title: "頻出度",
+                        selectedLabel: viewModel.filter.category?.displayName ?? "すべて"
+                    ) {
+                        Button("すべて") { viewModel.filter.category = nil }
+                        ForEach(FrequencyRank.allCases) { rank in
+                            Button(rank.displayName) { viewModel.filter.category = rank }
+                        }
+                    }
+                    Spacer(minLength: 12)
+                    filterMenu(
+                        title: "品詞",
+                        selectedLabel: viewModel.filter.partOfSpeech?.displayName ?? "すべて"
+                    ) {
+                        Button("すべて") { viewModel.filter.partOfSpeech = nil }
+                        ForEach(PartOfSpeech.allCases) { pos in
+                            Button(pos.displayName) { viewModel.filter.partOfSpeech = pos }
+                        }
+                    }
+                }
             }
         }
-        .pickerStyle(.segmented)
+    }
+
+    private func filterMenu<Content: View>(
+        title: String,
+        selectedLabel: String,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        Menu {
+            content()
+        } label: {
+            HStack(spacing: 4) {
+                Text(title).foregroundStyle(.primary)
+                Text(selectedLabel).foregroundStyle(.secondary)
+                Image(systemName: "chevron.up.chevron.down").font(.caption2)
+            }
+            .font(.subheadline)
+            .lineLimit(1)
+            .fixedSize()
+        }
     }
 
     private var nowPlayingCard: some View {
@@ -130,20 +176,24 @@ struct ListeningView: View {
         }
     }
 
-    private var speedControl: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("再生速度")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            Slider(
-                value: $audioManager.speechRate,
-                in: AVSpeechUtteranceMinimumSpeechRate...AVSpeechUtteranceMaximumSpeechRate
-            )
+    /// 連続スライダーだと「今どのくらいの速さなのか」「標準はどこか」が分からないため、
+    /// 段階を決め打ちにして倍率をそのまま見せる。
+    private static let speedOptions: [Double] = [0.8, 1.0, 1.2, 1.5, 2.0]
+
+    private var speedCard: some View {
+        DashboardCard(title: "再生速度") {
+            Picker("再生速度", selection: $audioManager.speedMultiplier) {
+                ForEach(Self.speedOptions, id: \.self) { speed in
+                    Text(speed == 1.0 ? "標準" : String(format: "%.1f倍", speed))
+                        .tag(speed)
+                }
+            }
+            .pickerStyle(.segmented)
         }
     }
 }
 
 #Preview {
     ListeningView()
-        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self], inMemory: true)
+        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
 }

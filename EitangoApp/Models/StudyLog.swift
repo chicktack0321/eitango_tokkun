@@ -12,11 +12,23 @@ final class StudyLog {
     var correctCount: Int
     var attemptCount: Int
 
-    init(date: Date, studiedWordCount: Int = 0, correctCount: Int = 0, attemptCount: Int = 0) {
+    /// その日の最後の解答時点で「覚えた」だった語数。
+    /// 習熟度の推移グラフは過去に遡って再計算できない（現在の状態しか残らない）ため、
+    /// 解答のたびにその日のスナップショットを上書きして残しておく。
+    var masteredWordCount: Int = 0
+
+    init(
+        date: Date,
+        studiedWordCount: Int = 0,
+        correctCount: Int = 0,
+        attemptCount: Int = 0,
+        masteredWordCount: Int = 0
+    ) {
         self.date = date
         self.studiedWordCount = studiedWordCount
         self.correctCount = correctCount
         self.attemptCount = attemptCount
+        self.masteredWordCount = masteredWordCount
     }
 
     var accuracy: Double {

@@ -46,46 +46,101 @@ struct StudyHistoryView: View {
         }
     }
 
+    /// 解答数（棒）と習熟度（折れ線）を1枚に重ねる。
+    /// 「たくさん解いた」ことと「覚えた語が増えた」ことは別なので、
+    /// 同じ時間軸に並べて対応を見られるようにしている。
     private var chartCard: some View {
-        DashboardCard(title: "解答した単語数") {
+        DashboardCard(title: "学習量と習熟度") {
             if viewModel.hasAnyRecord {
-                Chart(viewModel.series) { day in
-                    BarMark(
-                        x: .value("日", day.date, unit: .day),
-                        y: .value("解答数", day.studiedWordCount)
-                    )
-                    .foregroundStyle(Color.blue.gradient)
-                    .cornerRadius(3)
-                }
-                .chartXAxis {
-                    AxisMarks(values: .stride(by: .day, count: xAxisStride)) { value in
-                        AxisGridLine()
-                        AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+                VStack(alignment: .leading, spacing: 8) {
+                    Chart {
+                        ForEach(viewModel.series) { entry in
+                            BarMark(
+                                x: .value("日", entry.date, unit: chartUnit),
+                                y: .value("解答数", entry.studiedWordCount)
+                            )
+                            .foregroundStyle(Color.blue.opacity(0.55))
+                            .cornerRadius(2)
+                        }
+                        ForEach(viewModel.series) { entry in
+                            LineMark(
+                                x: .value("日", entry.date, unit: chartUnit),
+                                y: .value("覚えた語数", entry.masteredWordCount)
+                            )
+                            .foregroundStyle(LearningStatus.memorized.tint)
+                            .lineStyle(StrokeStyle(lineWidth: 2))
+                            .interpolationMethod(.monotone)
+                        }
+                    }
+                    // 解答数と語数は単位が違うので、折れ線には右側の別軸を割り当てる
+                    .chartForegroundStyleScale([
+                        "解答数": Color.blue.opacity(0.55),
+                        "覚えた語数": LearningStatus.memorized.tint
+                    ])
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .day, count: viewModel.selectedPeriod.axisStrideDays)) { _ in
+                            AxisGridLine()
+                            AxisValueLabel(format: .dateTime.month(.defaultDigits).day())
+                        }
+                    }
+                    .chartYAxis {
+                        AxisMarks(position: .leading)
+                    }
+                    .frame(height: 220)
+
+                    HStack(spacing: 16) {
+                        legendItem(color: Color.blue.opacity(0.55), label: "解答数")
+                        legendItem(color: LearningStatus.memorized.tint, label: "覚えた語数")
+                    }
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                    if viewModel.selectedPeriod.aggregatesByWeek {
+                        Text("3か月以上は週ごとにまとめて表示しています")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                .chartYAxis {
-                    AxisMarks(position: .leading)
-                }
-                .frame(height: 200)
             } else {
                 emptyState
             }
         }
     }
 
-    /// 30日表示で日付ラベルを毎日出すと潰れるので、期間に応じて間引く
-    private var xAxisStride: Int {
-        viewModel.selectedPeriod == .month ? 7 : 3
+    private func legendItem(color: Color, label: String) -> some View {
+        HStack(spacing: 4) {
+            RoundedRectangle(cornerRadius: 1)
+                .fill(color)
+                .frame(width: 12, height: 4)
+            Text(label)
+        }
+    }
+
+    private var chartUnit: Calendar.Component {
+        viewModel.selectedPeriod.aggregatesByWeek ? .weekOfYear : .day
     }
 
     private var summaryCard: some View {
         DashboardCard(title: "この期間の合計") {
-            HStack(spacing: 12) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                 StatTile(value: "\(viewModel.totalAttempts)問", label: "解答数", tint: .indigo)
                 StatTile(
                     value: "\(Int((viewModel.overallAccuracy * 100).rounded()))%",
                     label: "正答率",
-                    tint: .green
+                    tint: .green,
+                    infoMessage: MetricExplanations.overallAccuracy
+                )
+                StatTile(
+                    value: "\(viewModel.masteredWordCount)語",
+                    label: "覚えた単語",
+                    tint: LearningStatus.memorized.tint,
+                    infoMessage: MetricExplanations.mastery
+                )
+                StatTile(
+                    value: "+\(viewModel.masteredGain)語",
+                    label: "この期間の増加",
+                    tint: .orange,
+                    infoMessage: "期間の開始時点と終了時点で、「覚えた」段階の単語数がどれだけ増えたかです。"
                 )
             }
         }
@@ -113,5 +168,5 @@ struct StudyHistoryView: View {
     NavigationStack {
         StudyHistoryView()
     }
-    .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self], inMemory: true)
+    .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
 }

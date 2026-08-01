@@ -33,7 +33,19 @@ struct ProgressRepository {
         log.studiedWordCount += 1
         if isCorrect { log.correctCount += 1 }
 
+        // 習熟度は現在の状態しか残らないので、その日の最新値をここで焼き付けておく。
+        // でないと推移グラフを後から描けない。
+        log.masteredWordCount = masteredCount(at: date)
+
         try? context.save()
+    }
+
+    /// 指定時点で「覚えた」段階にある語数
+    private func masteredCount(at date: Date) -> Int {
+        let all = (try? context.fetch(FetchDescriptor<UserProgress>())) ?? []
+        return all.reduce(into: 0) { count, progress in
+            if progress.status(at: date) == .memorized { count += 1 }
+        }
     }
 
     private func studyLog(for date: Date) -> StudyLog {

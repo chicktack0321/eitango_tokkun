@@ -185,5 +185,5 @@ private struct ChoiceButton: View {
 
 #Preview {
     QuizView()
-        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self], inMemory: true)
+        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
 }

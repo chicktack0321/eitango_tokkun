@@ -36,12 +36,19 @@ final class StudyHistoryTests: XCTestCase {
     }
 
     @discardableResult
-    private func makeLog(_ date: Date, studied: Int, correct: Int = 0, attempts: Int = 0) -> StudyLog {
+    private func makeLog(
+        _ date: Date,
+        studied: Int,
+        correct: Int = 0,
+        attempts: Int = 0,
+        mastered: Int = 0
+    ) -> StudyLog {
         let log = StudyLog(
             date: calendar.startOfDay(for: date),
             studiedWordCount: studied,
             correctCount: correct,
-            attemptCount: attempts
+            attemptCount: attempts,
+            masteredWordCount: mastered
         )
         context.insert(log)
         return log
@@ -100,6 +107,78 @@ final class StudyHistoryTests: XCTestCase {
     func testSeriesWithNonPositiveDaysIsEmpty() {
         XCTAssertTrue(StudyHistory.series(logs: [], days: 0, endingOn: day(2026, 8, 7), calendar: calendar).isEmpty)
         XCTAssertTrue(StudyHistory.series(logs: [], days: -3, endingOn: day(2026, 8, 7), calendar: calendar).isEmpty)
+    }
+
+    // MARK: - 習熟度の推移
+
+    /// 学習しなかった日は習熟度を0にせず、直前の値を保つ。
+    /// 0に落とすと、休んだ日に覚えた単語が消えたように見えてしまう。
+    func testMasteredCountCarriesForwardThroughIdleDays() {
+        let logs = [
+            makeLog(day(2026, 8, 3), studied: 5, mastered: 10),
+            makeLog(day(2026, 8, 6), studied: 5, mastered: 14)
+        ]
+
+        let series = StudyHistory.series(
+            logs: logs,
+            days: 5,
+            endingOn: day(2026, 8, 7),
+            calendar: calendar
+        )
+
+        // 8/3=10、8/4・8/5は据え置き、8/6=14、8/7も据え置き
+        XCTAssertEqual(series.map(\.masteredWordCount), [10, 10, 10, 14, 14])
+    }
+
+    /// 期間より前の記録から開始値を引き継ぐ。
+    /// 引き継がないと、期間内に学習日がないだけで折れ線が0から始まってしまう。
+    func testMasteredCountInheritsValueFromBeforeThePeriod() {
+        let logs = [makeLog(day(2026, 7, 20), studied: 3, mastered: 25)]
+
+        let series = StudyHistory.series(
+            logs: logs,
+            days: 3,
+            endingOn: day(2026, 8, 7),
+            calendar: calendar
+        )
+
+        XCTAssertEqual(series.map(\.masteredWordCount), [25, 25, 25])
+    }
+
+    // MARK: - 週次集約
+
+    func testWeeklyAggregationSumsAnswersAndKeepsLatestMastery() {
+        // 同じ週（月曜起点）に収まる3日ぶん
+        let series = [
+            DailyStudy(date: day(2026, 8, 3), studiedWordCount: 2, correctCount: 2, attemptCount: 2, masteredWordCount: 5),
+            DailyStudy(date: day(2026, 8, 4), studiedWordCount: 3, correctCount: 1, attemptCount: 3, masteredWordCount: 7),
+            DailyStudy(date: day(2026, 8, 5), studiedWordCount: 4, correctCount: 4, attemptCount: 4, masteredWordCount: 9)
+        ]
+
+        let weekly = StudyHistory.weekly(from: series, calendar: calendar)
+
+        XCTAssertEqual(weekly.count, 1)
+        // 解答数は合計する
+        XCTAssertEqual(weekly.first?.studiedWordCount, 9)
+        XCTAssertEqual(weekly.first?.attemptCount, 9)
+        // 習熟度は残高なので合計せず、その週の最終値を採る
+        XCTAssertEqual(weekly.first?.masteredWordCount, 9)
+    }
+
+    func testWeeklyAggregationSplitsAcrossWeeks() {
+        let series = (0..<14).map { offset -> DailyStudy in
+            let date = calendar.date(byAdding: .day, value: offset, to: day(2026, 8, 3))!
+            return DailyStudy(date: date, studiedWordCount: 1, correctCount: 1, attemptCount: 1, masteredWordCount: offset)
+        }
+
+        let weekly = StudyHistory.weekly(from: series, calendar: calendar)
+
+        XCTAssertEqual(weekly.count, 2)
+        XCTAssertEqual(weekly.map(\.studiedWordCount), [7, 7])
+    }
+
+    func testWeeklyAggregationOfEmptySeriesIsEmpty() {
+        XCTAssertTrue(StudyHistory.weekly(from: [], calendar: calendar).isEmpty)
     }
 
     // MARK: - 連続学習日数

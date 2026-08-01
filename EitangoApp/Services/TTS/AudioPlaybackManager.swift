@@ -35,8 +35,26 @@ final class AudioPlaybackManager: NSObject {
     var pauseBetweenWordAndMeaning: TimeInterval = 0.4
     /// 1語読み終えてから次の語に移るまでのポーズ（秒）
     var pauseBetweenWords: TimeInterval = 0.8
-    /// 読み上げ速度。AVSpeechUtteranceDefaultSpeechRate を基準に調整
-    var speechRate: Float = AVSpeechUtteranceDefaultSpeechRate
+    /// 読み上げ速度の倍率。1.0が標準の聞き取りやすさ。
+    /// `AVSpeechUtteranceDefaultSpeechRate` を1.0とみなして換算する。
+    var speedMultiplier: Double = 1.0
+
+    /// 実際に `AVSpeechUtterance.rate` へ渡す値。
+    /// AVSpeechSynthesizerのrateは倍率ではなく0〜1の独自スケールで、
+    /// 単純に掛けると上限を超えて頭打ちになるため、既定値を基準に上下へ配分する。
+    private var speechRate: Float {
+        let base = AVSpeechUtteranceDefaultSpeechRate
+        if speedMultiplier >= 1 {
+            let upperRange = AVSpeechUtteranceMaximumSpeechRate - base
+            // 2.0倍で上限に届くよう線形に割り当てる
+            let ratio = Float(min(speedMultiplier - 1, 1)) / 1.0
+            return base + upperRange * ratio
+        } else {
+            let lowerRange = base - AVSpeechUtteranceMinimumSpeechRate
+            let ratio = Float(1 - speedMultiplier) / 0.5
+            return base - lowerRange * min(ratio, 1)
+        }
+    }
 
     private let logger = Logger(subsystem: "com.eitango.app", category: "AudioPlayback")
     private let synthesizer = AVSpeechSynthesizer()

@@ -272,5 +272,5 @@ private struct LegendDot: View {
 #Preview {
     HomeView()
         .environment(TabRouter())
-        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self], inMemory: true)
+        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
 }

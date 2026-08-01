@@ -27,21 +27,18 @@ struct WordListView: View {
                 }
             }
             .navigationTitle("単語帳")
-            .searchable(text: $viewModel.searchText, prompt: "英単語・日本語訳で検索")
+            .searchable(text: $viewModel.filter.keyword, prompt: "英単語・日本語訳で検索")
             .navigationDestination(for: WordMaster.self) { word in
                 WordDetailView(word: word)
             }
             .task { viewModel.configure(context: modelContext) }
-            .onChange(of: viewModel.selectedCategory) { _, _ in viewModel.reload() }
-            .onChange(of: viewModel.selectedPartOfSpeech) { _, _ in viewModel.reload() }
-            .onChange(of: viewModel.selectedStatus) { _, _ in viewModel.reload() }
-            .onChange(of: viewModel.searchText) { _, _ in viewModel.reload() }
+            .onChange(of: viewModel.filter) { _, _ in viewModel.reload() }
         }
     }
 
     /// 「要復習だけ見る」は使用頻度が高いので、メニューに畳まず1タップで切り替えられるようにする
     private var statusFilterRow: some View {
-        Picker("ステータス", selection: $viewModel.selectedStatus) {
+        Picker("ステータス", selection: $viewModel.filter.status) {
             Text("すべて").tag(LearningStatus?.none)
             ForEach(LearningStatus.allCases) { status in
                 Text(status.displayName).tag(LearningStatus?.some(status))
@@ -56,21 +53,21 @@ struct WordListView: View {
         HStack {
             filterMenu(
                 title: "頻出度",
-                selectedLabel: viewModel.selectedCategory?.displayName ?? "すべて"
+                selectedLabel: viewModel.filter.category?.displayName ?? "すべて"
             ) {
-                Button("すべて") { viewModel.selectedCategory = nil }
+                Button("すべて") { viewModel.filter.category = nil }
                 ForEach(FrequencyRank.allCases) { rank in
-                    Button(rank.displayName) { viewModel.selectedCategory = rank }
+                    Button(rank.displayName) { viewModel.filter.category = rank }
                 }
             }
             Spacer(minLength: 12)
             filterMenu(
                 title: "品詞",
-                selectedLabel: viewModel.selectedPartOfSpeech?.displayName ?? "すべて"
+                selectedLabel: viewModel.filter.partOfSpeech?.displayName ?? "すべて"
             ) {
-                Button("すべて") { viewModel.selectedPartOfSpeech = nil }
+                Button("すべて") { viewModel.filter.partOfSpeech = nil }
                 ForEach(PartOfSpeech.allCases) { pos in
-                    Button(pos.displayName) { viewModel.selectedPartOfSpeech = pos }
+                    Button(pos.displayName) { viewModel.filter.partOfSpeech = pos }
                 }
             }
         }
@@ -123,5 +120,5 @@ private struct WordRow: View {
 
 #Preview {
     WordListView()
-        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self], inMemory: true)
+        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
 }

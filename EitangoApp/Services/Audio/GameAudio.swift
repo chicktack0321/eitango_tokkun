@@ -1,0 +1,289 @@
+import Foundation
+import AVFoundation
+import Observation
+import os
+
+/// タイピング中の効果音とBGM。
+///
+/// 参考にした元のゲームと同じ音の構成（打鍵音・単語完成・ミス・コンボ、
+/// I–V–vi–IV の4小節ループ）を、合成した波形で鳴らす。
+/// 音声ファイルは持たないのでアプリの容量は増えない。
+@Observable
+@MainActor
+final class GameAudio {
+    static let shared = GameAudio()
+
+    enum Effect {
+        case hit           // 1文字正解
+        case wordComplete  // 単語を打ち切った
+        case combo         // コンボ更新
+        case miss          // 打ち間違い
+        case start         // ゲーム開始
+        case gameOver      // 時間切れ
+        case fanfare       // 自己ベスト更新
+    }
+
+    /// 音を鳴らすかどうか。切っていればエンジンごと止める。
+    var isEnabled = true {
+        didSet {
+            guard isEnabled != oldValue else { return }
+            if !isEnabled { stopAll() }
+        }
+    }
+
+    private let logger = Logger(subsystem: "com.eitango.app", category: "GameAudio")
+    private let engine = AVAudioEngine()
+    private let bgmPlayer = AVAudioPlayerNode()
+    private let effectPlayer = AVAudioPlayerNode()
+
+    private var effectBuffers: [String: AVAudioPCMBuffer] = [:]
+    private var bgmBuffer: AVAudioPCMBuffer?
+    private var isEngineReady = false
+
+    private init() {}
+
+    // MARK: - 準備
+
+    /// 波形の生成は数十msかかるので、ゲーム開始前にまとめて用意する
+    private func prepareIfNeeded() {
+        guard !isEngineReady else { return }
+
+        let format = AVAudioFormat(standardFormatWithSampleRate: ToneSynth.sampleRate, channels: 1)
+        engine.attach(bgmPlayer)
+        engine.attach(effectPlayer)
+        engine.connect(bgmPlayer, to: engine.mainMixerNode, format: format)
+        engine.connect(effectPlayer, to: engine.mainMixerNode, format: format)
+
+        bgmBuffer = Self.makeBGMLoop()
+        effectBuffers = Self.makeEffectBuffers()
+
+        // BGMは伴奏なので、効果音より控えめにして打鍵音を埋もれさせない
+        bgmPlayer.volume = 0.35
+        effectPlayer.volume = 0.9
+
+        isEngineReady = true
+    }
+
+    private func startEngineIfNeeded() -> Bool {
+        prepareIfNeeded()
+        guard !engine.isRunning else { return true }
+        do {
+            try engine.start()
+            return true
+        } catch {
+            logger.error("オーディオエンジンを開始できません: \(error.localizedDescription, privacy: .public)")
+            return false
+        }
+    }
+
+    // MARK: - 再生
+
+    func play(_ effect: Effect) {
+        guard isEnabled, startEngineIfNeeded() else { return }
+        guard let buffer = effectBuffers[Self.key(for: effect)] else { return }
+
+        if !effectPlayer.isPlaying { effectPlayer.play() }
+        // 連打しても前の音を切らずに重ねる
+        effectPlayer.scheduleBuffer(buffer, at: nil, options: [], completionHandler: nil)
+    }
+
+    func startBGM() {
+        guard isEnabled, startEngineIfNeeded(), let bgmBuffer else { return }
+        guard !bgmPlayer.isPlaying else { return }
+        bgmPlayer.scheduleBuffer(bgmBuffer, at: nil, options: [.loops], completionHandler: nil)
+        bgmPlayer.play()
+    }
+
+    func stopBGM() {
+        guard bgmPlayer.isPlaying else { return }
+        bgmPlayer.stop()
+    }
+
+    func stopAll() {
+        bgmPlayer.stop()
+        effectPlayer.stop()
+        if engine.isRunning { engine.pause() }
+    }
+
+    // MARK: - 波形
+
+    private static func key(for effect: Effect) -> String {
+        switch effect {
+        case .hit: return "hit"
+        case .wordComplete: return "wordComplete"
+        case .combo: return "combo"
+        case .miss: return "miss"
+        case .start: return "start"
+        case .gameOver: return "gameOver"
+        case .fanfare: return "fanfare"
+        }
+    }
+
+    private static func makeEffectBuffers() -> [String: AVAudioPCMBuffer] {
+        var buffers: [String: AVAudioPCMBuffer] = [:]
+
+        if let hit = ToneSynth.makeBuffer(seconds: 0.12) {
+            ToneSynth.addTone(to: hit, frequency: 1200, start: 0, duration: 0.08, volume: 0.35)
+            buffers["hit"] = hit
+        }
+
+        // ドミソの上昇。単語を打ち切った達成感を出す
+        if let complete = ToneSynth.makeBuffer(seconds: 0.4) {
+            ToneSynth.addTone(to: complete, frequency: 523, start: 0, duration: 0.15, volume: 0.5)
+            ToneSynth.addTone(to: complete, frequency: 659, start: 0.06, duration: 0.15, volume: 0.5)
+            ToneSynth.addTone(to: complete, frequency: 1047, start: 0.12, duration: 0.22, volume: 0.6)
+            ToneSynth.normalize(complete)
+            buffers["wordComplete"] = complete
+        }
+
+        if let combo = ToneSynth.makeBuffer(seconds: 0.45) {
+            for (index, frequency) in [392.0, 523.0, 659.0, 784.0, 1047.0].enumerated() {
+                ToneSynth.addTone(
+                    to: combo,
+                    frequency: frequency,
+                    waveform: .triangle,
+                    start: Double(index) * 0.045,
+                    duration: 0.18,
+                    volume: 0.55
+                )
+            }
+            ToneSynth.normalize(combo)
+            buffers["combo"] = combo
+        }
+
+        // 下降する2音。正解の上昇音と対になるようにする
+        if let miss = ToneSynth.makeBuffer(seconds: 0.25) {
+            ToneSynth.addTone(to: miss, frequency: 330, start: 0, duration: 0.10, volume: 0.45)
+            ToneSynth.addTone(to: miss, frequency: 220, start: 0.07, duration: 0.12, volume: 0.45)
+            ToneSynth.normalize(miss)
+            buffers["miss"] = miss
+        }
+
+        if let start = ToneSynth.makeBuffer(seconds: 0.55) {
+            for (index, frequency) in [392.0, 523.0, 659.0, 784.0].enumerated() {
+                ToneSynth.addTone(
+                    to: start,
+                    frequency: frequency,
+                    waveform: .triangle,
+                    start: Double(index) * 0.08,
+                    duration: 0.18,
+                    volume: 0.55
+                )
+            }
+            ToneSynth.normalize(start)
+            buffers["start"] = start
+        }
+
+        if let over = ToneSynth.makeBuffer(seconds: 0.8) {
+            for (index, frequency) in [523.0, 440.0, 349.0, 262.0].enumerated() {
+                ToneSynth.addTone(
+                    to: over,
+                    frequency: frequency,
+                    waveform: .triangle,
+                    start: Double(index) * 0.14,
+                    duration: 0.25,
+                    volume: 0.5
+                )
+            }
+            ToneSynth.normalize(over)
+            buffers["gameOver"] = over
+        }
+
+        // 自己ベスト更新。通常の完成音より派手に、長めに鳴らす
+        if let fanfare = ToneSynth.makeBuffer(seconds: 1.2) {
+            let melody: [(Double, Double)] = [
+                (523, 0.0), (659, 0.1), (784, 0.2), (1047, 0.3), (784, 0.45), (1047, 0.55)
+            ]
+            for (frequency, start) in melody {
+                ToneSynth.addTone(
+                    to: fanfare,
+                    frequency: frequency,
+                    waveform: .triangle,
+                    start: start,
+                    duration: 0.3,
+                    volume: 0.6
+                )
+            }
+            ToneSynth.normalize(fanfare)
+            buffers["fanfare"] = fanfare
+        }
+
+        return buffers
+    }
+
+    /// I–V–vi–IV の4小節ループ。
+    /// 元実装は1小節ずつ先読みしてスケジュールしていたが、4小節で必ず繰り返すので
+    /// まとめて1本のバッファに焼いてループ再生する（タイマーが要らず、途切れも起きない）。
+    private static func makeBGMLoop() -> AVAudioPCMBuffer? {
+        let bpm = 130.0
+        let beat = 60.0 / bpm
+        let eighth = beat / 2
+        let bar = beat * 4
+        let bars = 4
+
+        guard let buffer = ToneSynth.makeBuffer(seconds: bar * Double(bars) + 0.2) else { return nil }
+
+        let chords: [[Double]] = [
+            [523.25, 659.25, 783.99],  // C
+            [392.00, 493.88, 587.33],  // G
+            [440.00, 523.25, 659.25],  // Am
+            [349.23, 440.00, 523.25]   // F
+        ]
+        let bassNotes: [Double] = [261.63, 196.00, 220.00, 174.61]
+        // 小節ごとにアルペジオの形を変えて単調さを避ける
+        let arpeggioPatterns: [[Int]] = [
+            [0, 1, 2, 1, 0, 1, 2, 1],
+            [2, 1, 0, 1, 2, 1, 0, 1],
+            [0, 2, 1, 2, 0, 1, 2, 1],
+            [0, 1, 2, 2, 1, 0, 1, 2]
+        ]
+
+        for barIndex in 0..<bars {
+            let barStart = Double(barIndex) * bar
+            let chord = chords[barIndex]
+            let pattern = arpeggioPatterns[barIndex]
+
+            for (step, noteIndex) in pattern.enumerated() {
+                ToneSynth.addTone(
+                    to: buffer,
+                    frequency: chord[noteIndex],
+                    waveform: .triangle,
+                    start: barStart + Double(step) * eighth,
+                    duration: eighth * 0.7,
+                    volume: 0.2
+                )
+            }
+
+            for beatIndex in [0, 2] {
+                let time = barStart + Double(beatIndex) * beat
+                ToneSynth.addTone(
+                    to: buffer,
+                    frequency: bassNotes[barIndex],
+                    start: time,
+                    duration: beat * 0.6,
+                    volume: 0.35
+                )
+                // キック：音程を落としながら短く鳴らす
+                ToneSynth.addTone(
+                    to: buffer,
+                    frequency: 130,
+                    endFrequency: 42,
+                    start: time,
+                    duration: 0.22,
+                    volume: 0.42
+                )
+            }
+
+            for step in 0..<8 {
+                ToneSynth.addHiHat(
+                    to: buffer,
+                    start: barStart + Double(step) * eighth,
+                    volume: step.isMultiple(of: 2) ? 0.08 : 0.05
+                )
+            }
+        }
+
+        ToneSynth.normalize(buffer)
+        return buffer
+    }
+}

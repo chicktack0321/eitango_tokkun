@@ -47,8 +47,8 @@ final class SpacedRepetitionTests: XCTestCase {
         XCTAssertEqual(progress.attemptCount, 1)
         // box1 = 1日後
         XCTAssertEqual(progress.nextReviewAt, calendar.startOfDay(for: date(2026, 8, 2)))
-        // 1回正解しただけでは「覚えた」にしない
-        XCTAssertEqual(progress.status(at: date(2026, 8, 2)), .learning)
+        // 1回正解しただけでは「覚えた」にしない（期限前の時点で判定する）
+        XCTAssertEqual(progress.status(at: date(2026, 8, 1, hour: 20)), .learning)
     }
 
     func testWrongAnswerResetsToShortestInterval() {
@@ -74,24 +74,33 @@ final class SpacedRepetitionTests: XCTestCase {
     // MARK: - 習熟段階の判定
 
     /// 「覚えた」は7日間隔に到達してから。直前に正解しただけでは学習中に留める。
+    /// 判定はいずれも次回期限より前の時点で行う（期限が来た語は段階に関わらず要復習になるため）。
     func testMasteredOnlyAfterReachingTheWeekLongInterval() {
         let progress = UserProgress(wordId: "W1")
-        var day = date(2026, 8, 1)
 
-        // box1（1日後）
-        progress.record(isCorrect: true, reviewedAt: day, calendar: calendar)
-        XCTAssertEqual(progress.status(at: date(2026, 8, 2)), .learning)
+        // box1（次回は8/2）
+        progress.record(isCorrect: true, reviewedAt: date(2026, 8, 1), calendar: calendar)
+        XCTAssertEqual(progress.status(at: date(2026, 8, 1, hour: 20)), .learning)
 
-        // box2（3日後）
-        day = date(2026, 8, 2)
-        progress.record(isCorrect: true, reviewedAt: day, calendar: calendar)
-        XCTAssertEqual(progress.status(at: date(2026, 8, 5)), .learning)
+        // box2（次回は8/5）
+        progress.record(isCorrect: true, reviewedAt: date(2026, 8, 2), calendar: calendar)
+        XCTAssertEqual(progress.status(at: date(2026, 8, 4)), .learning)
 
-        // box3（7日後）＝ここで「覚えた」
-        day = date(2026, 8, 5)
-        progress.record(isCorrect: true, reviewedAt: day, calendar: calendar)
+        // box3（次回は8/12）＝ここで「覚えた」
+        progress.record(isCorrect: true, reviewedAt: date(2026, 8, 5), calendar: calendar)
         XCTAssertEqual(progress.reviewBox, UserProgress.masteredBox)
         XCTAssertEqual(progress.status(at: date(2026, 8, 6)), .memorized)
+    }
+
+    /// 期限を跨いだ瞬間に要復習へ切り替わること。
+    /// 「覚えた」のまま出題されずに放置されると、忘れた語が積み上がってしまう。
+    func testStatusFlipsToNeedsReviewExactlyWhenDue() {
+        let progress = UserProgress(wordId: "W1")
+        progress.record(isCorrect: true, reviewedAt: date(2026, 8, 1), calendar: calendar)
+
+        // 次回期限は 8/2 00:00
+        XCTAssertEqual(progress.status(at: date(2026, 8, 1, hour: 23)), .learning)
+        XCTAssertEqual(progress.status(at: date(2026, 8, 2, hour: 0)), .needsReview)
     }
 
     func testStatusIsNotStudiedUntilFirstAnswer() {

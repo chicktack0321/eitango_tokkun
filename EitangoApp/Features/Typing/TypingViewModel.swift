@@ -12,7 +12,40 @@ final class TypingViewModel {
     static let sessionDuration = 60 // 秒
     private static let maxTimer = 99 // 時間ボーナスでの上限（寿司打と同様）
 
+    /// 出題の見せ方。
+    enum Mode: String, CaseIterable, Identifiable {
+        /// スペルを見ながら打つ
+        case normal
+        /// スペルを伏せて打つ。打った文字だけが現れる。
+        case hidden
+
+        var id: String { rawValue }
+
+        var displayName: String {
+            switch self {
+            case .normal: return "ノーマル"
+            case .hidden: return "かくれんぼ"
+            }
+        }
+
+        var summary: String {
+            switch self {
+            case .normal: return "スペルを見ながら打ちます"
+            case .hidden: return "スペルを伏せて打ちます。日本語訳だけを頼りに綴りを思い出す練習になります"
+            }
+        }
+
+        /// かくれんぼは難易度が高いぶんスコアを上乗せする
+        var scoreMultiplier: Double {
+            switch self {
+            case .normal: return 1.0
+            case .hidden: return 1.5
+            }
+        }
+    }
+
     private(set) var phase: StudySessionPhase = .notStarted
+    private(set) var mode: Mode = .normal
     private(set) var words: [WordMaster] = []
     private(set) var wordIndex = 0
     private(set) var charIndex = 0
@@ -32,9 +65,15 @@ final class TypingViewModel {
     /// 単語が切り替わるたびに変化するキー。Viewの完成演出の再生トリガーに使う
     private(set) var wordToken = 0
 
+    /// 自己ベスト上位。結果画面に出す。
+    private(set) var bestScores: [TypingScore] = []
+    /// 直近の結果がベスト入り／自己ベスト更新だったか
+    private(set) var achievement = TypingScoreRepository.Achievement.none
+
     private var currentWordMissed = false
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
+    private var scoreRepository: TypingScoreRepository?
     /// deinit（常にnonisolated）から安全にキャンセルできるよう、actor隔離チェックの対象から外す。
     /// `Task.cancel()` はどのスレッドから呼んでも安全なため、この用途では問題ない。
     nonisolated(unsafe) private var timerTask: Task<Void, Never>?
@@ -54,10 +93,14 @@ final class TypingViewModel {
         guard wordRepository == nil else { return }
         wordRepository = WordRepository(context: context)
         progressRepository = ProgressRepository(context: context)
+        scoreRepository = TypingScoreRepository(context: context)
+        bestScores = scoreRepository?.best() ?? []
     }
 
-    func start() {
+    func start(mode: Mode = .normal) {
         guard let wordRepository, let progressRepository else { return }
+        self.mode = mode
+
         // クイズと同じく、復習期限が来た語から先に出題する
         let pool = StudyQueue.prioritize(
             words: wordRepository.fetchAll(),
@@ -83,8 +126,31 @@ final class TypingViewModel {
         lastTimeBonus = 0
         currentWordMissed = false
         wordToken = 0
+        achievement = .none
         phase = .inProgress
+        GameAudio.shared.play(.start)
+        GameAudio.shared.startBGM()
         startTimer()
+    }
+
+    /// 時間切れ。スコアを保存し、ベスト入りしたかを確定させる。
+    private func finish() {
+        guard phase == .inProgress else { return }
+        phase = .finished
+        GameAudio.shared.stopBGM()
+
+        let record = TypingScore(
+            score: score,
+            correctWordCount: correctWordCount,
+            missCount: missCount,
+            maxCombo: maxCombo,
+            accuracy: accuracy,
+            isHiddenMode: mode == .hidden
+        )
+        achievement = scoreRepository?.record(record) ?? .none
+        bestScores = scoreRepository?.best() ?? []
+
+        GameAudio.shared.play(achievement.isNewBest ? .fanfare : .gameOver)
     }
 
     /// 1文字分の入力を受け取り、現在の単語の現在位置の文字と照合する
@@ -105,14 +171,17 @@ final class TypingViewModel {
         let nextIndex = charIndex + 1
         guard nextIndex >= totalLetters else {
             charIndex = nextIndex
+            GameAudio.shared.play(.hit)
             return
         }
 
         // 単語完成
         combo += 1
         maxCombo = max(maxCombo, combo)
+        // 5コンボごとは音を変えて、続いていることが分かるようにする
+        GameAudio.shared.play(combo.isMultiple(of: 5) ? .combo : .wordComplete)
         let bonus = Self.timeBonus(for: word.word)
-        score += Self.wordScore(word: word, combo: combo)
+        score += Int(Double(Self.wordScore(word: word, combo: combo)) * mode.scoreMultiplier)
         remainingSeconds = min(remainingSeconds + bonus, Self.maxTimer)
         lastTimeBonus = bonus
         correctWordCount += 1
@@ -130,6 +199,7 @@ final class TypingViewModel {
         missCount += 1
         currentWordMissed = true
         missFlash = true
+        GameAudio.shared.play(.miss)
 
         flashResetTask?.cancel()
         flashResetTask = Task { [weak self] in
@@ -148,18 +218,22 @@ final class TypingViewModel {
         flashResetTask = nil
         missFlash = false
         phase = .notStarted
+        GameAudio.shared.stopBGM()
     }
 
     /// 別タブへ移動した・アプリが背面に回ったときに計測を止める。
     /// 止めないと画面を見ていない間にタイムアップし、戻ると結果画面になっている。
+    /// BGMも一緒に止める（他の画面に移ってからも鳴り続けると邪魔になるため）。
     func suspendTimer() {
         timerTask?.cancel()
         timerTask = nil
+        GameAudio.shared.stopBGM()
     }
 
     /// 画面に戻ったときに、残り時間を引き継いで計測を再開する
     func resumeTimer() {
         guard phase == .inProgress, timerTask == nil else { return }
+        GameAudio.shared.startBGM()
         startTimer()
     }
 
@@ -173,7 +247,7 @@ final class TypingViewModel {
                 self.remainingSeconds -= 1
                 if self.remainingSeconds <= 0 {
                     self.remainingSeconds = 0
-                    self.phase = .finished
+                    self.finish()
                     return
                 }
             }

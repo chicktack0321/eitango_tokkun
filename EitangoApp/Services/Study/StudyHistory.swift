@@ -7,6 +7,8 @@ struct DailyStudy: Identifiable, Equatable {
     let studiedWordCount: Int
     let correctCount: Int
     let attemptCount: Int
+    /// その日時点で「覚えた」だった語数。学習しなかった日は直前の値を引き継ぐ。
+    var masteredWordCount: Int = 0
 
     var id: Date { date }
 
@@ -39,14 +41,56 @@ enum StudyHistory {
             uniquingKeysWith: { _, latest in latest }
         )
 
+        // 期間より前の記録から、開始時点の習熟度を引き継ぐ。
+        // 期間内に学習日が無いと折れ線が0から始まり、実際には覚えている語が
+        // 消えたように見えてしまうため。
+        let startDay = calendar.date(byAdding: .day, value: -(days - 1), to: endDay) ?? endDay
+        var carriedMastered = logs
+            .filter { calendar.startOfDay(for: $0.date) < startDay }
+            .max(by: { $0.date < $1.date })?
+            .masteredWordCount ?? 0
+
         return (0..<days).reversed().compactMap { offset -> DailyStudy? in
             guard let day = calendar.date(byAdding: .day, value: -offset, to: endDay) else { return nil }
             let log = logsByDay[day]
+            if let log { carriedMastered = log.masteredWordCount }
             return DailyStudy(
                 date: day,
                 studiedWordCount: log?.studiedWordCount ?? 0,
                 correctCount: log?.correctCount ?? 0,
-                attemptCount: log?.attemptCount ?? 0
+                attemptCount: log?.attemptCount ?? 0,
+                masteredWordCount: carriedMastered
+            )
+        }
+    }
+
+    /// 日次データを週単位にまとめる。
+    /// 3か月以上を日ごとに描くと棒が1px以下になって読めないため、長期間の表示で使う。
+    /// 解答数は合計、習熟度はその週の最終値（推移として見たいのは残高であって合計ではない）。
+    static func weekly(
+        from series: [DailyStudy],
+        calendar: Calendar = .current
+    ) -> [DailyStudy] {
+        guard !series.isEmpty else { return [] }
+
+        var buckets: [(start: Date, days: [DailyStudy])] = []
+        for day in series {
+            let weekStart = calendar.dateInterval(of: .weekOfYear, for: day.date)?.start
+                ?? calendar.startOfDay(for: day.date)
+            if let last = buckets.last, last.start == weekStart {
+                buckets[buckets.count - 1].days.append(day)
+            } else {
+                buckets.append((weekStart, [day]))
+            }
+        }
+
+        return buckets.map { bucket in
+            DailyStudy(
+                date: bucket.start,
+                studiedWordCount: bucket.days.reduce(0) { $0 + $1.studiedWordCount },
+                correctCount: bucket.days.reduce(0) { $0 + $1.correctCount },
+                attemptCount: bucket.days.reduce(0) { $0 + $1.attemptCount },
+                masteredWordCount: bucket.days.last?.masteredWordCount ?? 0
             )
         }
     }

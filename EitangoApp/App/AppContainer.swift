@@ -14,7 +14,8 @@ enum AppContainer {
         let schema = Schema([
             WordMaster.self,
             UserProgress.self,
-            StudyLog.self
+            StudyLog.self,
+            TypingScore.self
         ])
 
         let container = makeContainer(schema: schema)

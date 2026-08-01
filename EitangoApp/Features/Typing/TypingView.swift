@@ -11,6 +11,8 @@ struct TypingView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel = TypingViewModel()
     @State private var inputBuffer = ""
+    /// 音のオン・オフは端末に覚えさせる（毎回切り直すのは煩わしいため）
+    @AppStorage("typingSoundEnabled") private var isSoundEnabled = true
     @FocusState private var inputFocused: Bool
 
     var body: some View {
@@ -28,7 +30,10 @@ struct TypingView: View {
                         missCount: viewModel.missCount,
                         maxCombo: viewModel.maxCombo,
                         accuracy: viewModel.accuracy,
-                        onRetry: { viewModel.start() }
+                        mode: viewModel.mode,
+                        achievement: viewModel.achievement,
+                        bestScores: viewModel.bestScores,
+                        onRetry: { viewModel.start(mode: viewModel.mode) }
                     )
                 }
             }
@@ -40,8 +45,23 @@ struct TypingView: View {
                         Button("やめる") { viewModel.abortSession() }
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        GameAudio.shared.isEnabled.toggle()
+                        isSoundEnabled = GameAudio.shared.isEnabled
+                        if isSoundEnabled, viewModel.phase == .inProgress {
+                            GameAudio.shared.startBGM()
+                        }
+                    } label: {
+                        Image(systemName: isSoundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                    }
+                    .accessibilityLabel(isSoundEnabled ? "音を消す" : "音を出す")
+                }
             }
-            .task { viewModel.configure(context: modelContext) }
+            .task {
+                viewModel.configure(context: modelContext)
+                GameAudio.shared.isEnabled = isSoundEnabled
+            }
             // 画面を離れている間に制限時間が減り続けないようにする
             .onDisappear { viewModel.suspendTimer() }
             .onAppear { viewModel.resumeTimer() }
@@ -58,19 +78,59 @@ struct TypingView: View {
     // MARK: - スタート画面
 
     private var startScreen: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "keyboard")
-                .font(.system(size: 44))
-                .foregroundStyle(.blue)
-            Text("タイムアタック・タイピング")
-                .font(.title2).bold()
-            Text("制限時間\(TypingViewModel.sessionDuration)秒。1文字ずつ判定され、ミスすると同じ文字をやり直します。\n単語を打ち切ると自動で次の単語へ進み、残り時間にボーナスが加算されます。")
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 32)
-            Button("スタート") { viewModel.start() }
-                .buttonStyle(.borderedProminent)
+        ScrollView {
+            VStack(spacing: 16) {
+                VStack(spacing: 10) {
+                    Image(systemName: "keyboard")
+                        .font(.system(size: 40))
+                        .foregroundStyle(.blue)
+                    Text("タイムアタック・タイピング")
+                        .font(.title3).bold()
+                    Text("制限時間\(TypingViewModel.sessionDuration)秒。1文字ずつ判定され、ミスすると同じ文字をやり直します。単語を打ち切ると自動で次へ進み、残り時間にボーナスが加算されます。")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.vertical, 8)
+
+                DashboardCard(title: "モードを選ぶ") {
+                    VStack(spacing: 10) {
+                        ForEach(TypingViewModel.Mode.allCases) { mode in
+                            Button {
+                                viewModel.start(mode: mode)
+                            } label: {
+                                HStack(alignment: .top, spacing: 12) {
+                                    Image(systemName: mode == .hidden ? "eye.slash.fill" : "eye.fill")
+                                        .foregroundStyle(mode == .hidden ? .purple : .blue)
+                                        .frame(width: 24)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(mode.displayName)
+                                            .font(.subheadline).bold()
+                                        Text(mode.summary)
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                            .multilineTextAlignment(.leading)
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                .padding(12)
+                                .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 10))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+
+                if !viewModel.bestScores.isEmpty {
+                    TypingBestScoreCard(scores: viewModel.bestScores, highlightedIndex: nil)
+                }
+            }
+            .padding()
         }
+        .background(Color(.systemGroupedBackground))
     }
 
     // MARK: - プレイ画面
@@ -174,7 +234,12 @@ struct TypingView: View {
                 .font(.title3.bold())
                 .multilineTextAlignment(.center)
 
-            TypingCharsView(word: word.word, charIndex: viewModel.charIndex, missFlash: viewModel.missFlash)
+            TypingCharsView(
+                word: word.word,
+                charIndex: viewModel.charIndex,
+                missFlash: viewModel.missFlash,
+                hidesUntyped: viewModel.mode == .hidden
+            )
                 .id(viewModel.wordToken)
 
             progressDots(word: word.word)
@@ -230,11 +295,13 @@ private struct TypingCharsView: View {
     let word: String
     let charIndex: Int
     let missFlash: Bool
+    /// かくれんぼモード。まだ打っていない文字を伏せ字にする。
+    var hidesUntyped: Bool = false
 
     var body: some View {
         HStack(spacing: 1) {
             ForEach(Array(word.enumerated()), id: \.offset) { index, character in
-                Text(String(character))
+                Text(display(character, at: index))
                     .font(.system(size: 40, weight: .black, design: .monospaced))
                     .foregroundStyle(color(for: index))
                     .overlay(alignment: .bottom) {
@@ -249,6 +316,13 @@ private struct TypingCharsView: View {
         }
     }
 
+    /// かくれんぼでは打ち終えた文字だけを見せる。現在位置も伏せたままにして、
+    /// 訳語から綴りを思い出す練習になるようにする。
+    private func display(_ character: Character, at index: Int) -> String {
+        guard hidesUntyped, index >= charIndex else { return String(character) }
+        return "_"
+    }
+
     private func color(for index: Int) -> Color {
         if index < charIndex { return .green }
         if index == charIndex { return missFlash ? .red : .primary }
@@ -258,5 +332,5 @@ private struct TypingCharsView: View {
 
 #Preview {
     TypingView()
-        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self], inMemory: true)
+        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
 }
