@@ -44,12 +44,6 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         SWIFT_STRICT_CONCURRENCY: complete
         ENABLE_PREVIEWS: YES
-      configs:
-        Release:
-          # 既定のままだと archive 時に「iOS App Development」のプロファイルを要求し、
-          # 実機を1台も登録していないチームでは作成できずに失敗する。
-          # TestFlightに必要なのは配布用プロファイルで、こちらは端末登録を必要としない。
-          CODE_SIGN_IDENTITY: Apple Distribution
 
   EitangoAppTests:
     type: bundle.unit-test

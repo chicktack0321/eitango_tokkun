@@ -43,10 +43,12 @@ jobs:
           printf '%s' "$ASC_API_KEY_P8" > "$HOME/private_keys/AuthKey_${ASC_API_KEY_ID}.p8"
           chmod 600 "$HOME/private_keys/AuthKey_${ASC_API_KEY_ID}.p8"
 
-      - name: Archive
-        env:
-          ASC_API_KEY_ID: ${{ secrets.ASC_API_KEY_ID }}
-          ASC_API_ISSUER_ID: ${{ secrets.ASC_API_ISSUER_ID }}
+      # archive では署名しない。
+      # 自動署名の archive は必ず「iOS App Development」プロファイルを要求するが、
+      # 開発用プロファイルは実機を1台以上登録していないと発行できず、
+      # TestFlightに配信するだけなら端末登録は本来不要。
+      # 署名は次の書き出しステップで配布用プロファイルを使って行う。
+      - name: Archive (unsigned)
         run: |
           set -o pipefail
           # ビルド番号はワークフローの実行番号。App Store Connectは
@@ -56,11 +58,11 @@ jobs:
             -scheme EitangoApp \
             -destination "generic/platform=iOS" \
             -archivePath "$RUNNER_TEMP/EitangoApp.xcarchive" \
-            -allowProvisioningUpdates \
-            -authenticationKeyPath "$HOME/private_keys/AuthKey_${ASC_API_KEY_ID}.p8" \
-            -authenticationKeyID "$ASC_API_KEY_ID" \
-            -authenticationKeyIssuerID "$ASC_API_ISSUER_ID" \
-            CURRENT_PROJECT_VERSION=${{ github.run_number }}
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGN_ENTITLEMENTS=""
 
       - name: Export and upload to TestFlight
         env:
