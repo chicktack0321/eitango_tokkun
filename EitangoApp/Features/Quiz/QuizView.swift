@@ -58,22 +58,54 @@ struct QuizView: View {
         }
     }
 
+    /// タイピング画面と同じ「グループ背景＋白カード」構成に揃えている。
+    /// 素のVStackで組んでいたときはコンテンツがナビゲーションバーの下に潜り込み、
+    /// 問題番号とタイトル・ツールバーが重なって表示されていた。
     private func quizScreen(question: QuizQuestion) -> some View {
-        VStack(spacing: 20) {
-            ProgressView(value: viewModel.progressFraction)
-                .padding(.horizontal)
+        VStack(spacing: 0) {
+            ScrollView {
+                VStack(spacing: 16) {
+                    progressCard
+                    questionCard(question: question)
+                }
+                .padding()
+            }
 
+            if viewModel.selectedChoiceIndex != nil {
+                Button(viewModel.currentQuestionIndex + 1 < viewModel.questions.count ? "次の問題へ" : "結果を見る") {
+                    viewModel.goToNextQuestion()
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
+            }
+        }
+        .background(Color(.systemGroupedBackground))
+    }
+
+    private var progressCard: some View {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("第\(viewModel.currentQuestionIndex + 1)問 / \(viewModel.questions.count)問")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                 Spacer()
                 Label("\(viewModel.remainingSeconds)秒", systemImage: "timer")
+                    .font(.subheadline).bold()
                     .foregroundStyle(viewModel.remainingSeconds <= 3 ? .red : .primary)
+                    .contentTransition(.numericText())
             }
-            .padding(.horizontal)
+            ProgressView(value: viewModel.progressFraction)
+        }
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 14))
+    }
 
+    private func questionCard(question: QuizQuestion) -> some View {
+        VStack(spacing: 20) {
             Text(question.word.word)
-                .font(.system(size: 40, weight: .bold))
-                .padding(.top, 24)
+                .font(.system(size: 38, weight: .bold))
+                .multilineTextAlignment(.center)
+                .padding(.top, 8)
 
             VStack(spacing: 12) {
                 ForEach(Array(question.choices.enumerated()), id: \.offset) { index, choice in
@@ -84,18 +116,10 @@ struct QuizView: View {
                     )
                 }
             }
-            .padding(.horizontal)
-
-            Spacer()
-
-            if viewModel.selectedChoiceIndex != nil {
-                Button(viewModel.currentQuestionIndex + 1 < viewModel.questions.count ? "次の問題へ" : "結果を見る") {
-                    viewModel.goToNextQuestion()
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(.bottom)
-            }
         }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 14))
     }
 
     private func choiceState(index: Int, question: QuizQuestion) -> ChoiceButton.State {
