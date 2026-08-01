@@ -10,6 +10,13 @@
 
 このリポジトリを GitHub にpushすると `.github/workflows/ios-build.yml` が自動実行され、iOS Simulator向けのビルドが通るか（コンパイルエラーがないか）を検証する。Actionsタブの実行結果を確認すること。
 
+### CIでスクリーンショットを確認する場合（実機・ローカルSimulatorなしで見た目を確認）
+
+同じワークフロー内で `EitangoAppUITests`（`EitangoAppUITests/EitangoAppUITests.swift`）がiOS Simulator上でアプリを実際に操作し、
+ホーム・単語帳・単語詳細・4択クイズ・タイピング・聞き流しの各画面を [`xcparse`](https://github.com/ChargePoint/xcparse) でPNG抽出する。
+Actionsの実行結果ページ → Artifacts欄の **`ui-screenshots`** をダウンロードすると、実際にシミュレータで描画された画面を確認できる
+（`.xcresult` そのものも `test-results-xcresult` としてアップロードされるが、開くにはXcodeが必要）。
+
 ### Macが用意できた場合のローカル手順
 
 ```bash
@@ -33,6 +40,8 @@ EitangoApp/
 │   └── TTS/         # AVSpeechSynthesizerラッパー（聞き流し機能）
 ├── Repositories/    # SwiftDataクエリの隠蔽層
 └── Features/        # 画面ごとの View + ViewModel（Home / WordList / Quiz / Typing / Listening）
+
+EitangoAppUITests/   # 画面遷移してスクリーンショットを撮るXCUITest（CIでの見た目確認用）
 ```
 
 ## データベース設計の要点

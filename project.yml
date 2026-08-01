@@ -37,12 +37,34 @@ targets:
         SWIFT_STRICT_CONCURRENCY: complete
         ENABLE_PREVIEWS: YES
 
+  EitangoAppUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppUITests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.app.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoApp
+
 schemes:
   EitangoApp:
     build:
       targets:
         EitangoApp: all
+        EitangoAppUITests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - EitangoAppUITests
     archive:
       config: Release

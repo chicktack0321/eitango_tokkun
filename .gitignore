@@ -10,5 +10,6 @@ DerivedData/
 *.ipa
 *.dSYM.zip
 *.dSYM
+*.xcresult/
 
 .DS_Store
