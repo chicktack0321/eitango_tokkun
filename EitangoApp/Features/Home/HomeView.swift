@@ -115,41 +115,7 @@ struct HomeView: View {
 }
 
 // MARK: - 共通パーツ
-
-private struct DashboardCard<Content: View>: View {
-    let title: String
-    @ViewBuilder let content: Content
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(title)
-                .font(.headline)
-            content
-        }
-        .padding()
-        .background(.background, in: RoundedRectangle(cornerRadius: 14))
-    }
-}
-
-private struct StatTile: View {
-    let value: String
-    let label: String
-    let tint: Color
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(value)
-                .font(.title2).bold()
-                .foregroundStyle(tint)
-            Text(label)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(tint.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
-    }
-}
+// DashboardCard / StatTile は Common/CardComponents.swift に共通化（TypingViewとも共有）
 
 /// 覚えた/要復習/未学習の内訳を表す横積み上げバー
 private struct MasteryBar: View {

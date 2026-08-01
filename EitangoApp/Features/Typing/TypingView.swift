@@ -5,6 +5,7 @@ import UIKit
 /// 寿司打風のタイムアタック・タイピング画面。
 /// ソフトウェアキーボードから1文字ずつ受け取るため、実際に文字を表示するTextFieldは透明にし、
 /// 見た目の単語表示は `TypingCharsView` が別途担当する（`onChange` で1文字ごとに判定→即クリアの繰り返し）。
+/// 配色・カードレイアウトはHome/単語帳/クイズと同じ標準iOS配色（システム背景・カード）に揃えている。
 struct TypingView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel = TypingViewModel()
@@ -32,17 +33,17 @@ struct TypingView: View {
             }
             .navigationTitle("タイピングテスト")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarColorScheme(viewModel.phase == .notStarted ? nil : .dark, for: .navigationBar)
             .task { viewModel.configure(context: modelContext) }
         }
-        .tint(.cyan)
     }
 
     // MARK: - スタート画面
 
     private var startScreen: some View {
         VStack(spacing: 16) {
-            Text("⌨️").font(.system(size: 48))
+            Image(systemName: "keyboard")
+                .font(.system(size: 44))
+                .foregroundStyle(.blue)
             Text("タイムアタック・タイピング")
                 .font(.title2).bold()
             Text("制限時間\(TypingViewModel.sessionDuration)秒。1文字ずつ判定され、ミスすると同じ文字をやり直します。\n単語を打ち切ると自動で次の単語へ進み、残り時間にボーナスが加算されます。")
@@ -51,71 +52,26 @@ struct TypingView: View {
                 .padding(.horizontal, 32)
             Button("スタート") { viewModel.start() }
                 .buttonStyle(.borderedProminent)
-                .tint(.cyan)
         }
     }
 
     // MARK: - プレイ画面
 
     private var playingScreen: some View {
-        VStack(spacing: 18) {
-            timerBar
-
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("SCORE").font(.caption2).foregroundStyle(.gray)
-                    Text("\(viewModel.score)")
-                        .font(.system(size: 30, weight: .black, design: .rounded))
-                        .foregroundStyle(.yellow)
-                        .contentTransition(.numericText())
+        ScrollView {
+            VStack(spacing: 16) {
+                timerCard
+                scoreCard
+                if let word = viewModel.currentWord {
+                    wordCard(word: word)
                 }
-                Spacer()
-                if viewModel.combo > 0 {
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text(comboLabel).font(.caption2).foregroundStyle(.gray)
-                        Text("\(viewModel.combo)x")
-                            .font(.system(size: comboFontSize, weight: .black, design: .rounded))
-                            .foregroundStyle(comboColor)
-                    }
-                    .animation(.spring(response: 0.25, dampingFraction: 0.6), value: viewModel.combo)
-                }
+                Text("英字キーを入力")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
-
-            Spacer(minLength: 0)
-
-            if let word = viewModel.currentWord {
-                VStack(spacing: 18) {
-                    VStack(spacing: 6) {
-                        Text(word.category.displayName)
-                            .font(.caption2).bold()
-                            .padding(.horizontal, 10).padding(.vertical, 3)
-                            .background(categoryColor(word.category).opacity(0.25), in: Capsule())
-                            .foregroundStyle(categoryColor(word.category))
-                        Text(word.meaning)
-                            .font(.system(size: 26, weight: .bold))
-                            .foregroundStyle(.orange)
-                            .multilineTextAlignment(.center)
-                    }
-
-                    TypingCharsView(word: word.word, charIndex: viewModel.charIndex, missFlash: viewModel.missFlash)
-                        .id(viewModel.wordToken)
-
-                    progressDots(word: word.word)
-                }
-            }
-
-            Spacer(minLength: 0)
-
-            Text("英字キーを入力")
-                .font(.caption2)
-                .foregroundStyle(.gray)
-                .padding(.bottom, 6)
+            .padding()
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 12)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black)
-        .foregroundStyle(.white)
+        .background(Color(.systemGroupedBackground))
         .overlay {
             TextField("", text: $inputBuffer)
                 .keyboardType(.asciiCapable)
@@ -142,52 +98,79 @@ struct TypingView: View {
         }
     }
 
-    private var timerBar: some View {
-        VStack(spacing: 4) {
+    private var timerCard: some View {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("残り時間").font(.caption).foregroundStyle(.gray)
+                Text("残り時間")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                 if viewModel.lastTimeBonus > 0 {
                     Text("+\(viewModel.lastTimeBonus)s")
                         .font(.caption).bold()
-                        .foregroundStyle(.cyan)
+                        .foregroundStyle(.blue)
                         .id(viewModel.wordToken)
-                        .transition(.scale.combined(with: .opacity))
                 }
                 Spacer()
-                Text("\(viewModel.remainingSeconds)s")
-                    .font(.system(size: 20, weight: .black, design: .rounded))
-                    .foregroundStyle(viewModel.remainingSeconds <= 10 ? .red : .white)
+                Text("\(viewModel.remainingSeconds)秒")
+                    .font(.title2).bold()
+                    .foregroundStyle(viewModel.remainingSeconds <= 10 ? .red : .primary)
                     .contentTransition(.numericText())
             }
-            GeometryReader { proxy in
-                ZStack(alignment: .leading) {
-                    Capsule().fill(Color.white.opacity(0.12))
-                    Capsule()
-                        .fill(timerColor)
-                        .frame(width: proxy.size.width * timerFraction)
-                }
-            }
-            .frame(height: 8)
+            ProgressView(value: Double(viewModel.remainingSeconds), total: Double(TypingViewModel.sessionDuration))
+                .tint(timerColor)
         }
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 14))
         .animation(.easeInOut(duration: 0.3), value: viewModel.remainingSeconds)
-    }
-
-    private var timerFraction: CGFloat {
-        CGFloat(viewModel.remainingSeconds) / CGFloat(TypingViewModel.sessionDuration)
     }
 
     private var timerColor: Color {
         if viewModel.remainingSeconds > 30 { return .green }
-        if viewModel.remainingSeconds > 15 { return .yellow }
+        if viewModel.remainingSeconds > 15 { return .orange }
         return .red
+    }
+
+    private var scoreCard: some View {
+        HStack(spacing: 12) {
+            StatTile(value: "\(viewModel.score)", label: "SCORE", tint: .blue)
+            StatTile(
+                value: "\(viewModel.combo)x",
+                label: viewModel.combo > 0 ? comboLabel : "COMBO",
+                tint: viewModel.combo > 0 ? comboColor : .secondary
+            )
+        }
+        .animation(.spring(response: 0.25, dampingFraction: 0.6), value: viewModel.combo)
+    }
+
+    private func wordCard(word: WordMaster) -> some View {
+        VStack(spacing: 18) {
+            HStack {
+                Text(word.category.displayName)
+                    .font(.caption2).bold()
+                    .padding(.horizontal, 10).padding(.vertical, 3)
+                    .background(categoryColor(word.category).opacity(0.15), in: Capsule())
+                    .foregroundStyle(categoryColor(word.category))
+                Spacer()
+            }
+            Text(word.meaning)
+                .font(.title3.bold())
+                .multilineTextAlignment(.center)
+
+            TypingCharsView(word: word.word, charIndex: viewModel.charIndex, missFlash: viewModel.missFlash)
+                .id(viewModel.wordToken)
+
+            progressDots(word: word.word)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var comboLabel: String {
         switch viewModel.combo {
         case 20...: return "🔥 ULTRA COMBO"
         case 10..<20: return "GREAT COMBO"
-        case 5..<10: return "COMBO"
-        default: return "combo"
+        default: return "COMBO"
         }
     }
 
@@ -195,17 +178,7 @@ struct TypingView: View {
         switch viewModel.combo {
         case 20...: return .red
         case 10..<20: return .orange
-        case 5..<10: return .yellow
-        default: return .white
-        }
-    }
-
-    private var comboFontSize: CGFloat {
-        switch viewModel.combo {
-        case 20...: return 40
-        case 10..<20: return 34
-        case 5..<10: return 28
-        default: return 22
+        default: return .blue
         }
     }
 
@@ -229,12 +202,12 @@ struct TypingView: View {
 
     private func dotColor(index: Int) -> Color {
         if index < viewModel.charIndex { return .green }
-        if index == viewModel.charIndex { return .white }
-        return .gray.opacity(0.4)
+        if index == viewModel.charIndex { return .blue }
+        return Color(.systemGray4)
     }
 }
 
-/// 単語を1文字ずつ、進捗に応じて色分け表示する（入力済み=緑／現在位置=白+シアン下線、ミス時は赤フラッシュ／未入力=グレー）
+/// 単語を1文字ずつ、進捗に応じて色分け表示する（入力済み=緑／現在位置=青の下線／ミス時は赤フラッシュ／未入力=グレー）
 private struct TypingCharsView: View {
     let word: String
     let charIndex: Int
@@ -244,12 +217,12 @@ private struct TypingCharsView: View {
         HStack(spacing: 1) {
             ForEach(Array(word.enumerated()), id: \.offset) { index, character in
                 Text(String(character))
-                    .font(.system(size: 44, weight: .black, design: .monospaced))
+                    .font(.system(size: 40, weight: .black, design: .monospaced))
                     .foregroundStyle(color(for: index))
                     .overlay(alignment: .bottom) {
                         if index == charIndex {
                             Rectangle()
-                                .fill(missFlash ? Color.red : Color.cyan)
+                                .fill(missFlash ? Color.red : Color.blue)
                                 .frame(height: 3)
                                 .offset(y: 4)
                         }
@@ -260,8 +233,8 @@ private struct TypingCharsView: View {
 
     private func color(for index: Int) -> Color {
         if index < charIndex { return .green }
-        if index == charIndex { return missFlash ? .red : .white }
-        return .gray
+        if index == charIndex { return missFlash ? .red : .primary }
+        return .secondary
     }
 }
 

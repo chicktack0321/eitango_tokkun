@@ -11,10 +11,10 @@ struct TypingResultView: View {
     private var grade: (label: String, color: Color) {
         switch correctWordCount {
         case 30...: return ("S", .yellow)
-        case 20..<30: return ("A", .cyan)
+        case 20..<30: return ("A", .blue)
         case 12..<20: return ("B", .green)
-        case 6..<12: return ("C", .white)
-        default: return ("D", .gray)
+        case 6..<12: return ("C", .primary)
+        default: return ("D", .secondary)
         }
     }
 
@@ -23,49 +23,37 @@ struct TypingResultView: View {
     }
 
     var body: some View {
-        VStack(spacing: 24) {
-            VStack(spacing: 2) {
-                Text("RESULT").font(.caption).foregroundStyle(.gray)
-                Text("タイム アップ！").font(.title).bold()
+        ScrollView {
+            VStack(spacing: 20) {
+                Text("結果")
+                    .font(.title).bold()
+
+                Text(grade.label)
+                    .font(.system(size: 72, weight: .black, design: .rounded))
+                    .foregroundStyle(grade.color)
+
+                VStack(spacing: 2) {
+                    Text("SCORE")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text("\(score)")
+                        .font(.system(size: 36, weight: .bold))
+                        .foregroundStyle(.blue)
+                }
+
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    StatTile(value: "\(correctWordCount) 語", label: "正解単語数", tint: .green)
+                    StatTile(value: "\(missCount) 回", label: "ミス回数", tint: .red)
+                    StatTile(value: "\(maxCombo) x", label: "最大コンボ", tint: .orange)
+                    StatTile(value: "\(accuracyPercent) %", label: "正確率", tint: .blue)
+                }
+                .frame(maxWidth: 360)
+
+                Button("もう一度挑戦する", action: onRetry)
+                    .buttonStyle(.borderedProminent)
             }
-
-            Text(grade.label)
-                .font(.system(size: 96, weight: .black, design: .rounded))
-                .foregroundStyle(grade.color)
-
-            VStack(spacing: 2) {
-                Text("FINAL SCORE").font(.caption).foregroundStyle(.gray)
-                Text("\(score)")
-                    .font(.system(size: 44, weight: .black, design: .rounded))
-                    .foregroundStyle(.yellow)
-            }
-
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                statTile(label: "正解単語数", value: "\(correctWordCount) 語", color: .green)
-                statTile(label: "ミス回数", value: "\(missCount) 回", color: .red)
-                statTile(label: "最大コンボ", value: "\(maxCombo) x", color: .orange)
-                statTile(label: "正確率", value: "\(accuracyPercent) %", color: .cyan)
-            }
-            .frame(maxWidth: 360)
-
-            Button("もう一度挑戦する", action: onRetry)
-                .buttonStyle(.borderedProminent)
-                .tint(.cyan)
+            .padding()
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black)
-        .foregroundStyle(.white)
-    }
-
-    private func statTile(label: String, value: String, color: Color) -> some View {
-        VStack(spacing: 4) {
-            Text(label).font(.caption2).foregroundStyle(.gray)
-            Text(value).font(.title3).bold().foregroundStyle(color)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 14)
-        .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
     }
 }
 
