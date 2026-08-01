@@ -17,11 +17,22 @@ final class QuizViewModel {
     static let timeLimitPerQuestion: Int = 10 // 秒
 
     private(set) var phase: StudySessionPhase = .notStarted
+    /// 直近に開始したセットの出題対象。画面タイトルと結果の文言を切り替えるのに使う。
+    private(set) var scope: QuizScope = .mixed
     private(set) var questions: [QuizQuestion] = []
     private(set) var currentQuestionIndex = 0
     private(set) var selectedChoiceIndex: Int?
     private(set) var remainingSeconds = QuizViewModel.timeLimitPerQuestion
     private(set) var correctAnswerCount = 0
+
+    /// 間違えた語。結果画面でそのまま復習に使えるよう、単語ごと保持する。
+    private(set) var missedWords: [WordMaster] = []
+    /// 時間切れで落とした数（選び間違いと区別する。対策が「速く解く」か「覚え直す」かで変わるため）
+    private(set) var timeoutCount = 0
+    /// このセットで新たに「覚えた」に到達した語数
+    private(set) var newlyMemorizedCount = 0
+    private var startedAt: Date?
+    private(set) var elapsedSeconds = 0
 
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
@@ -45,21 +56,53 @@ final class QuizViewModel {
         progressRepository = ProgressRepository(context: context)
     }
 
-    func startNewQuiz() {
+    func startNewQuiz(scope: QuizScope = .mixed) {
         guard let wordRepository, let progressRepository else { return }
+        self.scope = scope
+
         // 単語一覧の取得は1回だけ。問題ごとにフェッチすると出題数に比例して
         // 全件スキャンが走り、語彙数が増えたときに開始が目に見えて遅くなる。
         let pool = wordRepository.fetchAll()
+        let progress = progressRepository.allProgress()
+
         // 復習期限が来た語を優先して出題する（ランダム出題では忘れかけた語に当たらない）
-        let ordered = StudyQueue.prioritize(words: pool, progress: progressRepository.allProgress())
+        let ordered: [WordMaster]
+        switch scope {
+        case .mixed:
+            ordered = StudyQueue.prioritize(words: pool, progress: progress)
+        case .reviewOnly:
+            // ホームの「復習する単語がN語あります」から来た場合は、
+            // 未学習の語を混ぜずに期限が来た語だけを出す
+            ordered = StudyQueue.dueWords(words: pool, progress: progress)
+        }
         let sampled = ordered.prefix(Self.questionCount)
 
         questions = sampled.map { buildQuestion(for: $0, pool: pool) }
         currentQuestionIndex = 0
         correctAnswerCount = 0
         selectedChoiceIndex = nil
+        missedWords = []
+        timeoutCount = 0
+        newlyMemorizedCount = 0
+        elapsedSeconds = 0
+        startedAt = .now
         phase = questions.isEmpty ? .finished : .inProgress
         startTimer()
+    }
+
+    /// 結果画面に渡す集計
+    var resultSummary: QuizResultSummary {
+        QuizResultSummary(
+            scope: scope,
+            correctCount: correctAnswerCount,
+            totalCount: questions.count,
+            timeoutCount: timeoutCount,
+            newlyMemorizedCount: newlyMemorizedCount,
+            elapsedSeconds: elapsedSeconds,
+            missedWords: missedWords.map {
+                QuizResultSummary.MissedWord(id: $0.wordId, word: $0.word, meaning: $0.meaning)
+            }
+        )
     }
 
     private func buildQuestion(for word: WordMaster, pool: [WordMaster]) -> QuizQuestion {
@@ -98,19 +141,39 @@ final class QuizViewModel {
 
         let isCorrect = index == question.correctIndex
         if isCorrect { correctAnswerCount += 1 }
-        progressRepository?.recordAnswer(wordId: question.word.wordId, isCorrect: isCorrect)
+        record(question: question, isCorrect: isCorrect)
     }
 
     /// 制限時間切れ（未回答）は不正解として記録する
     private func handleTimeout() {
         guard phase == .inProgress, let question = currentQuestion, selectedChoiceIndex == nil else { return }
         selectedChoiceIndex = -1 // 「未選択のまま時間切れ」を表す番兵
-        progressRepository?.recordAnswer(wordId: question.word.wordId, isCorrect: false)
+        timeoutCount += 1
+        record(question: question, isCorrect: false)
+    }
+
+    private func record(question: QuizQuestion, isCorrect: Bool) {
+        guard let progressRepository else { return }
+
+        // 「覚えた」に到達したかは記録の前後で比べる必要があるので、先に段階を控えておく
+        let before = progressRepository.progress(for: question.word.wordId).status
+        progressRepository.recordAnswer(wordId: question.word.wordId, isCorrect: isCorrect)
+        let after = progressRepository.progress(for: question.word.wordId).status
+
+        if before != .memorized, after == .memorized {
+            newlyMemorizedCount += 1
+        }
+        if !isCorrect {
+            missedWords.append(question.word)
+        }
     }
 
     func goToNextQuestion() {
         timerTask?.cancel()
         guard currentQuestionIndex + 1 < questions.count else {
+            if let startedAt {
+                elapsedSeconds = max(0, Int(Date.now.timeIntervalSince(startedAt)))
+            }
             phase = .finished
             return
         }

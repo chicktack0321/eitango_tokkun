@@ -37,29 +37,32 @@ struct WordDetailView: View {
                 }
             }
 
-            Section("学習ステータス") {
-                Picker("ステータス", selection: statusBinding) {
-                    ForEach(LearningStatus.allCases) { status in
-                        Text(status.displayName).tag(status)
-                    }
+            // 習熟段階は解答の履歴から導出するため直接は書き換えない。
+            // 代わりに復習間隔そのものを動かす操作を用意し、表示と根拠が食い違わないようにしている。
+            Section {
+                LabeledContent("習熟度", value: (progress?.status ?? .notStudied).displayName)
+                if let progress, let nextReviewAt = progress.nextReviewAt, progress.attemptCount > 0 {
+                    LabeledContent("次回の復習", value: nextReviewAt.formatted(.dateTime.month().day()))
                 }
-                .pickerStyle(.segmented)
+
+                Button("もう一度復習する") {
+                    progress?.markForReview()
+                    try? modelContext.save()
+                }
+                Button("覚えたことにする") {
+                    progress?.markAsMemorized()
+                    try? modelContext.save()
+                }
+            } header: {
+                Text("習熟度")
+            } footer: {
+                Text((progress?.status ?? .notStudied).criteria)
             }
         }
         .navigationTitle(word.word)
         .task {
             progress = ProgressRepository(context: modelContext).progress(for: word.wordId)
         }
-    }
-
-    private var statusBinding: Binding<LearningStatus> {
-        Binding(
-            get: { progress?.status ?? .notStudied },
-            set: { newValue in
-                progress?.status = newValue
-                try? modelContext.save()
-            }
-        )
     }
 
     private func percentString(_ value: Double) -> String {

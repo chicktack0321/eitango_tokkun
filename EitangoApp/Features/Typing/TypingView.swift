@@ -112,7 +112,7 @@ struct TypingView: View {
             Haptics.success()
         }
         .onChange(of: viewModel.missFlash) { _, isFlashing in
-            if isFlashing { Haptics.error() }
+            if isFlashing { Haptics.failure() }
         }
     }
 
@@ -253,19 +253,6 @@ private struct TypingCharsView: View {
         if index < charIndex { return .green }
         if index == charIndex { return missFlash ? .red : .primary }
         return .secondary
-    }
-}
-
-@MainActor
-private enum Haptics {
-    static func success() {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-    }
-
-    static func error() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)
     }
 }
 

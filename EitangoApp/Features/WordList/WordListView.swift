@@ -115,24 +115,9 @@ private struct WordRow: View {
     }
 
     private var statusIcon: some View {
-        Image(systemName: iconName)
-            .foregroundStyle(iconColor)
-    }
-
-    private var iconName: String {
-        switch status {
-        case .notStudied: return "circle"
-        case .memorized: return "checkmark.circle.fill"
-        case .needsReview: return "exclamationmark.circle.fill"
-        }
-    }
-
-    private var iconColor: Color {
-        switch status {
-        case .notStudied: return .secondary
-        case .memorized: return .green
-        case .needsReview: return .orange
-        }
+        Image(systemName: status.symbolName)
+            .foregroundStyle(status.tint)
+            .accessibilityLabel(status.displayName)
     }
 }
 

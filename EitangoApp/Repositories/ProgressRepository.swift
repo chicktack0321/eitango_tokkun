@@ -82,7 +82,9 @@ struct ProgressRepository {
     func summarize() -> ProgressSummary {
         let all = (try? context.fetch(FetchDescriptor<UserProgress>())) ?? []
 
-        var statusCounts: [LearningStatus: Int] = [.notStudied: 0, .memorized: 0, .needsReview: 0]
+        var statusCounts: [LearningStatus: Int] = Dictionary(
+            uniqueKeysWithValues: LearningStatus.allCases.map { ($0, 0) }
+        )
         var totalCorrect = 0
         var totalAttempts = 0
 

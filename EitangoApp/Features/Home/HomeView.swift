@@ -16,6 +16,7 @@ struct HomeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
+                    titleHeader
                     todayCard
                     historyCard
                     masteryCard
@@ -25,6 +26,7 @@ struct HomeView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("ホーム")
+            .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(for: HomeDestination.self) { destination in
                 switch destination {
                 case .history: StudyHistoryView()
@@ -37,6 +39,25 @@ struct HomeView: View {
         }
     }
 
+    /// ナビゲーションバーの「ホーム」に代えて、アプリ名とロゴを出す
+    private var titleHeader: some View {
+        HStack(spacing: 12) {
+            Image("AppLogo")
+                .resizable()
+                .frame(width: 44, height: 44)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            VStack(alignment: .leading, spacing: 2) {
+                Text("英単語特訓")
+                    .font(.title2).bold()
+                Text("英検2級")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+        }
+        .padding(.top, 8)
+    }
+
     private var todayCard: some View {
         DashboardCard(title: "今日の学習") {
             VStack(spacing: 12) {
@@ -44,23 +65,27 @@ struct HomeView: View {
                     StatTile(
                         value: "\(viewModel.todayStudiedCount)問",
                         label: "解答した単語数",
-                        tint: .blue
+                        tint: .blue,
+                        infoMessage: MetricExplanations.todayStudied
                     )
                     StatTile(
                         value: percentString(viewModel.todayAccuracy),
                         label: "今日の正答率",
-                        tint: .green
+                        tint: .green,
+                        infoMessage: MetricExplanations.todayAccuracy
                     )
                 }
 
-                // 復習期限が来た語がある日は、まずそこから手を付けてもらう
+                // 復習期限が来た語がある日は、まずそこから手を付けてもらう。
+                // 出題対象を渡して、押した通りに復習だけが始まるようにしている。
                 if viewModel.dueCount > 0 {
                     Button {
-                        router.selectedTab = .quiz
+                        router.startQuiz(scope: .reviewOnly)
                     } label: {
                         HStack {
                             Label("復習する単語が\(viewModel.dueCount)語あります", systemImage: "arrow.clockwise")
                                 .font(.subheadline)
+                            InfoButton(title: "復習する単語", message: MetricExplanations.dueForReview)
                             Spacer()
                             Image(systemName: "chevron.right").font(.caption)
                         }
@@ -83,6 +108,7 @@ struct HomeView: View {
                         Label("\(viewModel.streak)日連続", systemImage: "flame.fill")
                             .font(.subheadline).bold()
                             .foregroundStyle(.orange)
+                        InfoButton(title: "連続日数", message: MetricExplanations.streak)
                         Spacer()
                         Text("詳しく見る")
                             .font(.caption)
@@ -119,26 +145,35 @@ struct HomeView: View {
     }
 
     private var masteryCard: some View {
-        DashboardCard(title: "習熟度（全\(viewModel.totalWordCount)語）") {
+        DashboardCard(
+            title: "習熟度（全\(viewModel.totalWordCount)語）",
+            infoMessage: MetricExplanations.mastery
+        ) {
             VStack(alignment: .leading, spacing: 10) {
-                MasteryBar(
-                    memorized: viewModel.memorizedCount,
-                    needsReview: viewModel.needsReviewCount,
-                    notStudied: viewModel.notStudiedCount
-                )
-                HStack(spacing: 16) {
-                    LegendDot(color: .green, label: "覚えた \(viewModel.memorizedCount)")
-                    LegendDot(color: .orange, label: "要復習 \(viewModel.needsReviewCount)")
-                    LegendDot(color: .secondary, label: "未学習 \(viewModel.notStudiedCount)")
+                MasteryBar(counts: viewModel.summary.statusCounts)
+
+                // 段階が4つあるので凡例は2列に折り返す
+                LazyVGrid(
+                    columns: [GridItem(.flexible(), alignment: .leading), GridItem(.flexible(), alignment: .leading)],
+                    alignment: .leading,
+                    spacing: 6
+                ) {
+                    ForEach(LearningStatus.allCases) { status in
+                        LegendDot(
+                            color: status.barColor,
+                            label: "\(status.displayName) \(viewModel.summary.count(of: status))"
+                        )
+                    }
                 }
                 .font(.caption)
 
                 Divider()
 
-                HStack {
+                HStack(spacing: 4) {
                     Text("累計正答率")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
+                    InfoButton(title: "累計正答率", message: MetricExplanations.overallAccuracy)
                     Spacer()
                     Text(percentString(viewModel.overallAccuracy))
                         .font(.subheadline).bold()
@@ -193,20 +228,22 @@ struct HomeView: View {
 // MARK: - 共通パーツ
 // DashboardCard / StatTile は Common/CardComponents.swift に共通化（TypingViewとも共有）
 
-/// 覚えた/要復習/未学習の内訳を表す横積み上げバー
+/// 習熟段階の内訳を表す横積み上げバー。
+/// 覚えた側から並べ、学習が進むほど左から緑が伸びていくように見せる。
 private struct MasteryBar: View {
-    let memorized: Int
-    let needsReview: Int
-    let notStudied: Int
+    let counts: [LearningStatus: Int]
 
-    private var total: Int { memorized + needsReview + notStudied }
+    /// 表示順。習得済みを左端に置く
+    private static let order: [LearningStatus] = [.memorized, .learning, .needsReview, .notStudied]
+
+    private var total: Int { counts.values.reduce(0, +) }
 
     var body: some View {
         GeometryReader { proxy in
             HStack(spacing: 0) {
-                segment(count: memorized, color: .green, width: proxy.size.width)
-                segment(count: needsReview, color: .orange, width: proxy.size.width)
-                segment(count: notStudied, color: Color(.systemGray4), width: proxy.size.width)
+                ForEach(Self.order, id: \.self) { status in
+                    segment(count: counts[status] ?? 0, color: status.barColor, width: proxy.size.width)
+                }
             }
         }
         .frame(height: 10)

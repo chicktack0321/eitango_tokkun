@@ -4,7 +4,10 @@ import SwiftData
 struct QuizView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(TabRouter.self) private var router
     @State private var viewModel = QuizViewModel()
+    /// 正解のたびに増やして紙吹雪を発生させる
+    @State private var celebrationTrigger = 0
 
     var body: some View {
         NavigationStack {
@@ -18,13 +21,12 @@ struct QuizView: View {
                     }
                 case .finished:
                     QuizResultView(
-                        correctCount: viewModel.correctAnswerCount,
-                        totalCount: viewModel.questions.count,
-                        onRetry: { viewModel.startNewQuiz() }
+                        summary: viewModel.resultSummary,
+                        onRetry: { viewModel.startNewQuiz(scope: viewModel.scope) }
                     )
                 }
             }
-            .navigationTitle("4択クイズ")
+            .navigationTitle(viewModel.phase == .notStarted ? "4択クイズ" : viewModel.scope.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if viewModel.phase == .inProgress {
@@ -34,9 +36,21 @@ struct QuizView: View {
                 }
             }
             .task { viewModel.configure(context: modelContext) }
+            // ホームの「復習する単語がN語あります」から来たときは、押した通りに復習だけを始める
+            .onChange(of: router.pendingQuizScope) { _, scope in
+                guard scope != nil, let requested = router.consumePendingQuizScope() else { return }
+                viewModel.startNewQuiz(scope: requested)
+            }
             // 画面を離れている間に制限時間が減り続けないようにする
             .onDisappear { viewModel.suspendTimer() }
-            .onAppear { viewModel.resumeTimer() }
+            .onAppear {
+                // タブを一度も開いていない場合 onChange は発火しないため、初回表示でも拾う
+                if let requested = router.consumePendingQuizScope() {
+                    viewModel.startNewQuiz(scope: requested)
+                } else {
+                    viewModel.resumeTimer()
+                }
+            }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .active {
                     viewModel.resumeTimer()
@@ -80,6 +94,17 @@ struct QuizView: View {
             }
         }
         .background(Color(.systemGroupedBackground))
+        .confetti(trigger: celebrationTrigger)
+        // 解答が確定した瞬間に手応えを返す。正解は1回、不正解は3回でタイピングと揃えている。
+        .onChange(of: viewModel.selectedChoiceIndex) { _, selected in
+            guard let selected, let question = viewModel.currentQuestion else { return }
+            if selected == question.correctIndex {
+                Haptics.success()
+                celebrationTrigger += 1
+            } else {
+                Haptics.failure()
+            }
+        }
     }
 
     private var progressCard: some View {

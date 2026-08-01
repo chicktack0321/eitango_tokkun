@@ -45,6 +45,19 @@ enum StudyQueue {
         return due + unstudied + scheduled.sorted { $0.dueDate < $1.dueDate }.map(\.word)
     }
 
+    /// 復習期限が来ている語だけを返す。未学習の語は「復習」ではないので含めない。
+    /// ホームの「復習する単語がN語あります」から始めるクイズは、ここで返る語だけを出題する。
+    static func dueWords(
+        words: [WordMaster],
+        progress: [String: UserProgress],
+        now: Date = .now
+    ) -> [WordMaster] {
+        words.filter { word in
+            guard let record = progress[word.wordId], record.attemptCount > 0 else { return false }
+            return record.isDue(at: now)
+        }.shuffled()
+    }
+
     /// 復習期限が来ている語の件数（ホーム画面の「今日の復習」表示用）
     static func dueCount(
         words: [WordMaster],
