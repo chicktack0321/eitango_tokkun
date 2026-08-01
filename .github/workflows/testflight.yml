@@ -48,21 +48,50 @@ jobs:
       # 開発用プロファイルは実機を1台以上登録していないと発行できず、
       # TestFlightに配信するだけなら端末登録は本来不要。
       # 署名は次の書き出しステップで配布用プロファイルを使って行う。
+      # ビルド番号はワークフローの実行番号。App Store Connectは同じ
+      # (バージョン, ビルド番号) の組を二度受け付けないため、必ず増える値が要る。
+      #
+      # ビルド設定として CURRENT_PROJECT_VERSION を渡す方法は、実際には
+      # ビルド番号が 1 のままアップロードされて効いていなかった。原因を追う代わりに、
+      # Info.plist へ直接書き込んで確実に反映させる。
+      - name: Set build number
+        run: |
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" EitangoApp/App/Info.plist
+          echo "CFBundleVersion=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' EitangoApp/App/Info.plist)"
+
       - name: Archive (unsigned)
         run: |
           set -o pipefail
-          # ビルド番号はワークフローの実行番号。App Store Connectは
-          # 同じ (バージョン, ビルド番号) の組を二度受け付けないため、必ず増える値を使う。
           xcodebuild archive \
             -project EitangoApp.xcodeproj \
             -scheme EitangoApp \
             -destination "generic/platform=iOS" \
             -archivePath "$RUNNER_TEMP/EitangoApp.xcarchive" \
-            CURRENT_PROJECT_VERSION=${{ github.run_number }} \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGN_ENTITLEMENTS=""
+
+      # アップロードしてから App Store Connect 側で気付くと再ビルドが必要になるため、
+      # 実際に焼き込まれた Info.plist をここで検証する。
+      - name: Verify built Info.plist
+        run: |
+          PLIST="$RUNNER_TEMP/EitangoApp.xcarchive/Products/Applications/EitangoApp.app/Info.plist"
+          echo "--- built Info.plist ---"
+          plutil -p "$PLIST"
+
+          BUILD=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$PLIST")
+          if [ "$BUILD" != "${{ github.run_number }}" ]; then
+            echo "::error::ビルド番号が反映されていません（期待: ${{ github.run_number }} / 実際: $BUILD）"
+            exit 1
+          fi
+
+          # 未宣言だと App Store Connect が「コンプライアンスがありません」で配信を止める
+          if ! /usr/libexec/PlistBuddy -c "Print :ITSAppUsesNonExemptEncryption" "$PLIST" >/dev/null 2>&1; then
+            echo "::error::ITSAppUsesNonExemptEncryption が焼き込まれていません"
+            exit 1
+          fi
+          echo "OK: build=$BUILD, encryption declaration present"
 
       - name: Export and upload to TestFlight
         env:
