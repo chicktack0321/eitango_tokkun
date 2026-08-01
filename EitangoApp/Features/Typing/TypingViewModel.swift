@@ -135,6 +135,30 @@ final class TypingViewModel {
         }
     }
 
+    /// 進行中のセッションを破棄してスタート画面に戻す。
+    /// これが無いと、始めてしまったら60秒経つのを待つしか抜ける手段がない。
+    func abortSession() {
+        timerTask?.cancel()
+        timerTask = nil
+        flashResetTask?.cancel()
+        flashResetTask = nil
+        missFlash = false
+        phase = .notStarted
+    }
+
+    /// 別タブへ移動した・アプリが背面に回ったときに計測を止める。
+    /// 止めないと画面を見ていない間にタイムアップし、戻ると結果画面になっている。
+    func suspendTimer() {
+        timerTask?.cancel()
+        timerTask = nil
+    }
+
+    /// 画面に戻ったときに、残り時間を引き継いで計測を再開する
+    func resumeTimer() {
+        guard phase == .inProgress, timerTask == nil else { return }
+        startTimer()
+    }
+
     private func startTimer() {
         timerTask?.cancel()
         timerTask = Task { [weak self] in

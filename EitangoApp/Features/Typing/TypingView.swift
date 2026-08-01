@@ -8,6 +8,7 @@ import UIKit
 /// 配色・カードレイアウトはHome/単語帳/クイズと同じ標準iOS配色（システム背景・カード）に揃えている。
 struct TypingView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel = TypingViewModel()
     @State private var inputBuffer = ""
     @FocusState private var inputFocused: Bool
@@ -33,7 +34,24 @@ struct TypingView: View {
             }
             .navigationTitle("タイピングテスト")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                if viewModel.phase == .inProgress {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("やめる") { viewModel.abortSession() }
+                    }
+                }
+            }
             .task { viewModel.configure(context: modelContext) }
+            // 画面を離れている間に制限時間が減り続けないようにする
+            .onDisappear { viewModel.suspendTimer() }
+            .onAppear { viewModel.resumeTimer() }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active {
+                    viewModel.resumeTimer()
+                } else {
+                    viewModel.suspendTimer()
+                }
+            }
         }
     }
 

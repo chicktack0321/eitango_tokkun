@@ -117,9 +117,38 @@ final class QuizViewModel {
         startTimer()
     }
 
-    private func startTimer() {
+    /// 進行中のセットを破棄してスタート画面に戻す。
+    /// これが無いと、始めてしまったら最後まで解くか時間切れを待つしか抜ける手段がない。
+    func abortSession() {
         timerTask?.cancel()
+        timerTask = nil
+        questions = []
+        currentQuestionIndex = 0
+        selectedChoiceIndex = nil
+        correctAnswerCount = 0
+        phase = .notStarted
+    }
+
+    /// 別タブへ移動した・アプリが背面に回ったときに制限時間の消費を止める。
+    /// 止めないと画面を見ていない間に時間切れになり、戻ったら勝手に不正解が記録されている。
+    func suspendTimer() {
+        timerTask?.cancel()
+        timerTask = nil
+    }
+
+    /// 画面に戻ったときに、残り時間を引き継いで計測を再開する
+    func resumeTimer() {
+        guard phase == .inProgress, selectedChoiceIndex == nil, timerTask == nil else { return }
+        runTimer()
+    }
+
+    private func startTimer() {
         remainingSeconds = Self.timeLimitPerQuestion
+        runTimer()
+    }
+
+    private func runTimer() {
+        timerTask?.cancel()
         timerTask = Task { [weak self] in
             guard let self else { return }
             while remainingSeconds > 0 {

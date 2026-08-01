@@ -3,6 +3,7 @@ import SwiftData
 
 struct QuizView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel = QuizViewModel()
 
     var body: some View {
@@ -25,7 +26,24 @@ struct QuizView: View {
             }
             .navigationTitle("4択クイズ")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                if viewModel.phase == .inProgress {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("やめる") { viewModel.abortSession() }
+                    }
+                }
+            }
             .task { viewModel.configure(context: modelContext) }
+            // 画面を離れている間に制限時間が減り続けないようにする
+            .onDisappear { viewModel.suspendTimer() }
+            .onAppear { viewModel.resumeTimer() }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active {
+                    viewModel.resumeTimer()
+                } else {
+                    viewModel.suspendTimer()
+                }
+            }
         }
     }
 
