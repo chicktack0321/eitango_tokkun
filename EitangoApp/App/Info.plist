@@ -4,8 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ja_JP</string>
+	<!-- ホーム画面のアイコン下に出る名前。iOSは全角8〜9文字程度で切り詰めるため、
+	     「英検2級」を付けず収まる長さにしている（級はApp Store側の名称とアイコンで示す） -->
 	<key>CFBundleDisplayName</key>
-	<string>英検2級 英単語特訓</string>
+	<string>英単語特訓</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
