@@ -14,6 +14,9 @@ final class StudyHistoryTests: XCTestCase {
     private let calendar: Calendar = {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(identifier: "Asia/Tokyo") ?? .gmt
+        // 週の区切りは地域設定で変わる（日曜始まり／月曜始まり）。
+        // 週次集約の検証が実行環境に左右されないよう、月曜始まりに固定する。
+        calendar.firstWeekday = 2
         return calendar
     }()
 
@@ -165,6 +168,7 @@ final class StudyHistoryTests: XCTestCase {
         XCTAssertEqual(weekly.first?.masteredWordCount, 9)
     }
 
+    /// 2026-08-03 は月曜。月曜始まりに固定してあるので、14日はちょうど2週に割れる。
     func testWeeklyAggregationSplitsAcrossWeeks() {
         let series = (0..<14).map { offset -> DailyStudy in
             let date = calendar.date(byAdding: .day, value: offset, to: day(2026, 8, 3))!
@@ -175,6 +179,29 @@ final class StudyHistoryTests: XCTestCase {
 
         XCTAssertEqual(weekly.count, 2)
         XCTAssertEqual(weekly.map(\.studiedWordCount), [7, 7])
+    }
+
+    /// 週の区切りが日曜始まりでも月曜始まりでも、解答数の合計は変わってはいけない。
+    /// 端数の週が増減しても取りこぼしが起きないことを、区切りに依存しない形で確かめる。
+    func testWeeklyAggregationPreservesTotalsRegardlessOfWeekStart() {
+        let series = (0..<30).map { offset -> DailyStudy in
+            let date = calendar.date(byAdding: .day, value: offset, to: day(2026, 8, 3))!
+            return DailyStudy(date: date, studiedWordCount: offset, correctCount: 1, attemptCount: 2, masteredWordCount: offset)
+        }
+        let expectedTotal = series.reduce(0) { $0 + $1.studiedWordCount }
+
+        for firstWeekday in 1...7 {
+            var variant = calendar
+            variant.firstWeekday = firstWeekday
+            let weekly = StudyHistory.weekly(from: series, calendar: variant)
+
+            XCTAssertEqual(
+                weekly.reduce(0) { $0 + $1.studiedWordCount },
+                expectedTotal,
+                "firstWeekday=\(firstWeekday) で合計が変わってしまった"
+            )
+            XCTAssertEqual(weekly.reduce(0) { $0 + $1.attemptCount }, series.count * 2)
+        }
     }
 
     func testWeeklyAggregationOfEmptySeriesIsEmpty() {
