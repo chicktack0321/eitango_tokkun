@@ -17,6 +17,25 @@
 Actionsの実行結果ページ → Artifacts欄の **`ui-screenshots`** をダウンロードすると、実際にシミュレータで描画された画面を確認できる
 （`.xcresult` そのものも `test-results-xcresult` としてアップロードされるが、開くにはXcodeが必要）。
 
+### TestFlightへ配信する
+
+Actionsタブ → **TestFlight** ワークフロー → **Run workflow** を手動実行する。
+push のたびに配信するとビルドが溜まりテスターへの通知も続くため、意図的に手動トリガーにしている。
+
+証明書とProvisioning Profileは持ち回らず、App Store Connect APIキーを使って
+`-allowProvisioningUpdates` でXcodeに取得させる（手元にMacが無く、証明書を書き出せないため）。
+必要なSecretsは以下の3つ。
+
+| Secret | 内容 |
+| --- | --- |
+| `ASC_API_KEY_ID` | App Store Connect APIキーの Key ID |
+| `ASC_API_ISSUER_ID` | 同 Issuer ID |
+| `ASC_API_KEY_P8` | ダウンロードした `.p8` の中身（BEGIN/END行を含む全文） |
+
+ビルド番号にはワークフローの実行番号を使う。App Store Connectは同じ（バージョン, ビルド番号）の
+組を二度受け付けないため、必ず増える値が要る。表示用のバージョンを上げるときは
+`project.yml` の `MARKETING_VERSION` を変更する。
+
 ### Macが用意できた場合のローカル手順
 
 ```bash
