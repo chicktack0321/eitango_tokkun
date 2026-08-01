@@ -80,18 +80,34 @@ jobs:
           echo "--- built Info.plist ---"
           plutil -p "$PLIST"
 
+          fail=0
+
           BUILD=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$PLIST")
           if [ "$BUILD" != "${{ github.run_number }}" ]; then
             echo "::error::ビルド番号が反映されていません（期待: ${{ github.run_number }} / 実際: $BUILD）"
-            exit 1
+            fail=1
           fi
 
           # 未宣言だと App Store Connect が「コンプライアンスがありません」で配信を止める
           if ! /usr/libexec/PlistBuddy -c "Print :ITSAppUsesNonExemptEncryption" "$PLIST" >/dev/null 2>&1; then
             echo "::error::ITSAppUsesNonExemptEncryption が焼き込まれていません"
-            exit 1
+            fail=1
           fi
-          echo "OK: build=$BUILD, encryption declaration present"
+
+          # 聞き流しの画面オフ再生に必須。抜けても静かに動かなくなるだけなので機械的に確認する
+          if ! /usr/libexec/PlistBuddy -c "Print :UIBackgroundModes" "$PLIST" 2>/dev/null | grep -q audio; then
+            echo "::error::UIBackgroundModes に audio がありません（バックグラウンド再生が動きません）"
+            fail=1
+          fi
+
+          # ホーム画面に出る日本語のアプリ名
+          if ! /usr/libexec/PlistBuddy -c "Print :CFBundleDisplayName" "$PLIST" >/dev/null 2>&1; then
+            echo "::error::CFBundleDisplayName がありません（アプリ名が EitangoApp になります）"
+            fail=1
+          fi
+
+          [ "$fail" -eq 0 ] || exit 1
+          echo "OK: build=$BUILD / 暗号化宣言・バックグラウンド再生・表示名すべて焼き込み済み"
 
       - name: Export and upload to TestFlight
         env:

@@ -21,11 +21,14 @@ targets:
         excludes:
           - "App/Info.plist"
 
-    info:
-      path: EitangoApp/App/Info.plist
-
+    # `info:` は「指定パスにInfo.plistを生成する」指定であり、手書きのInfo.plistを
+    # xcodegen generate のたびに上書きしてしまう。実際、CFBundleDisplayName /
+    # ITSAppUsesNonExemptEncryption / UIBackgroundModes が全てビルドから抜け落ちていた
+    # （聞き流しのバックグラウンド再生が動かない状態だった）。
+    # 既存のファイルをそのまま使わせるため INFOPLIST_FILE を直接指定する。
     settings:
       base:
+        INFOPLIST_FILE: EitangoApp/App/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.eitango.app
         # 日本語＋スペースの PRODUCT_NAME はバンドル名・モジュール名・ビルドパスに波及し、
         # テストターゲットの TEST_HOST 解決に失敗する。ホーム画面に出る名前は
