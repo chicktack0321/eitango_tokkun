@@ -25,7 +25,9 @@ final class QuizViewModel {
 
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
-    private var timerTask: Task<Void, Never>?
+    /// deinit（常にnonisolated）から安全にキャンセルできるよう、actor隔離チェックの対象から外す。
+    /// `Task.cancel()` はどのスレッドから呼んでも安全なため、この用途では問題ない。
+    nonisolated(unsafe) private var timerTask: Task<Void, Never>?
 
     var currentQuestion: QuizQuestion? {
         guard currentQuestionIndex < questions.count else { return nil }

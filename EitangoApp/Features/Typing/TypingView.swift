@@ -265,6 +265,7 @@ private struct TypingCharsView: View {
     }
 }
 
+@MainActor
 private enum Haptics {
     static func success() {
         let generator = UIImpactFeedbackGenerator(style: .light)

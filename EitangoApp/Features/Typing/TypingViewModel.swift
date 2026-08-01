@@ -35,8 +35,10 @@ final class TypingViewModel {
     private var currentWordMissed = false
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
-    private var timerTask: Task<Void, Never>?
-    private var flashResetTask: Task<Void, Never>?
+    /// deinit（常にnonisolated）から安全にキャンセルできるよう、actor隔離チェックの対象から外す。
+    /// `Task.cancel()` はどのスレッドから呼んでも安全なため、この用途では問題ない。
+    nonisolated(unsafe) private var timerTask: Task<Void, Never>?
+    nonisolated(unsafe) private var flashResetTask: Task<Void, Never>?
 
     var currentWord: WordMaster? {
         guard wordIndex < words.count else { return nil }
