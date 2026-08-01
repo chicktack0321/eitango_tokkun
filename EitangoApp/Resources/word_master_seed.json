@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "words": [
+    {
+      "wordId": "EIKEN_G2_0001",
+      "word": "opportunity",
+      "meaning": "機会",
+      "example": "This trip gave her a great opportunity to practice English.",
+      "frequencyCount": 15,
+      "category": "A",
+      "partOfSpeech": "noun"
+    },
+    {
+      "wordId": "EIKEN_G2_0002",
+      "word": "improve",
+      "meaning": "改善する、向上させる",
+      "example": "He worked hard to improve his test scores.",
+      "frequencyCount": 11,
+      "category": "A",
+      "partOfSpeech": "verb"
+    },
+    {
+      "wordId": "EIKEN_G2_0003",
+      "word": "necessary",
+      "meaning": "必要な",
+      "example": "It is necessary to bring your ID card to the exam.",
+      "frequencyCount": 8,
+      "category": "B",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "wordId": "EIKEN_G2_0004",
+      "word": "recently",
+      "meaning": "最近",
+      "example": "She recently moved to a new city for work.",
+      "frequencyCount": 6,
+      "category": "B",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "wordId": "EIKEN_G2_0005",
+      "word": "environment",
+      "meaning": "環境",
+      "example": "We should protect the environment for future generations.",
+      "frequencyCount": 5,
+      "category": "C",
+      "partOfSpeech": "noun"
+    }
+  ]
+}
