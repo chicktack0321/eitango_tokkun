@@ -30,18 +30,22 @@ jobs:
         id: sim
         run: |
           UDID=$(python3 -c "
-          import json, subprocess
+          import json, re, subprocess
           data = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', 'devices', 'available', '-j']))
-          udid = None
+          best = None
           for runtime, devices in data['devices'].items():
-              if 'iOS' not in runtime:
+              m = re.search(r'iOS-(\d+)-(\d+)', runtime)
+              if not m:
                   continue
+              version = (int(m.group(1)), int(m.group(2)))
               for d in devices:
-                  if d['name'].startswith('iPhone'):
-                      udid = d['udid']
-          if not udid:
+                  if not d['name'].startswith('iPhone') or 'SE' in d['name']:
+                      continue
+                  if best is None or version > best[0]:
+                      best = (version, d['udid'], d['name'])
+          if not best:
               raise SystemExit('No available iPhone simulator found')
-          print(udid)
+          print(best[1])
           ")
           echo "udid=$UDID" >> "$GITHUB_OUTPUT"
 
