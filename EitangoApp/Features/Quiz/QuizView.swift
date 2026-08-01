@@ -24,6 +24,7 @@ struct QuizView: View {
                 }
             }
             .navigationTitle("4択クイズ")
+            .navigationBarTitleDisplayMode(.inline)
             .task { viewModel.configure(context: modelContext) }
         }
     }

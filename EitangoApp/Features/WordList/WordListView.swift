@@ -27,22 +27,48 @@ struct WordListView: View {
         }
     }
 
+    // Picker(.menu) はラベル+選択値を1行で表示しようとするため、幅が狭い端末ではラベルが折り返して
+    // 崩れることがあった。Menuを直接使い `.lineLimit(1)` で明示的に1行固定にする。
     private var filterRow: some View {
         HStack {
-            Picker("頻出度", selection: $viewModel.selectedCategory) {
-                Text("すべて").tag(FrequencyRank?.none)
+            filterMenu(
+                title: "頻出度",
+                selectedLabel: viewModel.selectedCategory?.displayName ?? "すべて"
+            ) {
+                Button("すべて") { viewModel.selectedCategory = nil }
                 ForEach(FrequencyRank.allCases) { rank in
-                    Text(rank.displayName).tag(FrequencyRank?.some(rank))
+                    Button(rank.displayName) { viewModel.selectedCategory = rank }
                 }
             }
-            Picker("品詞", selection: $viewModel.selectedPartOfSpeech) {
-                Text("すべて").tag(PartOfSpeech?.none)
+            Spacer(minLength: 12)
+            filterMenu(
+                title: "品詞",
+                selectedLabel: viewModel.selectedPartOfSpeech?.displayName ?? "すべて"
+            ) {
+                Button("すべて") { viewModel.selectedPartOfSpeech = nil }
                 ForEach(PartOfSpeech.allCases) { pos in
-                    Text(pos.displayName).tag(PartOfSpeech?.some(pos))
+                    Button(pos.displayName) { viewModel.selectedPartOfSpeech = pos }
                 }
             }
         }
-        .pickerStyle(.menu)
+    }
+
+    private func filterMenu<Content: View>(
+        title: String,
+        selectedLabel: String,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        Menu {
+            content()
+        } label: {
+            HStack(spacing: 4) {
+                Text(title).foregroundStyle(.primary)
+                Text(selectedLabel).foregroundStyle(.secondary)
+                Image(systemName: "chevron.up.chevron.down").font(.caption2)
+            }
+            .lineLimit(1)
+            .fixedSize()
+        }
     }
 }
 

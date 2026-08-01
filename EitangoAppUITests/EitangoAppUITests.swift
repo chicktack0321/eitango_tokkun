@@ -51,25 +51,28 @@ final class EitangoAppUITests: XCTestCase {
             }
         }
 
+        let listeningTab = app.tabBars.buttons["聞き流し"]
+        if listeningTab.waitForExistence(timeout: 5) {
+            listeningTab.tap()
+            settle()
+            capture(app, "06_Listening")
+        }
+
+        // タイピングはソフトウェアキーボードが画面下部（タブバーの上）に出たままになり、
+        // 以降タブバーへのタップが届かなくなる。他のタブへ遷移する必要がある画面より後、
+        // このテストの最後に実行する。
         let typingTab = app.tabBars.buttons["タイピング"]
         if typingTab.waitForExistence(timeout: 5) {
             typingTab.tap()
             settle()
-            capture(app, "06_Typing_Start")
+            capture(app, "07_Typing_Start")
 
             let startButton = app.buttons["スタート"]
             if startButton.waitForExistence(timeout: 5) {
                 startButton.tap()
                 settle()
-                capture(app, "07_Typing_Playing")
+                capture(app, "08_Typing_Playing")
             }
-        }
-
-        let listeningTab = app.tabBars.buttons["聞き流し"]
-        if listeningTab.waitForExistence(timeout: 5) {
-            listeningTab.tap()
-            settle()
-            capture(app, "08_Listening")
         }
     }
 
