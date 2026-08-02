@@ -50,7 +50,6 @@ enum WordMasterSeeder {
 
         do {
             try upsert(entries: seedFile.words, context: context)
-            try ensureProgressRowsExist(for: seedFile.words, context: context)
             try context.save()
         } catch {
             // 中途半端に適用された変更を残すと次回以降の判定が狂うため、破棄してから投げ直す
@@ -131,14 +130,10 @@ enum WordMasterSeeder {
         }
     }
 
-    /// 新規単語（初回起動時の全件、またはアップデートで追加された語）に対して
-    /// デフォルト状態（未学習）の UserProgress を作成する。既存の進捗には一切触れない。
-    private static func ensureProgressRowsExist(for entries: [WordSeedEntry], context: ModelContext) throws {
-        let existingProgress = try context.fetch(FetchDescriptor<UserProgress>())
-        let existingIds = Set(existingProgress.map(\.wordId))
-
-        for entry in entries where !existingIds.contains(entry.wordId) {
-            context.insert(UserProgress(wordId: entry.wordId))
-        }
-    }
 }
+
+// 進捗行（UserProgress）はここでは作らない。
+// 語彙が数千規模になると、未学習のまま一度も使わない空の行を同じ数だけ作ることになり、
+// 初回起動と各画面の集計がそのぶん重くなる。行は最初に解答した時点で
+// `ProgressRepository.progress(for:)` が作る。
+// 「未学習」の語数は行の有無ではなく、全語数から学習済みの語数を引いて求める。

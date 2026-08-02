@@ -144,7 +144,6 @@ possible|可能な|adjective|A|general|Is it possible to change the date?
 post|投稿する、郵便|verb|A|technology|She posted a photo online.
 pour|注ぐ|verb|B|daily|Pour the milk into the cup.
 powerful|強力な|adjective|A|technology|The engine is very powerful.
-practice|練習する、練習|verb|A|education|She practices the piano daily.
 praise|ほめる|verb|B|education|The teacher praised his effort.
 precious|貴重な|adjective|B|general|Time is precious.
 presence|存在、出席|noun|C|society|Her presence made everyone calm.

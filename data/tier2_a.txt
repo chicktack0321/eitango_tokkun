@@ -27,7 +27,6 @@ anymore|もはや|adverb|A|general|He does not live here anymore.
 anxious|心配して、切望して|adjective|B|health|She was anxious about the results.
 apart|離れて|adverb|B|general|The two houses are 500 meters apart.
 apparently|どうやら〜らしい|adverb|B|general|Apparently the shop has moved.
-appointment|予約、約束|noun|A|health|I have a dental appointment at three.
 area|地域、面積|noun|A|society|This area is popular with families.
 arrival|到着|noun|B|daily|The arrival time is 6:30.
 article|記事|noun|A|education|I read an article about solar power.
@@ -57,7 +56,6 @@ beg|懇願する|verb|C|daily|He begged her to stay.
 behave|振る舞う|verb|B|society|The children behaved well.
 belief|信念|noun|B|society|It is a common belief in this region.
 bitter|苦い、つらい|adjective|B|daily|The medicine tastes bitter.
-blame|非難する|verb|B|society|Do not blame yourself.
 blank|空白の|adjective|B|education|Fill in the blank spaces.
 blood|血|noun|A|health|The doctor took a blood sample.
 board|乗り込む、板|verb|A|daily|Passengers began to board the plane.

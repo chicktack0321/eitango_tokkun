@@ -150,7 +150,7 @@ struct HomeView: View {
             infoMessage: MetricExplanations.mastery
         ) {
             VStack(alignment: .leading, spacing: 10) {
-                MasteryBar(counts: viewModel.summary.statusCounts)
+                MasteryBar(counts: viewModel.statusCounts)
 
                 // 段階が4つあるので凡例は2列に折り返す
                 LazyVGrid(
@@ -161,7 +161,7 @@ struct HomeView: View {
                     ForEach(LearningStatus.allCases) { status in
                         LegendDot(
                             color: status.barColor,
-                            label: "\(status.displayName) \(viewModel.summary.count(of: status))"
+                            label: "\(status.displayName) \(viewModel.statusCounts[status] ?? 0)"
                         )
                     }
                 }

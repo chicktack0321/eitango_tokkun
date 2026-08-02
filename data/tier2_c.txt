@@ -1,0 +1,295 @@
+# Tier 2: 準2級・2級 架け橋層 追加分
+# word|meaning|pos|rank|domain|example
+
+abroad study|海外留学|noun|B|education|Abroad study changed his view of the world.
+absolute|絶対的な|adjective|C|general|There is no absolute answer.
+academic year|学年度|noun|B|education|The academic year begins in April.
+accidental|偶然の|adjective|C|general|It was an accidental discovery.
+achievement|業績、達成|noun|A|education|Passing the exam was a real achievement.
+acquaintance|知人|noun|C|society|He is an acquaintance, not a close friend.
+addition to|〜への追加|other|B|general|This is an addition to the original plan.
+admire the view|景色に見とれる|verb|B|daily|We stopped to admire the view.
+advanced|上級の、進んだ|adjective|A|education|She joined the advanced class.
+adviser|助言者|noun|C|education|Ask your adviser about the course.
+affection|愛情|noun|C|society|She showed great affection for animals.
+agreeable|感じのよい|adjective|C|society|He is an agreeable person to work with.
+agriculture policy|農業政策|noun|C|environment|The agriculture policy was revised.
+alike|似ている|adjective|C|general|The twins look very alike.
+allowance for|〜への考慮|other|C|business|Make allowance for delays.
+altogether different|まったく異なる|adjective|C|general|The result was altogether different.
+amateur|素人|noun|C|general|The contest is open to amateurs.
+ambulance service|救急サービス|noun|C|health|The ambulance service is free here.
+amount to|合計〜になる|verb|B|business|The bill amounts to 12,000 yen.
+ancient ruins|古代遺跡|noun|C|education|The ancient ruins attract many visitors.
+angle of view|視野|noun|C|technology|The camera has a wide angle of view.
+annoy|いらだたせる|verb|B|daily|The noise annoyed the neighbors.
+apology|謝罪|noun|B|society|He offered a sincere apology.
+appliance|電化製品|noun|C|daily|Kitchen appliances use a lot of power.
+approval|承認|noun|B|business|The plan needs the mayor's approval.
+architecture|建築|noun|B|society|The city is famous for its architecture.
+arrangement|手配、配置|noun|B|business|Travel arrangements are complete.
+artificial light|人工照明|noun|C|technology|Plants grow under artificial light.
+ashore|岸へ|adverb|C|environment|The boat was washed ashore.
+assistance|援助|noun|B|society|She asked for assistance.
+association|協会、連想|noun|B|society|He joined a local association.
+astonish|驚かせる|verb|C|general|The news astonished everyone.
+atmosphere of trust|信頼の雰囲気|noun|C|society|The team built an atmosphere of trust.
+attendance|出席|noun|B|education|Attendance was low that day.
+attentive|注意深い|adjective|C|education|The students were attentive.
+attractiveness|魅力|noun|C|business|The attractiveness of the offer is clear.
+autograph|サイン|noun|C|general|She asked for his autograph.
+automation|自動化|noun|C|technology|Automation changed the factory.
+availability|入手可能性|noun|C|business|Check the availability of seats.
+average score|平均点|noun|A|education|The average score was 72.
+awful|ひどい|adjective|B|general|The weather was awful.
+awkward|ぎこちない|adjective|C|society|There was an awkward silence.
+background music|背景音楽|noun|C|general|Background music played softly.
+baggage claim|手荷物受取所|noun|C|daily|Meet me at baggage claim.
+balanced diet|バランスの取れた食事|noun|A|health|A balanced diet keeps you healthy.
+ban on|〜の禁止|other|B|society|There is a ban on plastic bags.
+bare|むき出しの|adjective|C|general|The walls were bare.
+basic skill|基礎技能|noun|A|education|Reading is a basic skill.
+beforehand|前もって|adverb|C|business|Let me know beforehand.
+behavior change|行動変容|noun|C|health|Small behavior changes add up.
+belongings list|持ち物リスト|noun|C|daily|Make a belongings list before the trip.
+beneath|〜の下に|other|C|general|A stream runs beneath the bridge.
+benefit from|〜から利益を得る|verb|A|business|Students benefit from small classes.
+bilingual|二言語の|adjective|C|education|The school offers bilingual classes.
+biological|生物学の|adjective|C|health|Sleep serves a biological purpose.
+bitterly|激しく、苦々しく|adverb|C|general|They complained bitterly.
+blossom|花、咲く|noun|C|environment|The cherry blossoms opened early.
+boarding|搭乗|noun|B|daily|Boarding starts thirty minutes before departure.
+bond|絆、結びつく|noun|C|society|A strong bond formed between them.
+boundary|境界|noun|C|society|The river marks the boundary.
+brand new|新品の|adjective|B|business|The bike is brand new.
+breakdown|故障、内訳|noun|B|technology|A breakdown delayed the train.
+breeze|そよ風|noun|C|environment|A cool breeze came from the sea.
+briefly|手短に|adverb|B|education|Explain briefly what happened.
+brilliant|見事な、輝く|adjective|B|education|That was a brilliant idea.
+broadly|広く|adverb|C|education|The results broadly support the theory.
+bulk|大量|noun|C|business|Buying in bulk is cheaper.
+burden|負担|noun|C|society|Care work is a heavy burden.
+cabinet|戸棚、内閣|noun|C|society|The cabinet approved the budget.
+calculation|計算|noun|B|education|My calculation was wrong.
+calorie|カロリー|noun|B|health|The drink has 120 calories.
+cancellation|取り消し|noun|B|business|There is no fee for cancellation.
+capability|能力|noun|C|technology|The system has limited capability.
+carbon footprint|二酸化炭素排出量|noun|B|environment|Flying increases your carbon footprint.
+carefulness|注意深さ|noun|C|general|The work requires carefulness.
+caretaker|管理人|noun|C|business|The caretaker locks the gate at night.
+casual|くだけた|adjective|B|daily|The office has a casual dress code.
+category|分類|noun|B|education|Sort the items into categories.
+caution|注意、警告|noun|B|society|Proceed with caution.
+ceiling price|上限価格|noun|C|business|The government set a ceiling price.
+celebration|祝賀|noun|B|society|The celebration lasted all day.
+cellphone|携帯電話|noun|A|technology|Turn off your cellphone during the film.
+certificate|証明書|noun|B|education|You will receive a certificate.
+chairperson|議長|noun|C|business|The chairperson opened the meeting.
+characteristic|特徴|noun|B|education|Curiosity is a useful characteristic.
+charity event|慈善行事|noun|B|society|The charity event raised 500,000 yen.
+cheerfully|明るく|adverb|C|daily|She answered cheerfully.
+childcare|保育|noun|B|society|The city expanded childcare services.
+choice of words|言葉遣い|noun|C|education|Be careful with your choice of words.
+circular|円形の|adjective|C|general|The room has a circular table.
+citizenship|市民権|noun|C|society|He applied for citizenship.
+civil|市民の|adjective|C|society|Civil groups organized the cleanup.
+clarify|明確にする|verb|C|education|Could you clarify the question?
+classification|分類|noun|C|education|The classification is based on size.
+climate control|空調|noun|C|technology|The building has climate control.
+clinic|診療所|noun|B|health|The clinic opens at nine.
+closely|密接に、注意深く|adverb|B|education|Watch the demonstration closely.
+clue|手がかり|noun|B|education|The photo gave us a clue.
+coastal|沿岸の|adjective|C|environment|Coastal towns face rising seas.
+coincidence|偶然の一致|noun|C|general|It was a strange coincidence.
+collapse|崩壊する|verb|C|society|The old wall collapsed.
+collective|集団の|adjective|C|society|It was a collective decision.
+combination|組み合わせ|noun|B|education|Try a different combination.
+comfortably|快適に|adverb|B|daily|The room seats fifty comfortably.
+commercial use|商業利用|noun|C|business|The photo is free for commercial use.
+commonly|一般に|adverb|B|education|This word is commonly used.
+communicate with|〜と意思疎通する|verb|A|society|He communicates with clients daily.
+compact|小型の|adjective|C|technology|The camera is light and compact.
+comparison|比較|noun|B|education|Make a comparison between the two.
+compassion|思いやり|noun|C|society|She treats patients with compassion.
+compatible|互換性のある|adjective|C|technology|The app is compatible with older phones.
+competent|有能な|adjective|C|business|He is a competent manager.
+complexity|複雑さ|noun|C|education|The complexity of the rules confuses users.
+compliment|ほめ言葉|noun|C|society|She received many compliments.
+composition|作文、構成|noun|B|education|The composition is due Monday.
+comprehension|理解|noun|B|education|The test measures reading comprehension.
+concentrated|集中した、濃縮した|adjective|C|technology|The juice is concentrated.
+conclusion drawn|導かれた結論|noun|C|education|The conclusion drawn was clear.
+condition report|状態報告|noun|C|business|The condition report was attached.
+conductor of heat|熱伝導体|noun|C|technology|Metal is a good conductor of heat.
+confess|告白する|verb|C|society|He confessed to the mistake.
+confidence in|〜への信頼|other|B|society|Public confidence in the system fell.
+confirmation|確認|noun|B|business|You will receive a confirmation email.
+conflict resolution|紛争解決|noun|C|society|The class teaches conflict resolution.
+confusion|混乱|noun|B|society|The change caused confusion.
+connected|つながった|adjective|A|technology|All the rooms are connected to the network.
+conscious|意識している|adjective|C|health|She is conscious of her posture.
+consent|同意|noun|C|society|Written consent is required.
+consequently|その結果|adverb|C|education|Consequently, the price rose.
+conservation area|保護区域|noun|C|environment|The lake is a conservation area.
+considerable|かなりの|adjective|C|business|The change made a considerable difference.
+consideration|考慮|noun|B|business|Cost is an important consideration.
+consistency|一貫性|noun|C|education|Consistency matters more than speed.
+consistent|一貫した|adjective|C|education|Her results are consistent.
+constantly|絶えず|adverb|B|general|Prices change constantly.
+construct|建設する|verb|B|society|They constructed a new bridge.
+construction|建設|noun|A|society|Construction will take two years.
+consultation|相談|noun|C|health|The first consultation is free.
+contract renewal|契約更新|noun|C|business|The contract renewal is due in March.
+contrast|対照|noun|B|education|There is a sharp contrast between the two.
+contribution|貢献、寄付|noun|B|society|Her contribution was important.
+convenience store|コンビニ|noun|A|daily|The convenience store is open all night.
+conventional|従来の|adjective|C|technology|Conventional methods still work well.
+conversion|変換|noun|C|technology|The conversion takes a few seconds.
+convey|伝える|verb|C|education|The photo conveys the atmosphere well.
+cooperation|協力|noun|B|society|The project needs everyone's cooperation.
+coordinate|調整する|verb|C|business|She coordinates the volunteers.
+corporate|企業の|adjective|C|business|The corporate office is in Tokyo.
+correctly|正しく|adverb|A|education|Answer the questions correctly.
+correspondence|文通、対応|noun|C|business|Keep a record of the correspondence.
+cost effective|費用対効果の高い|adjective|C|business|The plan is cost effective.
+countryside|田舎|noun|B|environment|They moved to the countryside.
+courageous|勇敢な|adjective|C|society|It was a courageous decision.
+courtesy|礼儀|noun|C|society|Please show courtesy to other passengers.
+coverage|報道、補償範囲|noun|C|society|The story received wide coverage.
+creation|創造|noun|B|general|The creation of the park took years.
+creativity|創造性|noun|B|education|The class encourages creativity.
+credibility|信頼性|noun|C|society|The report lost its credibility.
+crisis management|危機管理|noun|C|business|Crisis management is part of the training.
+criteria|基準|noun|C|education|The criteria are listed on page two.
+critic|批評家|noun|C|society|Critics praised the film.
+cross cultural|異文化間の|adjective|C|society|The program builds cross cultural skills.
+cruise|クルーズ|noun|C|daily|They took a short cruise.
+cultural exchange|文化交流|noun|B|society|The cultural exchange lasted two weeks.
+cure rate|治癒率|noun|C|health|The cure rate has improved.
+curriculum|カリキュラム|noun|C|education|The curriculum was updated this year.
+customs|税関、習慣|noun|B|society|We passed through customs quickly.
+cutting edge|最先端の|adjective|C|technology|The lab uses cutting edge equipment.
+daily routine|日課|noun|A|health|Exercise is part of my daily routine.
+damage report|被害報告|noun|C|society|The damage report came out today.
+dawn|夜明け|noun|C|environment|They left at dawn.
+debate|討論|noun|B|education|The class held a debate.
+decisive|決定的な|adjective|C|general|It was a decisive moment.
+declaration|宣言|noun|C|society|The declaration was signed in 1948.
+decoration|装飾|noun|B|daily|The decorations were made by students.
+decrease in|〜の減少|other|A|society|There was a decrease in accidents.
+dedicated|献身的な|adjective|C|business|She is a dedicated teacher.
+defence|防御|noun|C|society|The team has a strong defence.
+deficiency|不足|noun|C|health|A vitamin deficiency causes tiredness.
+definition|定義|noun|B|education|Look up the definition first.
+delivery service|配達サービス|noun|B|business|The delivery service is fast.
+demand for|〜への需要|other|A|business|Demand for the product is rising.
+democracy movement|民主化運動|noun|C|society|The democracy movement grew quickly.
+demonstration|実演、デモ|noun|B|education|The demonstration lasted ten minutes.
+departure|出発|noun|B|daily|Departure is at 7:15.
+dependence|依存|noun|C|society|The country reduced its dependence on oil.
+depending on|〜次第で|other|A|general|The price changes depending on the season.
+description|描写、説明|noun|B|education|Write a short description.
+designer|設計者|noun|B|business|The designer explained her idea.
+desirable|望ましい|adjective|C|business|A quiet location is desirable.
+destination country|渡航先の国|noun|C|daily|Check the rules of your destination country.
+detailed|詳細な|adjective|B|business|We received a detailed report.
+detect|検知する|verb|C|technology|The sensor detects movement.
+determination|決意|noun|C|education|Her determination impressed everyone.
+developing country|発展途上国|noun|B|society|The program supports developing countries.
+device setting|端末設定|noun|C|technology|Check your device settings.
+devote|捧げる|verb|C|society|He devoted his life to research.
+diagnosis|診断|noun|C|health|The diagnosis took several days.
+dialect|方言|noun|C|education|The region has its own dialect.
+difference in|〜の違い|other|A|education|There is a difference in quality.
+digital device|デジタル機器|noun|A|technology|Digital devices are used in class.
+dignity|尊厳|noun|C|society|Everyone deserves to be treated with dignity.
+diligent|勤勉な|adjective|C|education|He is a diligent student.
+dining|食事|noun|B|daily|The hotel has a fine dining room.
+direction sign|方向標識|noun|C|daily|Follow the direction signs.
+disability|障害|noun|B|society|The center supports people with disabilities.
+disagreement|意見の相違|noun|B|society|There was a disagreement about the cost.
+disappointment|失望|noun|B|health|The result was a disappointment.
+disaster relief|災害救援|noun|B|society|Disaster relief arrived within a day.
+discomfort|不快感|noun|C|health|The patient felt some discomfort.
+disconnect|切断する|verb|C|technology|Disconnect the cable first.
+discouraging|がっかりさせる|adjective|C|education|The first result was discouraging.
+discussion topic|討論の議題|noun|B|education|Choose a discussion topic.
+disease prevention|疾病予防|noun|B|health|Hand washing helps disease prevention.
+dismiss|退ける、解雇する|verb|C|business|The idea was dismissed too quickly.
+display|表示する、陳列|verb|A|technology|The screen displays the time.
+disposal|処分|noun|C|environment|Waste disposal costs money.
+dispute|論争|noun|C|society|The dispute lasted for months.
+distinction|区別|noun|C|education|Make a clear distinction between the two.
+distribution|分配、流通|noun|C|business|The distribution of food was quick.
+district|地区|noun|B|society|The shopping district is busy.
+diversity|多様性|noun|B|society|The company values diversity.
+division|分割、部門|noun|B|business|The sales division moved to a new floor.
+documentary|記録映画|noun|B|society|The documentary was filmed over five years.
+donation box|募金箱|noun|C|society|There is a donation box at the entrance.
+downside|不利な面|noun|C|business|The downside is the long wait.
+draft|下書き|noun|B|education|Write a first draft today.
+drainage|排水|noun|C|environment|Poor drainage caused the flood.
+dramatically|劇的に|adverb|B|society|Sales rose dramatically.
+drawing|図、素描|noun|B|education|The drawing shows the layout.
+drinkable|飲用に適した|adjective|C|health|The water is drinkable.
+drought relief|干ばつ救済|noun|C|environment|Drought relief reached the village.
+durable|耐久性のある|adjective|C|technology|The bag is light but durable.
+dwelling|住居|noun|C|society|The dwelling was built in 1920.
+dynamic|活動的な|adjective|C|business|The market is very dynamic.
+earnings|収益|noun|C|business|Earnings rose by ten percent.
+ease|容易さ、和らげる|noun|C|general|He solved it with ease.
+ecology|生態学|noun|C|environment|She studies marine ecology.
+economic growth|経済成長|noun|B|business|Economic growth slowed last year.
+edible|食べられる|adjective|C|health|These berries are edible.
+educational|教育の|adjective|A|education|The museum has educational programs.
+effectively|効果的に|adverb|B|education|Use your time effectively.
+efficiently|効率的に|adverb|B|business|The team worked efficiently.
+elderly people|高齢者|noun|A|society|The service supports elderly people.
+electronic device|電子機器|noun|A|technology|Turn off electronic devices during takeoff.
+elementary school|小学校|noun|A|education|The elementary school has 300 students.
+eliminate waste|無駄をなくす|verb|C|business|The new process eliminates waste.
+emerge|現れる|verb|C|society|A new problem emerged.
+emergency call|緊急通報|noun|B|health|Make an emergency call if needed.
+emotion|感情|noun|B|health|He hid his emotions.
+emotional|感情的な|adjective|B|health|It was an emotional moment.
+empathy|共感|noun|C|society|Empathy helps in teamwork.
+emphasis|強調|noun|C|education|The course puts emphasis on speaking.
+employment rate|就業率|noun|C|business|The employment rate improved.
+encouragement|励まし|noun|B|education|A little encouragement goes a long way.
+endurance|持久力|noun|C|health|Running builds endurance.
+engagement|約束、関与|noun|C|society|Community engagement is essential.
+enhance|高める|verb|C|technology|The update enhances battery life.
+enrollment|入学、登録|noun|C|education|Enrollment closes on Friday.
+entertainment|娯楽|noun|B|daily|The park offers entertainment for children.
+enthusiastic|熱心な|adjective|B|education|The class was enthusiastic.
+entrepreneur|起業家|noun|C|business|A young entrepreneur started the service.
+environmental impact|環境への影響|noun|B|environment|The report studies environmental impact.
+equipment failure|機器故障|noun|C|technology|Equipment failure stopped production.
+era|時代|noun|C|education|A new era began after the war.
+essential skill|必須技能|noun|A|education|Listening is an essential skill.
+establishment|設立、施設|noun|C|society|The establishment of the museum took years.
+estimate cost|費用を見積もる|verb|B|business|Please estimate the cost first.
+ethical|倫理的な|adjective|C|society|The company follows ethical rules.
+evaluation|評価|noun|C|education|The evaluation is done twice a year.
+eventual|最終的な|adjective|C|general|The eventual result was positive.
+evidence based|根拠に基づく|adjective|C|health|The advice is evidence based.
+exceptional|例外的な、優れた|adjective|C|education|Her work was exceptional.
+excessive|過度の|adjective|C|health|Excessive salt is harmful.
+exclude|除外する|verb|C|education|The price excludes tax.
+exclusive|独占的な|adjective|C|business|The store has an exclusive contract.
+execution|実行|noun|C|business|The plan failed in execution.
+exhibit|展示する、展示品|verb|B|education|The museum exhibits local pottery.
+existence|存在|noun|C|education|Few people know of its existence.
+expansion|拡大|noun|B|business|The expansion created 50 jobs.
+expectation|期待|noun|B|education|The results exceeded expectations.
+expenditure|支出|noun|C|business|Public expenditure rose last year.
+experimental|実験的な|adjective|C|technology|The treatment is still experimental.
+expiration date|有効期限|noun|B|business|Check the expiration date on the box.
+explanation note|説明書き|noun|C|education|Read the explanation note first.
+exploration|探検、調査|noun|C|technology|Space exploration is expensive.
+exposure|露出、さらすこと|noun|C|health|Limit your exposure to strong sun.
+extension|延長|noun|B|business|We asked for a one-week extension.
+extensive|広範囲の|adjective|C|education|The library has an extensive collection.
+external|外部の|adjective|C|technology|Connect an external drive.
+extinction risk|絶滅の危険|noun|C|environment|The frog faces extinction risk.
+extraordinary|並外れた|adjective|C|general|It was an extraordinary performance.

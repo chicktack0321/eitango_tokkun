@@ -40,7 +40,6 @@ brief|短い、簡潔な|adjective|B|general|He gave a brief explanation.
 capable|能力がある|adjective|B|general|She is capable of doing the job alone.
 cause|原因、引き起こす|noun|A|general|The cause of the fire is still unknown.
 certainly|確かに|adverb|A|general|That is certainly true.
-challenge|課題、挑戦する|noun|A|general|Learning a language is a real challenge.
 circumstance|状況、事情|noun|C|general|Under these circumstances, we must wait.
 combine|組み合わせる|verb|B|general|The dish combines two local ingredients.
 comfortable|快適な|adjective|A|general|These shoes are very comfortable.

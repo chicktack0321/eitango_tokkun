@@ -1,0 +1,139 @@
+# 熟語・句動学 追加分
+# word|meaning|pos|rank|domain|example
+
+a couple of|2つの、いくつかの|other|A|general|I need a couple of days to finish.
+a great deal of|多量の|other|B|general|It takes a great deal of time.
+a number of|いくつかの|other|A|general|A number of students were absent.
+a variety of|さまざまな|other|A|general|The shop sells a variety of teas.
+above all|とりわけ|other|B|general|Above all, stay calm.
+account balance|口座残高|noun|C|business|Check your account balance online.
+all of a sudden|突然|other|B|general|All of a sudden the power went out.
+as if|まるで〜のように|other|B|general|He talks as if he knew everything.
+at any rate|とにかく|other|C|general|At any rate, we should try.
+at first|最初は|other|A|general|At first the work seemed easy.
+at last|ついに|other|A|general|At last the rain stopped.
+at the moment|今のところ|other|A|general|She is out at the moment.
+back and forth|行ったり来たり|other|B|general|He walked back and forth in the hall.
+be about|〜についてである|verb|A|general|The book is about climate change.
+be afraid of|〜を怖がる|verb|A|daily|She is afraid of dogs.
+be aware of|〜に気づいている|verb|A|society|Few people are aware of the risk.
+be busy with|〜で忙しい|verb|A|business|He is busy with a new project.
+be different from|〜と異なる|verb|A|general|This model is different from the old one.
+be famous for|〜で有名である|verb|A|society|The town is famous for its pottery.
+be full of|〜でいっぱいだ|verb|A|general|The room was full of children.
+be good at|〜が得意である|verb|A|education|She is good at math.
+be interested in|〜に興味がある|verb|A|education|He is interested in astronomy.
+be late for|〜に遅れる|verb|A|daily|Do not be late for the meeting.
+be married to|〜と結婚している|verb|B|daily|She is married to a doctor.
+be proud of|〜を誇りに思う|verb|A|daily|They are proud of their daughter.
+be ready for|〜の準備ができている|verb|A|general|Are you ready for the test?
+be short of|〜が不足している|verb|B|business|We are short of staff today.
+be similar to|〜に似ている|verb|A|general|Your idea is similar to mine.
+be sure of|〜を確信している|verb|A|general|I am sure of the answer.
+be tired of|〜に飽きる|verb|B|daily|I am tired of the same food.
+be worried about|〜を心配する|verb|A|health|Parents are worried about screen time.
+believe in|〜の存在を信じる|verb|B|society|She believes in fair treatment.
+by accident|偶然に|other|B|general|I found the file by accident.
+by chance|偶然に|other|B|general|We met by chance at the station.
+by far|はるかに|other|C|general|This is by far the best option.
+by mistake|誤って|other|B|general|I deleted the file by mistake.
+by the way|ところで|other|A|daily|By the way, did you call him?
+call back|折り返し電話する|verb|A|daily|I will call you back later.
+care about|〜を気にかける|verb|A|society|Young people care about the environment.
+carry a risk|危険を伴う|verb|C|health|The operation carries a small risk.
+change one's mind|考えを変える|verb|A|general|She changed her mind at the last minute.
+come along|一緒に来る|verb|B|daily|Would you like to come along?
+come back|戻る|verb|A|general|He came back an hour later.
+come from|〜の出身である|verb|A|society|She comes from a small village.
+come in|入る|verb|A|daily|Please come in and sit down.
+come out|出る、発売される|verb|A|general|The new model comes out in June.
+count on|頼りにする|verb|B|society|You can count on her.
+cut off|切り離す|verb|B|technology|The power was cut off for an hour.
+do one's best|全力を尽くす|verb|A|education|Just do your best.
+drop out|中退する|verb|C|education|He dropped out of college.
+each other|お互いに|other|A|society|They help each other.
+eat out|外食する|verb|A|daily|We eat out once a week.
+even if|たとえ〜でも|other|A|general|Even if it rains, we will go.
+even though|〜だけれども|other|A|general|Even though he was tired, he kept working.
+fall asleep|眠りに落ちる|verb|A|health|He fell asleep on the train.
+far from|〜からほど遠い|other|B|general|The result was far from perfect.
+fill out|記入する|verb|A|business|Fill out the form in English.
+first of all|まず第一に|other|A|general|First of all, read the instructions.
+get back|戻る、取り戻す|verb|A|general|I will get back to you tomorrow.
+get lost|道に迷う|verb|A|daily|We got lost on the way.
+get married|結婚する|verb|A|daily|They got married last spring.
+get off|降りる|verb|A|daily|Get off at the next stop.
+get on|乗る|verb|A|daily|She got on the wrong train.
+get ready|準備する|verb|A|daily|Get ready for school.
+get together|集まる|verb|B|society|The club gets together every Friday.
+get used to|〜に慣れる|verb|A|general|You will get used to the noise.
+give back|返す|verb|A|daily|Please give back the book.
+go ahead|先に進む|verb|B|general|Go ahead and start without me.
+go on|続く|verb|A|general|The meeting went on for hours.
+go out|外出する|verb|A|daily|They went out for dinner.
+hand out|配る|verb|B|education|The teacher handed out the sheets.
+have a look at|〜を見る|verb|A|general|Have a look at this photo.
+have an effect on|〜に影響する|verb|B|health|Sleep has an effect on memory.
+help oneself|自由に取る|verb|B|daily|Please help yourself to the cake.
+hold on|待つ、しっかりつかまる|verb|B|daily|Hold on a moment, please.
+in advance of|〜に先立って|other|C|business|Send the file in advance of the meeting.
+in a hurry|急いで|other|A|daily|She left in a hurry.
+in front of|〜の前に|other|A|general|Wait in front of the station.
+in need of|〜を必要として|other|B|society|The school is in need of volunteers.
+in other words|言い換えれば|other|A|education|In other words, the plan failed.
+in relation to|〜に関して|other|C|education|The report says little in relation to cost.
+in return for|〜の見返りに|other|C|business|They received a discount in return for the review.
+in short|要するに|other|B|education|In short, the plan is too expensive.
+in time|間に合って|other|A|general|We arrived just in time.
+keep away from|〜に近づかない|verb|B|health|Keep away from the edge.
+keep on|〜し続ける|verb|A|general|He kept on working until midnight.
+lay off workers|従業員を解雇する|verb|C|business|The plant laid off workers last year.
+learn by heart|暗記する|verb|B|education|Learn these ten words by heart.
+let go of|手放す|verb|C|general|She let go of the rope.
+little by little|少しずつ|other|B|education|Your English will improve little by little.
+look around|見て回る|verb|A|daily|Feel free to look around the shop.
+look like|〜のように見える|verb|A|general|It looks like rain.
+look out|気をつける|verb|B|society|Look out for cars.
+lose weight|体重を減らす|verb|A|health|He lost weight by walking daily.
+make a decision|決定する|verb|A|business|We must make a decision today.
+make a mistake|間違える|verb|A|education|Everyone makes mistakes.
+make friends|友達になる|verb|A|society|She made friends quickly.
+make progress|進歩する|verb|A|education|You are making good progress.
+make up one's mind|決心する|verb|B|general|He made up his mind to study abroad.
+more and more|ますます多くの|other|A|society|More and more people work from home.
+more or less|多かれ少なかれ|other|C|general|The two plans are more or less the same.
+no matter what|何があっても|other|B|general|No matter what happens, keep going.
+of course|もちろん|other|A|general|Of course you can join us.
+on the other hand|一方で|other|A|education|On the other hand, the cost is higher.
+on the whole|全体として|other|C|education|On the whole, the results were good.
+once in a while|時々|other|B|daily|We meet once in a while.
+one another|お互いに|other|B|society|The members support one another.
+pay back|返済する|verb|B|business|He paid back the loan in two years.
+put away|片付ける|verb|B|daily|Put away your books.
+put on|着る、身につける|verb|A|daily|Put on your coat; it is cold.
+right away|すぐに|other|A|general|Call the office right away.
+run into|偶然会う、ぶつかる|verb|B|daily|I ran into an old friend.
+set off|出発する|verb|C|daily|They set off before dawn.
+show up|現れる|verb|B|daily|He did not show up for the meeting.
+sit down|座る|verb|A|daily|Please sit down.
+slow down|速度を落とす|verb|A|society|Slow down near the school.
+stand out|目立つ|verb|B|business|The design stands out.
+stay in touch|連絡を保つ|verb|B|society|Let us stay in touch.
+stick to|〜を守り通す|verb|B|health|Stick to your plan.
+take a break|休憩する|verb|A|health|Take a break every hour.
+take a look|見てみる|verb|A|general|Take a look at page five.
+take away|持ち去る|verb|B|daily|Please take away the empty plates.
+take back|返品する、撤回する|verb|B|business|I took back the shirt to the store.
+take notes|メモを取る|verb|A|education|Take notes during the lecture.
+take over|引き継ぐ|verb|B|business|She took over the project in April.
+take time|時間がかかる|verb|A|general|Learning a language takes time.
+talk about|〜について話す|verb|A|daily|They talked about their trip.
+thank you for|〜をありがとう|other|A|daily|Thank you for your quick reply.
+think of|〜を思いつく|verb|A|general|I cannot think of a better idea.
+turn off|消す|verb|A|environment|Turn off the lights when you leave.
+turn on|つける|verb|A|daily|Turn on the air conditioner.
+up to now|今まで|other|B|general|Up to now there have been no problems.
+wait for|〜を待つ|verb|A|daily|Wait for me at the gate.
+watch out|注意する|verb|B|society|Watch out for the step.
+worry about|〜を心配する|verb|A|health|Do not worry about the result.
+write down|書き留める|verb|A|education|Write down the new words.

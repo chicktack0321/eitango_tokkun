@@ -1,0 +1,364 @@
+# Tier 1: 基礎既習語彙 追加分（高校基礎の常用語）
+# word|meaning|pos|rank|domain|example
+
+ache|痛む|verb|C|health|
+actor|俳優|noun|A|general|
+advise|助言する|verb|A|education|
+airline|航空会社|noun|A|business|
+alarm clock|目覚まし時計|noun|B|daily|
+album|アルバム|noun|B|daily|
+alphabet|アルファベット|noun|B|education|
+ambulance|救急車|noun|B|health|
+angle|角度|noun|C|education|
+ankle|足首|noun|C|health|
+announcer|アナウンサー|noun|B|society|
+apartment building|マンション|noun|B|daily|
+appetizer|前菜|noun|C|daily|
+architect|建築家|noun|B|society|
+army|軍隊|noun|B|society|
+arrow|矢、矢印|noun|C|general|
+artwork|美術品|noun|C|general|
+ash|灰|noun|C|environment|
+assemble|組み立てる|verb|C|technology|
+attic|屋根裏|noun|C|daily|
+audio|音声の|adjective|B|technology|
+avenue|大通り|noun|B|society|
+baggage|手荷物|noun|B|daily|
+baker|パン職人|noun|C|business|
+balcony|バルコニー|noun|B|daily|
+bamboo|竹|noun|C|environment|
+bandage|包帯|noun|C|health|
+barber|理髪師|noun|C|business|
+bark|吠える|verb|C|daily|
+baseball|野球|noun|A|daily|
+basket|かご|noun|B|daily|
+basketball|バスケットボール|noun|A|daily|
+bat|バット、こうもり|noun|B|daily|
+beans|豆|noun|B|daily|
+beef|牛肉|noun|B|daily|
+beer|ビール|noun|B|daily|
+beginner|初心者|noun|A|education|
+bench|ベンチ|noun|B|daily|
+berry|ベリー|noun|C|environment|
+bike|自転車|noun|A|daily|
+bin|ごみ箱|noun|C|environment|
+biology|生物学|noun|B|education|
+blackboard|黒板|noun|B|education|
+blanket|毛布|noun|B|daily|
+blind|目の見えない|adjective|B|health|
+block|区画、妨げる|noun|A|society|
+blow|吹く|verb|A|environment|
+boarding pass|搭乗券|noun|B|daily|
+bomb|爆弾|noun|C|society|
+bone|骨|noun|B|health|
+bookshelf|本棚|noun|B|daily|
+boring|退屈な|adjective|A|daily|
+bowl|ボウル|noun|B|daily|
+brand|銘柄|noun|B|business|
+bravery|勇敢さ|noun|C|society|
+brick|れんが|noun|C|society|
+broadcast|放送する|verb|B|society|
+broken|壊れた|adjective|A|technology|
+bucket|バケツ|noun|C|daily|
+bug|虫、不具合|noun|B|technology|
+bulletin|掲示、会報|noun|C|education|
+bunch|房、束|noun|C|daily|
+burger|ハンバーガー|noun|B|daily|
+butterfly|ちょう|noun|C|environment|
+button|ボタン|noun|B|daily|
+cabbage|キャベツ|noun|C|daily|
+cabin|小屋、客室|noun|C|daily|
+cafeteria|食堂|noun|B|education|
+cage|かご、おり|noun|C|environment|
+calendar|カレンダー|noun|B|daily|
+calm down|落ち着く|verb|B|health|
+campfire|キャンプファイヤー|noun|C|daily|
+campus|キャンパス|noun|B|education|
+candle|ろうそく|noun|B|daily|
+candy|あめ|noun|B|daily|
+canoe|カヌー|noun|C|daily|
+canvas|キャンバス|noun|C|general|
+capital city|首都|noun|A|society|
+captain|船長、主将|noun|B|society|
+carpet|じゅうたん|noun|B|daily|
+carrot|にんじん|noun|B|daily|
+cartoon|漫画|noun|B|daily|
+cave|洞窟|noun|C|environment|
+cereal|シリアル|noun|C|daily|
+chalk|チョーク|noun|C|education|
+chapter|章|noun|B|education|
+charger|充電器|noun|B|technology|
+chart|図表|noun|B|education|
+chat|おしゃべりする|verb|A|daily|
+cheer|応援する|verb|B|daily|
+chef|料理長|noun|B|business|
+chemistry|化学|noun|B|education|
+cherry|さくらんぼ|noun|B|daily|
+chest|胸|noun|B|health|
+childhood|子ども時代|noun|B|daily|
+chin|あご|noun|C|health|
+choir|合唱団|noun|C|general|
+chopstick|はし|noun|B|daily|
+cinema|映画館|noun|B|daily|
+circle|円|noun|B|education|
+clap|拍手する|verb|C|daily|
+classmate|同級生|noun|A|education|
+cleaner|掃除機、清掃員|noun|B|daily|
+cliff|崖|noun|C|environment|
+closet|クローゼット|noun|B|daily|
+clothing|衣類|noun|A|daily|
+coach|指導者、バス|noun|A|daily|
+coastline|海岸線|noun|C|environment|
+collar|えり|noun|C|daily|
+collection|収集品|noun|B|general|
+comb|くし|noun|C|daily|
+comedy|喜劇|noun|B|daily|
+comic|漫画|noun|B|daily|
+compass|方位磁針|noun|C|technology|
+competitor|競争相手|noun|B|business|
+composer|作曲家|noun|C|general|
+conductor|指揮者、車掌|noun|C|general|
+cone|円錐|noun|C|education|
+container|容器|noun|B|environment|
+contest|コンテスト|noun|A|education|
+copper|銅|noun|C|technology|
+correction|訂正|noun|B|education|
+costume|衣装|noun|B|general|
+cottage|小さな家|noun|C|daily|
+cough|せきをする|verb|B|health|
+courtyard|中庭|noun|C|daily|
+cover letter|添え状|noun|C|business|
+crab|かに|noun|C|environment|
+crayon|クレヨン|noun|C|education|
+cream|クリーム|noun|B|daily|
+creature|生き物|noun|B|environment|
+crew|乗組員|noun|B|business|
+cross|渡る、十字|verb|A|daily|
+crown|王冠|noun|C|society|
+cupboard|戸棚|noun|C|daily|
+curtain|カーテン|noun|B|daily|
+curve|曲線|noun|C|education|
+cushion|クッション|noun|C|daily|
+customer service|顧客サービス|noun|B|business|
+daily life|日常生活|noun|A|daily|
+dairy|乳製品の|adjective|C|health|
+damp|湿った|adjective|C|environment|
+darkness|暗さ|noun|B|general|
+daytime|昼間|noun|B|daily|
+deaf|耳が聞こえない|adjective|C|health|
+deck|甲板|noun|C|daily|
+deer|鹿|noun|C|environment|
+delight|喜び|noun|C|daily|
+department store|百貨店|noun|A|business|
+dessert|デザート|noun|B|daily|
+detective|探偵、刑事|noun|C|society|
+diagram|図解|noun|C|education|
+diary|日記|noun|B|daily|
+dining room|食堂|noun|B|daily|
+dinosaur|恐竜|noun|C|education|
+direct flight|直行便|noun|B|daily|
+dirt|土、汚れ|noun|B|environment|
+disc|ディスク|noun|C|technology|
+discussion|話し合い|noun|A|education|
+dishwasher|食器洗い機|noun|C|daily|
+distance learning|遠隔学習|noun|B|education|
+dive|飛び込む|verb|B|daily|
+document|文書|noun|B|business|
+dolphin|イルカ|noun|C|environment|
+donut|ドーナツ|noun|C|daily|
+dormitory|寮|noun|C|education|
+downstairs|階下へ|adverb|B|daily|
+dragon|竜|noun|C|general|
+drama|演劇|noun|B|education|
+drawer|引き出し|noun|C|daily|
+dressing|ドレッシング|noun|C|daily|
+drill|訓練、ドリル|noun|C|education|
+drugstore|薬局|noun|B|health|
+dry season|乾季|noun|C|environment|
+dust|ほこり|noun|B|daily|
+duty free|免税の|adjective|C|business|
+eagle|わし|noun|C|environment|
+earphone|イヤホン|noun|B|technology|
+earring|イヤリング|noun|C|daily|
+economy class|エコノミークラス|noun|C|daily|
+editor|編集者|noun|C|society|
+education system|教育制度|noun|B|education|
+eggplant|なす|noun|C|daily|
+elbow|ひじ|noun|C|health|
+electric|電気の|adjective|A|technology|
+elevator|エレベーター|noun|A|daily|
+emergency exit|非常口|noun|B|society|
+employee benefit|福利厚生|noun|C|business|
+entry fee|入場料|noun|B|business|
+escalator|エスカレーター|noun|B|daily|
+exchange student|交換留学生|noun|B|education|
+exit|出口|noun|A|daily|
+expiration|期限切れ|noun|C|business|
+eyebrow|眉|noun|C|health|
+eyesight|視力|noun|C|health|
+fabric|布地|noun|C|daily|
+factory worker|工場労働者|noun|B|business|
+failure|失敗|noun|A|general|
+fair price|適正価格|noun|B|business|
+fairy tale|おとぎ話|noun|C|education|
+fare|運賃|noun|B|daily|
+farewell|別れ|noun|C|daily|
+farmland|農地|noun|C|environment|
+fashionable|流行の|adjective|B|daily|
+feather|羽|noun|C|environment|
+feature|特徴|noun|B|technology|
+fence|柵|noun|B|daily|
+ferry|フェリー|noun|B|daily|
+fiction|小説、作り話|noun|B|education|
+field trip|遠足|noun|B|education|
+fifth|5番目の|adjective|A|general|
+file|ファイル、整理する|noun|B|technology|
+final exam|期末試験|noun|A|education|
+fingerprint|指紋|noun|C|society|
+fire alarm|火災報知器|noun|B|society|
+fireplace|暖炉|noun|C|daily|
+firework|花火|noun|B|daily|
+first aid|応急手当|noun|B|health|
+fisherman|漁師|noun|C|environment|
+fitness|健康、体力|noun|B|health|
+flag|旗|noun|B|society|
+flashlight|懐中電灯|noun|C|daily|
+flavor|風味|noun|B|daily|
+flea market|フリーマーケット|noun|C|business|
+flight attendant|客室乗務員|noun|B|business|
+flour|小麦粉|noun|B|daily|
+flu|インフルエンザ|noun|B|health|
+fog|霧|noun|C|environment|
+folder|フォルダー|noun|B|technology|
+folk|民俗の|adjective|C|society|
+following|次の|adjective|A|general|
+foreigner|外国人|noun|B|society|
+forehead|額|noun|C|health|
+fork|フォーク|noun|B|daily|
+fortune|運、財産|noun|B|business|
+fountain|噴水|noun|C|daily|
+fourth|4番目の|adjective|A|general|
+frame|枠|noun|B|technology|
+freezer|冷凍庫|noun|B|daily|
+freshman|新入生|noun|C|education|
+fridge|冷蔵庫|noun|B|daily|
+frog|カエル|noun|C|environment|
+frozen|凍った|adjective|B|daily|
+frying pan|フライパン|noun|C|daily|
+fuel cost|燃料費|noun|B|environment|
+full time|常勤の|adjective|B|business|
+funeral|葬式|noun|C|society|
+funny|おかしい|adjective|A|daily|
+fur|毛皮|noun|C|environment|
+furthermore|さらに|adverb|C|education|
+gallery|画廊|noun|B|general|
+garage|車庫|noun|B|daily|
+gardening|園芸|noun|B|daily|
+garlic|にんにく|noun|C|daily|
+gasoline|ガソリン|noun|B|environment|
+generally|一般に|adverb|A|general|
+gentleman|紳士|noun|B|society|
+geography|地理|noun|B|education|
+ghost|幽霊|noun|C|general|
+giant|巨大な|adjective|B|general|
+giraffe|キリン|noun|C|environment|
+glacier|氷河|noun|C|environment|
+global market|世界市場|noun|B|business|
+goat|やぎ|noun|C|environment|
+goods delivery|商品配達|noun|C|business|
+government office|役所|noun|B|society|
+grade school|小学校|noun|C|education|
+graduation|卒業|noun|A|education|
+grandparent|祖父母|noun|A|daily|
+grape|ぶどう|noun|B|daily|
+graph|グラフ|noun|B|education|
+greenhouse gas|温室効果ガス|noun|A|environment|
+greeting|あいさつ|noun|B|society|
+grill|焼く|verb|C|daily|
+guest room|客室|noun|C|daily|
+guidebook|案内書|noun|B|daily|
+gun|銃|noun|C|society|
+hallway|廊下|noun|B|daily|
+hammer|ハンマー|noun|C|technology|
+handout|配布資料|noun|C|education|
+handwriting|手書き|noun|C|education|
+hanger|ハンガー|noun|C|daily|
+harbor|港|noun|B|society|
+hardly|ほとんど〜ない|adverb|A|general|
+headline|見出し|noun|B|society|
+headphone|ヘッドホン|noun|B|technology|
+headquarters|本部|noun|C|business|
+heater|暖房器具|noun|B|daily|
+helmet|ヘルメット|noun|B|society|
+herb|ハーブ|noun|C|health|
+hero|英雄|noun|B|general|
+highway|高速道路|noun|B|society|
+hiking|ハイキング|noun|B|daily|
+hint|ヒント|noun|B|education|
+honey|はちみつ|noun|B|daily|
+horizon|地平線|noun|C|environment|
+hostel|安宿|noun|C|daily|
+housing|住宅|noun|B|society|
+humor|ユーモア|noun|B|society|
+hunger|飢え|noun|B|society|
+hunt|狩る|verb|B|environment|
+hurricane|ハリケーン|noun|C|environment|
+ice cream|アイスクリーム|noun|A|daily|
+identification|身分証明|noun|C|society|
+income tax|所得税|noun|C|business|
+index|索引|noun|C|education|
+indoor pool|屋内プール|noun|C|daily|
+ink|インク|noun|C|education|
+insect|昆虫|noun|B|environment|
+instructor|指導員|noun|B|education|
+insurance company|保険会社|noun|C|business|
+interpreter|通訳者|noun|C|business|
+invitation|招待|noun|A|daily|
+iron|アイロン、鉄|noun|B|technology|
+jacket|上着|noun|A|daily|
+jam|ジャム、渋滞|noun|B|daily|
+jar|びん|noun|C|daily|
+jeans|ジーンズ|noun|B|daily|
+jewelry|宝石類|noun|C|daily|
+jogging|ジョギング|noun|B|health|
+joke|冗談|noun|A|daily|
+journal|日誌、学術誌|noun|C|education|
+juice bar|ジュースバー|noun|C|daily|
+jungle|ジャングル|noun|C|environment|
+junior|下級の|adjective|B|education|
+kettle|やかん|noun|C|daily|
+keyboard|キーボード|noun|B|technology|
+kilometer|キロメートル|noun|A|general|
+kindergarten|幼稚園|noun|B|education|
+kingdom|王国|noun|C|society|
+kitten|子猫|noun|C|daily|
+knee|ひざ|noun|B|health|
+ladder|はしご|noun|C|technology|
+lamb|子羊|noun|C|environment|
+lamp|ランプ|noun|B|daily|
+landmark|目印、名所|noun|C|society|
+laptop|ノートパソコン|noun|A|technology|
+laundry|洗濯物|noun|B|daily|
+lawn|芝生|noun|C|daily|
+layer|層|noun|C|environment|
+leaf|葉|noun|A|environment|
+leather|革|noun|C|daily|
+lecture hall|講堂|noun|C|education|
+leftover|残り物|noun|C|daily|
+lemon|レモン|noun|B|daily|
+librarian|司書|noun|C|education|
+lifeboat|救命ボート|noun|C|society|
+lighthouse|灯台|noun|C|society|
+lightning|稲妻|noun|C|environment|
+lipstick|口紅|noun|C|daily|
+liquid|液体|noun|C|technology|
+literature class|文学の授業|noun|C|education|
+living room|居間|noun|A|daily|
+lobby|ロビー|noun|B|daily|
+local government|地方自治体|noun|B|society|
+locker|ロッカー|noun|B|education|
+log|丸太、記録|noun|C|technology|
+lottery|宝くじ|noun|C|daily|
+loudspeaker|拡声器|noun|C|technology|
+luggage|荷物|noun|B|daily|
+lung|肺|noun|C|health|

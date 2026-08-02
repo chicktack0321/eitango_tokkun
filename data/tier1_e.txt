@@ -1,0 +1,416 @@
+# Tier 1: 基礎既習語彙 追加分 m-z
+# word|meaning|pos|rank|domain|example
+
+magic|魔法|noun|B|general|
+mailbox|郵便受け|noun|B|daily|
+main dish|主菜|noun|B|daily|
+maintenance|保守、整備|noun|C|technology|
+makeup|化粧|noun|C|daily|
+mall|ショッピングモール|noun|B|business|
+mammal|哺乳類|noun|C|environment|
+manager|管理者|noun|A|business|
+manual|説明書|noun|B|technology|
+marathon|マラソン|noun|B|daily|
+marker|マーカー|noun|C|education|
+mask|マスク|noun|B|health|
+massage|マッサージ|noun|C|health|
+mate|仲間|noun|C|society|
+mayor|市長|noun|B|society|
+meaning|意味|noun|A|education|
+mechanic|整備士|noun|C|technology|
+medal|メダル|noun|B|general|
+medical care|医療|noun|A|health|
+melon|メロン|noun|C|daily|
+membership|会員資格|noun|B|business|
+memo|メモ|noun|B|business|
+merchant|商人|noun|C|business|
+metro|地下鉄|noun|C|daily|
+microphone|マイク|noun|B|technology|
+microscope|顕微鏡|noun|C|education|
+microwave|電子レンジ|noun|B|daily|
+midterm|中間試験|noun|C|education|
+military|軍の|adjective|C|society|
+mine|鉱山|noun|C|environment|
+mission|任務|noun|B|business|
+mist|霧|noun|C|environment|
+mobile|携帯の|adjective|A|technology|
+model|模型、模範|noun|A|technology|
+monthly|毎月の|adjective|B|business|
+monument|記念碑|noun|C|society|
+mood|気分|noun|B|health|
+motor|モーター|noun|C|technology|
+motorcycle|オートバイ|noun|B|daily|
+mud|泥|noun|C|environment|
+muscle|筋肉|noun|B|health|
+mushroom|きのこ|noun|C|daily|
+musical|ミュージカル|noun|B|general|
+mystery|謎|noun|B|general|
+nail|つめ、くぎ|noun|C|health|
+napkin|ナプキン|noun|C|daily|
+national park|国立公園|noun|B|environment|
+navy|海軍、紺色|noun|C|society|
+necklace|ネックレス|noun|C|daily|
+needle|針|noun|C|health|
+nephew|おい|noun|C|daily|
+nest|巣|noun|C|environment|
+network connection|ネット接続|noun|B|technology|
+niece|めい|noun|C|daily|
+nightmare|悪夢|noun|C|health|
+noodle|麺|noun|B|daily|
+notebook|ノート|noun|A|education|
+novel|小説|noun|A|education|
+nowhere|どこにも〜ない|adverb|B|general|
+nut|木の実|noun|C|daily|
+oatmeal|オートミール|noun|C|daily|
+observation|観察|noun|B|education|
+onion|たまねぎ|noun|B|daily|
+online course|オンライン講座|noun|A|education|
+operator|運転者、電話交換手|noun|C|business|
+opinion poll|世論調査|noun|C|society|
+orchestra|管弦楽団|noun|C|general|
+organic|有機の|adjective|B|health|
+outfit|服装|noun|C|daily|
+outline|概要|noun|B|education|
+oven|オーブン|noun|B|daily|
+overnight|一晩の|adjective|B|daily|
+owl|ふくろう|noun|C|environment|
+package|小包|noun|A|business|
+pain relief|鎮痛|noun|C|health|
+painting|絵画|noun|A|general|
+pale|青白い|adjective|C|health|
+pan|なべ|noun|B|daily|
+pancake|パンケーキ|noun|C|daily|
+panel|パネル、討論者|noun|B|technology|
+pants|ズボン|noun|B|daily|
+paragraph|段落|noun|B|education|
+parcel|小包|noun|C|business|
+parking lot|駐車場|noun|A|daily|
+partly|部分的に|adverb|B|general|
+part time|非常勤の|adjective|B|business|
+passport|パスポート|noun|A|daily|
+password|パスワード|noun|A|technology|
+path|小道|noun|B|environment|
+patience|忍耐|noun|B|health|
+pavement|舗道|noun|C|society|
+peach|桃|noun|B|daily|
+peak|頂点|noun|B|environment|
+pearl|真珠|noun|C|daily|
+pedestrian|歩行者|noun|C|society|
+peel|皮をむく|verb|C|daily|
+penalty|罰、罰金|noun|C|society|
+pension|年金|noun|C|business|
+pepper|こしょう|noun|B|daily|
+performance review|人事評価|noun|C|business|
+perfume|香水|noun|C|daily|
+pharmacy|薬局|noun|C|health|
+photographer|写真家|noun|B|general|
+physics|物理学|noun|B|education|
+pigeon|はと|noun|C|environment|
+pilot|操縦士|noun|A|business|
+pin|ピン|noun|C|daily|
+pineapple|パイナップル|noun|C|daily|
+pipe|管|noun|C|technology|
+pitch|投げる、音の高さ|verb|C|general|
+platform|プラットホーム|noun|B|daily|
+playground|遊び場|noun|B|daily|
+plug|プラグ、差し込む|noun|C|technology|
+plum|すもも|noun|C|daily|
+poem|詩|noun|B|education|
+poet|詩人|noun|C|education|
+poison|毒|noun|C|health|
+polar|極地の|adjective|C|environment|
+politician|政治家|noun|B|society|
+pollen|花粉|noun|C|health|
+population growth|人口増加|noun|B|society|
+pork|豚肉|noun|B|daily|
+port|港|noun|B|business|
+portrait|肖像画|noun|C|general|
+postcard|はがき|noun|B|daily|
+pot|なべ、つぼ|noun|B|daily|
+poultry|家禽|noun|C|environment|
+powder|粉|noun|C|daily|
+prayer|祈り|noun|C|society|
+prediction|予測|noun|B|education|
+preparation|準備|noun|A|education|
+presentation|発表|noun|A|education|
+press|新聞、押す|noun|B|society|
+price tag|値札|noun|C|business|
+priest|聖職者|noun|C|society|
+printer|プリンター|noun|B|technology|
+producer|製作者|noun|B|business|
+profile|横顔、プロフィール|noun|B|technology|
+progress report|経過報告|noun|B|education|
+proposal|提案書|noun|B|business|
+protein|たんぱく質|noun|B|health|
+public health|公衆衛生|noun|B|health|
+publisher|出版社|noun|C|education|
+pumpkin|かぼちゃ|noun|C|daily|
+puppy|子犬|noun|C|daily|
+purchase order|発注書|noun|C|business|
+purple|紫の|adjective|B|general|
+purse|財布|noun|B|daily|
+puzzle|パズル、当惑させる|noun|B|education|
+pyramid|ピラミッド|noun|C|education|
+queen|女王|noun|B|society|
+quiz|小テスト|noun|A|education|
+racket|ラケット|noun|C|daily|
+railroad|鉄道|noun|B|society|
+railway station|鉄道駅|noun|B|daily|
+rainbow|虹|noun|B|environment|
+rainfall|降水量|noun|C|environment|
+ranch|牧場|noun|C|environment|
+rank|順位|noun|B|education|
+rate of growth|成長率|noun|C|business|
+razor|かみそり|noun|C|daily|
+receipt|領収書|noun|B|business|
+receiver|受話器、受取人|noun|C|technology|
+reception|受付、歓迎会|noun|B|business|
+recorder|録音機|noun|C|technology|
+recycling bin|リサイクル箱|noun|B|environment|
+refrigerator|冷蔵庫|noun|B|daily|
+refund policy|返金規定|noun|C|business|
+registration|登録|noun|B|education|
+regular customer|常連客|noun|B|business|
+remote|遠隔の、リモコン|adjective|A|technology|
+rental|賃貸|noun|B|business|
+repairman|修理工|noun|C|technology|
+reporter|記者|noun|B|society|
+reptile|は虫類|noun|C|environment|
+rescue team|救助隊|noun|C|society|
+research paper|研究論文|noun|B|education|
+reservation|予約|noun|A|daily|
+resort|リゾート地|noun|B|daily|
+restroom|お手洗い|noun|A|daily|
+resume|履歴書|noun|C|business|
+ribbon|リボン|noun|C|daily|
+riddle|なぞなぞ|noun|C|education|
+roast|焼く|verb|C|daily|
+rocket|ロケット|noun|B|technology|
+roller|ローラー|noun|C|technology|
+roof top|屋上|noun|C|daily|
+rose|バラ|noun|B|environment|
+rugby|ラグビー|noun|C|daily|
+ruler|定規、支配者|noun|B|education|
+sailor|船員|noun|C|business|
+salesperson|販売員|noun|B|business|
+sandwich|サンドイッチ|noun|A|daily|
+satisfaction|満足|noun|B|business|
+sauce|ソース|noun|B|daily|
+sausage|ソーセージ|noun|C|daily|
+scarf|マフラー|noun|C|daily|
+schoolyard|校庭|noun|C|education|
+scissors|はさみ|noun|B|daily|
+score|得点|noun|A|education|
+screen|画面|noun|A|technology|
+sculpture|彫刻|noun|C|general|
+seafood|魚介類|noun|B|daily|
+search engine|検索エンジン|noun|B|technology|
+seat belt|シートベルト|noun|B|society|
+secretary|秘書|noun|B|business|
+security guard|警備員|noun|B|society|
+seesaw|シーソー|noun|C|daily|
+self study|独学|noun|B|education|
+seller|売り手|noun|B|business|
+semester|学期|noun|B|education|
+senior|年上の、上級の|adjective|B|education|
+sensor|センサー|noun|B|technology|
+series|連続、シリーズ|noun|B|general|
+servant|使用人|noun|C|society|
+session|会期、時間|noun|C|education|
+sewing|裁縫|noun|C|daily|
+shade|日陰|noun|B|environment|
+shadow|影|noun|B|general|
+shampoo|シャンプー|noun|C|daily|
+shark|サメ|noun|C|environment|
+shelter|避難所|noun|B|society|
+shellfish|貝類|noun|C|environment|
+shift work|交代勤務|noun|C|business|
+shipping|発送|noun|B|business|
+shoelace|靴ひも|noun|C|daily|
+shopkeeper|店主|noun|C|business|
+shopping cart|買い物かご|noun|B|business|
+shoulder|肩|noun|B|health|
+shrine|神社|noun|A|society|
+sidewalk|歩道|noun|B|society|
+sightseeing|観光|noun|A|daily|
+signboard|看板|noun|C|business|
+silk|絹|noun|C|daily|
+silver|銀|noun|B|general|
+similarity|類似点|noun|C|education|
+sink|流し、沈む|noun|B|daily|
+site|場所、サイト|noun|A|technology|
+skateboard|スケートボード|noun|C|daily|
+sketch|スケッチ|noun|C|general|
+slide show|スライド上映|noun|C|education|
+slipper|スリッパ|noun|C|daily|
+smartphone|スマートフォン|noun|A|technology|
+smoke|煙、喫煙する|noun|A|health|
+snack|軽食|noun|B|daily|
+snake|へび|noun|C|environment|
+sneaker|スニーカー|noun|B|daily|
+soap|石けん|noun|B|daily|
+sofa|ソファー|noun|B|daily|
+solar system|太陽系|noun|C|technology|
+soldier|兵士|noun|C|society|
+sore throat|のどの痛み|noun|B|health|
+sound wave|音波|noun|C|technology|
+souvenir|土産|noun|B|daily|
+spaceship|宇宙船|noun|C|technology|
+speaker|話し手、スピーカー|noun|A|technology|
+speed limit|制限速度|noun|B|society|
+spice|香辛料|noun|C|daily|
+spider|くも|noun|C|environment|
+spinach|ほうれん草|noun|C|daily|
+sponsor|後援者|noun|C|business|
+square|正方形、広場|noun|B|society|
+stadium|競技場|noun|B|daily|
+staff meeting|職員会議|noun|B|business|
+stage light|舞台照明|noun|C|general|
+staircase|階段|noun|C|daily|
+stall|屋台|noun|C|business|
+standard time|標準時|noun|C|society|
+statue|像|noun|C|society|
+steam|蒸気|noun|C|technology|
+steel|鋼鉄|noun|C|technology|
+stem|茎|noun|C|environment|
+stomach|胃|noun|B|health|
+storage|保管|noun|B|technology|
+stove|コンロ|noun|B|daily|
+strawberry|いちご|noun|B|daily|
+stream|小川|noun|B|environment|
+strike|ストライキ、打つ|noun|C|business|
+string|ひも|noun|B|general|
+stroller|ベビーカー|noun|C|daily|
+studio|スタジオ|noun|B|general|
+subscription|定期購読|noun|C|business|
+suit|スーツ、合う|noun|A|business|
+suitcase|スーツケース|noun|B|daily|
+sunburn|日焼け|noun|C|health|
+sunflower|ひまわり|noun|C|environment|
+sunrise|日の出|noun|B|environment|
+sunset|日没|noun|B|environment|
+supplier|供給業者|noun|C|business|
+surfing|サーフィン|noun|C|daily|
+surgeon|外科医|noun|C|health|
+surname|名字|noun|C|society|
+survival|生存|noun|B|environment|
+sweater|セーター|noun|B|daily|
+swimsuit|水着|noun|C|daily|
+switch|スイッチ、切り替える|noun|B|technology|
+syllable|音節|noun|C|education|
+syrup|シロップ|noun|C|daily|
+tablet|タブレット、錠剤|noun|A|technology|
+tag|札|noun|B|business|
+tank|タンク|noun|C|technology|
+tape|テープ|noun|B|daily|
+target|目標|noun|A|business|
+taxi|タクシー|noun|A|daily|
+tea ceremony|茶道|noun|C|society|
+teammate|チームメイト|noun|B|daily|
+teapot|急須|noun|C|daily|
+teenager|10代の若者|noun|A|society|
+telescope|望遠鏡|noun|C|technology|
+television|テレビ|noun|A|technology|
+temperature rise|気温上昇|noun|B|environment|
+tent|テント|noun|B|daily|
+terminal|終点、ターミナル|noun|B|daily|
+therapy|治療法|noun|C|health|
+thermometer|温度計|noun|C|health|
+thief|泥棒|noun|B|society|
+thread|糸|noun|C|daily|
+throat|のど|noun|B|health|
+thunder|雷|noun|B|environment|
+tide|潮|noun|C|environment|
+timetable|時刻表|noun|B|daily|
+tin|缶、すず|noun|C|environment|
+tissue|ティッシュ、組織|noun|B|health|
+title|題名|noun|A|education|
+toast|トースト|noun|B|daily|
+toe|足の指|noun|C|health|
+toilet|トイレ|noun|A|daily|
+tongue|舌|noun|B|health|
+toothbrush|歯ブラシ|noun|B|health|
+topic sentence|主題文|noun|C|education|
+torch|たいまつ|noun|C|technology|
+tourism|観光業|noun|A|business|
+tournament|トーナメント|noun|B|daily|
+towel|タオル|noun|B|daily|
+track|線路、跡|noun|B|daily|
+trade show|見本市|noun|C|business|
+traffic light|信号機|noun|B|society|
+trail|小道|noun|C|environment|
+trainer|訓練士|noun|B|health|
+translation|翻訳|noun|B|education|
+translator|翻訳者|noun|B|business|
+trash|ごみ|noun|B|environment|
+travel agency|旅行代理店|noun|B|business|
+tray|盆|noun|C|daily|
+treasure|宝物|noun|B|general|
+triangle|三角形|noun|C|education|
+tropical fish|熱帯魚|noun|C|environment|
+tube|管|noun|C|technology|
+tunnel|トンネル|noun|B|society|
+turkey|七面鳥|noun|C|daily|
+twin|双子|noun|B|daily|
+typhoon|台風|noun|A|environment|
+underground|地下の|adjective|B|society|
+underline|下線を引く|verb|B|education|
+union|組合|noun|C|business|
+universe|宇宙|noun|B|technology|
+upstairs|階上へ|adverb|B|daily|
+usage|使用法|noun|C|technology|
+user|利用者|noun|A|technology|
+utility bill|公共料金|noun|C|business|
+valley|谷|noun|B|environment|
+van|バン|noun|B|daily|
+vase|花瓶|noun|C|daily|
+vegetarian|菜食主義者|noun|B|health|
+vending machine|自動販売機|noun|B|daily|
+veterinarian|獣医|noun|C|health|
+video call|ビデオ通話|noun|A|technology|
+viewer|視聴者|noun|B|society|
+vinegar|酢|noun|C|daily|
+visa|ビザ|noun|B|society|
+vitamin|ビタミン|noun|B|health|
+volcano|火山|noun|B|environment|
+volleyball|バレーボール|noun|B|daily|
+voltage|電圧|noun|C|technology|
+voting|投票|noun|B|society|
+waiter|給仕|noun|B|business|
+waiting room|待合室|noun|B|health|
+wallpaper|壁紙|noun|C|daily|
+warning sign|警告標識|noun|B|society|
+washing machine|洗濯機|noun|B|daily|
+waste water|廃水|noun|B|environment|
+waterfall|滝|noun|B|environment|
+wave|波、振る|noun|A|environment|
+weakness|弱点|noun|B|education|
+wealth|富|noun|B|business|
+weather report|天気予報|noun|A|environment|
+web page|ウェブページ|noun|A|technology|
+website|ウェブサイト|noun|A|technology|
+wedding|結婚式|noun|B|daily|
+weed|雑草|noun|C|environment|
+weekday|平日|noun|B|daily|
+weight loss|減量|noun|B|health|
+wetland|湿地|noun|C|environment|
+whale|くじら|noun|B|environment|
+wheat|小麦|noun|C|environment|
+wheelchair|車いす|noun|B|health|
+whisper|ささやく|verb|C|daily|
+whistle|笛|noun|C|daily|
+willingness|意欲|noun|C|education|
+wind power|風力|noun|A|environment|
+wire|針金|noun|C|technology|
+wisdom|知恵|noun|C|education|
+wolf|おおかみ|noun|C|environment|
+wool|羊毛|noun|C|daily|
+workbook|問題集|noun|B|education|
+working hours|労働時間|noun|B|business|
+workplace|職場|noun|B|business|
+worm|虫|noun|C|environment|
+wrist|手首|noun|C|health|
+yard|庭、ヤード|noun|B|daily|
+yogurt|ヨーグルト|noun|C|daily|
+zebra|シマウマ|noun|C|environment|
+zone|地帯|noun|B|society|

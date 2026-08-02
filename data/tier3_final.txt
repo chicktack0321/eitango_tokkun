@@ -1,0 +1,353 @@
+# Tier 3: 2級コア発展語彙 最終追加分（単一語のみ）
+# word|meaning|pos|rank|domain|example
+
+abstract|抽象的な|adjective|C|education|The idea is too abstract for beginners.
+accelerate|加速する|verb|C|technology|The car accelerates smoothly.
+acknowledge|認める|verb|C|society|The company acknowledged the mistake.
+adequately|十分に|adverb|C|health|The room is adequately heated.
+administration|運営、政権|noun|C|business|The administration announced the change.
+admission fee|入場料|noun|B|business|The admission fee is 600 yen.
+adverse|不利な、逆の|adjective|C|health|The drug has few adverse effects.
+advocate|提唱する|verb|C|society|Doctors advocate regular exercise.
+aesthetic|美的な|adjective|C|general|The design has an aesthetic appeal.
+agriculture sector|農業部門|noun|C|business|The agriculture sector employs many people.
+alliance|同盟|noun|C|society|The two groups formed an alliance.
+allocate|割り当てる|verb|C|business|The city allocated funds for the park.
+ambiguous|あいまいな|adjective|C|education|The instructions were ambiguous.
+amend|修正する|verb|C|society|The law was amended last year.
+ancestor language|祖語|noun|C|education|Latin is the ancestor language of French.
+anniversary|記念日|noun|B|society|The school celebrated its 50th anniversary.
+antique|骨董の|adjective|C|general|She collects antique clocks.
+apparatus|装置|noun|C|technology|The apparatus measures air quality.
+appliance store|電器店|noun|C|business|He works at an appliance store.
+applicable|適用できる|adjective|C|society|The rule is applicable to all members.
+appoint|任命する|verb|C|business|She was appointed director.
+apprentice|見習い|noun|C|business|He started as an apprentice.
+arbitrary|恣意的な|adjective|C|society|The choice seemed arbitrary.
+architectural|建築の|adjective|C|society|The building has architectural value.
+archive|記録保管所|noun|C|education|The archive holds old newspapers.
+arise|生じる|verb|C|general|A problem arose during the test.
+armed|武装した|adjective|C|society|Armed guards protect the site.
+artery|動脈|noun|C|health|The artery carries blood from the heart.
+ascend|上る|verb|C|environment|The path ascends steeply.
+assemble parts|部品を組み立てる|verb|C|technology|Robots assemble parts quickly.
+assert|主張する|verb|C|society|He asserted his right to speak.
+assign|割り当てる|verb|B|education|The teacher assigned three tasks.
+asthma|ぜんそく|noun|C|health|Air pollution can worsen asthma.
+astronomy|天文学|noun|C|education|He studies astronomy at university.
+atmosphere layer|大気層|noun|C|environment|The upper atmosphere layer is very cold.
+attribute|〜のせいにする、特性|verb|C|education|She attributes her success to practice.
+authorize|許可する|verb|C|business|Only managers can authorize refunds.
+autonomy|自治、自律|noun|C|society|The region gained more autonomy.
+aviation|航空|noun|C|technology|Aviation fuel is expensive.
+bankruptcy|倒産|noun|C|business|The chain filed for bankruptcy.
+beneficiary|受益者|noun|C|business|Name a beneficiary on the form.
+biodegradable|生分解性の|adjective|C|environment|The bags are biodegradable.
+blend|混ぜる|verb|C|daily|Blend the fruit with ice.
+brochure|パンフレット|noun|C|business|Take a brochure at the desk.
+bureaucracy|官僚制|noun|C|society|Bureaucracy slowed the project.
+calculation error|計算違い|noun|C|education|A calculation error caused the delay.
+cancel out|相殺する|verb|C|business|The gains cancel out the losses.
+candidate list|候補者名簿|noun|C|society|The candidate list was published.
+capitalism|資本主義|noun|C|society|The book explains modern capitalism.
+carbon neutral|炭素中立の|adjective|C|environment|The company aims to be carbon neutral.
+cardboard|段ボール|noun|C|environment|Cardboard is easy to recycle.
+casualty|死傷者|noun|C|society|There were no casualties in the fire.
+cautious|慎重な|adjective|C|business|The bank is cautious about lending.
+census|国勢調査|noun|C|society|The census is taken every five years.
+certify|証明する|verb|C|business|The lab certified the results.
+cheaply|安く|adverb|B|business|You can travel cheaply by bus.
+chronic|慢性の|adjective|C|health|She suffers from chronic pain.
+circumstances|状況|noun|C|society|The circumstances have changed.
+citation|引用|noun|C|education|Add a citation for each source.
+clarity|明確さ|noun|C|education|The report lacks clarity.
+classify|分類する|verb|C|education|Classify the animals by size.
+clinical|臨床の|adjective|C|health|Clinical trials began last year.
+coexist|共存する|verb|C|environment|Farmers and wildlife can coexist.
+cognitive|認知の|adjective|C|health|Sleep affects cognitive ability.
+coherent|首尾一貫した|adjective|C|education|Write a coherent argument.
+collaborate|協働する|verb|C|business|The two schools collaborated on the project.
+commemorate|記念する|verb|C|society|The statue commemorates the event.
+commodity|商品、日用品|noun|C|business|Rice is an important commodity.
+compel|強いる|verb|C|society|The rain compelled us to stay inside.
+compile|編集する|verb|C|education|She compiled a list of useful sites.
+complement|補完する|verb|C|business|The two services complement each other.
+compliance|遵守|noun|C|business|Compliance with the rules is required.
+comply|従う|verb|C|society|All shops must comply with the law.
+comprise|構成する|verb|C|society|The council comprises twelve members.
+conceal|隠す|verb|C|society|He concealed the truth for years.
+concede|認める、譲る|verb|C|society|She conceded that the plan had flaws.
+conception|概念、着想|noun|C|education|The conception of the project took a year.
+condemn|非難する|verb|C|society|Leaders condemned the attack.
+confine|限定する、閉じ込める|verb|C|health|The illness confined him to bed.
+confront|直面する|verb|C|society|The town confronts a shrinking population.
+congestion|混雑|noun|C|society|Traffic congestion is worst at eight.
+conquer|征服する|verb|C|society|The empire conquered the region.
+conscience|良心|noun|C|society|His conscience troubled him.
+consecutive|連続した|adjective|C|general|It rained for five consecutive days.
+consensus|合意|noun|C|society|The group reached a consensus.
+conserve|保護する、節約する|verb|B|environment|We must conserve water in summer.
+considerably|かなり|adverb|C|business|Costs fell considerably.
+consolidate|統合する|verb|C|business|The firm consolidated its branches.
+conspicuous|目立つ|adjective|C|general|The sign is conspicuous from the road.
+constitute|構成する|verb|C|society|Women constitute half of the workforce.
+constitution|憲法|noun|C|society|The constitution guarantees free speech.
+constrain|制約する|verb|C|business|A small budget constrains the plan.
+consult|相談する|verb|B|health|Consult a doctor before starting.
+contend|主張する、争う|verb|C|society|Critics contend that the plan is unfair.
+continual|絶え間ない|adjective|C|general|Continual noise made study difficult.
+contradict|矛盾する|verb|C|education|The two reports contradict each other.
+contrary|反対の|adjective|C|education|Contrary to expectations, sales rose.
+contribute funds|資金を出す|verb|C|society|Local firms contributed funds.
+convention|慣習、大会|noun|C|society|It is a social convention here.
+converse|逆の、会話する|adjective|C|education|The converse is also true.
+conviction|信念、有罪判決|noun|C|society|She spoke with conviction.
+cooperative|協力的な|adjective|C|society|The residents were cooperative.
+correlation|相関関係|noun|C|education|There is a correlation between sleep and grades.
+corrupt|腐敗した|adjective|C|society|The system was corrupt for years.
+counterpart|相手方、対応するもの|noun|C|business|She met her counterpart from Osaka.
+credible|信用できる|adjective|C|society|The witness seemed credible.
+critically|批判的に、危機的に|adverb|C|education|Read the article critically.
+cultivate|栽培する、育てる|verb|C|environment|Farmers cultivate rice here.
+cumulative|累積の|adjective|C|education|The cumulative total is 3,000.
+curb|抑制する|verb|C|environment|The city acted to curb pollution.
+customary|慣習的な|adjective|C|society|It is customary to remove your shoes.
+deceive|だます|verb|C|society|The advertisement deceived customers.
+decisive factor|決定的要因|noun|C|education|Price was the decisive factor.
+declining|減少している|adjective|C|society|The town has a declining population.
+deduce|推論する|verb|C|education|We can deduce the answer from the data.
+deficit|赤字、不足|noun|C|business|The city faces a budget deficit.
+degrade|劣化させる|verb|C|environment|Plastic degrades very slowly.
+delegate|委任する、代表|verb|C|business|Managers should delegate more.
+deliberate|意図的な|adjective|C|society|It was a deliberate decision.
+demolish|取り壊す|verb|C|society|The old hall was demolished.
+denote|示す|verb|C|education|The symbol denotes danger.
+depict|描く|verb|C|general|The painting depicts a harbor.
+deplete|使い果たす|verb|C|environment|Overfishing depletes fish stocks.
+deploy|配備する|verb|C|technology|The team deployed sensors in the river.
+deprive|奪う|verb|C|society|The noise deprived them of sleep.
+derive|得る、由来する|verb|C|education|The word derives from Latin.
+descend|下る|verb|C|environment|The path descends to the river.
+designate|指定する|verb|C|society|The area was designated a park.
+detain|拘留する、引き止める|verb|C|society|Passengers were detained for an hour.
+deteriorate|悪化する|verb|C|health|His condition deteriorated overnight.
+devise|考案する|verb|C|technology|Engineers devised a simpler method.
+diminish|減少する|verb|C|environment|The supply diminished each year.
+discard|捨てる|verb|C|environment|Do not discard batteries with normal waste.
+discharge|排出する、解放する|verb|C|environment|The plant discharges water into the river.
+disclose|公表する|verb|C|business|The company disclosed the figures.
+discourse|談話|noun|C|education|Public discourse has become sharper.
+disguise|変装させる、隠す|verb|C|general|He disguised his disappointment.
+disorder|障害、混乱|noun|C|health|The clinic treats sleep disorders.
+disperse|散らす|verb|C|environment|The wind dispersed the smoke.
+displace|移動させる、追いやる|verb|C|society|The flood displaced 200 families.
+disrupt|混乱させる|verb|C|society|The strike disrupted train services.
+dissolve|溶かす|verb|C|technology|Sugar dissolves in water.
+distort|ゆがめる|verb|C|society|The report distorted the facts.
+diverge|分岐する|verb|C|education|Their opinions diverged sharply.
+divert|そらす|verb|C|society|Traffic was diverted to another road.
+doctrine|教義、主義|noun|C|society|The doctrine dates from the last century.
+draft version|草案|noun|C|business|Send me the draft version today.
+drastic|思い切った|adjective|C|business|The company took drastic measures.
+duplicate|複製する|verb|C|technology|Do not duplicate the file.
+dwell|住む|verb|C|society|Few people dwell in this valley.
+eager to|〜したがっている|adjective|B|education|Students were eager to try.
+earnest|真剣な|adjective|C|society|She made an earnest effort.
+ecological|生態学の|adjective|C|environment|The dam had an ecological impact.
+edit|編集する|verb|B|technology|Edit the text before printing.
+elaborate|精巧な、詳しく述べる|adjective|C|general|The design is elaborate.
+elevate|上げる|verb|C|health|Elevate your leg to reduce swelling.
+eligible|資格のある|adjective|C|business|Students are eligible for a discount.
+embrace|受け入れる、抱く|verb|C|society|The town embraced the new plan.
+emit|放出する|verb|C|environment|Factories emit carbon dioxide.
+empirical|経験的な|adjective|C|education|There is empirical evidence for this.
+enact|制定する|verb|C|society|The law was enacted in 2019.
+encompass|包含する|verb|C|education|The course encompasses several topics.
+endorse|支持する|verb|C|business|Several doctors endorsed the product.
+endure|耐える|verb|C|general|They endured a long winter.
+enforce|施行する|verb|C|society|Police enforce the speed limit.
+enrich|豊かにする|verb|C|education|Travel enriches your understanding.
+enroll|登録する|verb|C|education|Two hundred students enrolled.
+entail|伴う|verb|C|business|The job entails frequent travel.
+entitle|権利を与える|verb|C|business|The ticket entitles you to one drink.
+equip|備え付ける|verb|C|technology|The rooms are equipped with sensors.
+equivalent|同等の|adjective|C|education|One mile is equivalent to 1.6 kilometers.
+erode|浸食する|verb|C|environment|Waves erode the cliff each year.
+erupt|噴火する|verb|C|environment|The volcano erupted in 1991.
+evacuate|避難させる|verb|C|society|Residents were evacuated before the storm.
+evident|明白な|adjective|C|education|The improvement is evident.
+evolve|進化する|verb|C|environment|Species evolve over long periods.
+exaggerate|誇張する|verb|C|society|The report exaggerated the danger.
+excel|優れている|verb|C|education|She excels at languages.
+exclusively|もっぱら|adverb|C|business|The lounge is exclusively for members.
+execute|実行する|verb|C|business|The plan was executed on time.
+exert|行使する、及ぼす|verb|C|society|The group exerts great influence.
+exhaustive|徹底的な|adjective|C|education|They made an exhaustive search.
+exile|亡命|noun|C|society|The writer lived in exile.
+expel|追放する|verb|C|education|Two students were expelled.
+explicit|明確な|adjective|C|education|Give explicit instructions.
+exploit|利用する、搾取する|verb|C|environment|The company exploited the mineral resources.
+extract|抽出する|verb|C|technology|They extract oil from the seeds.
+fabricate|でっち上げる、製造する|verb|C|society|The story was fabricated.
+facilitate|促進する|verb|C|education|Small groups facilitate discussion.
+faculty|学部、能力|noun|C|education|She joined the science faculty.
+fatal|致命的な|adjective|C|health|The accident was not fatal.
+feasible|実行可能な|adjective|C|business|The plan is technically feasible.
+fluctuate|変動する|verb|C|business|Prices fluctuate with the season.
+formulate|策定する|verb|C|business|The team formulated a new strategy.
+fortunate|幸運な|adjective|B|general|We were fortunate with the weather.
+foster|促進する、育てる|verb|C|education|The club fosters teamwork.
+fragile|壊れやすい|adjective|C|environment|The ecosystem is fragile.
+fulfill|果たす|verb|C|business|She fulfilled her promise.
+fundamental|基本的な|adjective|C|education|Trust is fundamental to the process.
+generosity|寛大さ|noun|C|society|His generosity surprised everyone.
+gigantic|巨大な|adjective|C|general|A gigantic tree fell across the road.
+govern|統治する|verb|C|society|The island is governed locally.
+gradual|徐々の|adjective|B|general|There was a gradual improvement.
+grasp|理解する、つかむ|verb|C|education|He quickly grasped the idea.
+gratitude|感謝|noun|C|society|She expressed her gratitude.
+halt|停止する|verb|C|business|Production halted for two days.
+hazard|危険|noun|C|health|Loose wires are a hazard.
+hence|それゆえ|adverb|C|education|Hence the price is higher.
+hierarchy|階層|noun|C|business|The company has a flat hierarchy.
+hostile|敵対的な|adjective|C|society|The reaction was hostile.
+humble|謙虚な|adjective|C|society|He remained humble after the award.
+hypothesis|仮説|noun|C|education|The experiment tested the hypothesis.
+ideology|イデオロギー|noun|C|society|The party changed its ideology.
+illustrate|説明する、図示する|verb|B|education|The graph illustrates the trend.
+imitate|まねる|verb|B|education|Children imitate adults.
+immense|巨大な|adjective|C|general|The task required immense patience.
+impair|損なう|verb|C|health|Lack of sleep impairs judgment.
+impartial|公平な|adjective|C|society|The judge must be impartial.
+impose|課す|verb|C|society|The city imposed a new tax.
+inadequate|不十分な|adjective|C|society|The response was inadequate.
+incentive|動機、報奨|noun|C|business|Tax breaks are an incentive to invest.
+incline|傾ける、傾向がある|verb|C|education|I incline to agree with you.
+incorporate|取り入れる|verb|C|business|The design incorporates local materials.
+indispensable|不可欠な|adjective|C|technology|The tool is indispensable for the work.
+induce|引き起こす|verb|C|health|The drug induces sleep.
+indulge|ふける|verb|C|daily|He indulged in a long lunch.
+inference|推論|noun|C|education|Draw an inference from the data.
+inflation|インフレ|noun|C|business|Inflation reached three percent.
+inherit|受け継ぐ|verb|C|society|She inherited the house from her aunt.
+inhibit|抑制する|verb|C|health|Cold weather inhibits growth.
+initiate|開始する|verb|C|business|The city initiated a survey.
+inject|注射する|verb|C|health|The nurse injected the vaccine.
+innovative|革新的な|adjective|C|technology|The design is innovative.
+insight|洞察|noun|C|education|The book offers useful insight.
+inspect|検査する|verb|C|technology|Inspect the equipment monthly.
+install software|ソフトを導入する|verb|B|technology|Install the software before class.
+instinct|本能|noun|C|environment|Birds migrate by instinct.
+integrate|統合する|verb|C|society|The school integrates art and science.
+integrity|誠実さ|noun|C|society|She is known for her integrity.
+intellectual|知的な|adjective|C|education|The talk was an intellectual challenge.
+intensity|強さ|noun|C|environment|The storm grew in intensity.
+interfere|干渉する、妨げる|verb|C|society|Do not interfere with the experiment.
+intermediate|中級の|adjective|B|education|She joined the intermediate class.
+intervene|介入する|verb|C|society|The government intervened quickly.
+intimate|親密な|adjective|C|society|They are intimate friends.
+intrigue|興味をそそる|verb|C|general|The story intrigued readers.
+intuition|直感|noun|C|education|Do not rely only on intuition.
+invaluable|非常に貴重な|adjective|C|education|Her advice was invaluable.
+irrelevant|無関係な|adjective|C|education|That point is irrelevant here.
+justify|正当化する|verb|C|society|The results justify the cost.
+legitimate|正当な|adjective|C|society|That is a legitimate concern.
+liable|責任がある、しがちな|adjective|C|business|The company is liable for the damage.
+literacy|識字能力|noun|C|education|The program improves adult literacy.
+magnitude|規模|noun|C|environment|The magnitude of the quake was 6.5.
+manipulate|操作する|verb|C|technology|The software manipulates images.
+margin|余白、利益率|noun|C|business|The margin is very small.
+mediate|仲裁する|verb|C|society|A third party mediated the dispute.
+merge|合併する|verb|C|business|The two banks merged last year.
+migrate|移動する、移住する|verb|C|environment|Birds migrate south in autumn.
+mislead|誤解させる|verb|C|society|The label misled shoppers.
+modify|修正する|verb|C|technology|We modified the design slightly.
+monopoly|独占|noun|C|business|The firm has a near monopoly.
+mortality|死亡率|noun|C|health|Infant mortality has fallen.
+municipal|市の|adjective|C|society|The municipal library is free.
+nominate|指名する|verb|C|society|She was nominated for the award.
+notable|注目すべき|adjective|C|general|There was a notable improvement.
+notify|通知する|verb|C|business|Notify us of any change.
+nurture|育てる|verb|C|education|Schools nurture curiosity.
+obey|従う|verb|B|society|Drivers must obey the signs.
+oblige|義務づける|verb|C|society|The law obliges shops to close by ten.
+obscure|不明瞭な|adjective|C|education|The origin of the custom is obscure.
+occupy|占める|verb|C|society|The office occupies two floors.
+offset|相殺する|verb|C|environment|Tree planting offsets some emissions.
+optimal|最適な|adjective|C|technology|Find the optimal setting.
+outline plan|概略計画|noun|C|business|The outline plan was approved.
+outstanding|傑出した、未払いの|adjective|C|education|Her essay was outstanding.
+overlook|見落とす|verb|C|business|We overlooked one important detail.
+overwhelming|圧倒的な|adjective|C|society|The support was overwhelming.
+persist|持続する、固執する|verb|C|health|The symptoms persisted for a week.
+pessimistic|悲観的な|adjective|C|general|He is pessimistic about the outcome.
+pledge|誓約する|verb|C|society|The city pledged to cut waste.
+plunge|急落する、飛び込む|verb|C|business|Prices plunged in March.
+portray|描く|verb|C|general|The film portrays village life.
+precede|先行する|verb|C|education|A short talk preceded the film.
+predominant|主要な|adjective|C|society|Rice is the predominant crop.
+preferable|望ましい|adjective|C|general|An early start is preferable.
+prevail|普及する、打ち勝つ|verb|C|society|Old customs still prevail here.
+prohibit|禁止する|verb|C|society|Smoking is prohibited indoors.
+prominent|著名な、目立つ|adjective|C|society|She is a prominent researcher.
+prompt|促す、迅速な|verb|C|business|The delay prompted complaints.
+prone|〜しがちな|adjective|C|health|He is prone to headaches.
+provoke|引き起こす|verb|C|society|The remark provoked anger.
+pursue|追求する|verb|C|education|She pursued a career in science.
+radical|急進的な、根本的な|adjective|C|society|The reform was radical.
+reassure|安心させる|verb|C|health|The doctor reassured the patient.
+rebuild|再建する|verb|B|society|The town rebuilt the bridge.
+recall|思い出す、回収する|verb|B|business|The maker recalled 3,000 units.
+reckon|思う、計算する|verb|C|general|I reckon it will take a week.
+reconcile|和解させる|verb|C|society|The two sides were reconciled.
+refine|洗練する、精製する|verb|C|technology|They refined the process further.
+reinforce|強化する|verb|C|society|The wall was reinforced with steel.
+remedy|治療、改善策|noun|C|health|There is no simple remedy.
+render|与える、〜にする|verb|C|society|The storm rendered the road unusable.
+renovate|改装する|verb|C|society|They renovated the old station.
+repetition|繰り返し|noun|B|education|Repetition helps memory.
+reproduce|複製する、繁殖する|verb|C|environment|The fish reproduce in spring.
+resemble|似ている|verb|C|general|The building resembles a ship.
+reside|居住する|verb|C|society|About 3,000 people reside here.
+retain|保持する|verb|C|education|We retain more when we sleep well.
+retrieve|取り戻す|verb|C|technology|The system retrieves old records.
+revenue source|収入源|noun|C|business|Tourism is a major revenue source.
+rigid|厳格な、硬い|adjective|C|society|The rules are too rigid.
+scarce|乏しい|adjective|C|environment|Water is scarce in this region.
+scatter|まき散らす|verb|C|environment|The wind scattered the leaves.
+scrutiny|精査|noun|C|society|The plan came under close scrutiny.
+segment|区分|noun|C|business|The market has three segments.
+sequence order|順序|noun|C|education|Follow the sequence order exactly.
+simulate|模擬実験する|verb|C|technology|The program simulates a flood.
+simultaneously|同時に|adverb|C|technology|The two events happened simultaneously.
+skeptical|懐疑的な|adjective|C|education|Scientists were skeptical at first.
+speculate|推測する|verb|C|business|Analysts speculate about the cause.
+spontaneous|自発的な|adjective|C|society|The applause was spontaneous.
+stimulate|刺激する|verb|C|business|Low rates stimulate spending.
+straightforward|わかりやすい|adjective|C|education|The instructions are straightforward.
+subsequent|その後の|adjective|C|education|Subsequent tests confirmed the result.
+subtle|微妙な|adjective|C|education|There is a subtle difference.
+succession|連続、継承|noun|C|society|He won three times in succession.
+sufficiently|十分に|adverb|C|education|The room is sufficiently lit.
+summarize|要約する|verb|B|education|Summarize the article in five lines.
+superior|優れた|adjective|C|business|The new model is superior in every way.
+supervise|監督する|verb|C|business|A teacher supervises the club.
+suppress|抑える|verb|C|health|The medicine suppresses the cough.
+surpass|上回る|verb|C|business|Sales surpassed our target.
+suspicion|疑い|noun|C|society|The report raised suspicion.
+sustain|持続させる、支える|verb|C|environment|The forest sustains many species.
+terminate|終了させる|verb|C|business|The contract was terminated early.
+thereby|それによって|adverb|C|education|Costs fell, thereby raising profits.
+transform|変える|verb|C|society|The internet transformed shopping.
+transparent|透明な、明白な|adjective|C|society|The process must be transparent.
+undertake|引き受ける|verb|C|business|The team undertook a major study.
+unify|統一する|verb|C|society|The reform unified the two systems.
+unstable|不安定な|adjective|C|business|The market remains unstable.
+utilize|活用する|verb|C|technology|The system utilizes waste heat.
+verify|検証する|verb|C|education|Verify the data before publishing.
+versatile|多用途の|adjective|C|technology|The tool is light and versatile.
+viable|実行可能な|adjective|C|business|Solar power is now a viable option.
+vigorous|活発な|adjective|C|health|Avoid vigorous exercise for a week.
+virtually|事実上|adverb|C|general|The work is virtually complete.
+widespread|広範囲の|adjective|C|society|The custom is widespread in Asia.
+withstand|耐える|verb|C|technology|The bridge can withstand strong winds.
