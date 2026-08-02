@@ -80,8 +80,6 @@ final class EitangoAppUITests: XCTestCase {
                     settle()
                 }
             }
-
-            captureAddWordSpellCheck(app)
         }
 
         let quizTab = app.tabBars.buttons["4択クイズ"]
@@ -124,32 +122,35 @@ final class EitangoAppUITests: XCTestCase {
     }
 
     /// 単語追加のスペルチェック。わざと綴りを間違えて、警告と候補が出ることを撮る。
-    /// 終わったら必ずシートを閉じる（開いたままだとソフトウェアキーボードが残り、
-    /// 以降のタブ操作が届かなくなる）。
-    private func captureAddWordSpellCheck(_ app: XCUIApplication) {
+    ///
+    /// 独立したテストにしてある。文字入力ではソフトウェアキーボードを操作するため、
+    /// 打ち損じてマイクキーに触れるといったズレが起きうる。同じテストに入れておくと
+    /// そこから先のスクリーンショットがまとめて別画面になってしまうので、
+    /// 巻き添えが出ないよう切り離す（テストごとにアプリは起動し直される）。
+    func testCaptureAddWordScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let wordListTab = app.tabBars.buttons["単語帳"]
+        guard wordListTab.waitForExistence(timeout: 10) else { return }
+        wordListTab.tap()
+        settle()
+
         let addButton = app.buttons["addWordButton"]
         guard addButton.waitForExistence(timeout: 5), addButton.isHittable else { return }
         addButton.tap()
         settle()
 
         let wordField = app.textFields["英単語"]
-        if wordField.waitForExistence(timeout: 5) {
-            wordField.tap()
-            wordField.typeText("oportunity")
+        guard wordField.waitForExistence(timeout: 5) else { return }
+        wordField.tap()
+        wordField.typeText("oportunity")
 
-            let addConfirm = app.buttons["追加"]
-            if addConfirm.exists {
-                addConfirm.tap()
-                settle()
-                capture(app, "02b_AddWord_SpellCheck")
-            }
-        }
-
-        let cancel = app.buttons["キャンセル"]
-        if cancel.waitForExistence(timeout: 5) {
-            cancel.tap()
-            settle()
-        }
+        let addConfirm = app.buttons["追加"]
+        guard addConfirm.waitForExistence(timeout: 5) else { return }
+        addConfirm.tap()
+        settle()
+        capture(app, "02b_AddWord_SpellCheck")
     }
 
     /// 画面遷移アニメーションが落ち着くのを待つ（厳密な待機条件がない箇所向けの簡易対応）
