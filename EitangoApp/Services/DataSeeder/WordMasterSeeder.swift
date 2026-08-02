@@ -109,7 +109,10 @@ enum WordMasterSeeder {
         // 新しいseedに含まれなくなった単語（改訂で削除された語）はマスターから除去する。
         // UserProgress側は意図的に触らない = 学習履歴は残り続けるが、参照先の単語が消えても実害はない
         // （UI側は WordMaster が存在する行だけを表示するため孤立した進捗レコードは単に表示されなくなるだけ）。
-        for orphan in existingById.values {
+        //
+        // ただしユーザーが自分で追加した語は同梱JSONに載っていないため、
+        // 区別せずに消すとアプリを更新するたびに自作の単語が失われる。
+        for orphan in existingById.values where orphan.source == .bundled {
             context.delete(orphan)
         }
     }

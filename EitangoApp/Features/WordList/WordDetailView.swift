@@ -9,6 +9,12 @@ struct WordDetailView: View {
     // ユーザーが聴いていた音楽を止めてしまうため、共有インスタンスを使う
     @State private var audioManager = AudioPlaybackManager.shared
     @State private var progress: UserProgress?
+    /// 自分で追加した語のときだけ入る原本。編集・削除に使う。
+    @State private var userWord: UserWord?
+    @State private var isEditing = false
+    @State private var isConfirmingDelete = false
+
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         Form {
@@ -31,7 +37,12 @@ struct WordDetailView: View {
             Section("データ") {
                 LabeledContent("頻出度", value: word.category.displayName)
                 LabeledContent("品詞", value: word.partOfSpeech.displayName)
-                LabeledContent("出題回数", value: "\(word.frequencyCount)回")
+                // 過去問での出題回数は同梱データにしか無い値。自作の語では意味を持たない。
+                if word.source == .user {
+                    LabeledContent("登録", value: "自分で追加した単語")
+                } else {
+                    LabeledContent("出題回数", value: "\(word.frequencyCount)回")
+                }
                 if let progress {
                     LabeledContent("正答率", value: percentString(progress.accuracy))
                 }
@@ -58,11 +69,42 @@ struct WordDetailView: View {
             } footer: {
                 Text((progress?.status ?? .notStudied).criteria)
             }
+
+            if let userWord {
+                Section {
+                    Button("編集する") { isEditing = true }
+                    Button("単語帳から削除", role: .destructive) { isConfirmingDelete = true }
+                } footer: {
+                    Text("削除すると、この単語の学習履歴も一緒に消えます。")
+                }
+            }
         }
         .navigationTitle(word.word)
+        .sheet(isPresented: $isEditing, onDismiss: reloadUserWord) {
+            WordEditorView(editing: userWord)
+        }
+        .alert("この単語を削除しますか？", isPresented: $isConfirmingDelete) {
+            Button("削除", role: .destructive, action: deleteUserWord)
+            Button("キャンセル", role: .cancel) {}
+        } message: {
+            Text("「\(word.word)」と、その学習履歴が削除されます。この操作は取り消せません。")
+        }
         .task {
             progress = ProgressRepository(context: modelContext).progress(for: word.wordId)
+            reloadUserWord()
         }
+    }
+
+    private func reloadUserWord() {
+        guard word.source == .user else { return }
+        userWord = UserWordRepository(context: modelContext).userWord(for: word.wordId)
+    }
+
+    private func deleteUserWord() {
+        guard let userWord else { return }
+        UserWordRepository(context: modelContext).delete(userWord)
+        // 一覧に残っている参照先が消えるため、詳細は閉じる
+        dismiss()
     }
 
     private func percentString(_ value: Double) -> String {

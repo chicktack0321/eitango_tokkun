@@ -17,6 +17,15 @@ enum FrequencyRank: String, Codable, CaseIterable, Identifiable {
     }
 }
 
+/// 単語の出どころ。
+///
+/// 同梱JSONの単語は改訂のたびに総入れ替えされるが、ユーザーが自分で追加した単語は
+/// そこで消えてはいけない。両者を区別できないと、アプリ更新で自作の単語が失われる。
+enum WordSource: String, Codable {
+    case bundled
+    case user
+}
+
 enum PartOfSpeech: String, Codable, CaseIterable, Identifiable {
     case noun
     case verb

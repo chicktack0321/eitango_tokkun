@@ -15,7 +15,8 @@ enum AppContainer {
             WordMaster.self,
             UserProgress.self,
             StudyLog.self,
-            TypingScore.self
+            TypingScore.self,
+            UserWord.self
         ])
 
         let container = makeContainer(schema: schema)
@@ -28,6 +29,10 @@ enum AppContainer {
         } catch {
             logger.error("単語マスターの初期化に失敗しました: \(error.localizedDescription, privacy: .public)")
         }
+
+        // ユーザーが追加した単語を単語帳へ戻す。seedの直後に行うことで、
+        // 同梱データの改訂やストアの作り直しがあっても自作の単語が消えない。
+        UserWordRepository(context: container.mainContext).syncToMaster()
 
         return container
     }()

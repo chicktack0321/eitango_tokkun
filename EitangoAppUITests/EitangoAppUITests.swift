@@ -79,6 +79,8 @@ final class EitangoAppUITests: XCTestCase {
                     settle()
                 }
             }
+
+            captureAddWordSpellCheck(app)
         }
 
         let quizTab = app.tabBars.buttons["4択クイズ"]
@@ -117,6 +119,35 @@ final class EitangoAppUITests: XCTestCase {
                 settle()
                 capture(app, "08_Typing_Playing")
             }
+        }
+    }
+
+    /// 単語追加のスペルチェック。わざと綴りを間違えて、警告と候補が出ることを撮る。
+    /// 終わったら必ずシートを閉じる（開いたままだとソフトウェアキーボードが残り、
+    /// 以降のタブ操作が届かなくなる）。
+    private func captureAddWordSpellCheck(_ app: XCUIApplication) {
+        let addButton = app.buttons["addWordButton"]
+        guard addButton.waitForExistence(timeout: 5), addButton.isHittable else { return }
+        addButton.tap()
+        settle()
+
+        let wordField = app.textFields["英単語"]
+        if wordField.waitForExistence(timeout: 5) {
+            wordField.tap()
+            wordField.typeText("oportunity")
+
+            let addConfirm = app.buttons["追加"]
+            if addConfirm.exists {
+                addConfirm.tap()
+                settle()
+                capture(app, "02b_AddWord_SpellCheck")
+            }
+        }
+
+        let cancel = app.buttons["キャンセル"]
+        if cancel.waitForExistence(timeout: 5) {
+            cancel.tap()
+            settle()
         }
     }
 

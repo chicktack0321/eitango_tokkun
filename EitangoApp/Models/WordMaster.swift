@@ -24,6 +24,12 @@ final class WordMaster {
     /// マスターデータの更新検知用（seed JSON の updatedAt をそのまま保持）
     var updatedAt: Date
 
+    /// 同梱JSON由来か、ユーザーが自分で追加した語か。
+    /// seedのUpsertは「JSONに無い語」を削除するため、この区別が無いと
+    /// アプリ更新のたびにユーザーの追加分が消える。
+    /// 既存ストアからのアップデートでも既定値が入るよう、省略可能な初期値を持たせている。
+    var sourceRaw: String = WordSource.bundled.rawValue
+
     init(
         wordId: String,
         word: String,
@@ -32,7 +38,8 @@ final class WordMaster {
         frequencyCount: Int,
         category: FrequencyRank,
         partOfSpeech: PartOfSpeech,
-        updatedAt: Date = .now
+        updatedAt: Date = .now,
+        source: WordSource = .bundled
     ) {
         self.wordId = wordId
         self.word = word
@@ -42,6 +49,12 @@ final class WordMaster {
         self.categoryRaw = category.rawValue
         self.partOfSpeechRaw = partOfSpeech.rawValue
         self.updatedAt = updatedAt
+        self.sourceRaw = source.rawValue
+    }
+
+    var source: WordSource {
+        get { WordSource(rawValue: sourceRaw) ?? .bundled }
+        set { sourceRaw = newValue.rawValue }
     }
 
     var category: FrequencyRank {

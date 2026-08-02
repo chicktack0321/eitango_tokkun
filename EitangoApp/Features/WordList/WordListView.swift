@@ -4,6 +4,7 @@ import SwiftData
 struct WordListView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel = WordListViewModel()
+    @State private var isAddingWord = false
 
     var body: some View {
         NavigationStack {
@@ -28,8 +29,23 @@ struct WordListView: View {
             }
             .navigationTitle("単語帳")
             .searchable(text: $viewModel.filter.keyword, prompt: "英単語・日本語訳で検索")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isAddingWord = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .accessibilityLabel("単語を追加")
+                    .accessibilityIdentifier("addWordButton")
+                }
+            }
             .navigationDestination(for: WordMaster.self) { word in
                 WordDetailView(word: word)
+            }
+            // 追加・編集・削除のあとは一覧を作り直す（並びと件数が変わるため）
+            .sheet(isPresented: $isAddingWord, onDismiss: { viewModel.reload() }) {
+                WordEditorView()
             }
             .task { viewModel.configure(context: modelContext) }
             .onChange(of: viewModel.filter) { _, _ in viewModel.reload() }
@@ -103,6 +119,13 @@ private struct WordRow: View {
                 Text(word.meaning).font(.subheadline).foregroundStyle(.secondary)
             }
             Spacer()
+            // 自分で追加した語は、同梱の頻出度ランクと意味が違うので見分けられるようにする
+            if word.source == .user {
+                Image(systemName: "person.crop.circle")
+                    .font(.caption)
+                    .foregroundStyle(.blue)
+                    .accessibilityLabel("自分で追加した単語")
+            }
             Text(word.category.rawValue)
                 .font(.caption).bold()
                 .padding(.horizontal, 6).padding(.vertical, 2)
@@ -120,5 +143,5 @@ private struct WordRow: View {
 
 #Preview {
     WordListView()
-        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self], inMemory: true)
+        .modelContainer(for: [WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self, UserWord.self], inMemory: true)
 }
