@@ -111,6 +111,9 @@ final class GameAudio {
     }
 
     func stopAll() {
+        // まだエンジンに繋いでいないノードを操作しないようにする（音を一度も鳴らさずに
+        // 設定だけ切り替えた場合や、テストからの呼び出しがこの経路を通る）
+        guard isEngineReady else { return }
         bgmPlayer.stop()
         effectPlayer.stop()
         if engine.isRunning { engine.pause() }

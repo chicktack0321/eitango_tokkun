@@ -34,6 +34,9 @@ struct QuizResultSummary {
 struct QuizResultView: View {
     let summary: QuizResultSummary
     let onRetry: () -> Void
+    /// 結果を見たあとスタート画面へ戻る導線。これが無いと、復習を解き終えて
+    /// 出題対象が無くなったときにクイズタブから抜けられなくなる。
+    let onBackToStart: () -> Void
 
     private var grade: (label: String, color: Color) {
         switch summary.accuracyPercent {
@@ -56,9 +59,13 @@ struct QuizResultView: View {
                 if !summary.missedWords.isEmpty {
                     missedCard
                 }
-                Button("もう一度挑戦する", action: onRetry)
-                    .buttonStyle(.borderedProminent)
-                    .padding(.top, 4)
+                VStack(spacing: 10) {
+                    Button("もう一度挑戦する", action: onRetry)
+                        .buttonStyle(.borderedProminent)
+                    Button("クイズ選択に戻る", action: onBackToStart)
+                        .buttonStyle(.bordered)
+                }
+                .padding(.top, 4)
             }
             .padding()
         }
@@ -152,6 +159,7 @@ struct QuizResultView: View {
                 .init(id: "2", word: "significant", meaning: "重要な、著しい")
             ]
         ),
-        onRetry: {}
+        onRetry: {},
+        onBackToStart: {}
     )
 }

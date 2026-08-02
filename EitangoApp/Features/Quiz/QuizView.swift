@@ -22,7 +22,8 @@ struct QuizView: View {
                 case .finished:
                     QuizResultView(
                         summary: viewModel.resultSummary,
-                        onRetry: { viewModel.startNewQuiz(scope: viewModel.scope) }
+                        onRetry: { viewModel.startNewQuiz(scope: viewModel.scope) },
+                        onBackToStart: { viewModel.returnToStart() }
                     )
                 }
             }
@@ -70,6 +71,18 @@ struct QuizView: View {
                 .font(.title2).bold()
             Text("\(QuizViewModel.questionCount)問 / 1問あたり\(QuizViewModel.timeLimitPerQuestion)秒")
                 .foregroundStyle(.secondary)
+
+            // 復習を解き終えて出題対象が無くなったときなど、なぜ始まらなかったのかを伝える
+            if let notice = viewModel.notice {
+                Label(notice, systemImage: "checkmark.circle")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
+                    .padding(.horizontal)
+            }
+
             Button("スタート") { viewModel.startNewQuiz() }
                 .buttonStyle(.borderedProminent)
         }

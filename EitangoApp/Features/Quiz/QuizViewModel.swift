@@ -34,6 +34,11 @@ final class QuizViewModel {
     private var startedAt: Date?
     private(set) var elapsedSeconds = 0
 
+    /// 出題できなかったときにスタート画面へ出す案内。
+    /// 「復習を解き終えて期限切れの語が無くなった」は正常な結果なので、
+    /// エラーではなく状況の説明として見せる。
+    private(set) var notice: String?
+
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
     /// deinit（常にnonisolated）から安全にキャンセルできるよう、actor隔離チェックの対象から外す。
@@ -86,11 +91,23 @@ final class QuizViewModel {
         newlyMemorizedCount = 0
         elapsedSeconds = 0
         startedAt = .now
-        phase = questions.isEmpty ? .finished : .inProgress
-        if phase == .inProgress {
-            GameAudio.shared.play(.start)
-            GameAudio.shared.startBGM()
+        notice = nil
+
+        // 復習を解き終えた直後は期限切れの語が無くなるため、0問になるのは正常な状態。
+        // これを結果画面（.finished）で表示すると「0/0問正解・グレードD」という
+        // 意味のない結果が出るうえ、スタート画面へ戻る手段が無くなってクイズを始められなくなる。
+        guard !questions.isEmpty else {
+            notice = scope == .reviewOnly
+                ? "復習の期限が来ている単語はありません。おつかれさまでした。"
+                : "出題できる単語がありません。"
+            phase = .notStarted
+            GameAudio.shared.stopBGM()
+            return
         }
+
+        phase = .inProgress
+        GameAudio.shared.play(.start)
+        GameAudio.shared.startBGM()
         startTimer()
     }
 
@@ -195,6 +212,12 @@ final class QuizViewModel {
     /// 進行中のセットを破棄してスタート画面に戻す。
     /// これが無いと、始めてしまったら最後まで解くか時間切れを待つしか抜ける手段がない。
     func abortSession() {
+        returnToStart()
+    }
+
+    /// 結果画面からスタート画面へ戻す。
+    /// 結果を見たあと別の出題で解き直せるよう、必ず戻り道を用意しておく。
+    func returnToStart() {
         timerTask?.cancel()
         timerTask = nil
         GameAudio.shared.stopBGM()
@@ -202,6 +225,7 @@ final class QuizViewModel {
         currentQuestionIndex = 0
         selectedChoiceIndex = nil
         correctAnswerCount = 0
+        notice = nil
         phase = .notStarted
     }
 
