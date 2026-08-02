@@ -1,0 +1,131 @@
+# Tier 3: 2級コア発展語彙（CEFR B1）
+# word|meaning|pos|rank|domain|example
+
+# --- 環境 ---
+absorb|吸収する|verb|B|environment|Plants absorb carbon dioxide from the air.
+agriculture|農業|noun|B|environment|Agriculture uses a large amount of water.
+atmosphere|大気、雰囲気|noun|A|environment|Carbon dioxide stays in the atmosphere for a long time.
+biodiversity|生物多様性|noun|C|environment|Cutting down forests reduces biodiversity.
+carbon|炭素|noun|A|environment|We need to cut carbon emissions by half.
+chemical|化学物質、化学の|noun|A|environment|Some chemicals in the river killed the fish.
+climate|気候|noun|A|environment|Climate change affects farmers around the world.
+coal|石炭|noun|B|environment|The country still burns coal to make electricity.
+conservation|保護、保存|noun|B|environment|The group works for the conservation of wildlife.
+consume|消費する|verb|A|environment|Older machines consume more electricity.
+contaminate|汚染する|verb|C|environment|The waste contaminated the drinking water.
+crop|作物|noun|B|environment|Bad weather ruined the rice crop this year.
+decrease|減少する、減少|verb|A|environment|The number of wild birds has decreased sharply.
+deforestation|森林伐採|noun|C|environment|Deforestation is a major cause of climate change.
+destroy|破壊する|verb|A|environment|The fire destroyed a large part of the forest.
+disaster|災害|noun|A|environment|The country was hit by a natural disaster.
+dispose|処分する|verb|B|environment|Factories must dispose of waste safely.
+drought|干ばつ|noun|C|environment|The long drought reduced the harvest.
+earthquake|地震|noun|B|environment|A strong earthquake shook the city last night.
+ecosystem|生態系|noun|B|environment|Pollution has damaged the ecosystem of the lake.
+emission|排出、排出物|noun|B|environment|The new rule limits emissions from cars.
+endangered|絶滅の危機にある|adjective|B|environment|Pandas are still an endangered species.
+extinct|絶滅した|adjective|B|environment|This bird became extinct about 100 years ago.
+flood|洪水、氾濫する|noun|B|environment|Heavy rain caused a flood in the village.
+fossil|化石|noun|B|environment|Burning fossil fuels produces carbon dioxide.
+fuel|燃料|noun|A|environment|The airline is testing a cleaner fuel.
+garbage|ごみ|noun|B|environment|The city collects garbage twice a week.
+global|地球規模の、世界的な|adjective|A|environment|Global warming is a problem for every country.
+greenhouse|温室|noun|B|environment|Greenhouse gases trap heat in the atmosphere.
+habitat|生息地|noun|B|environment|Building roads destroys the habitat of many animals.
+harmful|有害な|adjective|A|environment|These gases are harmful to human health.
+landscape|風景、景観|noun|B|environment|Wind farms have changed the landscape here.
+melt|溶ける、溶かす|verb|B|environment|The ice is melting faster than expected.
+nuclear|核の、原子力の|adjective|B|environment|The country decided to close its nuclear plants.
+ocean|海洋|noun|A|environment|Plastic waste ends up in the ocean.
+pesticide|殺虫剤、農薬|noun|C|environment|Farmers are using fewer pesticides than before.
+petroleum|石油|noun|C|environment|Plastic is made from petroleum.
+pollute|汚染する|verb|A|environment|The factory polluted the local river.
+pollution|汚染、公害|noun|A|environment|Air pollution is serious in large cities.
+preserve|保存する、保護する|verb|A|environment|We must preserve this forest for the future.
+recycle|再利用する|verb|A|environment|Please recycle cans and bottles.
+renewable|再生可能な|adjective|B|environment|Wind power is a renewable source of energy.
+resource|資源|noun|A|environment|Water is a limited resource.
+rural|田舎の、農村の|adjective|B|environment|Many young people leave rural areas for the city.
+solar|太陽の|adjective|A|environment|They put solar panels on the roof.
+species|種（しゅ）|noun|A|environment|This species lives only on that island.
+survive|生き残る|verb|A|environment|Few plants can survive in this dry area.
+sustainable|持続可能な|adjective|B|environment|We need a sustainable way to produce food.
+temperature|気温、温度|noun|A|environment|The average temperature has risen by one degree.
+threat|脅威|noun|B|environment|Rising seas are a threat to small islands.
+tropical|熱帯の|adjective|B|environment|Tropical forests hold many kinds of insects.
+urban|都市の|adjective|B|environment|Urban areas are growing quickly.
+waste|廃棄物、浪費する|noun|A|environment|The factory reduced its waste by half.
+wildlife|野生生物|noun|B|environment|The reserve is home to rare wildlife.
+
+# --- 科学技術 ---
+advance|進歩、前進する|noun|A|technology|Advances in medicine have saved many lives.
+artificial|人工の|adjective|A|technology|Artificial intelligence can translate speech instantly.
+automatic|自動の|adjective|B|technology|The door is automatic, so you do not need to push it.
+battery|電池|noun|B|technology|This phone has a battery that lasts two days.
+data|データ|noun|A|technology|The company collects data from its users.
+device|装置、機器|noun|A|technology|You can control the lights from a mobile device.
+digital|デジタルの|adjective|A|technology|The museum offers a digital map of the building.
+electronic|電子の|adjective|A|technology|Electronic payment is common in this country.
+engineer|技術者|noun|A|technology|She works as a software engineer.
+equipment|設備、機材|noun|A|technology|The lab bought new equipment last month.
+experiment|実験|noun|A|technology|The experiment produced surprising results.
+function|機能、機能する|noun|A|technology|This app has a function for recording your voice.
+install|設置する、インストールする|verb|B|technology|They installed cameras at the entrance.
+invent|発明する|verb|A|technology|He invented a machine that cleans solar panels.
+invention|発明|noun|A|technology|The smartphone is one of the great inventions of our time.
+laboratory|実験室|noun|B|technology|The samples were sent to a laboratory.
+launch|開始する、打ち上げる|verb|B|technology|The company will launch a new service in June.
+material|材料、素材|noun|A|technology|Engineers developed a lighter material for the car.
+mechanical|機械の|adjective|C|technology|The train stopped because of a mechanical problem.
+network|ネットワーク|noun|A|technology|The city built a network of charging stations.
+operate|操作する、運営する|verb|A|technology|One worker can operate three machines.
+replace|取り替える、取って代わる|verb|A|technology|Robots may replace some factory jobs.
+research|研究、調査|noun|A|technology|Their research led to a new type of battery.
+satellite|人工衛星|noun|B|technology|Weather satellites send images every hour.
+software|ソフトウェア|noun|A|technology|The software checks the text for mistakes.
+technique|技術、手法|noun|A|technology|Doctors learned a new surgical technique.
+technology|技術、科学技術|noun|A|technology|New technology has changed the way we work.
+transmit|送信する、伝える|verb|C|technology|The sensor transmits data to a computer.
+virtual|仮想の|adjective|B|technology|Students took a virtual tour of the museum.
+wireless|無線の|adjective|B|technology|The hotel offers free wireless internet.
+
+# --- 医療・健康 ---
+allergy|アレルギー|noun|B|health|He has an allergy to eggs.
+ancient|古代の|adjective|B|education|Ancient people used stone tools.
+antibiotic|抗生物質|noun|C|health|Doctors should not give antibiotics for a cold.
+anxiety|不安|noun|B|health|Exams cause anxiety for many students.
+appetite|食欲|noun|B|health|I lost my appetite when I got sick.
+brain|脳|noun|A|health|Sleep helps the brain store new information.
+breathe|呼吸する|verb|B|health|It was hard to breathe in the smoky room.
+cancer|がん|noun|B|health|Smoking increases the risk of cancer.
+cure|治す、治療法|verb|B|health|There is still no cure for this disease.
+diet|食事、ダイエット|noun|A|health|A balanced diet keeps you healthy.
+disease|病気|noun|A|health|The disease spread quickly in the city.
+drug|薬、薬物|noun|A|health|The new drug reduces pain quickly.
+exercise|運動、運動する|noun|A|health|Regular exercise lowers stress.
+fever|熱|noun|B|health|She stayed home because she had a fever.
+germ|細菌、病原菌|noun|C|health|Washing your hands removes germs.
+headache|頭痛|noun|B|health|I have had a headache since this morning.
+heal|治る、治す|verb|B|health|The wound healed in about a week.
+illness|病気|noun|A|health|He missed school because of illness.
+infection|感染、感染症|noun|B|health|The medicine prevents infection.
+injure|けがをさせる|verb|B|health|Two players were injured in the game.
+injury|けが|noun|B|health|He returned to the team after a long injury.
+medical|医療の|adjective|A|health|She needs medical care right away.
+medicine|薬、医学|noun|A|health|Take this medicine after meals.
+mental|精神の|adjective|B|health|Mental health is as important as physical health.
+nurse|看護師|noun|A|health|A nurse checked his temperature.
+nutrition|栄養|noun|B|health|Good nutrition is important for growing children.
+obesity|肥満|noun|C|health|Obesity has become a serious problem.
+operation|手術、運営|noun|A|health|He had an operation on his knee.
+patient|患者、忍耐強い|noun|A|health|The doctor sees about thirty patients a day.
+physical|身体の|adjective|A|health|Children need more physical activity.
+prevent|防ぐ|verb|A|health|Washing your hands can prevent illness.
+recover|回復する|verb|A|health|She recovered from the flu in three days.
+stress|ストレス、強調する|noun|A|health|Too much work causes stress.
+surgery|手術|noun|B|health|The surgery lasted three hours.
+symptom|症状|noun|B|health|A cough is a common symptom of a cold.
+treatment|治療|noun|A|health|The treatment worked better than expected.
+vaccine|ワクチン|noun|B|health|The vaccine protects children from the disease.
+virus|ウイルス|noun|A|health|The virus spread through the school.
+wound|傷、傷つける|noun|B|health|The nurse cleaned the wound carefully.

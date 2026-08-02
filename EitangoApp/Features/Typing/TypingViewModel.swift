@@ -103,7 +103,7 @@ final class TypingViewModel {
 
         // クイズと同じく、復習期限が来た語から先に出題する
         let pool = StudyQueue.prioritize(
-            words: wordRepository.fetchAll(),
+            words: wordRepository.fetchStudyPool(),
             progress: progressRepository.allProgress()
         )
         guard !pool.isEmpty else {

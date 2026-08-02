@@ -17,6 +17,67 @@ enum FrequencyRank: String, Codable, CaseIterable, Identifiable {
     }
 }
 
+/// 語彙階層。
+///
+/// 2級の語彙は単一の頻度分布ではなく、既習の基礎層と、試験で直接問われる発展層という
+/// 二重構造になっている。同じ土俵で出題すると、既に知っている基礎語ばかりが並んで
+/// 学習時間が薄まるため、階層を属性として持ち、出題の主対象を発展層に寄せる。
+enum VocabularyTier: Int, Codable, CaseIterable, Identifiable {
+    /// 中学〜高校基礎（CEFR A1–A2）。文脈理解の前提となる既習語彙
+    case basic = 1
+    /// 準2級・2級の架け橋（CEFR A2+）。抽象概念の初歩と基本句動詞
+    case bridge = 2
+    /// 2級コア発展語彙（CEFR B1）。筆記大問1の直接的な得点源
+    case core = 3
+
+    var id: Int { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .basic: return "基礎"
+        case .bridge: return "架け橋"
+        case .core: return "2級コア"
+        }
+    }
+
+    var summary: String {
+        switch self {
+        case .basic: return "中学〜高校基礎。すでに知っている前提の語"
+        case .bridge: return "準2級〜2級の橋渡し。抽象語の初歩と句動詞"
+        case .core: return "2級の得点源。環境・技術・医療・経済・社会の語"
+        }
+    }
+}
+
+/// 語彙のドメイン（使用文脈）。
+/// 2級では出題トピックが日常会話から社会的・アカデミックな領域へ移るため、
+/// 苦手な話題だけを集中的に回せるようにする。
+enum VocabularyDomain: String, Codable, CaseIterable, Identifiable {
+    case daily
+    case environment
+    case technology
+    case health
+    case business
+    case society
+    case education
+    case general
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .daily: return "日常生活"
+        case .environment: return "環境"
+        case .technology: return "科学技術"
+        case .health: return "医療・健康"
+        case .business: return "経済・ビジネス"
+        case .society: return "社会"
+        case .education: return "教育・学術"
+        case .general: return "一般"
+        }
+    }
+}
+
 /// 単語の出どころ。
 ///
 /// 同梱JSONの単語は改訂のたびに総入れ替えされるが、ユーザーが自分で追加した単語は

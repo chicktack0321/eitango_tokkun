@@ -37,10 +37,12 @@ struct WordDetailView: View {
             Section("データ") {
                 LabeledContent("頻出度", value: word.category.displayName)
                 LabeledContent("品詞", value: word.partOfSpeech.displayName)
-                // 過去問での出題回数は同梱データにしか無い値。自作の語では意味を持たない。
+                LabeledContent("階層", value: word.tier.displayName)
+                LabeledContent("分野", value: word.domain.displayName)
                 if word.source == .user {
                     LabeledContent("登録", value: "自分で追加した単語")
-                } else {
+                } else if word.frequencyCount > 0 {
+                    // 過去問での実出題回数は公開されていないため、値を持つ語だけに出す
                     LabeledContent("出題回数", value: "\(word.frequencyCount)回")
                 }
                 if let progress {

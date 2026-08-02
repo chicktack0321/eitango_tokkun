@@ -46,6 +46,28 @@ struct ListeningView: View {
 
                 HStack {
                     filterMenu(
+                        title: "階層",
+                        selectedLabel: viewModel.filter.tier?.displayName ?? "出題範囲"
+                    ) {
+                        Button("出題範囲（既定）") { viewModel.filter.tier = nil }
+                        ForEach(VocabularyTier.allCases) { tier in
+                            Button(tier.displayName) { viewModel.filter.tier = tier }
+                        }
+                    }
+                    Spacer(minLength: 12)
+                    filterMenu(
+                        title: "分野",
+                        selectedLabel: viewModel.filter.domain?.displayName ?? "すべて"
+                    ) {
+                        Button("すべて") { viewModel.filter.domain = nil }
+                        ForEach(VocabularyDomain.allCases) { domain in
+                            Button(domain.displayName) { viewModel.filter.domain = domain }
+                        }
+                    }
+                }
+
+                HStack {
+                    filterMenu(
                         title: "頻出度",
                         selectedLabel: viewModel.filter.category?.displayName ?? "すべて"
                     ) {

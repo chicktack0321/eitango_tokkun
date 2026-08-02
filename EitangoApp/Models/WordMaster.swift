@@ -30,6 +30,16 @@ final class WordMaster {
     /// 既存ストアからのアップデートでも既定値が入るよう、省略可能な初期値を持たせている。
     var sourceRaw: String = WordSource.bundled.rawValue
 
+    /// 語彙階層（1:基礎 / 2:架け橋 / 3:2級コア）。
+    /// 既存ストアからのアップデートでも既定値が入るよう、省略可能な初期値を持たせている。
+    var tierRaw: Int = VocabularyTier.core.rawValue
+
+    /// 出題トピック。苦手な分野だけを集中的に回すために使う。
+    var domainRaw: String = VocabularyDomain.general.rawValue
+
+    /// 熟語・句動詞かどうか（"take part in" のような複数語の見出し）
+    var isIdiom: Bool = false
+
     init(
         wordId: String,
         word: String,
@@ -39,7 +49,10 @@ final class WordMaster {
         category: FrequencyRank,
         partOfSpeech: PartOfSpeech,
         updatedAt: Date = .now,
-        source: WordSource = .bundled
+        source: WordSource = .bundled,
+        tier: VocabularyTier = .core,
+        domain: VocabularyDomain = .general,
+        isIdiom: Bool = false
     ) {
         self.wordId = wordId
         self.word = word
@@ -50,11 +63,24 @@ final class WordMaster {
         self.partOfSpeechRaw = partOfSpeech.rawValue
         self.updatedAt = updatedAt
         self.sourceRaw = source.rawValue
+        self.tierRaw = tier.rawValue
+        self.domainRaw = domain.rawValue
+        self.isIdiom = isIdiom
     }
 
     var source: WordSource {
         get { WordSource(rawValue: sourceRaw) ?? .bundled }
         set { sourceRaw = newValue.rawValue }
+    }
+
+    var tier: VocabularyTier {
+        get { VocabularyTier(rawValue: tierRaw) ?? .core }
+        set { tierRaw = newValue.rawValue }
+    }
+
+    var domain: VocabularyDomain {
+        get { VocabularyDomain(rawValue: domainRaw) ?? .general }
+        set { domainRaw = newValue.rawValue }
     }
 
     var category: FrequencyRank {

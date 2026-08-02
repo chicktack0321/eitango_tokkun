@@ -40,7 +40,7 @@ final class HomeViewModel {
         totalWordCount = wordRepository.fetchCount()
         summary = progressRepository.summarize()
         dueCount = StudyQueue.dueCount(
-            words: wordRepository.fetchAll(),
+            words: wordRepository.fetchStudyPool(),
             progress: progressRepository.allProgress()
         )
 

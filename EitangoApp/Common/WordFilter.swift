@@ -8,10 +8,14 @@ struct WordFilter: Equatable {
     var category: FrequencyRank?
     var partOfSpeech: PartOfSpeech?
     var status: LearningStatus?
+    /// 語彙階層。5,000語を一列に並べても目的の層に辿り着けないため、絞り込みの主軸になる。
+    var tier: VocabularyTier?
+    /// 出題トピック。苦手な分野だけを回すのに使う。
+    var domain: VocabularyDomain?
     var keyword: String = ""
 
     var isEmpty: Bool {
-        category == nil && partOfSpeech == nil && status == nil
+        category == nil && partOfSpeech == nil && status == nil && tier == nil && domain == nil
             && keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
@@ -23,6 +27,12 @@ struct WordFilter: Equatable {
     ) -> [WordMaster] {
         var result = words
 
+        if let tier {
+            result = result.filter { $0.tier == tier }
+        }
+        if let domain {
+            result = result.filter { $0.domain == domain }
+        }
         if let status {
             result = result.filter { word in
                 let current = progress[word.wordId]?.status(at: now) ?? .notStudied

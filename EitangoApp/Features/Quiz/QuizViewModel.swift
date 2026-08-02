@@ -67,7 +67,7 @@ final class QuizViewModel {
 
         // 単語一覧の取得は1回だけ。問題ごとにフェッチすると出題数に比例して
         // 全件スキャンが走り、語彙数が増えたときに開始が目に見えて遅くなる。
-        let pool = wordRepository.fetchAll()
+        let pool = wordRepository.fetchStudyPool()
         let progress = progressRepository.allProgress()
 
         // 復習期限が来た語を優先して出題する（ランダム出題では忘れかけた語に当たらない）

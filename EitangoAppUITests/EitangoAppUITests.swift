@@ -66,9 +66,10 @@ final class EitangoAppUITests: XCTestCase {
             settle()
             capture(app, "02_WordList")
 
-            // word_master_seed.json の並び順（wordId昇順）で最初に来る語
-            let firstWord = app.staticTexts["opportunity"]
-            if firstWord.waitForExistence(timeout: 5) {
+            // 単語はアルファベット順に並ぶ。語彙が増えると特定の語は画面外に出るため、
+            // 見出しの語名ではなく「絞り込み行の次のセル＝最初の単語」を開く。
+            let firstWord = app.cells.element(boundBy: 3)
+            if firstWord.waitForExistence(timeout: 5), firstWord.isHittable {
                 firstWord.tap()
                 settle()
                 capture(app, "03_WordDetail")

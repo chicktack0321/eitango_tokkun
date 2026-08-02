@@ -8,6 +8,8 @@ struct QuizView: View {
     @State private var viewModel = QuizViewModel()
     /// 正解のたびに増やして紙吹雪を発生させる
     @State private var celebrationTrigger = 0
+    // 実体は StudySettings（ViewModelからも読むためUserDefaultsに置いている）と同じキー
+    @AppStorage("includesBasicTier") private var includesBasicTier = false
 
     var body: some View {
         NavigationStack {
@@ -85,7 +87,26 @@ struct QuizView: View {
 
             Button("スタート") { viewModel.startNewQuiz() }
                 .buttonStyle(.borderedProminent)
+
+            scopeCard
+                .padding(.horizontal)
+                .padding(.top, 8)
         }
+    }
+
+    /// 基礎語彙（中学〜高校基礎）は既習である前提で、既定では出題しない。
+    /// 全語彙を同じ確率で出すと知っている語ばかりが並び、試験で問われる発展語彙に
+    /// 時間を割けなくなるため。必要な人は戻せるようにしておく。
+    private var scopeCard: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Toggle("基礎語彙も出題する", isOn: $includesBasicTier)
+                .font(.subheadline)
+            Text("中学〜高校基礎の語（Tier 1）は、既に知っている前提で既定では出題しません。タイピング・聞き流しにも同じ設定が使われます。")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
     }
 
     /// タイピング画面と同じ「グループ背景＋白カード」構成に揃えている。

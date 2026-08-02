@@ -31,10 +31,13 @@ final class ListeningViewModel {
 
     func reload() {
         guard let wordRepository, let progressRepository else { return }
-        let fetched = wordRepository.fetch(
-            category: filter.category,
-            partOfSpeech: filter.partOfSpeech
-        )
+        // 聞き流しも出題範囲の設定に従う（基礎語彙は既定で流さない）。
+        // ただし階層を明示的に選んだときは、その指定を優先する。
+        let pool = filter.tier == nil ? wordRepository.fetchStudyPool() : wordRepository.fetchAll()
+        let fetched = pool.filter { word in
+            (filter.category == nil || word.category == filter.category)
+                && (filter.partOfSpeech == nil || word.partOfSpeech == filter.partOfSpeech)
+        }
         words = filter.apply(to: fetched, progress: progressRepository.allProgress())
     }
 }

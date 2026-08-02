@@ -16,6 +16,11 @@ private struct WordSeedEntry: Decodable {
     let frequencyCount: Int
     let category: String
     let partOfSpeech: String
+    /// 以下は語彙階層を導入した v4 以降の項目。
+    /// 省略可能にしておくことで、古い形式のJSONもそのまま読める。
+    let tier: Int?
+    let domain: String?
+    let isIdiom: Bool?
 }
 
 enum WordMasterSeederError: Error {
@@ -83,6 +88,9 @@ enum WordMasterSeeder {
                 let partOfSpeech = PartOfSpeech(rawValue: entry.partOfSpeech)
             else { continue }
 
+            let tier = entry.tier.flatMap(VocabularyTier.init(rawValue:)) ?? .core
+            let domain = entry.domain.flatMap(VocabularyDomain.init(rawValue:)) ?? .general
+
             if let word = existingById[entry.wordId] {
                 word.word = entry.word
                 word.meaning = entry.meaning
@@ -90,6 +98,9 @@ enum WordMasterSeeder {
                 word.frequencyCount = entry.frequencyCount
                 word.category = category
                 word.partOfSpeech = partOfSpeech
+                word.tier = tier
+                word.domain = domain
+                word.isIdiom = entry.isIdiom ?? false
                 word.updatedAt = .now
                 existingById.removeValue(forKey: entry.wordId)
             } else {
@@ -100,7 +111,10 @@ enum WordMasterSeeder {
                     example: entry.example,
                     frequencyCount: entry.frequencyCount,
                     category: category,
-                    partOfSpeech: partOfSpeech
+                    partOfSpeech: partOfSpeech,
+                    tier: tier,
+                    domain: domain,
+                    isIdiom: entry.isIdiom ?? false
                 )
                 context.insert(word)
             }

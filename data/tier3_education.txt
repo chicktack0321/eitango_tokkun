@@ -1,0 +1,94 @@
+# Tier 3: 教育・学術／抽象概念
+# word|meaning|pos|rank|domain|example
+
+ability|能力|noun|A|education|She has the ability to explain difficult ideas.
+academic|学問の|adjective|B|education|His academic results improved this year.
+achieve|達成する|verb|A|education|He achieved his goal of studying abroad.
+analyze|分析する|verb|B|education|Students analyzed the data in groups.
+apparent|明らかな|adjective|C|education|It soon became apparent that the plan would fail.
+approach|取り組み方、近づく|noun|A|education|The teacher tried a different approach.
+argue|議論する、主張する|verb|A|education|They argued about the best solution.
+argument|議論、主張|noun|A|education|His argument was easy to follow.
+assignment|課題|noun|B|education|The assignment is due on Friday.
+attitude|態度、考え方|noun|A|education|She has a positive attitude toward learning.
+avoid|避ける|verb|A|education|Try to avoid simple mistakes.
+aware|気づいている|adjective|A|education|Students are more aware of the problem now.
+concept|概念|noun|B|education|The concept is hard to explain in a few words.
+conclude|結論を出す|verb|B|education|The researchers concluded that sleep affects memory.
+conclusion|結論|noun|A|education|We reached the same conclusion.
+confidence|自信|noun|A|education|Practice gave him confidence.
+confuse|混乱させる|verb|B|education|The instructions confused many students.
+consist|構成される|verb|B|education|The course consists of ten lessons.
+context|文脈、状況|noun|B|education|Guess the meaning from the context.
+contribute|貢献する|verb|B|education|Everyone contributed to the project.
+degree|学位、程度|noun|A|education|She has a degree in economics.
+demonstrate|証明する、実演する|verb|B|education|The study demonstrates the value of exercise.
+describe|描写する、説明する|verb|A|education|Describe the picture in your own words.
+determine|決定する、判断する|verb|B|education|The test determines which class you enter.
+discovery|発見|noun|A|education|The discovery changed our view of history.
+discuss|議論する|verb|A|education|We discussed the topic for an hour.
+distinguish|区別する|verb|C|education|It is hard to distinguish the two sounds.
+educate|教育する|verb|B|education|The campaign educates drivers about safety.
+effective|効果的な|adjective|A|education|Reading aloud is an effective way to learn.
+effort|努力|noun|A|education|His effort finally paid off.
+emphasize|強調する|verb|C|education|The teacher emphasized the importance of review.
+encourage|励ます、促す|verb|A|education|Teachers encourage students to ask questions.
+essential|不可欠な|adjective|A|education|Regular review is essential.
+estimate|見積もる、推定|verb|B|education|Experts estimate the number at about 5,000.
+evidence|証拠|noun|A|education|There is little evidence for that idea.
+examine|調べる|verb|A|education|Scientists examined the samples closely.
+explanation|説明|noun|A|education|His explanation was clear and short.
+explore|探検する、探究する|verb|B|education|The class explored several possible answers.
+expression|表現、表情|noun|A|education|Learn useful expressions for the interview.
+factor|要因|noun|B|education|Sleep is an important factor in learning.
+familiar|よく知っている|adjective|A|education|The song sounded familiar to me.
+figure|数字、人物|noun|A|education|The figures in the report are from last year.
+focus|集中する、焦点|verb|A|education|Focus on the main idea first.
+gradually|徐々に|adverb|B|education|Her English improved gradually.
+identify|特定する|verb|B|education|Try to identify your weak points.
+ignore|無視する|verb|A|education|Do not ignore small mistakes.
+imagine|想像する|verb|A|education|Imagine that you are talking to a friend.
+improve|改善する、上達させる|verb|A|education|He worked hard to improve his test scores.
+indicate|示す|verb|B|education|The results indicate a clear difference.
+instruction|指示、説明|noun|A|education|Read the instructions before you start.
+intelligent|知能の高い、賢い|adjective|B|education|Crows are surprisingly intelligent birds.
+interpret|解釈する、通訳する|verb|C|education|Students interpreted the poem differently.
+knowledge|知識|noun|A|education|He has a wide knowledge of history.
+lecture|講義|noun|B|education|The lecture lasted ninety minutes.
+level|水準、段階|noun|A|education|The book is written at an easy level.
+logical|論理的な|adjective|C|education|Her answer was clear and logical.
+method|方法|noun|A|education|This method works well for beginners.
+necessary|必要な|adjective|A|education|It is necessary to bring your ID card to the exam.
+observe|観察する|verb|B|education|Students observed the plants for a month.
+obvious|明らかな|adjective|B|education|The answer was obvious to everyone.
+particular|特定の|adjective|A|education|Is there any particular topic you want to study?
+practical|実用的な|adjective|B|education|The course gives practical advice.
+predict|予測する|verb|B|education|Scientists cannot predict earthquakes.
+prepare|準備する|verb|A|education|She prepared carefully for the interview.
+previous|以前の|adjective|B|education|Review the previous lesson first.
+principle|原理、原則|noun|C|education|The machine works on a simple principle.
+process|過程、処理する|noun|A|education|Learning a language is a slow process.
+progress|進歩|noun|A|education|You have made great progress this year.
+proof|証拠|noun|B|education|There is no proof that the story is true.
+purpose|目的|noun|A|education|The purpose of the survey was to collect opinions.
+quote|引用する|verb|C|education|He quoted a famous scientist.
+realize|気づく、実現する|verb|A|education|I realized my mistake too late.
+recognize|認識する、認める|verb|A|education|I did not recognize her at first.
+refer|参照する、言及する|verb|B|education|Refer to page ten for the answer.
+reflect|反映する、反射する|verb|B|education|The results reflect months of practice.
+relate|関連づける|verb|B|education|Try to relate new words to what you know.
+require|必要とする|verb|A|education|The course requires two hours of study a week.
+review|復習する、批評|verb|A|education|Review the words you missed yesterday.
+scholarship|奨学金|noun|B|education|She won a scholarship to study in Canada.
+solution|解決策|noun|A|education|We are looking for a simple solution.
+source|出典、源|noun|A|education|Always check the source of the information.
+specific|具体的な、特定の|adjective|A|education|Give a specific example, please.
+structure|構造|noun|B|education|The essay has a clear structure.
+subject|科目、主題|noun|A|education|Science is my favorite subject.
+suggest|提案する、示唆する|verb|A|education|The data suggest a different answer.
+summary|要約|noun|B|education|Write a short summary of the article.
+theory|理論|noun|B|education|The theory was later proved correct.
+thesis|論文|noun|C|education|He is writing a thesis on medieval history.
+tutor|家庭教師|noun|B|education|A tutor helps her with math twice a week.
+university|大学|noun|A|education|She entered university last spring.
+various|さまざまな|adjective|A|education|The museum holds various events for children.

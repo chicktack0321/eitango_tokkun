@@ -1,0 +1,83 @@
+# Tier 3: 社会・社会問題
+# word|meaning|pos|rank|domain|example
+
+accept|受け入れる|verb|A|society|The school accepted students from other countries.
+access|利用する権利、接近|noun|A|society|Everyone should have access to clean water.
+according|〜によれば|adverb|A|society|According to the report, crime has fallen.
+affect|影響を与える|verb|A|society|The new rule affects all residents.
+aging|高齢化する|adjective|B|society|Japan has an aging population.
+allow|許す|verb|A|society|The city allows bicycles on this road.
+ancestor|祖先|noun|C|society|Their ancestors came from another country.
+authority|権限、当局|noun|B|society|Local authorities decided to close the road.
+average|平均の、平均|adjective|A|society|The average family has fewer children than before.
+behavior|行動、振る舞い|noun|A|society|The study looked at the behavior of young drivers.
+belong|属する|verb|A|society|She belongs to a volunteer group.
+capital|首都、資本|noun|A|society|The capital has a population of ten million.
+citizen|市民|noun|A|society|Citizens voted on the new plan.
+community|地域社会|noun|A|society|The library is the center of the community.
+compare|比較する|verb|A|society|Compare the two plans before you decide.
+complain|不平を言う|verb|A|society|Residents complained about the noise.
+condition|状態、条件|noun|A|society|Working conditions have improved.
+conflict|対立、紛争|noun|B|society|The conflict lasted for many years.
+consider|考慮する|verb|A|society|The city is considering a new bus route.
+crime|犯罪|noun|A|society|Crime has decreased in this area.
+crisis|危機|noun|B|society|The country faced an economic crisis.
+crowd|群衆|noun|A|society|A large crowd gathered in the square.
+culture|文化|noun|A|society|Food is an important part of every culture.
+democracy|民主主義|noun|C|society|Free elections are the basis of democracy.
+develop|発展させる、開発する|verb|A|society|The country developed quickly after the war.
+development|発展、開発|noun|A|society|The development of the area took ten years.
+disabled|障害のある|adjective|B|society|The station has an elevator for disabled passengers.
+discrimination|差別|noun|C|society|The law bans discrimination at work.
+diverse|多様な|adjective|B|society|The city has a diverse population.
+elderly|高齢の|adjective|B|society|Volunteers deliver meals to elderly people.
+equal|平等な、等しい|adjective|A|society|Men and women should receive equal pay.
+establish|設立する|verb|B|society|The group was established in 1975.
+ethnic|民族の|adjective|C|society|The country has many ethnic groups.
+event|出来事、行事|noun|A|society|The event is held every summer.
+freedom|自由|noun|A|society|Freedom of speech is protected by law.
+generation|世代|noun|A|society|The younger generation uses different words.
+government|政府|noun|A|society|The government announced a new policy.
+immigrant|移民|noun|B|society|Many immigrants settled in this district.
+impact|影響|noun|A|society|The factory had a big impact on the local economy.
+individual|個人、個々の|noun|A|society|Each individual must decide for themselves.
+influence|影響、影響を与える|noun|A|society|Parents have a strong influence on children.
+issue|問題、発行する|noun|A|society|Housing is a serious issue in this city.
+justice|正義、司法|noun|B|society|People marched for justice.
+law|法律|noun|A|society|The law takes effect next April.
+local|地元の|adjective|A|society|Local farmers sell vegetables at the market.
+majority|大多数|noun|B|society|The majority of members agreed.
+minority|少数派|noun|B|society|A small minority opposed the plan.
+neighborhood|近所、地域|noun|A|society|It is a quiet neighborhood.
+official|公式の、職員|adjective|A|society|The official results will be announced tomorrow.
+opinion|意見|noun|A|society|Opinions were divided on the issue.
+oppose|反対する|verb|B|society|Many residents opposed the new airport.
+organization|組織、団体|noun|A|society|The organization helps refugees.
+percentage|割合|noun|B|society|A high percentage of students go to college.
+policy|政策、方針|noun|A|society|The new policy supports working parents.
+politics|政治|noun|B|society|She became interested in politics at school.
+population|人口|noun|A|society|The population of the town is falling.
+poverty|貧困|noun|B|society|The program aims to reduce poverty.
+prejudice|偏見|noun|C|society|Education can reduce prejudice.
+protest|抗議する、抗議|verb|B|society|Students protested against the decision.
+public|公共の、大衆|adjective|A|society|Public transportation is cheap here.
+refugee|難民|noun|B|society|The country accepted many refugees.
+region|地域|noun|A|society|This region is famous for its fruit.
+regulation|規制、規則|noun|B|society|New regulations limit noise at night.
+responsible|責任がある|adjective|A|society|Drivers are responsible for their passengers.
+right|権利、正しい|noun|A|society|Everyone has the right to an education.
+role|役割|noun|A|society|Teachers play an important role in society.
+rule|規則、支配する|noun|A|society|The club changed its rules last year.
+security|安全、警備|noun|A|society|Security at the airport has been increased.
+situation|状況|noun|A|society|The situation has improved since last year.
+social|社会の、社交的な|adjective|A|society|Social media changed how news spreads.
+society|社会|noun|A|society|Technology has changed our society.
+statistics|統計|noun|B|society|Statistics show that traffic accidents are falling.
+support|支援する、支援|verb|A|society|The city supports small businesses.
+survey|調査|noun|A|society|A survey found that most people agree.
+tradition|伝統|noun|A|society|The festival is an old tradition.
+trend|傾向、流行|noun|B|society|There is a trend toward smaller families.
+victim|犠牲者、被害者|noun|B|society|Volunteers helped the victims of the flood.
+violence|暴力|noun|B|society|The film contains too much violence.
+volunteer|ボランティア|noun|A|society|Volunteers cleaned the beach on Sunday.
+welfare|福祉|noun|B|society|The town improved its welfare services.

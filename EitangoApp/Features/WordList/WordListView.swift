@@ -10,8 +10,11 @@ struct WordListView: View {
         NavigationStack {
             List {
                 Section {
+                    tierFilterRow
                     filterRow
                     statusFilterRow
+                } header: {
+                    Text("\(viewModel.words.count)語")
                 }
                 if viewModel.words.isEmpty {
                     ContentUnavailableView(
@@ -61,6 +64,32 @@ struct WordListView: View {
             }
         }
         .pickerStyle(.segmented)
+    }
+
+    /// 語彙階層と分野。5,000語規模では「どの層を今やるか」を決めるのが最初の操作になるので、
+    /// 頻出度・品詞より上に置く。
+    private var tierFilterRow: some View {
+        HStack {
+            filterMenu(
+                title: "階層",
+                selectedLabel: viewModel.filter.tier?.displayName ?? "すべて"
+            ) {
+                Button("すべて") { viewModel.filter.tier = nil }
+                ForEach(VocabularyTier.allCases) { tier in
+                    Button(tier.displayName) { viewModel.filter.tier = tier }
+                }
+            }
+            Spacer(minLength: 12)
+            filterMenu(
+                title: "分野",
+                selectedLabel: viewModel.filter.domain?.displayName ?? "すべて"
+            ) {
+                Button("すべて") { viewModel.filter.domain = nil }
+                ForEach(VocabularyDomain.allCases) { domain in
+                    Button(domain.displayName) { viewModel.filter.domain = domain }
+                }
+            }
+        }
     }
 
     // Picker(.menu) はラベル+選択値を1行で表示しようとするため、幅が狭い端末ではラベルが折り返して

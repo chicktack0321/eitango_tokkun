@@ -1,0 +1,78 @@
+# Tier 3: 経済・ビジネス
+# word|meaning|pos|rank|domain|example
+
+account|口座、説明|noun|A|business|She opened a bank account online.
+advertise|宣伝する|verb|A|business|The shop advertised its sale on the radio.
+advertisement|広告|noun|A|business|I saw an advertisement for the concert.
+afford|余裕がある|verb|A|business|We cannot afford a new car this year.
+agency|代理店、機関|noun|B|business|He booked the trip through a travel agency.
+agreement|合意、契約|noun|A|business|The two companies reached an agreement.
+amount|量、金額|noun|A|business|A large amount of money was spent on the project.
+annual|年一回の、毎年の|adjective|B|business|The company holds an annual meeting in May.
+apply|申し込む、適用する|verb|A|business|She applied for a job at the bank.
+approve|承認する|verb|B|business|The manager approved the new plan.
+attract|引きつける|verb|A|business|The festival attracts tourists from abroad.
+benefit|利益、恩恵|noun|A|business|Both sides gained a benefit from the deal.
+bill|請求書、法案|noun|A|business|The electricity bill was higher than usual.
+budget|予算|noun|B|business|The city cut its budget for new roads.
+career|経歴、職業|noun|A|business|He changed his career at the age of forty.
+charge|料金を請求する、料金|verb|A|business|The hotel charges extra for parking.
+client|顧客|noun|B|business|She met an important client this morning.
+commercial|商業の、コマーシャル|adjective|B|business|The song was used in a television commercial.
+company|会社|noun|A|business|The company was founded in 1980.
+compete|競争する|verb|A|business|Small shops must compete with online stores.
+competition|競争、競技会|noun|A|business|Competition between airlines lowered prices.
+consumer|消費者|noun|A|business|Consumers want clearer information about food.
+contract|契約|noun|B|business|He signed a two-year contract.
+cost|費用、かかる|noun|A|business|The repair cost more than we expected.
+customer|客、顧客|noun|A|business|The store sent a gift to its regular customers.
+deal|取引、扱う|noun|A|business|They made a deal with a foreign company.
+debt|借金|noun|B|business|The company is trying to pay off its debt.
+decline|減少する、断る|verb|B|business|Sales declined for three months in a row.
+demand|需要、要求する|noun|A|business|Demand for electric cars is growing.
+department|部門、売り場|noun|A|business|She works in the sales department.
+economic|経済の|adjective|A|business|The country is facing economic problems.
+economy|経済|noun|A|business|The economy grew slowly last year.
+efficient|効率的な|adjective|B|business|The new system is more efficient than the old one.
+employ|雇う|verb|A|business|The factory employs 300 people.
+employee|従業員|noun|A|business|Employees can work from home twice a week.
+employer|雇用主|noun|B|business|Her employer paid for the training.
+expense|費用、経費|noun|B|business|Travel expenses are paid by the company.
+export|輸出する、輸出|verb|B|business|The country exports rice to Asia.
+finance|財政、資金|noun|B|business|He studies finance at university.
+firm|会社、堅い|noun|B|business|She works for a law firm in the city.
+goods|商品|noun|B|business|The truck carries goods to the port.
+import|輸入する、輸入|verb|B|business|Japan imports most of its oil.
+income|収入|noun|A|business|Their income has not risen for years.
+increase|増加する、増加|verb|A|business|Prices increased by five percent.
+industry|産業、業界|noun|A|business|The tourist industry recovered quickly.
+insurance|保険|noun|B|business|Travel insurance covers lost luggage.
+invest|投資する|verb|B|business|The company invested in new machines.
+labor|労働|noun|B|business|Labor costs are rising in the region.
+manage|経営する、なんとかやり遂げる|verb|A|business|She manages a small restaurant.
+management|経営、管理|noun|A|business|Good management saved the company.
+manufacture|製造する|verb|B|business|The plant manufactures car parts.
+market|市場|noun|A|business|The company entered the Asian market.
+negotiate|交渉する|verb|C|business|They negotiated a lower price.
+opportunity|機会|noun|A|business|This trip gave her a great opportunity to practice English.
+owner|所有者|noun|A|business|The owner of the shop lives upstairs.
+product|製品|noun|A|business|The product sold well in its first month.
+production|生産|noun|A|business|Production stopped because of a shortage of parts.
+profit|利益|noun|A|business|The store made a small profit last year.
+promote|昇進させる、促進する|verb|B|business|He was promoted to manager.
+purchase|購入する、購入|verb|B|business|You can purchase tickets at the door.
+quality|品質|noun|A|business|Customers value quality more than price.
+rate|割合、料金|noun|A|business|The hotel offers a special rate for students.
+refund|払い戻し、返金する|noun|B|business|The store gave me a full refund.
+retire|退職する|verb|B|business|He retired at the age of sixty-five.
+salary|給料|noun|A|business|She got a job with a higher salary.
+sale|販売、特売|noun|A|business|The shop is having a sale this weekend.
+shortage|不足|noun|B|business|There is a shortage of drivers.
+staff|職員、スタッフ|noun|A|business|The staff work in three shifts.
+stock|在庫、株式|noun|B|business|That item is out of stock.
+supply|供給、供給する|noun|A|business|The company supplies parts to car makers.
+tax|税金|noun|A|business|The government raised the sales tax.
+trade|貿易、取引する|noun|A|business|Trade between the two countries has grown.
+value|価値、評価する|noun|A|business|The value of the house has risen.
+wage|賃金|noun|B|business|Wages are higher in the capital.
+wealthy|裕福な|adjective|B|business|The area is popular with wealthy families.
