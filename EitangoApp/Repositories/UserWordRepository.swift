@@ -156,7 +156,10 @@ struct UserWordRepository {
                     category: userWord.category,
                     partOfSpeech: userWord.partOfSpeech,
                     updatedAt: userWord.updatedAt,
-                    source: .user
+                    source: .user,
+                    // 自分で追加するのは「知らなかった語」なので発展層として扱う。
+                    // ただし出題は権利に関わらず必ず行う（fetchStudyPool が source で通す）。
+                    tier: .core
                 )
             )
         }

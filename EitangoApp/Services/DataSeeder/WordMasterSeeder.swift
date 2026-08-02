@@ -64,7 +64,7 @@ enum WordMasterSeeder {
     }
 
     private static func loadSeedFile(bundle: Bundle) throws -> WordSeedFile {
-        guard let url = bundle.url(forResource: "word_master_seed", withExtension: "json") else {
+        guard let url = bundle.url(forResource: AppConfig.seedResourceName, withExtension: "json") else {
             throw WordMasterSeederError.seedFileNotFound
         }
         do {

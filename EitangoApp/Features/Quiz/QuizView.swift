@@ -10,6 +10,8 @@ struct QuizView: View {
     @State private var celebrationTrigger = 0
     // 実体は StudySettings（ViewModelからも読むためUserDefaultsに置いている）と同じキー
     @AppStorage("includesBasicTier") private var includesBasicTier = false
+    @State private var entitlements = Entitlements.shared
+    @State private var isShowingPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -40,6 +42,9 @@ struct QuizView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     SoundToggleButton(isSessionActive: viewModel.phase == .inProgress)
                 }
+            }
+            .sheet(isPresented: $isShowingPaywall) {
+                PaywallView()
             }
             .task { viewModel.configure(context: modelContext) }
             // ホームの「復習する単語がN語あります」から来たときは、押した通りに復習だけを始める
@@ -97,13 +102,43 @@ struct QuizView: View {
     /// 基礎語彙（中学〜高校基礎）は既習である前提で、既定では出題しない。
     /// 全語彙を同じ確率で出すと知っている語ばかりが並び、試験で問われる発展語彙に
     /// 時間を割けなくなるため。必要な人は戻せるようにしておく。
+    ///
+    /// 出題されない理由は「自分で外した（設定）」と「まだ解放していない（権利）」の2つあり、
+    /// 混ぜると利用者が原因を判断できないので、別々に見せる。
     private var scopeCard: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Toggle("基礎語彙も出題する", isOn: $includesBasicTier)
-                .font(.subheadline)
-            Text("中学〜高校基礎の語（Tier 1）は、既に知っている前提で既定では出題しません。タイピング・聞き流しにも同じ設定が使われます。")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 6) {
+                Toggle("基礎語彙も出題する", isOn: $includesBasicTier)
+                    .font(.subheadline)
+                Text("中学〜高校基礎の語（Tier 1）は、既に知っている前提で既定では出題しません。タイピング・聞き流しにも同じ設定が使われます。")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            if !entitlements.hasFullAccess {
+                Divider()
+                Button {
+                    isShowingPaywall = true
+                } label: {
+                    HStack(alignment: .top, spacing: 8) {
+                        Image(systemName: "lock.fill")
+                            .font(.caption)
+                            .foregroundStyle(.orange)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("2級コア発展語彙はいま出題されません")
+                                .font(.caption).bold()
+                            Text("解放すると、試験で問われる語が出題対象に加わります")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer(minLength: 4)
+                        Image(systemName: "chevron.right")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding()
         .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))

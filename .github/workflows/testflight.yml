@@ -76,11 +76,23 @@ jobs:
       # 実際に焼き込まれた Info.plist をここで検証する。
       - name: Verify built Info.plist
         run: |
-          PLIST="$RUNNER_TEMP/EitangoApp.xcarchive/Products/Applications/EitangoApp.app/Info.plist"
+          APP="$RUNNER_TEMP/EitangoApp.xcarchive/Products/Applications/EitangoApp.app"
+          PLIST="$APP/Info.plist"
           echo "--- built Info.plist ---"
           plutil -p "$PLIST"
 
           fail=0
+
+          # プライバシーマニフェスト。UserDefaults は Apple の Required Reason API に該当し、
+          # 宣言が無いと審査で指摘される。バンドルに入っていることを機械的に確認する
+          # （project.yml では明示していないため、XcodeGen の分類が変わると静かに抜け落ちる）。
+          if [ ! -f "$APP/PrivacyInfo.xcprivacy" ]; then
+            echo "::error::PrivacyInfo.xcprivacy がアプリに含まれていません"
+            fail=1
+          elif ! plutil -p "$APP/PrivacyInfo.xcprivacy" | grep -q NSPrivacyAccessedAPICategoryUserDefaults; then
+            echo "::error::PrivacyInfo.xcprivacy に UserDefaults の利用理由がありません"
+            fail=1
+          fi
 
           BUILD=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$PLIST")
           if [ "$BUILD" != "${{ github.run_number }}" ]; then
@@ -107,7 +119,7 @@ jobs:
           fi
 
           [ "$fail" -eq 0 ] || exit 1
-          echo "OK: build=$BUILD / 暗号化宣言・バックグラウンド再生・表示名すべて焼き込み済み"
+          echo "OK: build=$BUILD / 暗号化宣言・バックグラウンド再生・表示名・プライバシーマニフェストすべて確認済み"
 
       - name: Export and upload to TestFlight
         env:

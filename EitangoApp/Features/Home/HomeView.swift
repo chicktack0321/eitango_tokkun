@@ -5,22 +5,29 @@ import Charts
 /// ホームから push する画面。増えても `navigationDestination` を1か所にまとめられるよう列挙にしている。
 enum HomeDestination: Hashable {
     case history
+    case about
 }
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(TabRouter.self) private var router
     @State private var viewModel = HomeViewModel()
+    @State private var entitlements = Entitlements.shared
+    @State private var isShowingPaywall = false
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
                     titleHeader
+                    if !entitlements.rights.isPurchased {
+                        accessCard
+                    }
                     todayCard
                     historyCard
                     masteryCard
                     quickActionsCard
+                    aboutLink
                 }
                 .padding()
             }
@@ -30,13 +37,82 @@ struct HomeView: View {
             .navigationDestination(for: HomeDestination.self) { destination in
                 switch destination {
                 case .history: StudyHistoryView()
+                case .about: AboutView()
                 }
+            }
+            .sheet(isPresented: $isShowingPaywall) {
+                PaywallView()
             }
             .task { viewModel.configure(context: modelContext) }
             .onChange(of: router.selectedTab) { _, newValue in
-                if newValue == .home { viewModel.reload() }
+                // 日付をまたいでも残り日数が更新されるよう、ホームに戻るたびに見直す
+                if newValue == .home {
+                    viewModel.reload()
+                    entitlements.refreshTrial()
+                }
             }
         }
+    }
+
+    /// 試用中は残り日数を、終了後は何がロックされているかを出す。
+    /// 購入済みの利用者には一切出さない（買ったあとに広告が残るのは体験として悪い）。
+    private var accessCard: some View {
+        Button {
+            isShowingPaywall = true
+        } label: {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: entitlements.rights.isTrialActive ? "hourglass" : "lock.fill")
+                    .font(.title3)
+                    .foregroundStyle(entitlements.rights.isTrialActive ? .blue : .orange)
+                    .frame(width: 28)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    if let remaining = entitlements.trialDaysRemaining {
+                        Text("お試し期間 残り\(remaining)日")
+                            .font(.subheadline).bold()
+                            .foregroundStyle(.primary)
+                        Text("いまは2級コア発展語彙まで出題されています。期間後も学習は続けられます。")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.leading)
+                    } else {
+                        Text("2級コア発展語彙がロック中です")
+                            .font(.subheadline).bold()
+                            .foregroundStyle(.primary)
+                        Text("試験で問われる語を出題対象に戻すには解放が必要です。基礎・架け橋の語彙では引き続き学習できます。")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+
+                Spacer(minLength: 4)
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .padding()
+            .background(.background, in: RoundedRectangle(cornerRadius: 14))
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("accessCard")
+    }
+
+    /// 商標表記・プライバシーポリシー・購入の復元への入口
+    private var aboutLink: some View {
+        NavigationLink(value: HomeDestination.about) {
+            HStack {
+                Text("このアプリについて")
+                    .font(.subheadline)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+            }
+            .foregroundStyle(.secondary)
+            .padding()
+            .background(.background, in: RoundedRectangle(cornerRadius: 14))
+        }
+        .buttonStyle(.plain)
     }
 
     /// ナビゲーションバーの「ホーム」に代えて、アプリ名とロゴを出す
@@ -47,9 +123,10 @@ struct HomeView: View {
                 .frame(width: 44, height: 44)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .leading, spacing: 2) {
-                Text("英単語特訓")
+                Text(AppConfig.appDisplayName)
                     .font(.title2).bold()
-                Text("英検2級")
+                // 商標なので®を付ける（権利表記は「このアプリについて」に常設）
+                Text(AppConfig.gradeDisplayName)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

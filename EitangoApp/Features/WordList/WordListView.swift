@@ -5,6 +5,7 @@ struct WordListView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel = WordListViewModel()
     @State private var isAddingWord = false
+    @State private var entitlements = Entitlements.shared
 
     var body: some View {
         NavigationStack {
@@ -25,7 +26,13 @@ struct WordListView: View {
                 } else {
                     ForEach(viewModel.words) { word in
                         NavigationLink(value: word) {
-                            WordRow(word: word, status: viewModel.status(for: word))
+                            WordRow(
+                                word: word,
+                                status: viewModel.status(for: word),
+                                // 閲覧は常にできる。鍵は「出題対象から外れている」ことを示すだけ
+                                isLockedForStudy: !entitlements.availableTiers.contains(word.tier)
+                                    && word.source != .user
+                            )
                         }
                         // 単語の行であることをUIテストから確実に指せるようにする。
                         // 並び順や絞り込み行の数で位置が変わるため、位置指定では取り違える。
@@ -143,6 +150,8 @@ struct WordListView: View {
 private struct WordRow: View {
     let word: WordMaster
     let status: LearningStatus
+    /// 出題対象から外れている語。意味は読めるので伏せ字にはしない
+    var isLockedForStudy: Bool = false
 
     var body: some View {
         HStack {
@@ -151,6 +160,12 @@ private struct WordRow: View {
                 Text(word.meaning).font(.subheadline).foregroundStyle(.secondary)
             }
             Spacer()
+            if isLockedForStudy {
+                Image(systemName: "lock.fill")
+                    .font(.caption2)
+                    .foregroundStyle(.orange)
+                    .accessibilityLabel("出題対象外")
+            }
             // 自分で追加した語は、同梱の頻出度ランクと意味が違うので見分けられるようにする
             if word.source == .user {
                 Image(systemName: "person.crop.circle")

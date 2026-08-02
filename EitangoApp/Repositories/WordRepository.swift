@@ -15,11 +15,19 @@ struct WordRepository {
     }
 
     /// クイズ・タイピング・聞き流しの出題母集団。
-    /// 既習の基礎語彙を既定で外すことで、限られた学習時間を発展語彙に向ける。
-    /// 自分で追加した単語は階層に関わらず必ず含める（追加したのに出てこないのは意図に反するため）。
-    func fetchStudyPool() -> [WordMaster] {
-        let tiers = StudySettings.studyTiers.map(\.rawValue)
-        return fetchAll().filter { $0.source == .user || tiers.contains($0.tierRaw) }
+    ///
+    /// 「ユーザーが選んだ範囲」（`StudySettings`。基礎語彙を含めるか）と
+    /// 「購入・試用で使える範囲」（`AccessRights`）の積を取る。
+    /// 2つを混ぜて1つのフラグにすると、出題されない理由が設定なのか未購入なのかを
+    /// 切り分けられなくなり、画面の案内も出し分けられない。
+    ///
+    /// 自分で追加した単語は階層にも権利にも関わらず必ず含める
+    /// （自分で入れた語が出てこないのは、どんな理由であれ意図に反する）。
+    func fetchStudyPool(
+        availableTiers: Set<VocabularyTier> = Entitlements.shared.availableTiers
+    ) -> [WordMaster] {
+        let tiers = StudySettings.studyTiers.intersection(availableTiers)
+        return fetchAll().filter { $0.source == .user || tiers.contains($0.tier) }
     }
 
     func fetch(category: FrequencyRank?, partOfSpeech: PartOfSpeech?) -> [WordMaster] {
