@@ -66,18 +66,24 @@ final class EitangoAppUITests: XCTestCase {
             settle()
             capture(app, "02_WordList")
 
-            // 単語はアルファベット順に並ぶ。語彙が増えると特定の語は画面外に出るため、
-            // 見出しの語名ではなく「絞り込み行の次のセル＝最初の単語」を開く。
-            let firstWord = app.cells.element(boundBy: 3)
+            // 語名でも位置でもなく識別子で指す。語彙は4,000語近くあってアルファベット順に
+            // 並ぶため特定の語は画面外に出るし、絞り込み行が増えると位置指定は取り違える
+            // （実際に位置指定でステータス絞り込みを押してしまい、以降の撮影が崩れた）。
+            let firstWord = app.cells.matching(identifier: "wordRow").firstMatch
             if firstWord.waitForExistence(timeout: 5), firstWord.isHittable {
                 firstWord.tap()
                 settle()
-                capture(app, "03_WordDetail")
 
-                let backButton = app.navigationBars.buttons.element(boundBy: 0)
-                if backButton.waitForExistence(timeout: 5) {
-                    backButton.tap()
-                    settle()
+                // 詳細に入れたときだけ撮って戻る。入れていない場合に「戻る」を押すと、
+                // 一覧のナビゲーションバーにある「＋」を押してしまう。
+                if app.staticTexts["例文"].waitForExistence(timeout: 5) {
+                    capture(app, "03_WordDetail")
+
+                    let backButton = app.navigationBars.buttons.element(boundBy: 0)
+                    if backButton.exists {
+                        backButton.tap()
+                        settle()
+                    }
                 }
             }
         }

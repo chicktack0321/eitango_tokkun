@@ -27,6 +27,9 @@ struct WordListView: View {
                         NavigationLink(value: word) {
                             WordRow(word: word, status: viewModel.status(for: word))
                         }
+                        // 単語の行であることをUIテストから確実に指せるようにする。
+                        // 並び順や絞り込み行の数で位置が変わるため、位置指定では取り違える。
+                        .accessibilityIdentifier("wordRow")
                     }
                 }
             }
