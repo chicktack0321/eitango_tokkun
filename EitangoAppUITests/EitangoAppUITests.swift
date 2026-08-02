@@ -69,7 +69,9 @@ final class EitangoAppUITests: XCTestCase {
             // 語名でも位置でもなく識別子で指す。語彙は4,000語近くあってアルファベット順に
             // 並ぶため特定の語は画面外に出るし、絞り込み行が増えると位置指定は取り違える
             // （実際に位置指定でステータス絞り込みを押してしまい、以降の撮影が崩れた）。
-            let firstWord = app.cells.matching(identifier: "wordRow").firstMatch
+            // SwiftUIのListでは識別子がセルとボタンのどちらに載るかが決まらないので、
+            // 種類を限定せずに探す
+            let firstWord = app.descendants(matching: .any).matching(identifier: "wordRow").firstMatch
             if firstWord.waitForExistence(timeout: 5), firstWord.isHittable {
                 firstWord.tap()
                 settle()
