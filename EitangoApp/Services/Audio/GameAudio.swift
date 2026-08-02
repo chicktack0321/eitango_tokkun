@@ -214,14 +214,28 @@ final class GameAudio {
     /// I–V–vi–IV の4小節ループ。
     /// 元実装は1小節ずつ先読みしてスケジュールしていたが、4小節で必ず繰り返すので
     /// まとめて1本のバッファに焼いてループ再生する（タイマーが要らず、途切れも起きない）。
-    private static func makeBGMLoop() -> AVAudioPCMBuffer? {
+    ///
+    /// ループ素材なので、バッファの長さは4小節ちょうどでなければならない。
+    /// 以前は末尾に余白を足していたため、1周ごとに200msの空白が入って
+    /// 継ぎ目でリズムが崩れていた。
+    /// 長さは秒ではなくサンプル数で決める。8分音符1つ分のサンプル数を先に確定させ、
+    /// その32個分をループ長とすることで、拍が割り切れて周回してもテンポがずれない。
+    static func makeBGMLoop() -> AVAudioPCMBuffer? {
         let bpm = 130.0
-        let beat = 60.0 / bpm
-        let eighth = beat / 2
-        let bar = beat * 4
         let bars = 4
+        let stepsPerBar = 8  // 8分音符
+        let totalSteps = bars * stepsPerBar
 
-        guard let buffer = ToneSynth.makeBuffer(seconds: bar * Double(bars) + 0.2) else { return nil }
+        let stepFrames = Int((60.0 / bpm / 2 * ToneSynth.sampleRate).rounded())
+        let eighth = Double(stepFrames) / ToneSynth.sampleRate
+        let beat = eighth * 2
+
+        guard let buffer = ToneSynth.makeBuffer(frames: stepFrames * totalSteps) else { return nil }
+
+        /// 何個目の8分音符か、から時間を求める。位置を秒で積み上げると誤差が溜まるため。
+        func time(ofStep step: Int) -> Double {
+            Double(step * stepFrames) / ToneSynth.sampleRate
+        }
 
         let chords: [[Double]] = [
             [523.25, 659.25, 783.99],  // C
@@ -239,7 +253,7 @@ final class GameAudio {
         ]
 
         for barIndex in 0..<bars {
-            let barStart = Double(barIndex) * bar
+            let barStartStep = barIndex * stepsPerBar
             let chord = chords[barIndex]
             let pattern = arpeggioPatterns[barIndex]
 
@@ -248,37 +262,42 @@ final class GameAudio {
                     to: buffer,
                     frequency: chord[noteIndex],
                     waveform: .triangle,
-                    start: barStart + Double(step) * eighth,
+                    start: time(ofStep: barStartStep + step),
                     duration: eighth * 0.7,
-                    volume: 0.2
+                    volume: 0.2,
+                    wrapsAround: true
                 )
             }
 
+            // 1拍目と3拍目（＝8分音符で0個目と4個目）にベースとキックを置く
             for beatIndex in [0, 2] {
-                let time = barStart + Double(beatIndex) * beat
+                let start = time(ofStep: barStartStep + beatIndex * 2)
                 ToneSynth.addTone(
                     to: buffer,
                     frequency: bassNotes[barIndex],
-                    start: time,
+                    start: start,
                     duration: beat * 0.6,
-                    volume: 0.35
+                    volume: 0.35,
+                    wrapsAround: true
                 )
                 // キック：音程を落としながら短く鳴らす
                 ToneSynth.addTone(
                     to: buffer,
                     frequency: 130,
                     endFrequency: 42,
-                    start: time,
+                    start: start,
                     duration: 0.22,
-                    volume: 0.42
+                    volume: 0.42,
+                    wrapsAround: true
                 )
             }
 
-            for step in 0..<8 {
+            for step in 0..<stepsPerBar {
                 ToneSynth.addHiHat(
                     to: buffer,
-                    start: barStart + Double(step) * eighth,
-                    volume: step.isMultiple(of: 2) ? 0.08 : 0.05
+                    start: time(ofStep: barStartStep + step),
+                    volume: step.isMultiple(of: 2) ? 0.08 : 0.05,
+                    wrapsAround: true
                 )
             }
         }

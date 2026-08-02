@@ -16,11 +16,16 @@ enum ToneSynth {
 
     /// 指定長の無音バッファを作る
     static func makeBuffer(seconds: Double) -> AVAudioPCMBuffer? {
-        guard let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1),
-              let buffer = AVAudioPCMBuffer(
-                  pcmFormat: format,
-                  frameCapacity: AVAudioFrameCount(seconds * sampleRate)
-              )
+        makeBuffer(frames: Int((seconds * sampleRate).rounded()))
+    }
+
+    /// サンプル数を指定して無音バッファを作る。
+    /// ループ素材は長さが1サンプルでもずれると継ぎ目でリズムが崩れるため、
+    /// 秒ではなくサンプル数で長さを決められるようにしている。
+    static func makeBuffer(frames: Int) -> AVAudioPCMBuffer? {
+        guard frames > 0,
+              let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1),
+              let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(frames))
         else { return nil }
         buffer.frameLength = buffer.frameCapacity
         if let channel = buffer.floatChannelData?[0] {
@@ -31,6 +36,9 @@ enum ToneSynth {
 
     /// 1音を加算する。
     /// エンベロープは 5ms で立ち上げてから指数的に減衰させる（元実装の gain ramp と同じ形）。
+    /// - Parameter wrapsAround: バッファ末尾を超えた分を先頭へ回り込ませる。
+    ///   ループ素材で、末尾で鳴り始めた音の減衰を次の周回の頭へ繋げるために使う
+    ///   （切り捨てると継ぎ目でプツッと途切れる）。
     static func addTone(
         to buffer: AVAudioPCMBuffer,
         frequency: Double,
@@ -38,19 +46,20 @@ enum ToneSynth {
         waveform: Waveform = .sine,
         start: Double,
         duration: Double,
-        volume: Double
+        volume: Double,
+        wrapsAround: Bool = false
     ) {
         guard let channel = buffer.floatChannelData?[0], duration > 0 else { return }
 
         let total = Int(buffer.frameLength)
-        let startIndex = max(0, Int(start * sampleRate))
-        let frameCount = Int(duration * sampleRate)
+        let startIndex = max(0, Int((start * sampleRate).rounded()))
+        let frameCount = Int((duration * sampleRate).rounded())
         let attack = 0.005
 
         var phase = 0.0
         for offset in 0..<frameCount {
-            let index = startIndex + offset
-            guard index < total else { break }
+            let position = startIndex + offset
+            guard let index = wrappedIndex(position, total: total, wrapsAround: wrapsAround) else { break }
 
             let t = Double(offset) / sampleRate
             // 周波数スイープ（キックのように音程が落ちる音に使う）
@@ -82,13 +91,14 @@ enum ToneSynth {
         to buffer: AVAudioPCMBuffer,
         start: Double,
         volume: Double,
-        duration: Double = 0.05
+        duration: Double = 0.05,
+        wrapsAround: Bool = false
     ) {
         guard let channel = buffer.floatChannelData?[0] else { return }
 
         let total = Int(buffer.frameLength)
-        let startIndex = max(0, Int(start * sampleRate))
-        let frameCount = Int(duration * sampleRate)
+        let startIndex = max(0, Int((start * sampleRate).rounded()))
+        let frameCount = Int((duration * sampleRate).rounded())
 
         var previousInput: Double = 0
         var previousOutput: Double = 0
@@ -96,8 +106,8 @@ enum ToneSynth {
         let coefficient = 0.82
 
         for offset in 0..<frameCount {
-            let index = startIndex + offset
-            guard index < total else { break }
+            let position = startIndex + offset
+            guard let index = wrappedIndex(position, total: total, wrapsAround: wrapsAround) else { break }
 
             let noise = Double.random(in: -1...1)
             let filtered = coefficient * (previousOutput + noise - previousInput)
@@ -108,6 +118,14 @@ enum ToneSynth {
             let envelope = exp(-t / (duration * 0.25))
             channel[index] += Float(filtered * envelope * volume)
         }
+    }
+
+    /// 書き込み先の位置を返す。バッファ外に出たとき、回り込みが有効なら先頭からの位置に、
+    /// 無効なら nil を返して打ち切らせる。
+    private static func wrappedIndex(_ position: Int, total: Int, wrapsAround: Bool) -> Int? {
+        guard total > 0 else { return nil }
+        if position < total { return position }
+        return wrapsAround ? position % total : nil
     }
 
     private static func sample(phase: Double, waveform: Waveform) -> Double {
