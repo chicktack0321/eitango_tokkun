@@ -16,6 +16,29 @@ final class EitangoAppUITests: XCTestCase {
 
         capture(app, "01_Home")
 
+        // iマークの説明。以前は吹き出し（ポップオーバー）で本文の幅・高さが詰められ、
+        // 最も長い「習熟度」の説明が見切れていたため、全文が読めることを毎回撮って確かめる。
+        let masteryInfo = app.buttons
+            .matching(NSPredicate(format: "label BEGINSWITH '習熟度' AND label ENDSWITH 'の説明'"))
+            .firstMatch
+        if masteryInfo.waitForExistence(timeout: 5) {
+            if !masteryInfo.isHittable {
+                app.swipeUp()
+                settle()
+            }
+            if masteryInfo.isHittable {
+                masteryInfo.tap()
+                settle()
+                capture(app, "01a_MetricInfo")
+
+                let closeButton = app.buttons["閉じる"]
+                if closeButton.waitForExistence(timeout: 5) {
+                    closeButton.tap()
+                    settle()
+                }
+            }
+        }
+
         // ホームから学習の記録へ push して戻る。
         // カードは画面下方にあり初期表示では隠れていることがあるので、必要なら送る。
         let historyLink = app.buttons["historyCardLink"]
