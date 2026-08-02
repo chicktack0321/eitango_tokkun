@@ -24,7 +24,6 @@ contribute|貢献する|verb|B|education|Everyone contributed to the project.
 degree|学位、程度|noun|A|education|She has a degree in economics.
 demonstrate|証明する、実演する|verb|B|education|The study demonstrates the value of exercise.
 describe|描写する、説明する|verb|A|education|Describe the picture in your own words.
-determine|決定する、判断する|verb|B|education|The test determines which class you enter.
 discovery|発見|noun|A|education|The discovery changed our view of history.
 discuss|議論する|verb|A|education|We discussed the topic for an hour.
 distinguish|区別する|verb|C|education|It is hard to distinguish the two sounds.
@@ -42,7 +41,6 @@ explore|探検する、探究する|verb|B|education|The class explored several 
 expression|表現、表情|noun|A|education|Learn useful expressions for the interview.
 factor|要因|noun|B|education|Sleep is an important factor in learning.
 familiar|よく知っている|adjective|A|education|The song sounded familiar to me.
-figure|数字、人物|noun|A|education|The figures in the report are from last year.
 focus|集中する、焦点|verb|A|education|Focus on the main idea first.
 gradually|徐々に|adverb|B|education|Her English improved gradually.
 identify|特定する|verb|B|education|Try to identify your weak points.

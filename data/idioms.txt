@@ -1,0 +1,163 @@
+# 熟語・句動詞（架け橋層として扱う）
+# word|meaning|pos|rank|domain|example
+
+according to|〜によれば|other|A|general|According to the news, the road is closed.
+account for|〜を占める、説明する|verb|B|business|Exports account for half of the company's sales.
+add up to|合計〜になる|verb|B|general|The costs add up to over 3,000 dollars.
+after all|結局|other|A|general|We decided to go after all.
+ahead of|〜より先に|other|B|general|She finished ahead of schedule.
+all at once|突然|other|B|general|All at once the lights went out.
+all the same|それでも|other|C|general|It was expensive, but I bought it all the same.
+apart from|〜は別として|other|B|general|Apart from the price, the hotel was perfect.
+apply for|〜に応募する|verb|A|business|He applied for a scholarship.
+as a result|結果として|other|A|general|As a result, the price went up.
+as far as|〜する限り|other|B|general|As far as I know, the shop is still open.
+as long as|〜する限り|other|A|general|You can stay as long as you like.
+as soon as|〜するとすぐに|other|A|general|Call me as soon as you arrive.
+as well as|〜と同様に|other|A|general|She speaks French as well as English.
+ask for|〜を求める|verb|A|general|He asked for more time.
+at least|少なくとも|other|A|general|It will take at least two hours.
+at once|すぐに、同時に|other|A|general|Please come at once.
+at present|現在は|other|B|general|At present the museum is closed.
+at random|無作為に|other|C|education|The students were chosen at random.
+at the same time|同時に|other|A|general|You cannot do both at the same time.
+be about to|まさに〜しようとしている|verb|A|general|The train was about to leave.
+be based on|〜に基づいている|verb|B|education|The film is based on a true story.
+be capable of|〜する能力がある|verb|B|general|The machine is capable of printing in color.
+be concerned about|〜を心配している|verb|B|society|Parents are concerned about online safety.
+be filled with|〜でいっぱいである|verb|B|general|The hall was filled with visitors.
+be fond of|〜が好きである|verb|B|daily|She is fond of classical music.
+be known for|〜で知られている|verb|A|general|The town is known for its old bridge.
+be likely to|〜しそうである|verb|A|general|Prices are likely to rise.
+be made up of|〜から成る|verb|B|general|The team is made up of six members.
+be responsible for|〜に責任がある|verb|A|society|Each member is responsible for one task.
+be supposed to|〜することになっている|verb|A|general|You are supposed to check in by noon.
+be used to|〜に慣れている|verb|A|general|He is used to getting up early.
+be willing to|喜んで〜する|verb|A|general|She was willing to work weekends.
+because of|〜のために|other|A|general|The game was canceled because of rain.
+belong to|〜に属する|verb|A|society|This bag belongs to my sister.
+break down|故障する|verb|A|technology|Our car broke down on the highway.
+break into|押し入る|verb|B|society|Someone broke into the office last night.
+break out|勃発する、発生する|verb|B|society|A fire broke out in the kitchen.
+bring about|引き起こす|verb|B|society|The invention brought about a big change.
+bring up|育てる、話題に出す|verb|B|society|She was brought up in the countryside.
+call for|要求する、必要とする|verb|B|society|The report calls for stronger rules.
+call off|中止する|verb|B|general|They called off the meeting.
+care for|世話をする、好む|verb|B|health|She cares for her elderly mother.
+carry on|続ける|verb|B|general|Please carry on with your work.
+carry out|実行する|verb|A|education|Researchers carried out a survey.
+catch up with|追いつく|verb|A|general|He ran to catch up with the others.
+check in|チェックインする|verb|A|daily|We checked in at the hotel at three.
+check out|チェックアウトする、調べる|verb|A|daily|Please check out by eleven.
+clean up|きれいに片付ける|verb|A|daily|Volunteers cleaned up the park.
+close down|閉鎖する|verb|B|business|The factory closed down last year.
+come across|偶然出会う|verb|B|general|I came across an old photo.
+come true|実現する|verb|A|general|Her dream finally came true.
+come up with|思いつく|verb|A|general|He came up with a good idea.
+consist of|〜から成る|verb|B|education|The course consists of ten lessons.
+contribute to|〜に貢献する、一因となる|verb|B|society|Exercise contributes to good health.
+cope with|対処する|verb|B|general|He learned to cope with stress.
+cut down on|減らす|verb|B|health|You should cut down on sugar.
+deal with|扱う、対処する|verb|A|business|The department deals with customer complaints.
+depend on|〜次第である、頼る|verb|A|general|It depends on the weather.
+die out|絶滅する|verb|B|environment|Many languages are dying out.
+do without|〜なしで済ます|verb|B|general|We had to do without electricity for a day.
+drop by|立ち寄る|verb|B|daily|Drop by my office when you have time.
+due to|〜が原因で|other|A|general|The delay was due to heavy snow.
+end up|結局〜になる|verb|A|general|We ended up walking home.
+figure out|理解する、解決する|verb|A|general|I finally figured out the answer.
+fill in|記入する|verb|A|daily|Fill in your name and address.
+find out|知る、調べる|verb|A|general|I want to find out more about the course.
+focus on|〜に集中する|verb|A|education|Let us focus on the main problem.
+for a while|しばらくの間|other|A|general|She lived in Canada for a while.
+for example|例えば|other|A|general|Some fruits, for example bananas, are cheap here.
+for instance|例えば|other|B|general|Take, for instance, the case of solar power.
+for the first time|初めて|other|A|general|He visited Kyoto for the first time.
+get along with|うまくやっていく|verb|A|society|She gets along with her classmates.
+get in touch with|連絡を取る|verb|B|general|Get in touch with me next week.
+get over|克服する、回復する|verb|B|health|It took him a month to get over the flu.
+get rid of|取り除く|verb|B|daily|We got rid of the old sofa.
+give up|あきらめる|verb|A|general|Do not give up so easily.
+go over|見直す、復習する|verb|B|education|Let us go over the answers together.
+go through|経験する、通り抜ける|verb|B|general|She went through a difficult time.
+grow up|成長する|verb|A|daily|He grew up in a small town.
+had better|〜したほうがよい|verb|A|general|You had better leave now.
+hand in|提出する|verb|A|education|Hand in your report by Friday.
+hang up|電話を切る|verb|B|daily|He hung up before I could answer.
+have trouble with|〜で苦労する|verb|B|general|I have trouble with long sentences.
+in addition|さらに|other|A|general|In addition, the price includes breakfast.
+in advance|前もって|other|A|general|Please book in advance.
+in case of|〜の場合には|other|B|society|In case of fire, use the stairs.
+in charge of|〜を担当して|other|A|business|She is in charge of the sales team.
+in common|共通して|other|B|society|The two cities have a lot in common.
+in fact|実際は|other|A|general|In fact, the opposite is true.
+in general|一般に|other|A|general|In general, prices are higher in the city.
+in order to|〜するために|other|A|general|She studies hard in order to pass the exam.
+in particular|特に|other|B|general|He likes sports, tennis in particular.
+in spite of|〜にもかかわらず|other|A|general|In spite of the rain, we went out.
+in terms of|〜の点では|other|C|business|In terms of cost, the plan is realistic.
+in the end|結局|other|A|general|In the end, they agreed.
+in the long run|長い目で見れば|other|B|business|It is cheaper in the long run.
+instead of|〜の代わりに|other|A|general|Take the bus instead of a taxi.
+keep in mind|心に留めておく|verb|B|education|Keep in mind that the deadline is Monday.
+keep up with|遅れずについていく|verb|A|education|It is hard to keep up with the class.
+knock down|倒す、取り壊す|verb|C|general|The old building was knocked down.
+lay off|一時解雇する|verb|C|business|The company laid off fifty workers.
+lead to|〜につながる|verb|A|society|Poor sleep can lead to health problems.
+leave out|省く|verb|B|education|You left out one important point.
+look after|世話をする|verb|A|daily|Could you look after my dog?
+look forward to|楽しみに待つ|verb|A|general|I look forward to hearing from you.
+look into|調査する|verb|B|society|The police are looking into the accident.
+look up|調べる|verb|A|education|Look up the word in a dictionary.
+look up to|尊敬する|verb|B|society|He looks up to his older sister.
+major in|専攻する|verb|B|education|She majored in economics.
+make a difference|違いを生む|verb|B|society|Small actions can make a difference.
+make sense|意味をなす|verb|A|general|That explanation makes sense.
+make sure|確認する|verb|A|general|Make sure you lock the door.
+make up for|埋め合わせる|verb|B|general|He worked late to make up for lost time.
+no longer|もはや〜ない|other|A|general|The store is no longer open on Sundays.
+not only|〜だけでなく|other|A|general|Not only students but also teachers joined.
+on average|平均して|other|B|society|On average, students study two hours a day.
+on behalf of|〜を代表して|other|C|business|She spoke on behalf of the group.
+on purpose|わざと|other|B|general|He did it on purpose.
+on time|時間通りに|other|A|general|The train arrived on time.
+out of date|時代遅れの|other|B|technology|The information is out of date.
+out of order|故障して|other|B|technology|The elevator is out of order.
+participate in|参加する|verb|A|education|Fifty students participated in the program.
+pass away|亡くなる|verb|B|daily|Her grandfather passed away last year.
+pay attention to|注意を払う|verb|A|education|Pay attention to the spelling.
+pick up|拾う、迎えに行く|verb|A|daily|I will pick you up at seven.
+point out|指摘する|verb|A|education|She pointed out a mistake in the report.
+prevent from|〜を妨げる|verb|A|general|The rain prevented us from going out.
+provide with|〜に供給する|verb|A|business|The school provides students with tablets.
+put off|延期する|verb|A|general|They put off the meeting until Friday.
+put out|消す|verb|B|society|Firefighters put out the fire quickly.
+put up with|我慢する|verb|B|general|I cannot put up with this noise.
+rather than|〜よりむしろ|other|A|general|She walked rather than took a taxi.
+refer to|言及する、参照する|verb|B|education|The report refers to last year's data.
+regardless of|〜に関係なく|other|C|society|Anyone can join, regardless of age.
+result in|結果として〜になる|verb|B|society|The accident resulted in long delays.
+run out of|使い果たす|verb|A|general|We ran out of paper.
+set up|設立する、設置する|verb|A|business|They set up a small company.
+so far|今のところ|other|A|general|So far there have been no problems.
+sold out|売り切れの|other|A|daily|The concert tickets are sold out.
+stand for|表す、意味する|verb|B|education|What does this letter stand for?
+stay up|夜更かしする|verb|B|daily|He stayed up late studying.
+succeed in|〜に成功する|verb|A|general|She succeeded in getting a scholarship.
+take advantage of|利用する|verb|B|business|Take advantage of the free lessons.
+take care of|世話をする|verb|A|daily|Who takes care of the plants?
+take off|離陸する、脱ぐ|verb|A|daily|The plane took off on time.
+take part in|参加する|verb|A|society|Many families took part in the event.
+take place|開催される、起こる|verb|A|society|The festival takes place in August.
+take turns|交代でする|verb|B|daily|We took turns driving.
+tend to|〜する傾向がある|verb|A|general|People tend to buy more in December.
+thanks to|〜のおかげで|other|A|general|Thanks to your advice, I passed.
+throw away|捨てる|verb|A|environment|Do not throw away plastic bottles.
+turn down|断る、音量を下げる|verb|B|general|He turned down the offer.
+turn in|提出する|verb|B|education|Turn in your homework tomorrow.
+turn out|結局〜とわかる|verb|B|general|It turned out to be a good decision.
+up to date|最新の|other|B|technology|Keep your software up to date.
+used to|以前は〜だった|verb|A|general|There used to be a bookstore here.
+work on|取り組む|verb|A|general|She is working on a new project.
+work out|うまくいく、運動する|verb|A|health|Everything worked out in the end.
+would rather|むしろ〜したい|verb|B|general|I would rather stay home tonight.

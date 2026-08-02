@@ -1,0 +1,367 @@
+# Tier 2: 準2級・2級 架け橋層（CEFR A2+）その2
+# word|meaning|pos|rank|domain|example
+
+gather|集まる、集める|verb|A|society|A crowd gathered outside the hall.
+gentle|優しい、穏やかな|adjective|B|daily|She spoke in a gentle voice.
+gesture|身ぶり|noun|C|society|He made a gesture toward the door.
+goal|目標|noun|A|education|Set a goal for this month.
+grade|成績、学年|noun|A|education|She got a good grade in math.
+graduate|卒業する|verb|A|education|He graduated from high school in March.
+grateful|感謝している|adjective|B|daily|I am grateful for your help.
+greet|あいさつする|verb|B|daily|The host greeted every guest.
+grocery|食料品店|noun|B|daily|I stopped at the grocery store.
+guest|客|noun|A|daily|We had ten guests for dinner.
+guide|案内する、案内人|verb|A|daily|A guide showed us around the castle.
+habit|習慣|noun|A|health|Reading before bed is a good habit.
+harvest|収穫|noun|B|environment|The harvest was poor this year.
+heat|熱、暖める|noun|A|environment|The heat made the work difficult.
+heavy|重い、激しい|adjective|A|general|Heavy rain is expected tonight.
+height|高さ、身長|noun|B|general|What is the height of the tower?
+hide|隠す、隠れる|verb|A|daily|He hid the gift in the closet.
+hire|雇う|verb|B|business|The store hired two students.
+hold|開催する、持つ|verb|A|society|The city holds a marathon every autumn.
+honest|正直な|adjective|A|society|Please be honest with me.
+hope|希望する、希望|verb|A|general|I hope you feel better soon.
+hurry|急ぐ|verb|A|daily|Hurry, or we will miss the train.
+hurt|傷つける、痛む|verb|A|health|My back hurts.
+ideal|理想的な|adjective|B|general|This is an ideal place for a picnic.
+image|画像、印象|noun|A|technology|The image is not clear.
+imagination|想像力|noun|B|education|The story shows great imagination.
+importance|重要性|noun|A|education|He explained the importance of sleep.
+impression|印象|noun|B|society|She made a good impression.
+independent|独立した|adjective|B|society|The country became independent in 1960.
+indoor|屋内の|adjective|B|daily|We moved to an indoor court.
+inexpensive|安価な|adjective|B|business|The hotel was clean and inexpensive.
+insist|主張する|verb|B|society|He insisted on paying.
+instrument|楽器、器具|noun|B|general|She plays three instruments.
+intelligence|知能|noun|B|education|The test measures a kind of intelligence.
+interest|興味、利子|noun|A|education|He has an interest in astronomy.
+international|国際的な|adjective|A|society|The school holds an international festival.
+interview|面接、インタビュー|noun|A|business|The interview lasted twenty minutes.
+introduce|紹介する、導入する|verb|A|general|Let me introduce my colleague.
+invite|招待する|verb|A|daily|They invited us to dinner.
+island|島|noun|A|environment|The island has only 200 residents.
+item|品目|noun|A|business|Each item is priced separately.
+journey|旅|noun|B|daily|The journey took three days.
+judge|判断する、裁判官|verb|B|society|Do not judge people by appearance.
+kindness|親切|noun|B|society|Thank you for your kindness.
+knock|ノックする|verb|A|daily|Someone knocked on the door.
+land|土地、着陸する|noun|A|environment|The land is used for farming.
+language|言語|noun|A|education|She speaks four languages.
+last|続く、最後の|verb|A|general|The meeting lasted two hours.
+lately|最近|adverb|B|general|I have not seen him lately.
+lay|置く、横たえる|verb|B|daily|Lay the map on the table.
+lead|導く、先頭|verb|A|society|She led the group to the top.
+leader|指導者|noun|A|society|He became the leader of the team.
+lend|貸す|verb|A|daily|Can you lend me your bike?
+length|長さ|noun|B|general|Measure the length of the room.
+lift|持ち上げる|verb|A|daily|The box is too heavy to lift.
+lifetime|生涯|noun|B|general|It was the chance of a lifetime.
+lonely|孤独な|adjective|B|health|He felt lonely in the new city.
+loss|損失|noun|B|business|The company reported a loss.
+loud|大きな音の|adjective|A|daily|The music was too loud.
+luckily|運よく|adverb|B|general|Luckily, we found a seat.
+mail|郵便、郵送する|noun|A|daily|The mail arrives at ten.
+male|男性の|adjective|B|society|Most of the drivers are male.
+manner|方法、態度|noun|B|society|He answered in a polite manner.
+mark|印をつける、印|verb|A|education|Mark the correct answer.
+match|試合、合う|noun|A|general|The match starts at three.
+matter|問題、重要である|noun|A|general|It does not matter to me.
+mean|意味する|verb|A|education|What does this word mean?
+meanwhile|その間に|adverb|B|general|Meanwhile, I will prepare lunch.
+measure|測る、対策|verb|B|technology|Measure the width first.
+medium|中くらいの|adjective|B|daily|I would like a medium size.
+melody|旋律|noun|C|general|The melody is easy to remember.
+memory|記憶、思い出|noun|A|health|Sleep improves memory.
+mess|散らかった状態|noun|B|daily|The kitchen was a mess.
+message|伝言|noun|A|daily|I left a message on her desk.
+metal|金属|noun|B|technology|The frame is made of metal.
+midnight|真夜中|noun|B|daily|The store closes at midnight.
+mind|気にする、心|verb|A|health|Do you mind if I open the window?
+miss|逃す、寂しく思う|verb|A|daily|I missed the last train.
+mix|混ぜる|verb|A|daily|Mix the flour and water.
+modern|現代の|adjective|A|society|The museum focuses on modern art.
+moment|瞬間|noun|A|general|Wait a moment, please.
+mostly|主に|adverb|B|general|The visitors are mostly families.
+movement|動き、運動|noun|B|society|The movement started in the 1960s.
+narrow|狭い|adjective|B|general|The street is very narrow.
+nation|国家|noun|B|society|The nation celebrated the victory.
+national|国の|adjective|A|society|The national museum is free today.
+native|母国の、出身の|adjective|B|society|English is not her native language.
+natural|自然の、当然の|adjective|A|environment|The park protects the natural environment.
+nearby|近くの|adjective|A|daily|There is a park nearby.
+nearly|ほとんど|adverb|A|general|The work is nearly finished.
+neat|きちんとした|adjective|C|daily|His desk is always neat.
+necessity|必要性、必需品|noun|C|general|Water is a necessity for life.
+negative|否定的な|adjective|B|society|The response was mostly negative.
+neither|どちらも〜ない|other|B|general|Neither answer is correct.
+nervous|緊張して|adjective|A|health|I was nervous before the speech.
+noise|騒音|noun|A|society|The noise kept me awake.
+noisy|うるさい|adjective|A|daily|The restaurant was too noisy.
+normal|普通の|adjective|A|general|It is normal to feel tired.
+notice|気づく、通知|verb|A|general|Did you notice the change?
+nowadays|近ごろ|adverb|B|society|Nowadays most people shop online.
+object|物、反対する|noun|A|general|A strange object was found on the beach.
+once|一度、かつて|adverb|A|general|I have been there once.
+opposite|反対の|adjective|A|general|The bank is on the opposite side.
+order|注文する、順序|verb|A|business|I ordered a coffee.
+ordinary|普通の|adjective|B|general|It was an ordinary Monday morning.
+organize|組織する、整理する|verb|A|business|Students organized the event.
+original|最初の、独創的な|adjective|A|general|The original plan was cheaper.
+outdoor|屋外の|adjective|A|daily|The school has an outdoor pool.
+overseas|海外へ|adverb|B|society|He works overseas.
+own|所有する、自分の|verb|A|business|They own two shops.
+pack|荷造りする|verb|A|daily|Pack your bag tonight.
+pain|痛み|noun|A|health|The pain went away quickly.
+paint|塗る、絵の具|verb|A|daily|They painted the wall white.
+palace|宮殿|noun|B|general|The palace is open to visitors.
+park|駐車する、公園|verb|A|daily|You cannot park here.
+partner|相手、共同経営者|noun|B|business|Work with a partner.
+passenger|乗客|noun|A|daily|The bus can carry 40 passengers.
+pattern|模様、型|noun|B|general|The pattern repeats every ten centimeters.
+peace|平和|noun|A|society|The two countries made peace.
+per|〜につき|other|A|business|The fee is 500 yen per person.
+perfect|完璧な|adjective|A|general|The weather was perfect.
+performance|公演、成績|noun|A|general|The performance sold out.
+perhaps|たぶん|adverb|A|general|Perhaps he forgot.
+period|期間、時代|noun|A|education|The exam covers this period of history.
+permission|許可|noun|B|society|You need permission to enter.
+personal|個人の|adjective|A|society|Do not share personal information.
+persuasive|説得力のある|adjective|C|education|Her argument was persuasive.
+photograph|写真|noun|A|daily|He took a photograph of the bridge.
+pile|積み重ね|noun|C|daily|There was a pile of books on the floor.
+plain|質素な、明白な|adjective|B|general|She wore a plain white shirt.
+planet|惑星|noun|B|technology|Mars is the fourth planet from the sun.
+pleasant|快い|adjective|B|daily|We had a pleasant evening.
+plenty|たくさん|noun|A|general|There is plenty of time.
+polite|礼儀正しい|adjective|A|society|The staff were polite and quick.
+pond|池|noun|B|environment|Ducks swim in the pond.
+poor|貧しい、下手な|adjective|A|society|The area was very poor 50 years ago.
+popular|人気のある|adjective|A|society|The app is popular with students.
+position|位置、地位|noun|A|business|She applied for a position at the bank.
+positive|前向きな、肯定的な|adjective|A|health|Try to stay positive.
+possible|可能な|adjective|A|general|Is it possible to change the date?
+post|投稿する、郵便|verb|A|technology|She posted a photo online.
+pour|注ぐ|verb|B|daily|Pour the milk into the cup.
+powerful|強力な|adjective|A|technology|The engine is very powerful.
+practice|練習する、練習|verb|A|education|She practices the piano daily.
+praise|ほめる|verb|B|education|The teacher praised his effort.
+precious|貴重な|adjective|B|general|Time is precious.
+presence|存在、出席|noun|C|society|Her presence made everyone calm.
+present|現在の、贈り物|adjective|A|general|The present system is too slow.
+president|大統領、社長|noun|A|business|The president gave a short speech.
+pressure|圧力|noun|B|health|Students are under a lot of pressure.
+pretty|かなり、かわいい|adverb|A|general|The test was pretty easy.
+price|価格|noun|A|business|The price includes tax.
+pride|誇り|noun|B|society|She takes pride in her work.
+print|印刷する|verb|A|technology|Print two copies, please.
+prison|刑務所|noun|C|society|He spent two years in prison.
+private|私的な、私立の|adjective|A|society|This is a private road.
+prize|賞、賞品|noun|A|education|She won first prize.
+probable|ありそうな|adjective|C|general|A delay seems probable.
+produce|生産する|verb|A|business|The factory produces 500 cars a day.
+professional|専門的な、プロの|adjective|A|business|He became a professional player.
+professor|教授|noun|B|education|The professor teaches two classes.
+project|計画、事業|noun|A|business|The project takes six months.
+proper|適切な|adjective|B|general|Use the proper tool for the job.
+protect|保護する、守る|verb|A|environment|Helmets protect riders from injury.
+proud|誇りに思う|adjective|A|daily|Her parents are proud of her.
+pure|純粋な|adjective|B|environment|The water here is pure.
+quantity|量|noun|B|business|Buy a small quantity first.
+quiet|静かな|adjective|A|daily|The library is quiet.
+quite|かなり|adverb|A|general|The room is quite large.
+race|競走、人種|noun|A|society|He won the race easily.
+raise|上げる、育てる|verb|A|business|The shop raised its prices.
+rapidly|急速に|adverb|B|society|The city grew rapidly.
+rare|まれな|adjective|B|environment|This bird is rare in Japan.
+reach|到着する、届く|verb|A|general|We reached the top at noon.
+react|反応する|verb|B|health|How did she react to the news?
+reality|現実|noun|B|society|The plan ignored reality.
+reason|理由|noun|A|general|Give me one reason.
+receive|受け取る|verb|A|general|I received your email.
+recipe|レシピ|noun|B|daily|She shared her recipe for curry.
+recommend|勧める|verb|A|general|Can you recommend a good hotel?
+record|記録する、記録|verb|A|general|He recorded the lecture.
+refuse|断る|verb|B|society|He refused the invitation.
+regular|定期的な、普通の|adjective|A|health|Regular sleep is important.
+relationship|関係|noun|A|society|They have a good working relationship.
+relax|くつろぐ|verb|A|health|Relax and take your time.
+relief|安心、救済|noun|B|health|It was a great relief to hear the news.
+religion|宗教|noun|B|society|The country has several religions.
+rent|借りる、賃貸料|verb|A|business|They rent a small apartment.
+repeat|繰り返す|verb|A|education|Could you repeat that, please?
+reply|返事をする、返事|verb|A|general|She replied within an hour.
+report|報告する、報告|verb|A|education|Report the results to your teacher.
+rescue|救助する|verb|B|society|Firefighters rescued two people.
+reserve|予約する|verb|A|daily|I reserved a table for four.
+respect|尊敬する、尊重|verb|A|society|Students respect their coach.
+rest|休む、休息|verb|A|health|You should rest for a day.
+return|戻る、返す|verb|A|general|Please return the book by Friday.
+reward|報酬|noun|B|business|Hard work brings its own reward.
+rise|上がる|verb|A|business|Prices rose again last month.
+risk|危険、リスク|noun|A|health|Smoking increases the risk of illness.
+roof|屋根|noun|A|daily|The roof needs repair.
+root|根|noun|B|environment|The roots go deep into the soil.
+rough|荒い、おおよその|adjective|B|general|The sea was rough that day.
+round|丸い|adjective|A|general|The table is round.
+route|経路|noun|B|daily|We took a different route home.
+safe|安全な|adjective|A|society|This area is safe at night.
+safety|安全|noun|A|society|Safety comes first.
+sail|航行する|verb|B|daily|The ship sails at dawn.
+sample|見本|noun|B|technology|Take a sample of the water.
+save|節約する、救う|verb|A|environment|Turn off the lights to save energy.
+scene|場面、光景|noun|B|general|The final scene was moving.
+schedule|予定|noun|A|business|The schedule changed at the last minute.
+science|科学|noun|A|education|She teaches science at a high school.
+scientific|科学的な|adjective|B|education|There is scientific evidence for this.
+scientist|科学者|noun|A|education|Scientists studied the samples.
+search|捜す、検索|verb|A|technology|They searched for the missing bag.
+seat|座席|noun|A|daily|Is this seat taken?
+secret|秘密|noun|A|daily|Can you keep a secret?
+section|部分、区画|noun|B|education|Read the first section again.
+seem|〜のように思われる|verb|A|general|He seems tired today.
+select|選ぶ|verb|B|education|Select one topic from the list.
+sell|売る|verb|A|business|They sell fresh bread every morning.
+send|送る|verb|A|general|Send me the file, please.
+sense|感覚、意味|noun|A|health|She has a good sense of direction.
+sentence|文|noun|A|education|Write a sentence using this word.
+serious|深刻な、真剣な|adjective|A|society|This is a serious problem.
+serve|給仕する、役立つ|verb|A|business|Breakfast is served until ten.
+service|サービス、勤務|noun|A|business|The service was excellent.
+several|いくつかの|adjective|A|general|Several people asked the same question.
+shape|形|noun|A|general|The cloud had a strange shape.
+share|共有する、分け前|verb|A|society|They share an office.
+sharp|鋭い|adjective|B|general|Be careful; the knife is sharp.
+shelf|棚|noun|B|daily|Put the box on the top shelf.
+shine|輝く|verb|B|environment|The sun shone all day.
+shortly|まもなく|adverb|B|general|The bus will arrive shortly.
+shout|叫ぶ|verb|A|daily|He shouted to get their attention.
+sight|視力、光景|noun|B|health|His sight is getting worse.
+sign|標識、署名する|noun|A|daily|The sign says the road is closed.
+signal|信号|noun|B|technology|The signal was weak here.
+silence|沈黙|noun|B|society|There was a long silence.
+silent|静かな|adjective|B|society|The class went silent.
+simple|簡単な|adjective|A|general|The instructions are simple.
+since|〜以来、〜だから|other|A|general|I have lived here since 2019.
+sincerely|心から|adverb|B|business|I sincerely hope you are well.
+single|単一の、独身の|adjective|A|general|Not a single seat was empty.
+skill|技能|noun|A|education|Communication is an important skill.
+sleepy|眠い|adjective|A|health|I felt sleepy after lunch.
+slice|一切れ|noun|B|daily|Would you like a slice of cake?
+slide|滑る|verb|C|general|The box slid across the floor.
+slow|遅い|adjective|A|general|The internet is slow today.
+smart|賢い|adjective|A|education|That was a smart choice.
+smell|においがする、におい|verb|A|daily|The kitchen smells wonderful.
+smooth|滑らかな|adjective|B|general|The road is smooth and new.
+soft|柔らかい|adjective|A|daily|The bed is very soft.
+soil|土壌|noun|B|environment|The soil here is rich.
+solid|固体の、しっかりした|adjective|C|technology|Water becomes solid below zero.
+sore|痛い|adjective|B|health|I have a sore throat.
+sort|種類、分類する|noun|A|general|What sort of music do you like?
+sound|音、〜に聞こえる|noun|A|general|That sounds like a good plan.
+space|空間、宇宙|noun|A|technology|There is no space left.
+speech|演説|noun|A|education|He gave a short speech.
+speed|速度|noun|A|technology|The train reaches a high speed.
+spend|費やす|verb|A|business|She spends two hours a day studying.
+spirit|精神|noun|B|society|The team showed great spirit.
+spot|場所、見つける|noun|B|daily|This is a good spot for lunch.
+stage|段階、舞台|noun|A|education|The project is at an early stage.
+stair|階段|noun|B|daily|Take the stairs to the second floor.
+standard|標準、標準の|noun|B|education|The school has high standards.
+state|状態、述べる|noun|A|society|The building is in poor state.
+statement|声明|noun|B|society|The company issued a statement.
+steady|安定した|adjective|C|business|Sales have shown a steady increase.
+steal|盗む|verb|B|society|Someone stole his bicycle.
+step|段階、歩む|noun|A|general|The first step is the hardest.
+stick|棒、くっつく|noun|B|general|The label will not stick.
+still|まだ|adverb|A|general|He is still waiting.
+storm|嵐|noun|A|environment|The storm lasted all night.
+straight|まっすぐな|adjective|A|daily|Go straight for two blocks.
+strange|奇妙な|adjective|A|general|That is a strange story.
+stranger|見知らぬ人|noun|B|society|A stranger asked me for directions.
+strength|強さ|noun|B|health|Exercise builds strength.
+stretch|伸ばす|verb|B|health|Stretch before you run.
+strong|強い|adjective|A|general|A strong wind blew all day.
+struggle|苦労する|verb|B|education|Many students struggle with grammar.
+style|様式|noun|A|general|The building has an old style.
+success|成功|noun|A|business|The event was a great success.
+successful|成功した|adjective|A|business|The campaign was very successful.
+sudden|突然の|adjective|B|general|There was a sudden change in the weather.
+suddenly|突然|adverb|A|general|The lights suddenly went out.
+suffer|苦しむ|verb|B|health|Many people suffer from allergies.
+suggestion|提案|noun|A|education|Thank you for your suggestion.
+sunlight|日光|noun|B|environment|The plant needs plenty of sunlight.
+supper|夕食|noun|B|daily|We had supper at eight.
+sure|確信して|adjective|A|general|Are you sure about that?
+surface|表面|noun|B|technology|The surface is smooth.
+surprise|驚かせる、驚き|verb|A|general|The news surprised everyone.
+surprised|驚いた|adjective|A|general|I was surprised by the result.
+sweet|甘い|adjective|A|daily|This apple is very sweet.
+swing|揺れる|verb|C|general|The door swung open.
+system|制度、システム|noun|A|society|The new system saves time.
+tail|尾|noun|B|environment|The bird has a long tail.
+talent|才能|noun|B|education|She has a talent for languages.
+task|仕事、課題|noun|A|business|Each member has a different task.
+taste|味、味がする|noun|A|daily|The soup has a strong taste.
+tear|裂く、涙|verb|B|daily|He tore the paper in half.
+term|期間、用語|noun|B|education|The second term starts in September.
+terrible|ひどい|adjective|A|general|The weather was terrible.
+theater|劇場|noun|A|general|The theater seats 500 people.
+though|〜だけれども|other|A|general|Though it was late, we kept working.
+thought|考え|noun|A|education|Let me know your thoughts.
+thus|このように|adverb|C|education|Thus, the result was as expected.
+tie|結ぶ、同点|verb|B|general|Tie the rope tightly.
+tight|きつい|adjective|B|daily|The schedule is tight.
+tiny|とても小さい|adjective|B|general|The room was tiny.
+tool|道具|noun|A|technology|Choose the right tool.
+topic|話題|noun|A|education|The topic of the essay is free.
+total|合計の、合計|adjective|A|business|The total cost was 5,000 yen.
+tour|旅行、見学|noun|A|daily|We joined a walking tour.
+tourist|観光客|noun|A|business|Tourists come here in spring.
+toward|〜の方へ|other|A|general|She walked toward the station.
+tower|塔|noun|A|general|The tower is 300 meters tall.
+traffic|交通|noun|A|society|Traffic was heavy this morning.
+transport|輸送する|verb|B|business|Trucks transport the goods to the port.
+travel|旅行する|verb|A|daily|They travel abroad every summer.
+treat|扱う、おごる|verb|A|health|The doctor treated the injury.
+trial|試み、裁判|noun|C|business|The service is free during the trial.
+trip|旅行|noun|A|daily|We took a short trip to the coast.
+trouble|困難|noun|A|general|The car gave us a lot of trouble.
+trust|信頼する|verb|A|society|I trust her judgment.
+truth|真実|noun|A|society|Tell me the truth.
+turn|回る、順番|verb|A|general|Turn left at the corner.
+twice|2回|adverb|A|general|I have seen the film twice.
+type|種類、タイプする|noun|A|technology|What type of computer do you use?
+typical|典型的な|adjective|B|society|It was a typical summer day.
+uniform|制服|noun|B|education|Students wear a uniform.
+unit|単位|noun|B|education|The book is divided into ten units.
+unlike|〜と違って|other|B|general|Unlike his brother, he enjoys sports.
+upset|動揺した|adjective|B|health|She was upset about the news.
+usual|いつもの|adjective|A|daily|We met at the usual place.
+usually|たいてい|adverb|A|daily|I usually walk to work.
+vacation|休暇|noun|A|daily|They went on vacation in August.
+valuable|貴重な|adjective|A|business|The advice was valuable.
+variety|多様性、種類|noun|A|business|The shop sells a variety of teas.
+vegetable|野菜|noun|A|health|Eat more vegetables.
+vehicle|乗り物|noun|B|technology|Electric vehicles are becoming common.
+view|眺め、見解|noun|A|general|The room has a nice view.
+village|村|noun|A|society|The village has one school.
+visitor|訪問者|noun|A|business|The museum had 2,000 visitors.
+voice|声|noun|A|daily|She has a beautiful voice.
+vote|投票する|verb|B|society|Citizens will vote next Sunday.
+wallet|財布|noun|B|daily|He lost his wallet on the train.
+warn|警告する|verb|B|society|The sign warns of falling rocks.
+weather|天気|noun|A|environment|The weather will improve tomorrow.
+weigh|重さがある|verb|B|general|The bag weighs five kilograms.
+weight|重さ、体重|noun|A|health|He lost weight over the summer.
+wet|ぬれた|adjective|A|daily|My shoes are wet.
+whole|全体の|adjective|A|general|She read the whole report.
+wide|広い|adjective|A|general|The road is wide enough.
+wild|野生の|adjective|A|environment|Wild animals live in this forest.
+wise|賢明な|adjective|B|general|That was a wise decision.
+wonder|不思議に思う|verb|A|general|I wonder why he left early.
+wooden|木製の|adjective|B|daily|They sat on a wooden bench.
+worried|心配して|adjective|A|health|She looked worried.
+wrap|包む|verb|B|daily|Please wrap it as a gift.
+yet|まだ、しかし|adverb|A|general|He has not arrived yet.
+youth|若者、青年期|noun|B|society|The center is popular with local youth.

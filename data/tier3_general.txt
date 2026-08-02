@@ -1,0 +1,216 @@
+# Tier 3: 2級コア（一般・抽象語／大問1で問われやすい動詞・形容詞・副詞）
+# word|meaning|pos|rank|domain|example
+
+abandon|捨てる、断念する|verb|B|general|They abandoned the plan after the accident.
+absolutely|絶対に、まったく|adverb|B|general|You are absolutely right.
+accompany|同行する|verb|C|general|A teacher accompanied the students on the trip.
+accomplish|成し遂げる|verb|B|general|She accomplished a great deal in one year.
+accurate|正確な|adjective|B|general|The clock is not very accurate.
+accuse|非難する、告発する|verb|C|general|He was accused of stealing the money.
+acquire|習得する、獲得する|verb|B|general|Children acquire language quickly.
+adapt|適応する、適応させる|verb|B|general|Animals adapt to changes in their environment.
+adequate|十分な|adjective|C|general|The room was not adequate for thirty people.
+adjust|調整する、慣れる|verb|B|general|It took a week to adjust to the new schedule.
+admire|称賛する|verb|B|general|I admire her patience.
+admit|認める|verb|A|general|He admitted that he had made a mistake.
+adopt|採用する、養子にする|verb|B|general|The city adopted a new recycling system.
+advantage|利点|noun|A|general|Living near the station has many advantages.
+afterward|その後|adverb|B|general|We had dinner and went home afterward.
+aim|目指す、目標|verb|A|general|The campaign aims to reduce waste.
+alter|変える|verb|C|general|They altered the design slightly.
+alternative|代わりの、代案|adjective|B|general|Is there an alternative route?
+amaze|驚かせる|verb|B|general|The view amazed everyone.
+announce|発表する|verb|A|general|The school announced the results yesterday.
+anticipate|予期する|verb|C|general|We anticipated a large crowd.
+apologize|謝る|verb|A|general|He apologized for being late.
+appeal|訴える、魅力|verb|B|general|The design appeals to young people.
+appear|現れる、〜のように見える|verb|A|general|She appeared tired after the trip.
+appreciate|感謝する、正しく理解する|verb|A|general|I appreciate your help.
+appropriate|適切な|adjective|B|general|Wear appropriate clothes for the interview.
+approximately|およそ|adverb|B|general|The trip takes approximately two hours.
+arrange|手配する、並べる|verb|A|general|She arranged a meeting for Friday.
+assist|手伝う|verb|B|general|A guide assisted the visitors.
+assume|思い込む、仮定する|verb|B|general|I assumed the shop was closed.
+attempt|試みる、試み|verb|B|general|He attempted the climb twice.
+attend|出席する|verb|A|general|About fifty people attended the lecture.
+attractive|魅力的な|adjective|A|general|The offer sounded attractive.
+barely|かろうじて、ほとんど〜ない|adverb|C|general|I could barely hear him.
+beneficial|有益な|adjective|C|general|Walking is beneficial to your health.
+brief|短い、簡潔な|adjective|B|general|He gave a brief explanation.
+capable|能力がある|adjective|B|general|She is capable of doing the job alone.
+cause|原因、引き起こす|noun|A|general|The cause of the fire is still unknown.
+certainly|確かに|adverb|A|general|That is certainly true.
+challenge|課題、挑戦する|noun|A|general|Learning a language is a real challenge.
+circumstance|状況、事情|noun|C|general|Under these circumstances, we must wait.
+combine|組み合わせる|verb|B|general|The dish combines two local ingredients.
+comfortable|快適な|adjective|A|general|These shoes are very comfortable.
+commit|専念する、（罪を）犯す|verb|C|general|The company committed itself to the plan.
+communicate|意思を伝える|verb|A|general|They communicate mainly by email.
+complete|完了する、完全な|verb|A|general|Please complete the form in English.
+complex|複雑な|adjective|B|general|The rules are more complex than they look.
+concentrate|集中する|verb|B|general|It is hard to concentrate in a noisy room.
+concern|心配、関係する|noun|A|general|Safety is our main concern.
+confirm|確認する|verb|B|general|Please confirm your reservation by email.
+consequence|結果、影響|noun|B|general|He did not think about the consequences.
+constant|絶え間ない|adjective|B|general|The constant noise made it hard to sleep.
+contain|含む|verb|A|general|This drink contains no sugar.
+convenient|便利な|adjective|A|general|The store is open late, which is convenient.
+convince|納得させる|verb|B|general|She convinced her parents to let her go.
+cooperate|協力する|verb|B|general|The two teams cooperated on the project.
+correct|正しい、訂正する|adjective|A|general|Check that your answers are correct.
+critical|重要な、批判的な|adjective|B|general|The next few weeks are critical.
+current|現在の、流れ|adjective|A|general|The current system works well.
+declare|宣言する、申告する|verb|C|general|You must declare goods over this value.
+delay|遅らせる、遅れ|verb|A|general|The flight was delayed by two hours.
+deliver|配達する|verb|A|general|The package will be delivered tomorrow.
+deny|否定する|verb|B|general|He denied taking the money.
+depend|頼る、次第である|verb|A|general|The answer depends on the situation.
+deserve|値する|verb|B|general|She deserves a better job.
+desire|望む、願望|verb|B|general|He had a strong desire to travel.
+despite|〜にもかかわらず|other|B|general|Despite the rain, the event went ahead.
+detail|詳細|noun|A|general|Please give me more details.
+determine|決心する、決定する|verb|B|general|She determined to try again.
+difficulty|困難|noun|A|general|He had difficulty finding the place.
+disappoint|失望させる|verb|A|general|The result disappointed the fans.
+discourage|やる気をなくさせる|verb|C|general|Do not let one failure discourage you.
+distance|距離|noun|A|general|The distance between the towns is 20 kilometers.
+distant|遠い|adjective|B|general|They moved to a distant town.
+distribute|配布する|verb|C|general|Volunteers distributed water to the runners.
+eager|熱心な|adjective|B|general|The students were eager to start.
+eliminate|取り除く|verb|C|general|The new rule eliminated long waiting times.
+enable|可能にする|verb|B|general|The app enables users to book a seat.
+encounter|出くわす|verb|C|general|We encountered a problem on the first day.
+enormous|巨大な|adjective|B|general|The project required an enormous amount of work.
+ensure|確実にする|verb|B|general|Please ensure that the door is locked.
+entire|全体の|adjective|A|general|She read the entire book in one day.
+especially|特に|adverb|A|general|The park is busy, especially on weekends.
+eventually|最終的に|adverb|A|general|He eventually found a job he liked.
+exact|正確な|adjective|A|general|I do not remember the exact date.
+exceed|超える|verb|C|general|The cost exceeded our budget.
+except|〜を除いて|other|A|general|The shop is open every day except Monday.
+exchange|交換する、交換|verb|A|general|They exchanged email addresses.
+exist|存在する|verb|A|general|The village no longer exists.
+expand|拡大する|verb|B|general|The company plans to expand next year.
+expect|予期する、期待する|verb|A|general|We expect the results next week.
+expensive|高価な|adjective|A|general|Renting a car is expensive here.
+experience|経験|noun|A|general|She has ten years of experience.
+express|表現する、急行の|verb|A|general|It is hard to express this idea in English.
+extend|延長する、広げる|verb|B|general|They extended the deadline by a week.
+extremely|きわめて|adverb|A|general|The test was extremely difficult.
+fail|失敗する|verb|A|general|The plan failed for several reasons.
+fault|欠点、責任|noun|B|general|It was not his fault.
+favor|好意、支持する|noun|B|general|Could you do me a favor?
+figure|理解する、数字|verb|A|general|I cannot figure out how it works.
+finally|ついに|adverb|A|general|They finally agreed on a date.
+flexible|柔軟な|adjective|B|general|Our schedule is fairly flexible.
+frequent|頻繁な|adjective|B|general|There are frequent buses to the airport.
+frequently|頻繁に|adverb|B|general|He frequently works late.
+frustrated|いらだった|adjective|B|general|She felt frustrated by the delay.
+gain|得る|verb|A|general|He gained a lot of experience there.
+general|一般的な|adjective|A|general|The general opinion was positive.
+generous|寛大な、気前のよい|adjective|B|general|It was generous of you to help.
+guarantee|保証する、保証|verb|B|general|The repair is guaranteed for a year.
+handle|扱う、取っ手|verb|A|general|She handled the situation calmly.
+hesitate|ためらう|verb|B|general|Do not hesitate to ask questions.
+huge|巨大な|adjective|A|general|A huge crowd waited outside.
+identical|同一の|adjective|C|general|The two copies are identical.
+immediate|即座の|adjective|B|general|The medicine had an immediate effect.
+immediately|すぐに|adverb|A|general|Call me immediately if anything changes.
+impossible|不可能な|adjective|A|general|It is impossible to finish today.
+impress|感銘を与える|verb|A|general|Her speech impressed the audience.
+include|含む|verb|A|general|The price includes breakfast.
+increasingly|ますます|adverb|B|general|Online shopping is increasingly popular.
+indeed|実に、確かに|adverb|B|general|It was indeed a difficult question.
+inform|知らせる|verb|A|general|Please inform us of any changes.
+instant|即座の、瞬間|adjective|B|general|The reply was almost instant.
+instead|代わりに|adverb|A|general|We took the bus instead.
+intend|意図する|verb|B|general|I intend to study abroad next year.
+involve|関係させる、伴う|verb|A|general|The job involves a lot of travel.
+lack|不足、欠く|noun|B|general|A lack of sleep affects your memory.
+likely|ありそうな|adjective|A|general|It is likely to rain this evening.
+limit|制限する、限界|verb|A|general|Please limit your speech to five minutes.
+maintain|維持する|verb|B|general|It is hard to maintain this speed.
+mention|言及する|verb|A|general|He did not mention the price.
+mistake|間違い|noun|A|general|Everyone makes mistakes.
+moreover|さらに|adverb|C|general|The room is small. Moreover, it is dark.
+nevertheless|それにもかかわらず|adverb|C|general|It rained. Nevertheless, we enjoyed the day.
+obtain|得る|verb|B|general|You can obtain a form at the office.
+occasion|機会、場合|noun|B|general|I have met him on several occasions.
+occur|起こる|verb|A|general|The accident occurred at midnight.
+offer|申し出る、提供する|verb|A|general|They offered him a job.
+particularly|特に|adverb|A|general|The second half was particularly good.
+perform|行う、演じる|verb|A|general|The band performed for two hours.
+permit|許可する|verb|B|general|Smoking is not permitted here.
+persuade|説得する|verb|B|general|He persuaded me to change my mind.
+possibility|可能性|noun|A|general|There is a possibility of snow.
+potential|可能性のある、潜在能力|adjective|B|general|The plan has potential problems.
+practically|事実上、ほとんど|adverb|C|general|The work is practically finished.
+precise|正確な|adjective|C|general|Give me the precise figures.
+prefer|好む|verb|A|general|I prefer tea to coffee.
+pretend|ふりをする|verb|B|general|He pretended not to hear me.
+previously|以前に|adverb|B|general|She previously worked in Australia.
+primary|主要な|adjective|B|general|Our primary goal is safety.
+priority|優先事項|noun|B|general|Safety is our top priority.
+probably|おそらく|adverb|A|general|He will probably arrive late.
+promise|約束する、約束|verb|A|general|She promised to call back.
+propose|提案する|verb|B|general|They proposed a different date.
+prove|証明する|verb|A|general|The test proved that the theory was right.
+provide|提供する|verb|A|general|The hotel provides free breakfast.
+publish|出版する|verb|B|general|The book was published last spring.
+range|範囲|noun|B|general|The shop sells a wide range of goods.
+rarely|めったに〜ない|adverb|B|general|He rarely eats out.
+reasonable|妥当な、手頃な|adjective|B|general|The price seems reasonable.
+recent|最近の|adjective|A|general|A recent study found the opposite.
+recently|最近|adverb|A|general|She recently moved to Osaka.
+reduce|削減する|verb|A|general|We must reduce costs this year.
+regard|みなす、点|verb|B|general|He is regarded as an expert.
+regret|後悔する|verb|B|general|I regret not going.
+reject|拒否する|verb|B|general|They rejected the offer.
+relative|相対的な、親戚|adjective|B|general|Her relatives live in Canada.
+release|公開する、解放する|verb|B|general|The film will be released in June.
+rely|頼る|verb|B|general|We rely on volunteers.
+remain|〜のままである、残る|verb|A|general|The problem remains unsolved.
+remarkable|注目すべき|adjective|C|general|She made a remarkable recovery.
+remind|思い出させる|verb|A|general|Remind me to call the office.
+remove|取り除く|verb|A|general|Please remove your shoes here.
+repair|修理する、修理|verb|A|general|The repair took three days.
+represent|代表する、表す|verb|B|general|This graph represents last year's sales.
+reputation|評判|noun|B|general|The restaurant has a good reputation.
+request|要請する、依頼|verb|A|general|She requested a window seat.
+respond|返答する|verb|A|general|He responded to my email at once.
+response|返答、反応|noun|A|general|We received no response.
+result|結果|noun|A|general|The result was better than expected.
+reveal|明らかにする|verb|B|general|The study revealed a surprising fact.
+satisfy|満足させる|verb|A|general|The meal satisfied everyone.
+seek|探し求める|verb|B|general|Many graduates seek work in the city.
+separate|分ける、別々の|verb|A|general|Separate the paper from the plastic.
+severe|厳しい、深刻な|adjective|B|general|The country had a severe winter.
+significant|重要な、著しい|adjective|A|general|There was a significant increase in sales.
+similar|似ている|adjective|A|general|The two designs are quite similar.
+slight|わずかな|adjective|B|general|There was a slight delay.
+solve|解決する|verb|A|general|The team solved the problem quickly.
+spread|広がる、広げる|verb|A|general|The news spread quickly.
+strict|厳しい|adjective|B|general|The school has strict rules.
+succeed|成功する|verb|A|general|She succeeded in passing the exam.
+sufficient|十分な|adjective|C|general|We do not have sufficient time.
+suitable|適した|adjective|B|general|This film is not suitable for children.
+suppose|思う、仮定する|verb|A|general|I suppose you are right.
+surround|囲む|verb|B|general|Trees surround the small lake.
+suspect|疑う|verb|B|general|Police suspect that the fire was not an accident.
+temporary|一時的な|adjective|B|general|He found a temporary job.
+tend|傾向がある|verb|A|general|Prices tend to rise in summer.
+therefore|それゆえに|adverb|A|general|The road was closed. Therefore, we took another route.
+thorough|徹底的な|adjective|C|general|The police made a thorough search.
+throughout|〜の間ずっと、至る所に|other|B|general|It rained throughout the week.
+tough|困難な、丈夫な|adjective|B|general|It was a tough decision.
+translate|翻訳する|verb|B|general|The book has been translated into ten languages.
+unfortunately|残念ながら|adverb|A|general|Unfortunately, the tickets were sold out.
+unique|独特の|adjective|B|general|Each design is unique.
+unless|〜でない限り|other|A|general|We will go unless it rains.
+urgent|緊急の|adjective|B|general|She received an urgent message.
+useful|役に立つ|adjective|A|general|This dictionary is very useful.
+vary|異なる、変わる|verb|B|general|Prices vary from shop to shop.
+whereas|〜だが一方|other|C|general|He likes sports, whereas his brother prefers music.
+whether|〜かどうか|other|A|general|I am not sure whether he will come.
+willing|喜んで〜する|adjective|A|general|She is willing to help.
+worth|価値がある|adjective|A|general|The museum is worth visiting.

@@ -1,0 +1,223 @@
+# Tier 2: 準2級・2級 架け橋層（CEFR A2+）その1
+# word|meaning|pos|rank|domain|example
+
+absent|欠席の|adjective|B|education|He was absent from school yesterday.
+accident|事故|noun|A|society|The accident happened near the station.
+active|活動的な|adjective|A|general|She stays active by walking every day.
+activity|活動|noun|A|general|The club offers many activities.
+actually|実際は|adverb|A|general|Actually, I have never been there.
+addition|追加|noun|B|general|The addition of a new station helped the town.
+address|住所、演説|noun|A|daily|Please write your address here.
+admission|入場、入学|noun|B|education|Admission to the museum is free.
+adult|大人|noun|A|daily|The ticket is cheaper for adults over 65.
+advice|助言|noun|A|general|Thank you for your advice.
+afraid|恐れて|adjective|A|daily|I am afraid of high places.
+agree|同意する|verb|A|general|We all agreed with her plan.
+ahead|前方に|adverb|A|general|The station is straight ahead.
+alive|生きている|adjective|B|health|The plant is still alive.
+allowance|小遣い、手当|noun|C|business|He saves half of his allowance.
+alone|一人で|adjective|A|daily|She lives alone in the city.
+aloud|声を出して|adverb|B|education|Read the passage aloud.
+already|すでに|adverb|A|general|The bus has already left.
+amazing|驚くべき|adjective|A|general|The view from the top was amazing.
+among|〜の間で|other|A|general|The song is popular among students.
+angry|怒った|adjective|A|daily|He was angry about the delay.
+announcement|発表、告知|noun|B|general|There was an announcement about the delay.
+anymore|もはや|adverb|A|general|He does not live here anymore.
+anxious|心配して、切望して|adjective|B|health|She was anxious about the results.
+apart|離れて|adverb|B|general|The two houses are 500 meters apart.
+apparently|どうやら〜らしい|adverb|B|general|Apparently the shop has moved.
+appointment|予約、約束|noun|A|health|I have a dental appointment at three.
+area|地域、面積|noun|A|society|This area is popular with families.
+arrival|到着|noun|B|daily|The arrival time is 6:30.
+article|記事|noun|A|education|I read an article about solar power.
+artist|芸術家|noun|A|general|The artist paints local scenes.
+ashamed|恥じて|adjective|C|daily|He felt ashamed of his mistake.
+aside|わきに|adverb|C|general|She put the book aside.
+asleep|眠って|adjective|A|daily|The baby is asleep.
+assistant|助手|noun|B|business|She works as a teaching assistant.
+astronaut|宇宙飛行士|noun|C|technology|The astronaut spent six months in space.
+athlete|運動選手|noun|B|general|Athletes trained for the competition.
+attack|攻撃する、攻撃|verb|B|society|The village was attacked long ago.
+attention|注意|noun|A|education|May I have your attention, please?
+audience|観客、聴衆|noun|A|general|The audience clapped loudly.
+author|著者|noun|A|education|The author will visit our school.
+available|利用できる|adjective|A|general|Tickets are still available.
+awake|目が覚めて|adjective|B|health|I was awake most of the night.
+award|賞|noun|A|general|She won an award for her research.
+background|背景、経歴|noun|B|society|Students come from different backgrounds.
+bake|焼く|verb|A|daily|She baked a cake for the party.
+balance|均衡、残高|noun|A|health|It is hard to keep a balance between work and rest.
+band|楽団、帯|noun|A|general|The band played for an hour.
+bargain|お買い得品|noun|B|business|The coat was a real bargain.
+basic|基本的な|adjective|A|education|Start with the basic rules.
+basis|基礎、根拠|noun|B|education|The plan has a firm basis.
+beat|打ち負かす、打つ|verb|A|general|Our team beat theirs by two points.
+beg|懇願する|verb|C|daily|He begged her to stay.
+behave|振る舞う|verb|B|society|The children behaved well.
+belief|信念|noun|B|society|It is a common belief in this region.
+bitter|苦い、つらい|adjective|B|daily|The medicine tastes bitter.
+blame|非難する|verb|B|society|Do not blame yourself.
+blank|空白の|adjective|B|education|Fill in the blank spaces.
+blood|血|noun|A|health|The doctor took a blood sample.
+board|乗り込む、板|verb|A|daily|Passengers began to board the plane.
+boil|沸かす、ゆでる|verb|A|daily|Boil the water for three minutes.
+bookstore|書店|noun|A|daily|There is a bookstore near the station.
+border|国境、境界|noun|B|society|The town is near the border.
+borrow|借りる|verb|A|daily|Can I borrow your pen?
+bother|悩ませる|verb|B|daily|Sorry to bother you.
+brave|勇敢な|adjective|B|general|It was a brave decision.
+breath|息|noun|B|health|Take a deep breath.
+bright|明るい、賢い|adjective|A|general|The room is bright in the morning.
+broad|広い|adjective|B|general|The river is very broad here.
+burn|燃やす、燃える|verb|A|environment|They burn the fallen leaves.
+bury|埋める|verb|C|environment|The waste is buried underground.
+calm|落ち着いた|adjective|B|health|Try to stay calm.
+cancel|取り消す|verb|A|daily|The flight was canceled.
+candidate|候補者|noun|B|society|Three candidates ran for mayor.
+carefully|注意深く|adverb|A|general|Read the question carefully.
+cash|現金|noun|A|business|Can I pay in cash?
+castle|城|noun|A|general|The castle was built 400 years ago.
+ceiling|天井|noun|B|daily|The lamp hangs from the ceiling.
+celebrate|祝う|verb|A|daily|We celebrated her birthday at home.
+century|世紀|noun|A|education|The bridge was built in the 19th century.
+ceremony|式典|noun|B|society|The opening ceremony starts at ten.
+certain|確かな、ある〜|adjective|A|general|I am certain that he will come.
+chance|機会、可能性|noun|A|general|This is your last chance.
+character|性格、登場人物|noun|A|education|The main character is a young doctor.
+charity|慈善団体|noun|B|society|The money goes to a local charity.
+cheap|安い|adjective|A|business|Vegetables are cheap this month.
+check|確認する|verb|A|general|Check your answers again.
+cheerful|陽気な|adjective|B|daily|She has a cheerful voice.
+choice|選択|noun|A|general|You have two choices.
+choose|選ぶ|verb|A|general|Choose the best answer.
+claim|主張する|verb|B|society|He claims that he was not there.
+classical|古典の、クラシックの|adjective|B|general|She enjoys classical music.
+clerk|店員、事務員|noun|B|business|The clerk was very helpful.
+close|閉じる、近い|verb|A|general|Please close the window.
+cloth|布|noun|B|daily|Wipe the table with a wet cloth.
+coast|海岸|noun|B|environment|We drove along the coast.
+collect|集める|verb|A|general|He collects old coins.
+college|大学|noun|A|education|She goes to a community college.
+column|コラム、柱|noun|C|education|He writes a weekly column.
+comment|コメント、論評する|noun|B|society|The mayor made no comment.
+common|一般的な、共通の|adjective|A|general|This is a common mistake.
+concert|コンサート|noun|A|daily|The concert starts at seven.
+confident|自信のある|adjective|A|education|She feels confident about the test.
+connect|つなぐ|verb|A|technology|The bridge connects the two islands.
+connection|関係、接続|noun|B|technology|There is a connection between the two events.
+contact|連絡する、連絡|verb|A|general|Please contact us by email.
+continue|続ける|verb|A|general|The rain continued all day.
+control|管理する、制御|verb|A|general|The system controls the temperature.
+convenience|便利さ|noun|B|daily|We chose the hotel for its convenience.
+conversation|会話|noun|A|education|We had a long conversation.
+cook|料理する|verb|A|daily|He cooks dinner every evening.
+copy|複写する、部|verb|A|education|Please copy this page.
+corner|角|noun|A|daily|The shop is on the corner.
+count|数える|verb|A|education|Count the number of words.
+courage|勇気|noun|B|general|It took courage to speak up.
+course|課程、進路|noun|A|education|She took an online course.
+cover|覆う、扱う|verb|A|general|Snow covered the road.
+crash|衝突する、衝突|verb|B|society|The car crashed into a wall.
+create|創造する|verb|A|general|The app was created by students.
+creative|創造的な|adjective|B|education|The class encourages creative thinking.
+credit|信用、クレジット|noun|B|business|Do you take credit cards?
+crowded|混雑した|adjective|A|daily|The train was very crowded.
+curious|好奇心の強い|adjective|B|education|Children are naturally curious.
+damage|損害を与える、損害|verb|A|environment|The typhoon damaged many houses.
+danger|危険|noun|A|society|The bridge is in danger of collapsing.
+dangerous|危険な|adjective|A|society|Swimming here is dangerous.
+deadline|締め切り|noun|B|business|The deadline is next Monday.
+decide|決める|verb|A|general|They decided to move.
+decision|決定|noun|A|general|It was a difficult decision.
+deep|深い|adjective|A|general|The lake is very deep.
+delicious|おいしい|adjective|A|daily|The soup was delicious.
+depth|深さ|noun|C|environment|The depth of the pool is two meters.
+desert|砂漠|noun|B|environment|Few plants grow in the desert.
+design|設計する、デザイン|verb|A|technology|An architect designed the building.
+destination|目的地|noun|B|daily|Our final destination is Kyoto.
+difference|違い|noun|A|general|There is a big difference between them.
+direct|直接の、指導する|adjective|A|general|Is there a direct flight?
+direction|方向、指示|noun|A|daily|We walked in the wrong direction.
+disagree|意見が合わない|verb|B|society|I disagree with that opinion.
+discount|割引|noun|B|business|Students get a 20 percent discount.
+discover|発見する|verb|A|education|Scientists discovered a new plant.
+divide|分ける|verb|A|education|Divide the class into four groups.
+double|2倍の|adjective|A|business|The price is almost double.
+doubt|疑う、疑い|verb|B|general|I doubt that he will come.
+downtown|繁華街へ|adverb|B|daily|We went downtown for dinner.
+dozen|ダース、12個|noun|B|daily|She bought a dozen eggs.
+draw|描く、引く|verb|A|education|Draw a line under the word.
+dress|服装、着せる|noun|A|daily|She wore a blue dress.
+drop|落とす、落ちる|verb|A|general|Be careful not to drop it.
+dry|乾いた、乾かす|adjective|A|environment|The soil is very dry.
+during|〜の間|other|A|general|It rained during the night.
+duty|義務、任務|noun|B|society|It is our duty to help.
+earn|稼ぐ|verb|A|business|He earns enough to live on.
+edge|端、へり|noun|B|general|Do not stand near the edge.
+effect|効果、影響|noun|A|general|The medicine had no effect.
+either|どちらか|other|A|general|Either answer is acceptable.
+electricity|電気|noun|A|technology|The storm cut the electricity.
+else|他に|adverb|A|general|Is there anything else?
+emergency|緊急事態|noun|B|health|Call this number in an emergency.
+empty|空の|adjective|A|daily|The box was empty.
+enemy|敵|noun|B|society|They were once enemies.
+energy|活力、元気|noun|A|health|I had no energy after the long trip.
+engine|エンジン|noun|A|technology|The engine makes a strange noise.
+enough|十分な|adjective|A|general|We do not have enough chairs.
+enter|入る|verb|A|general|Please do not enter this room.
+entrance|入口|noun|A|daily|The entrance is on the left.
+envelope|封筒|noun|B|daily|Put the letter in an envelope.
+environment|環境、周囲の状況|noun|A|environment|Children learn faster in a quiet environment.
+error|誤り|noun|B|technology|The program showed an error.
+escape|逃げる|verb|B|society|The animals escaped from the zoo.
+essay|小論文|noun|B|education|Write an essay of 100 words.
+exactly|正確に|adverb|A|general|That is exactly what I meant.
+examination|試験、検査|noun|A|education|The examination lasts two hours.
+example|例|noun|A|education|Give me an example.
+excellent|優れた|adjective|A|education|Her work was excellent.
+excited|わくわくして|adjective|A|daily|The children were excited about the trip.
+exciting|わくわくさせる|adjective|A|daily|It was an exciting game.
+excuse|言い訳、許す|noun|A|daily|That is no excuse.
+exhibition|展示会|noun|B|education|The exhibition runs until May.
+expert|専門家|noun|A|education|Experts disagree about the cause.
+explain|説明する|verb|A|education|Can you explain this rule?
+extra|余分の|adjective|A|business|Is there an extra charge?
+fair|公平な、かなりの|adjective|A|society|The rules must be fair to everyone.
+false|誤った|adjective|B|education|Mark the sentence true or false.
+famous|有名な|adjective|A|general|The city is famous for its temples.
+fashion|流行|noun|B|daily|The fashion changes every year.
+fasten|締める|verb|B|daily|Please fasten your seat belt.
+fat|脂肪、太った|noun|B|health|This food is high in fat.
+favorite|お気に入りの|adjective|A|daily|What is your favorite sport?
+fear|恐れ|noun|B|health|He has a fear of flying.
+feed|えさを与える|verb|A|daily|Do not feed the birds.
+feeling|感情|noun|A|health|I had a strange feeling.
+female|女性の|adjective|B|society|Half of the members are female.
+festival|祭り|noun|A|society|The festival lasts three days.
+field|分野、畑|noun|A|education|She works in the field of medicine.
+fill|満たす|verb|A|daily|Fill the bottle with water.
+fit|合う、健康な|verb|A|health|These shoes do not fit.
+fix|修理する、固定する|verb|A|technology|Can you fix my bike?
+flat|平らな|adjective|B|general|The land here is flat.
+flight|飛行、便|noun|A|daily|The flight takes two hours.
+float|浮かぶ|verb|B|environment|Leaves floated on the water.
+floor|床、階|noun|A|daily|The office is on the third floor.
+flow|流れる|verb|B|environment|The river flows into the sea.
+follow|従う、後を追う|verb|A|general|Follow the instructions carefully.
+foreign|外国の|adjective|A|society|He studies a foreign language.
+forest|森|noun|A|environment|A path leads into the forest.
+forever|永遠に|adverb|B|general|Nothing lasts forever.
+forget|忘れる|verb|A|daily|Do not forget your umbrella.
+forgive|許す|verb|B|society|She forgave him at last.
+form|形、用紙|noun|A|daily|Fill out this form, please.
+former|前の|adjective|B|society|The former mayor now teaches.
+fortunately|幸いにも|adverb|B|general|Fortunately, no one was hurt.
+forward|前方へ|adverb|A|general|Move forward one step.
+freeze|凍る|verb|B|environment|The lake freezes in winter.
+fresh|新鮮な|adjective|A|daily|The fish is very fresh.
+friendly|親しみやすい|adjective|A|daily|The staff were friendly.
+frighten|怖がらせる|verb|B|daily|The noise frightened the cat.
+full|いっぱいの|adjective|A|general|The bus was full.
+fun|楽しみ|noun|A|daily|We had a lot of fun.
+furniture|家具|noun|B|daily|They bought new furniture.
