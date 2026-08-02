@@ -11,8 +11,10 @@ final class QuizFlowTests: XCTestCase {
 
     private var container: ModelContainer!
     private var context: ModelContext!
+    private var previousSoundEnabled = true
 
     override func setUpWithError() throws {
+        previousSoundEnabled = GameAudio.shared.isEnabled
         let schema = Schema([WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self])
         container = try ModelContainer(
             for: schema,
@@ -24,6 +26,8 @@ final class QuizFlowTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        // 音の設定は端末（シミュレータ）に保存されるため、テストの都合で消したままにしない
+        GameAudio.shared.isEnabled = previousSoundEnabled
         context = nil
         container = nil
     }
