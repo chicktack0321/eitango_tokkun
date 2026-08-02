@@ -1,0 +1,31 @@
+{
+  "identifier" : "A1B2C3D4-0000-0000-0000-EITANGOAPP01",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "500",
+      "familyShareable" : false,
+      "internalID" : "B1C2D3E4-0001-0000-0000-EITANGOAPP01",
+      "localizations" : [
+        {
+          "description" : "英検2級で実際に問われる発展語彙を、クイズ・タイピング・聞き流しの出題対象に加えます。買い切りで、月額・年額の課金はありません。",
+          "displayName" : "2級コア発展語彙の解放",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "com.eitango.app.unlock.grade2",
+      "referenceName" : "Grade 2 core vocabulary unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "5PT8D8SKN8",
+    "_lastSynchronizedDate" : 0
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
