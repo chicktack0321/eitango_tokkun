@@ -87,6 +87,10 @@ final class QuizViewModel {
         elapsedSeconds = 0
         startedAt = .now
         phase = questions.isEmpty ? .finished : .inProgress
+        if phase == .inProgress {
+            GameAudio.shared.play(.start)
+            GameAudio.shared.startBGM()
+        }
         startTimer()
     }
 
@@ -141,6 +145,8 @@ final class QuizViewModel {
 
         let isCorrect = index == question.correctIndex
         if isCorrect { correctAnswerCount += 1 }
+        // タイピングと同じ音で揃える（正解＝上昇音、ミス＝下降音）
+        GameAudio.shared.play(isCorrect ? .wordComplete : .miss)
         record(question: question, isCorrect: isCorrect)
     }
 
@@ -149,6 +155,7 @@ final class QuizViewModel {
         guard phase == .inProgress, let question = currentQuestion, selectedChoiceIndex == nil else { return }
         selectedChoiceIndex = -1 // 「未選択のまま時間切れ」を表す番兵
         timeoutCount += 1
+        GameAudio.shared.play(.miss)
         record(question: question, isCorrect: false)
     }
 
@@ -175,6 +182,9 @@ final class QuizViewModel {
                 elapsedSeconds = max(0, Int(Date.now.timeIntervalSince(startedAt)))
             }
             phase = .finished
+            GameAudio.shared.stopBGM()
+            // 結果画面のグレードと揃える。A以上（75%以上）なら祝う音にする。
+            GameAudio.shared.play(resultSummary.accuracyPercent >= 75 ? .fanfare : .gameOver)
             return
         }
         currentQuestionIndex += 1
@@ -187,6 +197,7 @@ final class QuizViewModel {
     func abortSession() {
         timerTask?.cancel()
         timerTask = nil
+        GameAudio.shared.stopBGM()
         questions = []
         currentQuestionIndex = 0
         selectedChoiceIndex = nil
@@ -199,11 +210,15 @@ final class QuizViewModel {
     func suspendTimer() {
         timerTask?.cancel()
         timerTask = nil
+        // 別タブや別アプリに移ったあともBGMが鳴り続けないようにする
+        GameAudio.shared.stopBGM()
     }
 
     /// 画面に戻ったときに、残り時間を引き継いで計測を再開する
     func resumeTimer() {
-        guard phase == .inProgress, selectedChoiceIndex == nil, timerTask == nil else { return }
+        guard phase == .inProgress else { return }
+        GameAudio.shared.startBGM()
+        guard selectedChoiceIndex == nil, timerTask == nil else { return }
         runTimer()
     }
 

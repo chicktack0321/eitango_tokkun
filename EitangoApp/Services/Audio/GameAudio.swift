@@ -3,11 +3,13 @@ import AVFoundation
 import Observation
 import os
 
-/// タイピング中の効果音とBGM。
+/// タイピングと4択クイズで鳴らす効果音とBGM。
 ///
 /// 参考にした元のゲームと同じ音の構成（打鍵音・単語完成・ミス・コンボ、
 /// I–V–vi–IV の4小節ループ）を、合成した波形で鳴らす。
 /// 音声ファイルは持たないのでアプリの容量は増えない。
+///
+/// オーディオエンジンは1つしか持てないので、画面ごとに作らずアプリ全体で共有する。
 @Observable
 @MainActor
 final class GameAudio {
@@ -24,12 +26,18 @@ final class GameAudio {
     }
 
     /// 音を鳴らすかどうか。切っていればエンジンごと止める。
+    ///
+    /// 画面ごとに設定を持つと、タイピングで消したのにクイズでは鳴る、という食い違いが起きる。
+    /// 鳴らす主体がこのクラス1つなので、設定の保存もここで引き受ける。
     var isEnabled = true {
         didSet {
             guard isEnabled != oldValue else { return }
+            UserDefaults.standard.set(isEnabled, forKey: Self.enabledKey)
             if !isEnabled { stopAll() }
         }
     }
+
+    private static let enabledKey = "gameSoundEnabled"
 
     private let logger = Logger(subsystem: "com.eitango.app", category: "GameAudio")
     private let engine = AVAudioEngine()
@@ -40,7 +48,10 @@ final class GameAudio {
     private var bgmBuffer: AVAudioPCMBuffer?
     private var isEngineReady = false
 
-    private init() {}
+    private init() {
+        // 初期化中のプロパティ代入では didSet が走らないので、保存し直しは起きない
+        isEnabled = UserDefaults.standard.object(forKey: Self.enabledKey) as? Bool ?? true
+    }
 
     // MARK: - 準備
 

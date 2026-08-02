@@ -34,6 +34,9 @@ struct QuizView: View {
                         Button("やめる") { viewModel.abortSession() }
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    SoundToggleButton(isSessionActive: viewModel.phase == .inProgress)
+                }
             }
             .task { viewModel.configure(context: modelContext) }
             // ホームの「復習する単語がN語あります」から来たときは、押した通りに復習だけを始める

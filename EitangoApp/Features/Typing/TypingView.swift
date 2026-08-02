@@ -11,8 +11,6 @@ struct TypingView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel = TypingViewModel()
     @State private var inputBuffer = ""
-    /// 音のオン・オフは端末に覚えさせる（毎回切り直すのは煩わしいため）
-    @AppStorage("typingSoundEnabled") private var isSoundEnabled = true
     @FocusState private var inputFocused: Bool
 
     var body: some View {
@@ -46,22 +44,10 @@ struct TypingView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        GameAudio.shared.isEnabled.toggle()
-                        isSoundEnabled = GameAudio.shared.isEnabled
-                        if isSoundEnabled, viewModel.phase == .inProgress {
-                            GameAudio.shared.startBGM()
-                        }
-                    } label: {
-                        Image(systemName: isSoundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
-                    }
-                    .accessibilityLabel(isSoundEnabled ? "音を消す" : "音を出す")
+                    SoundToggleButton(isSessionActive: viewModel.phase == .inProgress)
                 }
             }
-            .task {
-                viewModel.configure(context: modelContext)
-                GameAudio.shared.isEnabled = isSoundEnabled
-            }
+            .task { viewModel.configure(context: modelContext) }
             // 画面を離れている間に制限時間が減り続けないようにする
             .onDisappear { viewModel.suspendTimer() }
             .onAppear { viewModel.resumeTimer() }
