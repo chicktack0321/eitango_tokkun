@@ -11,8 +11,13 @@ final class HomeSummaryTests: XCTestCase {
 
     private var container: ModelContainer!
     private var context: ModelContext!
+    private var previousMasteryScope = StudyScope.default
 
     override func setUpWithError() throws {
+        // 集計範囲は端末に保存されるため、前回の実行に引きずられないよう既定に戻す
+        previousMasteryScope = StudySettings.masteryScope
+        StudySettings.masteryScope = .default
+
         let schema = Schema([WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self, UserWord.self])
         container = try ModelContainer(
             for: schema,
@@ -22,6 +27,7 @@ final class HomeSummaryTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        StudySettings.masteryScope = previousMasteryScope
         context = nil
         container = nil
     }

@@ -12,7 +12,7 @@ final class PurchaseGateTests: XCTestCase {
     private var container: ModelContainer!
     private var context: ModelContext!
     private var repository: WordRepository!
-    private var previousIncludesBasicTier = false
+    private var previousScope = StudyScope.default
 
     override func setUpWithError() throws {
         let schema = Schema([WordMaster.self, UserProgress.self, StudyLog.self, TypingScore.self, UserWord.self])
@@ -24,8 +24,8 @@ final class PurchaseGateTests: XCTestCase {
         repository = WordRepository(context: context)
 
         // 出題範囲の設定は端末に保存されるため、テストの都合で変えたら必ず戻す
-        previousIncludesBasicTier = StudySettings.includesBasicTier
-        StudySettings.includesBasicTier = false
+        previousScope = StudySettings.studyScope
+        StudySettings.studyScope = .default
 
         insert(tier: .basic, count: 5)
         insert(tier: .bridge, count: 3)
@@ -33,7 +33,7 @@ final class PurchaseGateTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        StudySettings.includesBasicTier = previousIncludesBasicTier
+        StudySettings.studyScope = previousScope
         repository = nil
         context = nil
         container = nil
@@ -74,15 +74,69 @@ final class PurchaseGateTests: XCTestCase {
         XCTAssertEqual(pool.filter { $0.tier == .core }.count, 4)
     }
 
-    /// 「基礎語彙も出題する」を入れても、権利が無ければ 2級コアは増えないこと。
+    /// 出題範囲で「2級コア」を選んでも、権利が無ければ出題されないこと。
     /// 設定と権利を掛け合わせている（片方だけ見ていない）ことの確認。
-    func testBasicTierSettingDoesNotUnlockCoreWords() {
-        StudySettings.includesBasicTier = true
+    func testSelectingCoreTierDoesNotBypassTheLock() {
+        var scope = StudyScope.default
+        scope.tier = .core
 
-        let pool = repository.fetchStudyPool(availableTiers: AccessRights.locked.availableTiers)
+        let pool = repository.fetchStudyPool(
+            scope: scope,
+            availableTiers: AccessRights.locked.availableTiers
+        )
 
-        XCTAssertEqual(pool.count, 8, "基礎5語 + 架け橋3語")
-        XCTAssertFalse(pool.contains { $0.tier == .core })
+        XCTAssertTrue(pool.isEmpty, "権利が無い階層を選んでも出題されてはいけない")
+    }
+
+    /// 階層を「基礎」に切り替えると、基礎語彙だけが出題されること
+    func testSelectingBasicTierNarrowsThePool() {
+        var scope = StudyScope.default
+        scope.tier = .basic
+
+        let pool = repository.fetchStudyPool(
+            scope: scope,
+            availableTiers: AccessRights.locked.availableTiers
+        )
+
+        XCTAssertEqual(pool.count, 5)
+        XCTAssertTrue(pool.allSatisfy { $0.tier == .basic })
+    }
+
+    /// 分野で絞れること
+    func testDomainNarrowsThePool() {
+        context.insert(
+            WordMaster(
+                wordId: "env-1", word: "pollution", meaning: "汚染", example: "",
+                frequencyCount: 0, category: .a, partOfSpeech: .noun,
+                tier: .bridge, domain: .environment
+            )
+        )
+        var scope = StudyScope.default
+        scope.domain = .environment
+
+        let pool = repository.fetchStudyPool(
+            scope: scope,
+            availableTiers: AccessRights.locked.availableTiers
+        )
+
+        XCTAssertEqual(pool.map(\.wordId), ["env-1"])
+    }
+
+    /// 「自分で追加した単語のみ」を選ぶと、同梱の語は一切出ないこと
+    func testOnlyUserWordsExcludesBundledWords() throws {
+        try UserWordRepository(context: context).add(
+            word: "serendipity", meaning: "偶然の幸運", example: "",
+            category: .c, partOfSpeech: .noun
+        )
+        var scope = StudyScope.default
+        scope.onlyUserWords = true
+
+        let pool = repository.fetchStudyPool(
+            scope: scope,
+            availableTiers: Set(VocabularyTier.allCases)
+        )
+
+        XCTAssertEqual(pool.map(\.word), ["serendipity"])
     }
 
     /// 自分で追加した単語は、階層にも権利にも関わらず必ず出題対象に入ること

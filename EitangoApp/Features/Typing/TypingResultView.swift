@@ -21,7 +21,7 @@ struct TypingBestScoreCard: View {
                             .foregroundStyle(highlightedIndex == index + 1 ? Color.orange : .primary)
 
                         if score.isHiddenMode {
-                            Text("かくれんぼ")
+                            Text("ブラインド")
                                 .font(.caption2)
                                 .padding(.horizontal, 6).padding(.vertical, 2)
                                 .background(Color.purple.opacity(0.15), in: Capsule())
@@ -141,7 +141,7 @@ struct TypingResultView: View {
             HStack(spacing: 6) {
                 Text("RESULT").font(.caption).foregroundStyle(.secondary)
                 if mode == .hidden {
-                    Text("かくれんぼ")
+                    Text("ブラインド")
                         .font(.caption2)
                         .padding(.horizontal, 6).padding(.vertical, 2)
                         .background(Color.purple.opacity(0.15), in: Capsule())

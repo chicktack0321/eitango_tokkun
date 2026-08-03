@@ -17,6 +17,7 @@ final class TypingViewModel {
         /// スペルを見ながら打つ
         case normal
         /// スペルを伏せて打つ。打った文字だけが現れる。
+        /// 保存済みのスコアと結び付いているため、表示名を変えても rawValue は変えない。
         case hidden
 
         var id: String { rawValue }
@@ -24,7 +25,7 @@ final class TypingViewModel {
         var displayName: String {
             switch self {
             case .normal: return "ノーマル"
-            case .hidden: return "かくれんぼ"
+            case .hidden: return "ブラインド"
             }
         }
 
@@ -35,7 +36,7 @@ final class TypingViewModel {
             }
         }
 
-        /// かくれんぼは難易度が高いぶんスコアを上乗せする
+        /// ブラインドは難易度が高いぶんスコアを上乗せする
         var scoreMultiplier: Double {
             switch self {
             case .normal: return 1.0
@@ -70,10 +71,16 @@ final class TypingViewModel {
     /// 直近の結果がベスト入り／自己ベスト更新だったか
     private(set) var achievement = TypingScoreRepository.Achievement.none
 
+    /// いま選んでいる出題範囲に何語入るか
+    private(set) var scopeWordCount = 0
+    /// 自分で追加した単語があるか
+    private(set) var hasUserWords = false
+
     private var currentWordMissed = false
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
     private var scoreRepository: TypingScoreRepository?
+    private var userWordRepository: UserWordRepository?
     /// deinit（常にnonisolated）から安全にキャンセルできるよう、actor隔離チェックの対象から外す。
     /// `Task.cancel()` はどのスレッドから呼んでも安全なため、この用途では問題ない。
     nonisolated(unsafe) private var timerTask: Task<Void, Never>?
@@ -94,7 +101,16 @@ final class TypingViewModel {
         wordRepository = WordRepository(context: context)
         progressRepository = ProgressRepository(context: context)
         scoreRepository = TypingScoreRepository(context: context)
+        userWordRepository = UserWordRepository(context: context)
         bestScores = scoreRepository?.best() ?? []
+        refreshScopeCount()
+    }
+
+    /// 出題範囲を変えたときに、スタート画面の語数表示を合わせる
+    func refreshScopeCount() {
+        guard let wordRepository else { return }
+        scopeWordCount = wordRepository.countStudyPool(scope: StudySettings.studyScope)
+        hasUserWords = !(userWordRepository?.all().isEmpty ?? true)
     }
 
     func start(mode: Mode = .normal) {

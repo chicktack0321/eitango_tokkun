@@ -39,8 +39,14 @@ final class QuizViewModel {
     /// エラーではなく状況の説明として見せる。
     private(set) var notice: String?
 
+    /// いま選んでいる出題範囲に何語入るか。0語のまま始めさせないために表示する
+    private(set) var scopeWordCount = 0
+    /// 自分で追加した単語があるか（「自分の単語のみ」を選べるかの判断に使う）
+    private(set) var hasUserWords = false
+
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
+    private var userWordRepository: UserWordRepository?
     /// deinit（常にnonisolated）から安全にキャンセルできるよう、actor隔離チェックの対象から外す。
     /// `Task.cancel()` はどのスレッドから呼んでも安全なため、この用途では問題ない。
     nonisolated(unsafe) private var timerTask: Task<Void, Never>?
@@ -59,6 +65,15 @@ final class QuizViewModel {
         guard wordRepository == nil else { return }
         wordRepository = WordRepository(context: context)
         progressRepository = ProgressRepository(context: context)
+        userWordRepository = UserWordRepository(context: context)
+        refreshScopeCount()
+    }
+
+    /// 出題範囲を変えたときに、スタート画面の語数表示を合わせる
+    func refreshScopeCount() {
+        guard let wordRepository else { return }
+        scopeWordCount = wordRepository.countStudyPool(scope: StudySettings.studyScope)
+        hasUserWords = !(userWordRepository?.all().isEmpty ?? true)
     }
 
     func startNewQuiz(scope: QuizScope = .mixed) {
@@ -99,7 +114,7 @@ final class QuizViewModel {
         guard !questions.isEmpty else {
             notice = scope == .reviewOnly
                 ? "復習の期限が来ている単語はありません。おつかれさまでした。"
-                : "出題できる単語がありません。"
+                : "この出題範囲に単語がありません。絞り込みを緩めてください。"
             phase = .notStarted
             GameAudio.shared.stopBGM()
             return

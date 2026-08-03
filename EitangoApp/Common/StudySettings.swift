@@ -1,24 +1,39 @@
 import Foundation
 
-/// 出題範囲の設定。
+/// 出題範囲と集計範囲の設定。
 ///
-/// 2級の語彙5,000語のうち大半は中学〜高校基礎の既習語で、そのまま同じ確率で出すと
-/// 知っている語ばかりが並んで、試験で問われる発展語彙に時間を割けなくなる。
-/// そこで基礎層は既定で出題対象から外し、必要な人だけが戻せるようにする。
-///
-/// 画面（View）だけでなく ViewModel からも読むため、@AppStorage ではなく
-/// UserDefaults を直接扱うこの型に集約している。
+/// 画面（View）だけでなく ViewModel やリポジトリからも読むため、
+/// @AppStorage ではなく UserDefaults を直接扱うこの型に集約している。
 enum StudySettings {
-    private static let includesBasicTierKey = "includesBasicTier"
-
-    /// 基礎語彙（Tier 1）も出題するか。既定は false。
-    static var includesBasicTier: Bool {
-        get { UserDefaults.standard.object(forKey: includesBasicTierKey) as? Bool ?? false }
-        set { UserDefaults.standard.set(newValue, forKey: includesBasicTierKey) }
+    private enum Key {
+        static let studyScope = "studyScope"
+        static let masteryScope = "masteryScope"
     }
 
-    /// 出題対象に含める語彙階層
-    static var studyTiers: Set<VocabularyTier> {
-        includesBasicTier ? Set(VocabularyTier.allCases) : [.bridge, .core]
+    /// 4択クイズ・タイピングの出題範囲
+    static var studyScope: StudyScope {
+        get { load(Key.studyScope) }
+        set { save(newValue, to: Key.studyScope) }
+    }
+
+    /// ホームの習熟度で集計する範囲
+    static var masteryScope: StudyScope {
+        get { load(Key.masteryScope) }
+        set { save(newValue, to: Key.masteryScope) }
+    }
+
+    // MARK: - 保存
+
+    // 項目が増えるたびにキーを足していくと取りこぼすため、まとめてJSONで持つ
+    private static func load(_ key: String) -> StudyScope {
+        guard let data = UserDefaults.standard.data(forKey: key),
+              let scope = try? JSONDecoder().decode(StudyScope.self, from: data)
+        else { return .default }
+        return scope
+    }
+
+    private static func save(_ scope: StudyScope, to key: String) {
+        guard let data = try? JSONEncoder().encode(scope) else { return }
+        UserDefaults.standard.set(data, forKey: key)
     }
 }

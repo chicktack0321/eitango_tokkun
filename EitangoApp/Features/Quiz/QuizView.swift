@@ -8,10 +8,10 @@ struct QuizView: View {
     @State private var viewModel = QuizViewModel()
     /// 正解のたびに増やして紙吹雪を発生させる
     @State private var celebrationTrigger = 0
-    // 実体は StudySettings（ViewModelからも読むためUserDefaultsに置いている）と同じキー
-    @AppStorage("includesBasicTier") private var includesBasicTier = false
     @State private var entitlements = Entitlements.shared
     @State private var isShowingPaywall = false
+    /// 出題範囲。保存先は StudySettings（ViewModel からも読むため UserDefaults に置いている）
+    @State private var scope = StudySettings.studyScope
 
     var body: some View {
         NavigationStack {
@@ -73,82 +73,88 @@ struct QuizView: View {
     }
 
     private var startScreen: some View {
-        VStack(spacing: 16) {
-            Text("英→日 4択クイズ")
-                .font(.title2).bold()
-            Text("\(QuizViewModel.questionCount)問 / 1問あたり\(QuizViewModel.timeLimitPerQuestion)秒")
-                .foregroundStyle(.secondary)
-
-            // 復習を解き終えて出題対象が無くなったときなど、なぜ始まらなかったのかを伝える
-            if let notice = viewModel.notice {
-                Label(notice, systemImage: "checkmark.circle")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
-                    .padding(.horizontal)
-            }
-
-            Button("スタート") { viewModel.startNewQuiz() }
-                .buttonStyle(.borderedProminent)
-
-            scopeCard
-                .padding(.horizontal)
+        ScrollView {
+            VStack(spacing: 16) {
+                VStack(spacing: 6) {
+                    Text("英→日 4択クイズ")
+                        .font(.title2).bold()
+                    Text("\(QuizViewModel.questionCount)問 / 1問あたり\(QuizViewModel.timeLimitPerQuestion)秒")
+                        .foregroundStyle(.secondary)
+                }
                 .padding(.top, 8)
+
+                // 復習を解き終えて出題対象が無くなったときなど、なぜ始まらなかったのかを伝える
+                if let notice = viewModel.notice {
+                    Label(notice, systemImage: "checkmark.circle")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
+                }
+
+                Button("スタート") { viewModel.startNewQuiz() }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .disabled(viewModel.scopeWordCount == 0)
+
+                StudyScopeCard(
+                    title: "出題範囲",
+                    scope: $scope,
+                    matchingCount: viewModel.scopeWordCount,
+                    hasUserWords: viewModel.hasUserWords
+                )
+
+                if !entitlements.hasFullAccess {
+                    lockedNotice
+                }
+            }
+            .padding()
+        }
+        .background(Color(.systemGroupedBackground))
+        // 範囲を変えたら語数の表示をすぐ合わせる
+        .onChange(of: scope) { _, newValue in
+            StudySettings.studyScope = newValue
+            viewModel.refreshScopeCount()
         }
     }
 
-    /// 基礎語彙（中学〜高校基礎）は既習である前提で、既定では出題しない。
-    /// 全語彙を同じ確率で出すと知っている語ばかりが並び、試験で問われる発展語彙に
-    /// 時間を割けなくなるため。必要な人は戻せるようにしておく。
-    ///
-    /// 出題されない理由は「自分で外した（設定）」と「まだ解放していない（権利）」の2つあり、
-    /// 混ぜると利用者が原因を判断できないので、別々に見せる。
-    private var scopeCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            VStack(alignment: .leading, spacing: 6) {
-                Toggle("基礎語彙も出題する", isOn: $includesBasicTier)
-                    .font(.subheadline)
-                Text("中学〜高校基礎の語（Tier 1）は、既に知っている前提で既定では出題しません。タイピング・聞き流しにも同じ設定が使われます。")
+    /// 出題されない理由は「自分で範囲を絞った（設定）」と「まだ解放していない（権利）」の
+    /// 2つあり、混ぜると利用者が原因を判断できないので別々に見せる。
+    private var lockedNotice: some View {
+        Button {
+            isShowingPaywall = true
+        } label: {
+            HStack(alignment: .top, spacing: 8) {
+                Image(systemName: "lock.fill")
                     .font(.caption)
+                    .foregroundStyle(.orange)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("2級コア発展語彙はいま出題されません")
+                        .font(.caption).bold()
+                    Text("解放すると、試験で問われる語が出題対象に加わります")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer(minLength: 4)
+                Image(systemName: "chevron.right")
+                    .font(.caption2)
                     .foregroundStyle(.secondary)
             }
-
-            if !entitlements.hasFullAccess {
-                Divider()
-                Button {
-                    isShowingPaywall = true
-                } label: {
-                    HStack(alignment: .top, spacing: 8) {
-                        Image(systemName: "lock.fill")
-                            .font(.caption)
-                            .foregroundStyle(.orange)
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("2級コア発展語彙はいま出題されません")
-                                .font(.caption).bold()
-                            Text("解放すると、試験で問われる語が出題対象に加わります")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer(minLength: 4)
-                        Image(systemName: "chevron.right")
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .buttonStyle(.plain)
-            }
+            .padding()
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
         }
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 12))
+        .buttonStyle(.plain)
     }
 
     /// タイピング画面と同じ「グループ背景＋白カード」構成に揃えている。
     /// 素のVStackで組んでいたときはコンテンツがナビゲーションバーの下に潜り込み、
     /// 問題番号とタイトル・ツールバーが重なって表示されていた。
     private func quizScreen(question: QuizQuestion) -> some View {
-        VStack(spacing: 0) {
+        let hasAnswered = viewModel.selectedChoiceIndex != nil
+        let isLastQuestion = viewModel.currentQuestionIndex + 1 >= viewModel.questions.count
+
+        return VStack(spacing: 0) {
             ScrollView {
                 VStack(spacing: 16) {
                     progressCard
@@ -157,16 +163,40 @@ struct QuizView: View {
                 .padding()
             }
 
-            if viewModel.selectedChoiceIndex != nil {
-                Button(viewModel.currentQuestionIndex + 1 < viewModel.questions.count ? "次の問題へ" : "結果を見る") {
-                    viewModel.goToNextQuestion()
+            if hasAnswered {
+                VStack(spacing: 6) {
+                    Button(isLastQuestion ? "結果を見る" : "次の問題へ") {
+                        viewModel.goToNextQuestion()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    // 片手で持ったまま進められるように、スワイプでも同じ操作ができることを示す
+                    Label("上にスワイプでも進めます", systemImage: "chevron.up")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
                 }
-                .buttonStyle(.borderedProminent)
                 .padding()
+                .transition(.opacity)
             }
         }
         .background(Color(.systemGroupedBackground))
-        .confetti(trigger: celebrationTrigger)
+        // 正解した選択肢の位置から弾けさせる。画面全体に降らせると、どこで何が起きたのか伝わらない
+        .overlayPreferenceValue(ChoiceAnchorKey.self) { anchors in
+            GeometryReader { proxy in
+                ConfettiView(trigger: celebrationTrigger, origin: confettiOrigin(anchors, in: proxy))
+            }
+        }
+        // 解答後は片手で次へ進めるようにする。解答前はスワイプで飛ばせないようにしておく
+        // （読まずに進んでしまうのを防ぐため）。
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 24)
+                .onEnded { value in
+                    guard hasAnswered else { return }
+                    guard value.translation.height < -50,
+                          abs(value.translation.width) < 80 else { return }
+                    viewModel.goToNextQuestion()
+                }
+        )
+        .animation(.easeInOut(duration: 0.15), value: hasAnswered)
         // 解答が確定した瞬間に手応えを返す。正解は1回、不正解は3回でタイピングと揃えている。
         .onChange(of: viewModel.selectedChoiceIndex) { _, selected in
             guard let selected, let question = viewModel.currentQuestion else { return }
@@ -177,6 +207,23 @@ struct QuizView: View {
                 Haptics.failure()
             }
         }
+    }
+
+    /// 正解の選択肢の中心を、紙吹雪の発生源に変換する
+    private func confettiOrigin(
+        _ anchors: [Int: Anchor<CGRect>],
+        in proxy: GeometryProxy
+    ) -> UnitPoint {
+        guard let question = viewModel.currentQuestion,
+              let anchor = anchors[question.correctIndex],
+              proxy.size.width > 0, proxy.size.height > 0
+        else { return UnitPoint(x: 0.5, y: 0.35) }
+
+        let rect = proxy[anchor]
+        return UnitPoint(
+            x: rect.midX / proxy.size.width,
+            y: rect.midY / proxy.size.height
+        )
     }
 
     private var progressCard: some View {
@@ -211,6 +258,8 @@ struct QuizView: View {
                         state: choiceState(index: index, question: question),
                         action: { viewModel.selectAnswer(index) }
                     )
+                    // 紙吹雪を正解の位置から出すために、各選択肢の位置を親へ伝える
+                    .anchorPreference(key: ChoiceAnchorKey.self, value: .bounds) { [index: $0] }
                 }
             }
         }
@@ -224,6 +273,15 @@ struct QuizView: View {
         if index == question.correctIndex { return .correct }
         if index == selected { return .incorrect }
         return .disabled
+    }
+}
+
+/// 選択肢の位置を親へ伝えるためのキー。紙吹雪を正解した場所から出すために使う
+private struct ChoiceAnchorKey: PreferenceKey {
+    static let defaultValue: [Int: Anchor<CGRect>] = [:]
+
+    static func reduce(value: inout [Int: Anchor<CGRect>], nextValue: () -> [Int: Anchor<CGRect>]) {
+        value.merge(nextValue()) { _, new in new }
     }
 }
 

@@ -11,6 +11,8 @@ struct TypingView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel = TypingViewModel()
     @State private var inputBuffer = ""
+    /// 出題範囲。4択クイズと同じ設定を共有する
+    @State private var scope = StudySettings.studyScope
     @FocusState private var inputFocused: Bool
 
     var body: some View {
@@ -110,6 +112,13 @@ struct TypingView: View {
                     }
                 }
 
+                StudyScopeCard(
+                    title: "出題範囲",
+                    scope: $scope,
+                    matchingCount: viewModel.scopeWordCount,
+                    hasUserWords: viewModel.hasUserWords
+                )
+
                 if !viewModel.bestScores.isEmpty {
                     TypingBestScoreCard(scores: viewModel.bestScores, highlightedIndex: nil)
                 }
@@ -117,6 +126,11 @@ struct TypingView: View {
             .padding()
         }
         .background(Color(.systemGroupedBackground))
+        // 範囲は4択クイズと共有している。変えたら語数の表示をすぐ合わせる
+        .onChange(of: scope) { _, newValue in
+            StudySettings.studyScope = newValue
+            viewModel.refreshScopeCount()
+        }
     }
 
     // MARK: - プレイ画面
@@ -281,7 +295,7 @@ private struct TypingCharsView: View {
     let word: String
     let charIndex: Int
     let missFlash: Bool
-    /// かくれんぼモード。まだ打っていない文字を伏せ字にする。
+    /// ブラインドモード。まだ打っていない文字を伏せ字にする。
     var hidesUntyped: Bool = false
 
     var body: some View {
@@ -302,7 +316,7 @@ private struct TypingCharsView: View {
         }
     }
 
-    /// かくれんぼでは打ち終えた文字だけを見せる。現在位置も伏せたままにして、
+    /// ブラインドでは打ち終えた文字だけを見せる。現在位置も伏せたままにして、
     /// 訳語から綴りを思い出す練習になるようにする。
     private func display(_ character: Character, at index: Int) -> String {
         guard hidesUntyped, index >= charIndex else { return String(character) }

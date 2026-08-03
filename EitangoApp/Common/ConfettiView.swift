@@ -4,43 +4,53 @@ import SwiftUI
 ///
 /// 画像素材は持たず、小さな矩形と円を散らして描くだけにしている
 /// （音声と同じく、アプリ容量を増やさない方針のため）。
-/// `trigger` の値が変わるたびに一度だけ降る。
+/// `trigger` の値が変わるたびに一度だけ弾ける。
+///
+/// クラッカーのように**発生源から短く弾ける**。画面全体に降らせると、
+/// 次の操作に移りたいテンポを邪魔するうえ、どこで何が起きたのかも伝わらない。
 struct ConfettiView: View {
     /// これが変わると新しく紙吹雪が発生する
     var trigger: Int
-    var pieceCount: Int = 28
+    /// 弾ける位置（このビューの中の相対座標）。既定は中央上
+    var origin: UnitPoint = UnitPoint(x: 0.5, y: 0.1)
+    var pieceCount: Int = 24
+    /// 短く出す。長引くと次の問題へ進む動作にかぶる
+    var duration: Double = 0.7
 
     @State private var pieces: [Piece] = []
     @State private var isAnimating = false
 
     struct Piece: Identifiable {
         let id = UUID()
-        let xRatio: CGFloat
+        let dx: CGFloat
+        let dy: CGFloat
         let size: CGFloat
         let color: Color
         let isCircle: Bool
         let rotation: Double
         let delay: Double
-        let drift: CGFloat
     }
 
     private static let palette: [Color] = [.pink, .orange, .yellow, .green, .blue, .purple]
 
     var body: some View {
         GeometryReader { proxy in
-            ZStack(alignment: .top) {
+            let baseX = proxy.size.width * origin.x
+            let baseY = proxy.size.height * origin.y
+
+            ZStack(alignment: .topLeading) {
                 ForEach(pieces) { piece in
                     shape(for: piece)
                         .fill(piece.color)
                         .frame(width: piece.size, height: piece.isCircle ? piece.size : piece.size * 0.5)
                         .rotationEffect(.degrees(isAnimating ? piece.rotation : 0))
                         .offset(
-                            x: proxy.size.width * piece.xRatio + (isAnimating ? piece.drift : 0),
-                            y: isAnimating ? proxy.size.height : -30
+                            x: baseX + (isAnimating ? piece.dx : 0),
+                            y: baseY + (isAnimating ? piece.dy : 0)
                         )
                         .opacity(isAnimating ? 0 : 1)
                         .animation(
-                            .easeIn(duration: 1.1).delay(piece.delay),
+                            .easeOut(duration: duration).delay(piece.delay),
                             value: isAnimating
                         )
                 }
@@ -58,17 +68,20 @@ struct ConfettiView: View {
 
     private func burst() {
         pieces = (0..<pieceCount).map { _ in
-            Piece(
-                xRatio: .random(in: 0.05...0.95),
-                size: .random(in: 6...11),
+            // 上向きの扇形に飛ばし、最後に落ちる分を足す。クラッカーらしい軌跡になる
+            let angle = Double.random(in: (-165 * .pi / 180)...(-15 * .pi / 180))
+            let distance = CGFloat.random(in: 70...150)
+            return Piece(
+                dx: cos(angle) * distance,
+                dy: sin(angle) * distance + .random(in: 40...90),
+                size: .random(in: 5...10),
                 color: Self.palette.randomElement() ?? .pink,
                 isCircle: Bool.random(),
                 rotation: .random(in: 180...540),
-                delay: .random(in: 0...0.18),
-                drift: .random(in: -40...40)
+                delay: .random(in: 0...0.06)
             )
         }
-        // 位置を初期状態に戻してから落下させる
+        // 位置を初期状態に戻してから弾けさせる
         isAnimating = false
         DispatchQueue.main.async {
             isAnimating = true
@@ -78,7 +91,7 @@ struct ConfettiView: View {
 
 /// 正解時など、一瞬だけ紙吹雪を重ねたい画面に付ける
 extension View {
-    func confetti(trigger: Int) -> some View {
-        overlay(ConfettiView(trigger: trigger))
+    func confetti(trigger: Int, origin: UnitPoint = UnitPoint(x: 0.5, y: 0.1)) -> some View {
+        overlay(ConfettiView(trigger: trigger, origin: origin))
     }
 }

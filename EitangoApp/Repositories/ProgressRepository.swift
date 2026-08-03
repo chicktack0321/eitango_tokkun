@@ -84,23 +84,29 @@ struct ProgressRepository {
         return try? context.fetch(descriptor).first
     }
 
-    /// ホーム画面が必要とする集計をまとめて返す。
-    /// ステータス内訳と累計正答率を別々に求めると `UserProgress` の全件取得が2回走るため、
-    /// 1回のフェッチで両方を組み立てる。
+    /// 指定した語だけを対象に、ステータス内訳と累計正答率をまとめて返す。
     ///
-    /// - Note: SwiftDataには集計クエリが無く、正答率の算出には全行の materialize が避けられない。
-    ///   語彙数が数千規模になり体感できるほど遅くなったら、集計値を別モデルに持たせて
+    /// 習熟度を階層・分野などで絞って見るための入口。進捗の行は「一度でも解いた語」にしか
+    /// 無いので、行の側からではなく語の側から引く（絞り込んだ語に対する未学習数は
+    /// 呼び出し側が語数との差で求める）。
+    ///
+    /// - Note: SwiftDataには集計クエリが無く、全行の materialize が避けられない。
+    ///   語彙数が数千規模で体感できるほど遅くなったら、集計値を別モデルに持たせて
     ///   解答時に加算する方式へ切り替える。
-    func summarize() -> ProgressSummary {
-        let all = (try? context.fetch(FetchDescriptor<UserProgress>())) ?? []
+    func summarize(words: [WordMaster]) -> ProgressSummary {
+        let byWordId = allProgress()
+        let rows = words.compactMap { byWordId[$0.wordId] }
+        return Self.summarize(progressRows: rows)
+    }
 
+    private static func summarize(progressRows: [UserProgress]) -> ProgressSummary {
         var statusCounts: [LearningStatus: Int] = Dictionary(
             uniqueKeysWithValues: LearningStatus.allCases.map { ($0, 0) }
         )
         var totalCorrect = 0
         var totalAttempts = 0
 
-        for progress in all {
+        for progress in progressRows {
             statusCounts[progress.status, default: 0] += 1
             totalCorrect += progress.correctCount
             totalAttempts += progress.attemptCount
