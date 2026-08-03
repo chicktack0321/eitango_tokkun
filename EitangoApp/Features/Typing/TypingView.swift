@@ -116,7 +116,10 @@ struct TypingView: View {
                     title: "出題範囲",
                     scope: $scope,
                     matchingCount: viewModel.scopeWordCount,
-                    hasUserWords: viewModel.hasUserWords
+                    hasUserWords: viewModel.hasUserWords,
+                    showsPronunciationOption: true,
+                    // ブラインドは綴りを思い出す練習なので、読み上げると答えを言ってしまう
+                    pronunciationNote: "ブラインドでは読み上げません（綴りの手がかりになってしまうため）"
                 )
 
                 if !viewModel.bestScores.isEmpty {
@@ -171,6 +174,14 @@ struct TypingView: View {
         .onChange(of: viewModel.wordToken) { _, _ in
             Haptics.success()
         }
+        // 出題された語の発音を聞かせる。ブラインドでは綴りの手がかりになってしまうので出さない。
+        // currentWord を見ているので、開始直後の1語目にも効く。
+        .onChange(of: viewModel.currentWord?.wordId, initial: true) { _, wordId in
+            guard viewModel.mode == .normal, wordId != nil,
+                  let word = viewModel.currentWord?.word else { return }
+            WordPronouncer.shared.speak(word)
+        }
+        .onDisappear { WordPronouncer.shared.stop() }
         .onChange(of: viewModel.missFlash) { _, isFlashing in
             if isFlashing { Haptics.failure() }
         }

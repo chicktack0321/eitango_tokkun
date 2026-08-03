@@ -12,6 +12,8 @@ struct QuizView: View {
     @State private var isShowingPaywall = false
     /// 出題範囲。保存先は StudySettings（ViewModel からも読むため UserDefaults に置いている）
     @State private var scope = StudySettings.studyScope
+    /// スワイプ中に問題カードを指へ追従させる量
+    @State private var dragOffset: CGFloat = 0
 
     var body: some View {
         NavigationStack {
@@ -53,7 +55,10 @@ struct QuizView: View {
                 viewModel.startNewQuiz(scope: requested)
             }
             // 画面を離れている間に制限時間が減り続けないようにする
-            .onDisappear { viewModel.suspendTimer() }
+            .onDisappear {
+                viewModel.suspendTimer()
+                WordPronouncer.shared.stop()
+            }
             .onAppear {
                 // タブを一度も開いていない場合 onChange は発火しないため、初回表示でも拾う
                 if let requested = router.consumePendingQuizScope() {
@@ -102,7 +107,8 @@ struct QuizView: View {
                     title: "出題範囲",
                     scope: $scope,
                     matchingCount: viewModel.scopeWordCount,
-                    hasUserWords: viewModel.hasUserWords
+                    hasUserWords: viewModel.hasUserWords,
+                    showsPronunciationOption: true
                 )
 
                 if !entitlements.hasFullAccess {
@@ -147,26 +153,35 @@ struct QuizView: View {
         .buttonStyle(.plain)
     }
 
-    /// タイピング画面と同じ「グループ背景＋白カード」構成に揃えている。
-    /// 素のVStackで組んでいたときはコンテンツがナビゲーションバーの下に潜り込み、
-    /// 問題番号とタイトル・ツールバーが重なって表示されていた。
+    /// 問題番号と残り時間は常に見えている必要があるため、上部に固定する。
+    /// 動かすのは問題カードだけにして、スワイプでそのカードが上へ流れていく形にしている
+    /// （画面全体をスクロールさせると、指の動きに対して何が起きたのかが分かりにくい）。
     private func quizScreen(question: QuizQuestion) -> some View {
         let hasAnswered = viewModel.selectedChoiceIndex != nil
         let isLastQuestion = viewModel.currentQuestionIndex + 1 >= viewModel.questions.count
 
-        return VStack(spacing: 0) {
-            ScrollView {
-                VStack(spacing: 16) {
-                    progressCard
-                    questionCard(question: question)
-                }
-                .padding()
-            }
+        return VStack(spacing: 16) {
+            progressCard
+
+            // ScrollView に載せると縦のドラッグをスクロール側が先に取ってしまい、
+            // スワイプの反応が鈍くなる。問題カードは固定領域に置いて指の動きへ直接追従させる。
+            questionCard(question: question)
+                .id(viewModel.currentQuestionIndex)
+                .offset(y: dragOffset)
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .bottom).combined(with: .opacity),
+                        removal: .move(edge: .top).combined(with: .opacity)
+                    )
+                )
+                .gesture(swipeToAdvance(isEnabled: hasAnswered))
+
+            Spacer(minLength: 0)
 
             if hasAnswered {
                 VStack(spacing: 6) {
                     Button(isLastQuestion ? "結果を見る" : "次の問題へ") {
-                        viewModel.goToNextQuestion()
+                        advanceToNextQuestion()
                     }
                     .buttonStyle(.borderedProminent)
                     // 片手で持ったまま進められるように、スワイプでも同じ操作ができることを示す
@@ -174,10 +189,11 @@ struct QuizView: View {
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
-                .padding()
                 .transition(.opacity)
             }
         }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color(.systemGroupedBackground))
         // 正解した選択肢の位置から弾けさせる。画面全体に降らせると、どこで何が起きたのか伝わらない
         .overlayPreferenceValue(ChoiceAnchorKey.self) { anchors in
@@ -185,18 +201,12 @@ struct QuizView: View {
                 ConfettiView(trigger: celebrationTrigger, origin: confettiOrigin(anchors, in: proxy))
             }
         }
-        // 解答後は片手で次へ進めるようにする。解答前はスワイプで飛ばせないようにしておく
-        // （読まずに進んでしまうのを防ぐため）。
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 24)
-                .onEnded { value in
-                    guard hasAnswered else { return }
-                    guard value.translation.height < -50,
-                          abs(value.translation.width) < 80 else { return }
-                    viewModel.goToNextQuestion()
-                }
-        )
         .animation(.easeInOut(duration: 0.15), value: hasAnswered)
+        // 出題されたら発音を聞かせる。綴りと音を結び付けられないと聞き取りに繋がらない
+        .onChange(of: viewModel.currentQuestionIndex, initial: true) { _, _ in
+            guard let word = viewModel.currentQuestion?.word.word else { return }
+            WordPronouncer.shared.speak(word)
+        }
         // 解答が確定した瞬間に手応えを返す。正解は1回、不正解は3回でタイピングと揃えている。
         .onChange(of: viewModel.selectedChoiceIndex) { _, selected in
             guard let selected, let question = viewModel.currentQuestion else { return }
@@ -206,6 +216,37 @@ struct QuizView: View {
             } else {
                 Haptics.failure()
             }
+        }
+    }
+
+    /// 解答後だけ、上へのドラッグで次の問題へ送る。
+    /// 解答前に効かせると、選択肢を読まないまま飛ばせてしまう。
+    private func swipeToAdvance(isEnabled: Bool) -> some Gesture {
+        DragGesture(minimumDistance: 8)
+            .onChanged { value in
+                guard isEnabled else { return }
+                // 上方向にだけ付いていく。下へは動かさない
+                dragOffset = min(0, value.translation.height)
+            }
+            .onEnded { value in
+                guard isEnabled else { return }
+                // 指を離した時点の勢いも見る。ゆっくり長く引かなくても送れるようにする
+                let flicked = value.predictedEndTranslation.height < -120
+                if value.translation.height < -60 || flicked {
+                    advanceToNextQuestion()
+                } else {
+                    withAnimation(.spring(response: 0.25, dampingFraction: 0.8)) {
+                        dragOffset = 0
+                    }
+                }
+            }
+    }
+
+    private func advanceToNextQuestion() {
+        WordPronouncer.shared.stop()
+        dragOffset = 0
+        withAnimation(.easeInOut(duration: 0.28)) {
+            viewModel.goToNextQuestion()
         }
     }
 

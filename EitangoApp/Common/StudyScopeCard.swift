@@ -14,6 +14,12 @@ struct StudyScopeCard: View {
     var showsUserWordsOption: Bool = true
     /// 自分で追加した単語が1語も無いときは選ばせない
     var hasUserWords: Bool = true
+    /// 出題時の読み上げを切り替えられるようにするか
+    var showsPronunciationOption: Bool = false
+    /// 読み上げに条件があるときの補足（タイピングのブラインドなど）
+    var pronunciationNote: String?
+
+    @State private var pronouncesWords = StudySettings.pronouncesWords
 
     var body: some View {
         DashboardCard(title: title) {
@@ -56,6 +62,21 @@ struct StudyScopeCard: View {
                         .disabled(!hasUserWords)
                     if !hasUserWords {
                         Text("単語帳の「＋」から追加すると、ここで集中して練習できます。")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                if showsPronunciationOption {
+                    Divider()
+                    Toggle("出題時に発音を読み上げる", isOn: $pronouncesWords)
+                        .font(.subheadline)
+                        .onChange(of: pronouncesWords) { _, newValue in
+                            StudySettings.pronouncesWords = newValue
+                            if !newValue { WordPronouncer.shared.stop() }
+                        }
+                    if let pronunciationNote {
+                        Text(pronunciationNote)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }

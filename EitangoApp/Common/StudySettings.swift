@@ -8,6 +8,14 @@ enum StudySettings {
     private enum Key {
         static let studyScope = "studyScope"
         static let masteryScope = "masteryScope"
+        static let pronouncesWords = "pronouncesWords"
+    }
+
+    /// 出題された単語を読み上げるか。
+    /// 発音を覚える助けになるので既定は入れておくが、電車の中などで切れるようにする。
+    static var pronouncesWords: Bool {
+        get { UserDefaults.standard.object(forKey: Key.pronouncesWords) as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: Key.pronouncesWords) }
     }
 
     /// 4択クイズ・タイピングの出題範囲

@@ -14,8 +14,11 @@ struct SoundToggleButton: View {
     var body: some View {
         Button {
             audio.isEnabled.toggle()
-            if audio.isEnabled, isSessionActive {
-                audio.startBGM()
+            if audio.isEnabled {
+                if isSessionActive { audio.startBGM() }
+            } else {
+                // 「音を消す」で読み上げだけ残ると、消したつもりが消えていないことになる
+                WordPronouncer.shared.stop()
             }
         } label: {
             Image(systemName: audio.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
