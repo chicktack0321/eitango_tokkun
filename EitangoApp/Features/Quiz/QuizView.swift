@@ -162,19 +162,28 @@ struct QuizView: View {
 
         return VStack(spacing: 16) {
             progressCard
+                // 問題数と残り時間は常に見えていなければならない。
+                // スワイプで動く問題カードが手前に来ないよう、描画順を上に固定する。
+                .zIndex(1)
 
             // ScrollView に載せると縦のドラッグをスクロール側が先に取ってしまい、
             // スワイプの反応が鈍くなる。問題カードは固定領域に置いて指の動きへ直接追従させる。
-            questionCard(question: question)
-                .id(viewModel.currentQuestionIndex)
-                .offset(y: dragOffset)
-                .transition(
-                    .asymmetric(
-                        insertion: .move(edge: .bottom).combined(with: .opacity),
-                        removal: .move(edge: .top).combined(with: .opacity)
+            //
+            // 動く部分は入れ物ごと切り取る。カード自身に .clipped() を付けると、
+            // 指で動かした分は隠れても、次の問題へ切り替わるアニメーションでは
+            // カードごと動いてヘッダーへ被ってしまう。
+            ZStack {
+                questionCard(question: question)
+                    .id(viewModel.currentQuestionIndex)
+                    .offset(y: dragOffset)
+                    .transition(
+                        .asymmetric(
+                            insertion: .move(edge: .bottom).combined(with: .opacity),
+                            removal: .move(edge: .top).combined(with: .opacity)
+                        )
                     )
-                )
-                .gesture(swipeToAdvance(isEnabled: hasAnswered))
+            }
+            .clipped()
 
             Spacer(minLength: 0)
 
@@ -195,10 +204,18 @@ struct QuizView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color(.systemGroupedBackground))
+        // 問題カードの上だけでなく、ボタン付近や余白からでも送れるようにする。
+        // カードの上でしか反応しないと、親指の位置を変える必要があって片手操作にならない。
+        .contentShape(Rectangle())
+        .gesture(swipeToAdvance(isEnabled: hasAnswered))
         // 正解した選択肢の位置から弾けさせる。画面全体に降らせると、どこで何が起きたのか伝わらない
         .overlayPreferenceValue(ChoiceAnchorKey.self) { anchors in
             GeometryReader { proxy in
-                ConfettiView(trigger: celebrationTrigger, origin: confettiOrigin(anchors, in: proxy))
+                ConfettiView(
+                    trigger: celebrationTrigger,
+                    origin: confettiOrigin(anchors, in: proxy),
+                    duration: 0.3
+                )
             }
         }
         .animation(.easeInOut(duration: 0.15), value: hasAnswered)
