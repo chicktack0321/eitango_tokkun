@@ -63,6 +63,39 @@ final class HomeSummaryTests: XCTestCase {
         XCTAssertEqual(viewModel.memorizedCount, 0)
     }
 
+    /// 絞り込みが既定（すべて）のときは、基礎語彙も語数に入ること。
+    /// 出題では基礎を外すが、習熟度で「すべて」を選んだのに数から抜けていては、
+    /// 何を見ている数字なのか分からない。
+    func testMasteryCountsBasicTierWhenScopeIsDefault() {
+        for index in 0..<3 { makeWord(index) }
+        context.insert(
+            WordMaster(
+                wordId: "basic-1", word: "apple", meaning: "りんご", example: "",
+                frequencyCount: 0, category: .a, partOfSpeech: .noun, tier: .basic
+            )
+        )
+
+        let viewModel = makeViewModel()
+
+        XCTAssertEqual(viewModel.totalWordCount, 4, "基礎語彙も含めて数えるべき")
+    }
+
+    /// 階層を選べばその階層だけになること
+    func testMasteryNarrowsToSelectedTier() {
+        for index in 0..<3 { makeWord(index) }
+        context.insert(
+            WordMaster(
+                wordId: "basic-1", word: "apple", meaning: "りんご", example: "",
+                frequencyCount: 0, category: .a, partOfSpeech: .noun, tier: .basic
+            )
+        )
+        let viewModel = makeViewModel()
+
+        viewModel.masteryScope.tier = .basic
+
+        XCTAssertEqual(viewModel.totalWordCount, 1)
+    }
+
     /// 解答した語のぶんだけ「未学習」が減ること
     func testStudiedWordsAreSubtractedFromNotStudied() {
         for index in 0..<10 { makeWord(index) }

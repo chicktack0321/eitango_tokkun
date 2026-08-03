@@ -36,9 +36,9 @@ final class StudyScopeTests: XCTestCase {
     func testDefaultScopeExcludesBasicTier() {
         let scope = StudyScope.default
 
-        XCTAssertFalse(scope.contains(word(tier: .basic), availableTiers: allTiers))
-        XCTAssertTrue(scope.contains(word(tier: .bridge), availableTiers: allTiers))
-        XCTAssertTrue(scope.contains(word(tier: .core), availableTiers: allTiers))
+        XCTAssertFalse(scope.contains(word(tier: .basic), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
+        XCTAssertTrue(scope.contains(word(tier: .bridge), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
+        XCTAssertTrue(scope.contains(word(tier: .core), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
     }
 
     /// 階層を選ぶと、その階層だけになる（基礎も明示すれば選べる）
@@ -46,8 +46,8 @@ final class StudyScopeTests: XCTestCase {
         var scope = StudyScope.default
         scope.tier = .basic
 
-        XCTAssertTrue(scope.contains(word(tier: .basic), availableTiers: allTiers))
-        XCTAssertFalse(scope.contains(word(tier: .core), availableTiers: allTiers))
+        XCTAssertTrue(scope.contains(word(tier: .basic), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
+        XCTAssertFalse(scope.contains(word(tier: .core), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
     }
 
     /// 権利の無い階層は、選んでも出題されない。
@@ -57,7 +57,7 @@ final class StudyScopeTests: XCTestCase {
         scope.tier = .core
 
         XCTAssertFalse(
-            scope.contains(word(tier: .core), availableTiers: AccessRights.locked.availableTiers)
+            scope.contains(word(tier: .core), availableTiers: AccessRights.locked.availableTiers, unspecified: StudyScope.studyDefaultTiers)
         )
     }
 
@@ -69,13 +69,13 @@ final class StudyScopeTests: XCTestCase {
         scope.domain = .environment
 
         XCTAssertTrue(
-            scope.contains(word(category: .a, domain: .environment), availableTiers: allTiers)
+            scope.contains(word(category: .a, domain: .environment), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers)
         )
         XCTAssertFalse(
-            scope.contains(word(category: .b, domain: .environment), availableTiers: allTiers)
+            scope.contains(word(category: .b, domain: .environment), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers)
         )
         XCTAssertFalse(
-            scope.contains(word(category: .a, domain: .health), availableTiers: allTiers)
+            scope.contains(word(category: .a, domain: .health), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers)
         )
     }
 
@@ -90,7 +90,7 @@ final class StudyScopeTests: XCTestCase {
 
         let mine = word(tier: .core, domain: .health, source: .user)
 
-        XCTAssertTrue(scope.contains(mine, availableTiers: AccessRights.locked.availableTiers))
+        XCTAssertTrue(scope.contains(mine, availableTiers: AccessRights.locked.availableTiers, unspecified: StudyScope.studyDefaultTiers))
     }
 
     /// 「自分の単語のみ」を選ぶと、同梱の語は他の条件に関わらず外れる
@@ -98,14 +98,38 @@ final class StudyScopeTests: XCTestCase {
         var scope = StudyScope.default
         scope.onlyUserWords = true
 
-        XCTAssertTrue(scope.contains(word(source: .user), availableTiers: allTiers))
-        XCTAssertFalse(scope.contains(word(source: .bundled), availableTiers: allTiers))
+        XCTAssertTrue(scope.contains(word(source: .user), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
+        XCTAssertFalse(scope.contains(word(source: .bundled), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers))
+    }
+
+    // MARK: - 「未指定」の意味は用途で変わる
+
+    /// 習熟度の集計では、階層を選んでいなければ基礎語彙も数に入ること。
+    /// 「すべて」を選んだのに基礎が抜けていては、何を見ている数字なのか分からない。
+    func testUnspecifiedTierCoversEveryTierWhenSummarizing() {
+        let scope = StudyScope.default
+
+        XCTAssertTrue(
+            scope.contains(word(tier: .basic), availableTiers: allTiers, unspecified: StudyScope.allTiers)
+        )
+        XCTAssertTrue(
+            scope.contains(word(tier: .core), availableTiers: allTiers, unspecified: StudyScope.allTiers)
+        )
+    }
+
+    /// 同じ「未指定」でも、出題では基礎を外すこと（用途で意味が変わる）
+    func testUnspecifiedTierExcludesBasicWhenStudying() {
+        let scope = StudyScope.default
+
+        XCTAssertFalse(
+            scope.contains(word(tier: .basic), availableTiers: allTiers, unspecified: StudyScope.studyDefaultTiers)
+        )
     }
 
     // MARK: - 表示
 
     func testSummaryDescribesTheScope() {
-        XCTAssertEqual(StudyScope.default.summary, "おまかせ")
+        XCTAssertEqual(StudyScope.default.summary, "すべて")
 
         var scope = StudyScope.default
         scope.tier = .core

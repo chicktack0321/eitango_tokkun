@@ -23,7 +23,22 @@ struct WordRepository {
         scope: StudyScope = StudySettings.studyScope,
         availableTiers: Set<VocabularyTier> = Entitlements.shared.availableTiers
     ) -> [WordMaster] {
-        fetchAll().filter { scope.contains($0, availableTiers: availableTiers) }
+        fetchAll().filter {
+            // 階層を選んでいないときは、既習の基礎語彙を外して出題する
+            scope.contains($0, availableTiers: availableTiers, unspecified: StudyScope.studyDefaultTiers)
+        }
+    }
+
+    /// 習熟度の集計など、出題ではない用途で範囲を適用する。
+    ///
+    /// 出題と違い、階層を選んでいなければ**全階層**を対象にする。「すべて」を選んだのに
+    /// 基礎語彙が数から抜けていては、何を見ている数字なのか分からない。
+    /// 購入状況でも絞らない（未購入でも「2級コアの習熟度」を見られるほうが、
+    /// 何を解放することになるのかが伝わる）。
+    func fetchWords(matching scope: StudyScope) -> [WordMaster] {
+        fetchAll().filter {
+            scope.contains($0, availableTiers: StudyScope.allTiers, unspecified: StudyScope.allTiers)
+        }
     }
 
     /// 指定した範囲に入る語数。出題を始める前に「この条件で何語あるか」を見せるために使う

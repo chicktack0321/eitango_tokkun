@@ -279,7 +279,7 @@ struct QuizView: View {
             // 3. 下から入ってくる。同じ描画のタイミングで指定すると
             //    2の位置移動ごとアニメーションになってしまうため、1回ずらす
             DispatchQueue.main.async {
-                withAnimation(.easeOut(duration: 0.22)) {
+                withAnimation(.easeOut(duration: 0.16)) {
                     dragOffset = 0
                 }
                 isAdvancing = false

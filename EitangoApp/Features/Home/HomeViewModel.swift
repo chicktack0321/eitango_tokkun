@@ -68,12 +68,10 @@ final class HomeViewModel {
     func reloadMastery() {
         guard let wordRepository, let progressRepository else { return }
 
-        // 権利に関わらず、持っている語彙全体から絞り込む。
-        // 未購入でも「2級コアの習熟度」を見られるほうが、何を買うのかが分かりやすい。
-        let words = wordRepository.fetchStudyPool(
-            scope: masteryScope,
-            availableTiers: Set(VocabularyTier.allCases)
-        )
+        // 出題用のプールではなく、持っている語彙全体から絞り込む。
+        // 出題では階層を選んでいないと基礎語彙を外すが、習熟度で「すべて」を選んだのに
+        // 基礎が数から抜けていては、何を見ている数字なのか分からない。
+        let words = wordRepository.fetchWords(matching: masteryScope)
         totalWordCount = words.count
         summary = progressRepository.summarize(words: words)
         hasUserWords = words.contains { $0.source == .user }
