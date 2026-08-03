@@ -14,6 +14,8 @@ struct QuizView: View {
     @State private var scope = StudySettings.studyScope
     /// スワイプ中に問題カードを指へ追従させる量
     @State private var dragOffset: CGFloat = 0
+    /// 送り出しの最中。スワイプとボタンで二重に進めないようにする
+    @State private var isAdvancing = false
 
     var body: some View {
         NavigationStack {
@@ -174,14 +176,7 @@ struct QuizView: View {
             // カードごと動いてヘッダーへ被ってしまう。
             ZStack {
                 questionCard(question: question)
-                    .id(viewModel.currentQuestionIndex)
                     .offset(y: dragOffset)
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .bottom).combined(with: .opacity),
-                            removal: .move(edge: .top).combined(with: .opacity)
-                        )
-                    )
             }
             .clipped()
 
@@ -241,12 +236,12 @@ struct QuizView: View {
     private func swipeToAdvance(isEnabled: Bool) -> some Gesture {
         DragGesture(minimumDistance: 8)
             .onChanged { value in
-                guard isEnabled else { return }
+                guard isEnabled, !isAdvancing else { return }
                 // 上方向にだけ付いていく。下へは動かさない
                 dragOffset = min(0, value.translation.height)
             }
             .onEnded { value in
-                guard isEnabled else { return }
+                guard isEnabled, !isAdvancing else { return }
                 // 指を離した時点の勢いも見る。ゆっくり長く引かなくても送れるようにする
                 let flicked = value.predictedEndTranslation.height < -120
                 if value.translation.height < -60 || flicked {
@@ -259,13 +254,41 @@ struct QuizView: View {
             }
     }
 
+    /// いま出ている問題を上へ送り出し、次の問題を下から入れる。
+    ///
+    /// SwiftUI の transition に任せると、`dragOffset` を0に戻した時点でカードが
+    /// 元の位置へ瞬間的に戻り、そこから改めて上へ動く。指を離した位置から
+    /// 続けて抜けていくように見せるため、送り出しと入れ替えを自分で順に動かす。
     private func advanceToNextQuestion() {
+        guard !isAdvancing else { return }
+        isAdvancing = true
         WordPronouncer.shared.stop()
-        dragOffset = 0
-        withAnimation(.easeInOut(duration: 0.28)) {
-            viewModel.goToNextQuestion()
+
+        // 1. 指を離した位置から、そのまま上へ抜ける
+        withAnimation(.easeIn(duration: 0.16)) {
+            dragOffset = -Self.offscreenDistance
+        } completion: {
+            // 2. 画面外にいる間に問題を入れ替え、下へ回り込ませる（ここは動かして見せない）
+            var instant = Transaction()
+            instant.disablesAnimations = true
+            withTransaction(instant) {
+                viewModel.goToNextQuestion()
+                dragOffset = Self.offscreenDistance
+            }
+
+            // 3. 下から入ってくる。同じ描画のタイミングで指定すると
+            //    2の位置移動ごとアニメーションになってしまうため、1回ずらす
+            DispatchQueue.main.async {
+                withAnimation(.easeOut(duration: 0.22)) {
+                    dragOffset = 0
+                }
+                isAdvancing = false
+            }
         }
     }
+
+    /// カードを完全に隠すのに十分な距離。表示領域は切り取っているのでこれ以上は見えない
+    private static let offscreenDistance: CGFloat = 700
 
     /// 正解の選択肢の中心を、紙吹雪の発生源に変換する
     private func confettiOrigin(
