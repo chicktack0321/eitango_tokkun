@@ -154,7 +154,13 @@ SM-2のような可変難易度を持たせていないのは、動作が予測�
 | プライバシーマニフェスト | `EitangoApp/Resources/PrivacyInfo.xcprivacy` |
 | プライバシーポリシー・サポートページ | `docs/site-content.md`（文面と手順。Googleサイトで公開済み） |
 | 問い合わせ窓口 | Googleフォーム。メールアドレスは公開しない |
+| アプリアイコン | `Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png`。App Store Connect にアップロード欄はなく、ビルドに焼き込まれたものが使われる |
 | 掲載用スクリーンショット | Actions → **Store Screenshots** を手動実行（機種を固定して撮る） |
+
+アイコンとアプリ内ロゴは `python scripts/make_app_icon.py` で
+`docs/assets/eitango-tokkun-logo-02.png` から生成する。元画像には角丸と余白が
+焼き込まれているが、Apple 側が角丸マスクをかけるため素材は端まで塗った正方形でなければ
+ならない。スクリプトがその変換とアルファチャンネルの除去を行う。
 
 `UserDefaults` は Apple の Required Reason API に該当するため、マニフェストでの宣言が要る。
 宣言が抜けても実行時には何も起きず審査で初めて分かるので、TestFlightのワークフローで
