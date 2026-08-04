@@ -33,6 +33,6 @@ enum AppConfig {
     // MARK: - 公開ページ
 
     /// App Store Connect にも同じURLを登録する（プライバシーポリシーは全アプリで必須）
-    static let privacyPolicyURL = URL(string: "https://chicktack0321.github.io/eitango_tokkun/privacy.html")!
-    static let supportURL = URL(string: "https://chicktack0321.github.io/eitango_tokkun/support.html")!
+    static let privacyPolicyURL = URL(string: "https://sites.google.com/view/eitango-tokkun/privacy-policy")!
+    static let supportURL = URL(string: "https://sites.google.com/view/eitango-tokkun/support")!
 }

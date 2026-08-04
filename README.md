@@ -152,8 +152,8 @@ SM-2のような可変難易度を持たせていないのは、動作が予測�
 | 対象 | 置き場所 |
 | --- | --- |
 | プライバシーマニフェスト | `EitangoApp/Resources/PrivacyInfo.xcprivacy` |
-| プライバシーポリシー | `docs/privacy.html`（GitHub Pagesで公開） |
-| サポートページ | `docs/support.html`（同上） |
+| プライバシーポリシー・サポートページ | `docs/site-content.md`（文面と手順。Googleサイトで公開済み） |
+| 問い合わせ窓口 | Googleフォーム。メールアドレスは公開しない |
 | 掲載用スクリーンショット | Actions → **Store Screenshots** を手動実行（機種を固定して撮る） |
 
 `UserDefaults` は Apple の Required Reason API に該当するため、マニフェストでの宣言が要る。

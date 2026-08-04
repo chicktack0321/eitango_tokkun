@@ -117,10 +117,10 @@ App Store Connect にそのまま貼り付けられる形でまとめている�
 | カテゴリ（第1） | 教育 |
 | カテゴリ（第2） | 辞書/辞典/その他 |
 | 年齢制限 | 4+ |
-| プライバシーポリシーURL | `https://chicktack0321.github.io/eitango_tokkun/privacy.html` |
-| サポートURL | `https://chicktack0321.github.io/eitango_tokkun/support.html` |
+| プライバシーポリシーURL | `https://sites.google.com/view/eitango-tokkun/privacy-policy` |
+| サポートURL | `https://sites.google.com/view/eitango-tokkun/support` |
 | App のプライバシー | **データを収集しません** |
-| 著作権 | 2026 （開発者名） |
+| 著作権 | 2026 Maruo Takuzo |
 
 「キッズ向け」カテゴリには**入れない**（追加の規約と制約が発生する）。
 

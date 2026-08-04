@@ -23,7 +23,7 @@ App Store Connect の設定項目は**3つの階層**に分かれている。ど
 | --- | --- |
 | ローカリゼーション可能な情報 → 名称 | `英単語特訓 英検®2級 4000語` |
 | サブタイトル | `広告なし・通信なしで覚える単語帳` |
-| プライバシーポリシーURL | `https://chicktack0321.github.io/eitango_tokkun/privacy.html` |
+| プライバシーポリシーURL | `https://sites.google.com/view/eitango-tokkun/privacy-policy` |
 | カテゴリ（プライマリ） | 教育 |
 | カテゴリ（セカンダリ） | 辞書/辞典/その他 |
 | コンテンツ配信権 | 「サードパーティのコンテンツを含まない」を選ぶ |
@@ -92,7 +92,7 @@ App Store Connect の設定項目は**3つの階層**に分かれている。ど
 | プロモーション用テキスト | 審査なしでいつでも差し替えられる。試用の条件を書いておく |
 | 説明文 | 冒頭に料金条件を置いた版をそのまま使う |
 | キーワード | 名称に入っている語は繰り返さない（既に検索対象のため） |
-| サポートURL | `https://chicktack0321.github.io/eitango_tokkun/support.html` |
+| サポートURL | `https://sites.google.com/view/eitango-tokkun/support` |
 | マーケティングURL | 空欄でよい |
 
 ### 4-3. ビルド
