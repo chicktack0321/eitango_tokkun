@@ -159,10 +159,18 @@ struct QuizView: View {
     /// 動かすのは問題カードだけにして、スワイプでそのカードが上へ流れていく形にしている
     /// （画面全体をスクロールさせると、指の動きに対して何が起きたのかが分かりにくい）。
     private func quizScreen(question: QuizQuestion) -> some View {
+        // 画面の高さで余白を決める。この画面はスクロールしないため、
+        // 短い端末では詰めないと解答後の一式が入りきらない（QuizMetrics のコメント参照）
+        GeometryReader { proxy in
+            quizLayout(question: question, metrics: QuizMetrics.forHeight(proxy.size.height))
+        }
+    }
+
+    private func quizLayout(question: QuizQuestion, metrics: QuizMetrics) -> some View {
         let hasAnswered = viewModel.selectedChoiceIndex != nil
         let isLastQuestion = viewModel.currentQuestionIndex + 1 >= viewModel.questions.count
 
-        return VStack(spacing: 16) {
+        return VStack(spacing: metrics.stackSpacing) {
             progressCard
                 // 問題数と残り時間は常に見えていなければならない。
                 // スワイプで動く問題カードが手前に来ないよう、描画順を上に固定する。
@@ -175,13 +183,13 @@ struct QuizView: View {
             // 指で動かした分は隠れても、次の問題へ切り替わるアニメーションでは
             // カードごと動いてヘッダーへ被ってしまう。
             ZStack {
-                questionCard(question: question)
+                questionCard(question: question, metrics: metrics)
                     .offset(y: dragOffset)
             }
             .clipped()
 
             if hasAnswered {
-                exampleArea(question: question)
+                exampleArea(question: question, metrics: metrics)
                     .transition(.opacity)
             }
 
@@ -299,7 +307,7 @@ struct QuizView: View {
     ///
     /// 高さを固定しているのは、例文を持たない語が4割ほどあるため。
     /// 有無で高さが変わると、そのたびに「次の問題へ」の位置が動いて押し損ねる。
-    private func exampleArea(question: QuizQuestion) -> some View {
+    private func exampleArea(question: QuizQuestion, metrics: QuizMetrics) -> some View {
         let example = question.word.example.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return Group {
@@ -317,11 +325,8 @@ struct QuizView: View {
                     .background(.background, in: RoundedRectangle(cornerRadius: 14))
             }
         }
-        .frame(height: Self.exampleAreaHeight)
+        .frame(height: metrics.exampleHeight)
     }
-
-    /// 例文2行が収まる高さ
-    private static let exampleAreaHeight: CGFloat = 64
 
     /// 正解の選択肢の中心を、紙吹雪の発生源に変換する
     private func confettiOrigin(
@@ -358,18 +363,19 @@ struct QuizView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 14))
     }
 
-    private func questionCard(question: QuizQuestion) -> some View {
-        VStack(spacing: 20) {
+    private func questionCard(question: QuizQuestion, metrics: QuizMetrics) -> some View {
+        VStack(spacing: metrics.cardSpacing) {
             Text(question.word.word)
-                .font(.system(size: 38, weight: .bold))
+                .font(.system(size: metrics.wordFontSize, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding(.top, 8)
 
-            VStack(spacing: 12) {
+            VStack(spacing: metrics.choiceSpacing) {
                 ForEach(Array(question.choices.enumerated()), id: \.offset) { index, choice in
                     ChoiceButton(
                         text: choice,
                         state: choiceState(index: index, question: question),
+                        verticalPadding: metrics.choiceVerticalPadding,
                         action: { viewModel.selectAnswer(index) }
                     )
                     // 紙吹雪を正解の位置から出すために、各選択肢の位置を親へ伝える
@@ -390,6 +396,44 @@ struct QuizView: View {
     }
 }
 
+/// 画面の高さに応じた余白と文字サイズ。
+///
+/// クイズ画面はスワイプ送りのためにスクロールを持たない固定配置で、解答すると
+/// 例文と「次の問題へ」が加わる。iPhone SE（この画面に使えるのは約555pt）では
+/// 既定の余白のままだと入りきらず、進捗カードがナビゲーションバーへ、
+/// ボタンがタブバーへ潜り込んでしまう。短い画面では詰めて収める。
+private struct QuizMetrics {
+    let stackSpacing: CGFloat
+    let wordFontSize: CGFloat
+    let cardSpacing: CGFloat
+    let choiceSpacing: CGFloat
+    let choiceVerticalPadding: CGFloat
+    let exampleHeight: CGFloat
+
+    static let regular = QuizMetrics(
+        stackSpacing: 16,
+        wordFontSize: 38,
+        cardSpacing: 20,
+        choiceSpacing: 12,
+        choiceVerticalPadding: 16,
+        exampleHeight: 64
+    )
+
+    static let compact = QuizMetrics(
+        stackSpacing: 10,
+        wordFontSize: 30,
+        cardSpacing: 12,
+        choiceSpacing: 8,
+        choiceVerticalPadding: 10,
+        exampleHeight: 52
+    )
+
+    /// iPhone SE で約555pt、iPhone 16 Pro で約750pt。その間で分ける
+    static func forHeight(_ height: CGFloat) -> QuizMetrics {
+        height < 620 ? .compact : .regular
+    }
+}
+
 /// 選択肢の位置を親へ伝えるためのキー。紙吹雪を正解した場所から出すために使う
 private struct ChoiceAnchorKey: PreferenceKey {
     static let defaultValue: [Int: Anchor<CGRect>] = [:]
@@ -406,13 +450,15 @@ private struct ChoiceButton: View {
 
     let text: String
     let state: State
+    let verticalPadding: CGFloat
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Text(text)
                 .frame(maxWidth: .infinity)
-                .padding()
+                .padding(.vertical, verticalPadding)
+                .padding(.horizontal, 16)
                 .background(background, in: RoundedRectangle(cornerRadius: 10))
                 .foregroundStyle(state == .disabled ? .secondary : .primary)
         }
