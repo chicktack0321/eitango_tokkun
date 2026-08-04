@@ -180,6 +180,11 @@ struct QuizView: View {
             }
             .clipped()
 
+            if hasAnswered {
+                exampleArea(question: question)
+                    .transition(.opacity)
+            }
+
             Spacer(minLength: 0)
 
             if hasAnswered {
@@ -290,6 +295,34 @@ struct QuizView: View {
     /// カードを完全に隠すのに十分な距離。表示領域は切り取っているのでこれ以上は見えない
     private static let offscreenDistance: CGFloat = 700
 
+    /// 解答後に、選択肢と「次の問題へ」の間の余白へ例文を出す。
+    ///
+    /// 高さを固定しているのは、例文を持たない語が4割ほどあるため。
+    /// 有無で高さが変わると、そのたびに「次の問題へ」の位置が動いて押し損ねる。
+    private func exampleArea(question: QuizQuestion) -> some View {
+        let example = question.word.example.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return Group {
+            if example.isEmpty {
+                // 中身の無いカードは不具合に見えるため、場所だけ空けて何も描かない
+                Color.clear
+            } else {
+                Text(example)
+                    .font(.callout)
+                    // 収録されている例文は最長59文字で、2行に収まる
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(12)
+                    .background(.background, in: RoundedRectangle(cornerRadius: 14))
+            }
+        }
+        .frame(height: Self.exampleAreaHeight)
+    }
+
+    /// 例文2行が収まる高さ
+    private static let exampleAreaHeight: CGFloat = 64
+
     /// 正解の選択肢の中心を、紙吹雪の発生源に変換する
     private func confettiOrigin(
         _ anchors: [Int: Anchor<CGRect>],
@@ -367,6 +400,8 @@ private struct ChoiceAnchorKey: PreferenceKey {
 }
 
 private struct ChoiceButton: View {
+    static let accessibilityIdentifier = "QuizChoice"
+
     enum State { case idle, correct, incorrect, disabled }
 
     let text: String
@@ -382,6 +417,8 @@ private struct ChoiceButton: View {
                 .foregroundStyle(state == .disabled ? .secondary : .primary)
         }
         .disabled(state != .idle)
+        // 選択肢の文言は出題ごとに変わるため、UIテストから掴む手掛かりを別に持たせる
+        .accessibilityIdentifier(Self.accessibilityIdentifier)
     }
 
     private var background: Color {

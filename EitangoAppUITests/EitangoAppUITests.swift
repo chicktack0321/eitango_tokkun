@@ -101,6 +101,16 @@ final class EitangoAppUITests: XCTestCase {
                 startButton.tap()
                 settle()
                 capture(app, "05_Quiz_Playing")
+
+                // 解答後は選択肢の下に例文が出る。例文を持たない語が4割ほどあるため、
+                // 有無で「次の問題へ」の位置が動いていないかを見るために撮っておく。
+                // 待っている間に時間切れで解答済みになることもあるので、
+                // タップの成否ではなく解答後の画面になったかどうかで判断する。
+                tapFirstChoice(app)
+                settle()
+                if app.buttons["次の問題へ"].exists || app.buttons["結果を見る"].exists {
+                    capture(app, "05b_Quiz_Answered")
+                }
             }
         }
 
@@ -170,6 +180,16 @@ final class EitangoAppUITests: XCTestCase {
         addConfirm.tap()
         settle()
         capture(app, "02b_AddWord_SpellCheck")
+    }
+
+    /// 4択の1つ目を押す。選択肢の文言は出題ごとに変わるため、識別子で掴む。
+    /// 正解でも不正解でも解答後の画面になるので、どれを押すかは問わない。
+    @discardableResult
+    private func tapFirstChoice(_ app: XCUIApplication) -> Bool {
+        let choice = app.buttons.matching(identifier: "QuizChoice").firstMatch
+        guard choice.waitForExistence(timeout: 5), choice.isHittable else { return false }
+        choice.tap()
+        return true
     }
 
     /// 画面遷移アニメーションが落ち着くのを待つ（厳密な待機条件がない箇所向けの簡易対応）
