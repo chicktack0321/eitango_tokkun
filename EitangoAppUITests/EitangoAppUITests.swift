@@ -130,9 +130,13 @@ final class EitangoAppUITests: XCTestCase {
             settle()
             capture(app, "07_Typing_Start")
 
-            let startButton = app.buttons["スタート"]
-            if startButton.waitForExistence(timeout: 5) {
-                startButton.tap()
+            // タイピングは「スタート」ではなくモードを選ぶと始まる。
+            // 「スタート」を探していたころはこの画面が一度も撮れていなかった。
+            let normalMode = app.buttons
+                .matching(NSPredicate(format: "label CONTAINS 'ノーマル'"))
+                .firstMatch
+            if normalMode.waitForExistence(timeout: 5) {
+                normalMode.tap()
                 settle()
                 capture(app, "08_Typing_Playing")
             }
