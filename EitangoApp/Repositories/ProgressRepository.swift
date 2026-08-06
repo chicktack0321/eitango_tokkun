@@ -24,20 +24,33 @@ struct ProgressRepository {
     /// 1問分の採点結果を UserProgress と当日の StudyLog の両方に反映する
     func recordAnswer(wordId: String, isCorrect: Bool, at date: Date = .now) {
         let p = progress(for: wordId)
+        let wasMemorized = p.status(at: date) == .memorized
         p.record(isCorrect: isCorrect, reviewedAt: date)
+        let isMemorized = p.status(at: date) == .memorized
 
         // studiedWordCount は延べ数（同じ単語を複数回復習した場合もその都度カウント）とする。
         // 「今日新しく覚えた語だけ数える」のような厳密な集計は将来ここを拡張して対応する。
-        let log = studyLog(for: date)
+        let (log, isNewLog) = studyLog(for: date)
         log.attemptCount += 1
         log.studiedWordCount += 1
         if isCorrect { log.correctCount += 1 }
 
         // 習熟度は現在の状態しか残らないので、その日の最新値をここで焼き付けておく。
         // でないと推移グラフを後から描けない。
-        let snapshot = masteredSnapshot(at: date)
-        log.masteredWordCount = snapshot.total
-        log.masteredBreakdown = snapshot.breakdown
+        //
+        // ただし焼き直しは語彙数ぶんの走査になるので、値が変わりうるときだけにする。
+        // 毎回やると解答のたびに数千語を読み込むことになり、判定が目に見えて遅れる。
+        // 「覚えた」の増減はこの語が境目をまたいだときにしか起きない。
+        // 日付をまたいで復習期限が来た語は、その日の最初の解答で拾える。
+        let needsRefresh = isNewLog
+            || wasMemorized != isMemorized
+            // 内訳を持たない日（この項目より前の記録）を、その日のうちに埋め直す
+            || (log.masteredBreakdown.isEmpty && log.masteredWordCount > 0)
+        if needsRefresh {
+            let snapshot = masteredSnapshot(at: date)
+            log.masteredWordCount = snapshot.total
+            log.masteredBreakdown = snapshot.breakdown
+        }
 
         try? context.save()
     }
@@ -62,15 +75,16 @@ struct ProgressRepository {
         return MasterySnapshot(total: total, breakdown: breakdown)
     }
 
-    private func studyLog(for date: Date) -> StudyLog {
+    /// その日のログを返す。新しく作ったかどうかも返す（習熟度を焼き直すかの判断に使う）
+    private func studyLog(for date: Date) -> (log: StudyLog, isNew: Bool) {
         let day = Calendar.current.startOfDay(for: date)
         let descriptor = FetchDescriptor<StudyLog>(predicate: #Predicate { $0.date == day })
         if let existing = try? context.fetch(descriptor).first {
-            return existing
+            return (existing, false)
         }
         let created = StudyLog(date: day)
         context.insert(created)
-        return created
+        return (created, true)
     }
 
     /// 直近 `days` 日分の日次ログを取得する。

@@ -140,6 +140,42 @@ final class MasteryBreakdownTests: XCTestCase {
         XCTAssertEqual(snapshot.total, summary.count(of: .memorized))
     }
 
+    // MARK: - 日ごとのスナップショット
+
+    /// 解答のたびに全語を走査すると判定が目に見えて遅れるため、
+    /// 「覚えた」が増減しうるときだけ焼き直している。省いた分で数字がずれないことを見る。
+    func testDailySnapshotStaysCorrectWhileSkippingUnneededRescans() throws {
+        let repository = ProgressRepository(context: context)
+        context.insert(makeWord(id: "A", tier: .core, category: .a, domain: .general))
+        context.insert(makeWord(id: "B", tier: .core, category: .b, domain: .general))
+        try context.save()
+
+        // 正解3回で間隔が7日に届き「覚えた」になる
+        for _ in 0..<3 { repository.recordAnswer(wordId: "A", isCorrect: true) }
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
+
+        // 境目をまたがない解答では焼き直さない。それでも数字は合っていること
+        repository.recordAnswer(wordId: "B", isCorrect: true)
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
+
+        for _ in 0..<2 { repository.recordAnswer(wordId: "B", isCorrect: true) }
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 2)
+        XCTAssertEqual(repository.todayLog()?.masteredBreakdown.values.reduce(0, +), 2)
+    }
+
+    /// 間違えて「覚えた」から外れたときも数え直すこと（減る側の境目）
+    func testDailySnapshotRefreshesWhenAWordFallsOutOfMemorized() throws {
+        let repository = ProgressRepository(context: context)
+        context.insert(makeWord(id: "A", tier: .core, category: .a, domain: .general))
+        try context.save()
+
+        for _ in 0..<3 { repository.recordAnswer(wordId: "A", isCorrect: true) }
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
+
+        repository.recordAnswer(wordId: "A", isCorrect: false)
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 0)
+    }
+
     private func makeWord(
         id: String,
         tier: VocabularyTier,
