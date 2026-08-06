@@ -9,8 +9,18 @@ struct DailyStudy: Identifiable, Equatable {
     let attemptCount: Int
     /// その日時点で「覚えた」だった語数。学習しなかった日は直前の値を引き継ぐ。
     var masteredWordCount: Int = 0
+    /// 上の内訳。集計範囲で絞ったグラフを描くために使う（`MasteryBreakdown`）。
+    var masteredBreakdown: [String: Int] = [:]
 
     var id: Date { date }
+
+    /// 集計範囲で絞った「覚えた」語数。
+    /// 内訳を持たない日（この機能より前に記録された日）は絞り込めないので nil を返す。
+    func masteredCount(scope: StudyScope) -> Int? {
+        if scope.isDefault || masteredWordCount == 0 { return masteredWordCount }
+        guard !masteredBreakdown.isEmpty else { return nil }
+        return MasteryBreakdown.count(in: masteredBreakdown, scope: scope)
+    }
 
     var accuracy: Double {
         attemptCount == 0 ? 0 : Double(correctCount) / Double(attemptCount)
@@ -45,21 +55,26 @@ enum StudyHistory {
         // 期間内に学習日が無いと折れ線が0から始まり、実際には覚えている語が
         // 消えたように見えてしまうため。
         let startDay = calendar.date(byAdding: .day, value: -(days - 1), to: endDay) ?? endDay
-        var carriedMastered = logs
+        let previous = logs
             .filter { calendar.startOfDay(for: $0.date) < startDay }
-            .max(by: { $0.date < $1.date })?
-            .masteredWordCount ?? 0
+            .max(by: { $0.date < $1.date })
+        var carriedMastered = previous?.masteredWordCount ?? 0
+        var carriedBreakdown = previous?.masteredBreakdown ?? [:]
 
         return (0..<days).reversed().compactMap { offset -> DailyStudy? in
             guard let day = calendar.date(byAdding: .day, value: -offset, to: endDay) else { return nil }
             let log = logsByDay[day]
-            if let log { carriedMastered = log.masteredWordCount }
+            if let log {
+                carriedMastered = log.masteredWordCount
+                carriedBreakdown = log.masteredBreakdown
+            }
             return DailyStudy(
                 date: day,
                 studiedWordCount: log?.studiedWordCount ?? 0,
                 correctCount: log?.correctCount ?? 0,
                 attemptCount: log?.attemptCount ?? 0,
-                masteredWordCount: carriedMastered
+                masteredWordCount: carriedMastered,
+                masteredBreakdown: carriedBreakdown
             )
         }
     }
@@ -90,7 +105,8 @@ enum StudyHistory {
                 studiedWordCount: bucket.days.reduce(0) { $0 + $1.studiedWordCount },
                 correctCount: bucket.days.reduce(0) { $0 + $1.correctCount },
                 attemptCount: bucket.days.reduce(0) { $0 + $1.attemptCount },
-                masteredWordCount: bucket.days.last?.masteredWordCount ?? 0
+                masteredWordCount: bucket.days.last?.masteredWordCount ?? 0,
+                masteredBreakdown: bucket.days.last?.masteredBreakdown ?? [:]
             )
         }
     }

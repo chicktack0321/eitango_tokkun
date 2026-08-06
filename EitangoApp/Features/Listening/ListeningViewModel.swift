@@ -18,8 +18,13 @@ final class ListeningViewModel {
     private var wordRepository: WordRepository?
     private var progressRepository: ProgressRepository?
 
-    var listeningItems: [ListeningItem] {
-        words.map { ListeningItem(id: $0.wordId, word: $0.word, meaning: $0.meaning) }
+    /// 再生を始めるたびに並べ替えた一覧を作る。
+    ///
+    /// 単語帳と同じアルファベット順で流すと、毎回 a から始まって前半ばかり聞くことになり、
+    /// 後ろの語にいつまでも触れられない。停止して掛け直すたびに順番を変える。
+    /// 一時停止からの再開では作り直さないので、聞いている途中で並びが変わることはない。
+    func makePlaybackItems() -> [ListeningItem] {
+        words.shuffled().map { ListeningItem(id: $0.wordId, word: $0.word, meaning: $0.meaning) }
     }
 
     func configure(context: ModelContext) {

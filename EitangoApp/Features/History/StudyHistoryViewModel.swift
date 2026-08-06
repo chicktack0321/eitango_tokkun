@@ -55,8 +55,24 @@ final class StudyHistoryViewModel {
         }
     }
 
+    /// 折れ線の1点。集計範囲で絞れない日は点を打たないため、系列とは別に持つ。
+    struct MasteryPoint: Identifiable {
+        let date: Date
+        let count: Int
+        var id: Date { date }
+    }
+
     var selectedPeriod: Period = .twoWeeks {
         didSet { reload() }
+    }
+
+    /// 覚えた語数を数える範囲。ホームの習熟度と同じ設定を共有する
+    /// （同じ「覚えた語数」が画面ごとに違う範囲で出ていると、どちらが本当か分からない）。
+    var scope = StudySettings.masteryScope {
+        didSet {
+            guard scope != oldValue else { return }
+            StudySettings.masteryScope = scope
+        }
     }
 
     /// グラフに描く系列。長期間では週ごとにまとめてある。
@@ -64,24 +80,42 @@ final class StudyHistoryViewModel {
     /// 日次のままの系列。「学習した日数」は週にまとめると数えられなくなるため別に持つ。
     private(set) var dailySeries: [DailyStudy] = []
     private(set) var streak = 0
+    /// 自分で追加した単語があるか（範囲メニューに「自分の単語のみ」を出すかの判断に使う）
+    private(set) var hasUserWords = false
 
     private var progressRepository: ProgressRepository?
+    private var userWordRepository: UserWordRepository?
 
     var totalAttempts: Int { StudyHistory.totalAttempts(in: dailySeries) }
     var overallAccuracy: Double { StudyHistory.overallAccuracy(in: dailySeries) }
     var studiedDayCount: Int { dailySeries.filter(\.didStudy).count }
     var hasAnyRecord: Bool { totalAttempts > 0 }
+
+    /// 覚えた語数の折れ線。内訳を持たない日は点を打たない。
+    var masteryPoints: [MasteryPoint] {
+        series.compactMap { entry in
+            entry.masteredCount(scope: scope).map { MasteryPoint(date: entry.date, count: $0) }
+        }
+    }
+
+    /// 絞り込みに必要な内訳が無い日があるか。
+    /// 内訳は後から足した項目なので、それ以前の記録は範囲で分けられない。
+    var hasDaysWithoutBreakdown: Bool {
+        series.contains { $0.masteredCount(scope: scope) == nil }
+    }
+
     /// 期間の終わりの時点で「覚えた」だった語数
-    var masteredWordCount: Int { series.last?.masteredWordCount ?? 0 }
+    var masteredWordCount: Int { masteryPoints.last?.count ?? 0 }
     /// 期間中の増加分。伸びが見えると継続の動機になる。
     var masteredGain: Int {
-        guard let first = series.first, let last = series.last else { return 0 }
-        return max(0, last.masteredWordCount - first.masteredWordCount)
+        guard let first = masteryPoints.first, let last = masteryPoints.last else { return 0 }
+        return max(0, last.count - first.count)
     }
 
     func configure(context: ModelContext) {
         guard progressRepository == nil else { return }
         progressRepository = ProgressRepository(context: context)
+        userWordRepository = UserWordRepository(context: context)
         reload()
     }
 
@@ -89,12 +123,22 @@ final class StudyHistoryViewModel {
         guard let progressRepository else { return }
         // 折れ線の開始値を引き継ぐため、期間より少し前のログも読む
         let logs = progressRepository.recentLogs(days: selectedPeriod.days + 7)
-        let daily = StudyHistory.series(logs: logs, days: selectedPeriod.days)
+        var daily = StudyHistory.series(logs: logs, days: selectedPeriod.days)
+
+        // 右端は「いま」の値にする。
+        // ログに焼いてあるのは解答した瞬間の値で、その後に復習期限が来た語は
+        // 「要復習」へ戻る。凍結値のままだと、時間が経つほど単語帳やホームの数と食い違う。
+        if !daily.isEmpty {
+            let live = progressRepository.masteredSnapshot()
+            daily[daily.count - 1].masteredWordCount = live.total
+            daily[daily.count - 1].masteredBreakdown = live.breakdown
+        }
 
         // 集計後の系列（グラフ描画用）と、日次の系列（合計値の算出用）を分けて持つ
         dailySeries = daily
         series = selectedPeriod.aggregatesByWeek ? StudyHistory.weekly(from: daily) : daily
 
         streak = StudyHistory.currentStreak(logs: progressRepository.logsForStreak())
+        hasUserWords = !(userWordRepository?.all().isEmpty ?? true)
     }
 }

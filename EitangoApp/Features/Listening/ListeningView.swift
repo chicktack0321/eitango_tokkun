@@ -190,7 +190,7 @@ struct ListeningView: View {
     private func togglePlayPause() {
         switch audioManager.state {
         case .stopped:
-            audioManager.play(items: viewModel.listeningItems)
+            audioManager.play(items: viewModel.makePlaybackItems())
         case .playing:
             audioManager.pause()
         case .paused:
@@ -200,7 +200,9 @@ struct ListeningView: View {
 
     /// 連続スライダーだと「今どのくらいの速さなのか」「標準はどこか」が分からないため、
     /// 段階を決め打ちにして倍率をそのまま見せる。
-    private static let speedOptions: [Double] = [0.8, 1.0, 1.2, 1.5, 2.0]
+    ///
+    /// 2.0倍は外している。合成音声が潰れて単語の聞き分けができず、聞き流しの用をなさないため。
+    private static let speedOptions: [Double] = [0.8, 1.0, 1.2, 1.5]
 
     private var speedCard: some View {
         DashboardCard(title: "再生速度") {

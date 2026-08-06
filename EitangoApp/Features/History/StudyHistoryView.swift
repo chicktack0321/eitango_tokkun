@@ -50,9 +50,17 @@ struct StudyHistoryView: View {
     /// 「たくさん解いた」ことと「覚えた語が増えた」ことは別なので、
     /// 同じ時間軸に並べて対応を見られるようにしている。
     private var chartCard: some View {
-        DashboardCard(title: "学習量と習熟度") {
+        @Bindable var viewModel = viewModel
+        return DashboardCard(
+            title: viewModel.scope.isDefault
+                ? "学習量と習熟度"
+                : "学習量と習熟度（\(viewModel.scope.summary)）"
+        ) {
             if viewModel.hasAnyRecord {
                 VStack(alignment: .leading, spacing: 8) {
+                    // 覚えた語数を数える範囲。3,955語をまとめて見ると折れ線がほとんど動かない
+                    MasteryScopeMenu(scope: $viewModel.scope, hasUserWords: viewModel.hasUserWords)
+
                     Chart {
                         ForEach(viewModel.series) { entry in
                             BarMark(
@@ -62,10 +70,10 @@ struct StudyHistoryView: View {
                             .foregroundStyle(Color.blue.opacity(0.55))
                             .cornerRadius(2)
                         }
-                        ForEach(viewModel.series) { entry in
+                        ForEach(viewModel.masteryPoints) { point in
                             LineMark(
-                                x: .value("日", entry.date, unit: chartUnit),
-                                y: .value("覚えた語数", entry.masteredWordCount)
+                                x: .value("日", point.date, unit: chartUnit),
+                                y: .value("覚えた語数", point.count)
                             )
                             .foregroundStyle(LearningStatus.memorized.tint)
                             .lineStyle(StrokeStyle(lineWidth: 2))
@@ -97,6 +105,14 @@ struct StudyHistoryView: View {
 
                     if viewModel.selectedPeriod.aggregatesByWeek {
                         Text("3か月以上は週ごとにまとめて表示しています")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    // 内訳は後から足した項目なので、それ以前の記録は範囲で分けられない。
+                    // 折れ線が途中から始まる理由を書いておかないと、記録が消えたように見える。
+                    if viewModel.hasDaysWithoutBreakdown {
+                        Text("範囲ごとの内訳は記録を始めた日からの分だけ表示できます")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }

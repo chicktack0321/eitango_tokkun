@@ -35,17 +35,31 @@ struct ProgressRepository {
 
         // 習熟度は現在の状態しか残らないので、その日の最新値をここで焼き付けておく。
         // でないと推移グラフを後から描けない。
-        log.masteredWordCount = masteredCount(at: date)
+        let snapshot = masteredSnapshot(at: date)
+        log.masteredWordCount = snapshot.total
+        log.masteredBreakdown = snapshot.breakdown
 
         try? context.save()
     }
 
-    /// 指定時点で「覚えた」段階にある語数
-    private func masteredCount(at date: Date) -> Int {
-        let all = (try? context.fetch(FetchDescriptor<UserProgress>())) ?? []
-        return all.reduce(into: 0) { count, progress in
-            if progress.status(at: date) == .memorized { count += 1 }
+    /// 指定時点で「覚えた」段階にある語数と、その内訳。
+    ///
+    /// 単語マスターに実在する語だけを数える。マスターを入れ替えても `UserProgress` は
+    /// 残す設計（`WordMasterSeeder` 参照）なので、進捗の行を全部数えると、
+    /// 単語データの更新で消えた語まで「覚えた」に含まれ、単語帳やホームの習熟度と数が合わなくなる。
+    func masteredSnapshot(at date: Date = .now) -> MasterySnapshot {
+        let words = (try? context.fetch(FetchDescriptor<WordMaster>())) ?? []
+        let progressByWordId = allProgress()
+
+        var total = 0
+        var breakdown: [String: Int] = [:]
+        for word in words {
+            guard let progress = progressByWordId[word.wordId],
+                  progress.status(at: date) == .memorized else { continue }
+            total += 1
+            breakdown[MasteryBreakdown.key(for: word), default: 0] += 1
         }
+        return MasterySnapshot(total: total, breakdown: breakdown)
     }
 
     private func studyLog(for date: Date) -> StudyLog {

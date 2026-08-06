@@ -46,7 +46,8 @@ final class AudioPlaybackManager: NSObject {
         let base = AVSpeechUtteranceDefaultSpeechRate
         if speedMultiplier >= 1 {
             let upperRange = AVSpeechUtteranceMaximumSpeechRate - base
-            // 2.0倍で上限に届くよう線形に割り当てる
+            // 倍率2.0でrateの上限に届く配分。画面で選べるのは1.5倍までだが、
+            // 換算の基準を倍率そのものに置いておくほうが読み替えずに済む
             let ratio = Float(min(speedMultiplier - 1, 1)) / 1.0
             return base + upperRange * ratio
         } else {

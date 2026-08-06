@@ -305,27 +305,25 @@ struct QuizView: View {
 
     /// 解答後に、選択肢と「次の問題へ」の間の余白へ例文を出す。
     ///
-    /// 高さを固定しているのは、例文を持たない語が4割ほどあるため。
-    /// 有無で高さが変わると、そのたびに「次の問題へ」の位置が動いて押し損ねる。
+    /// 高さは常に2行ぶんを占める。例文を持たない語が4割ほどあり、有無で高さが変わると
+    /// そのたびに「次の問題へ」の位置が動いて押し損ねるため。
+    ///
+    /// `reservesSpace` を使わずptで高さを決めていたときは、指定した高さが2行に足りず、
+    /// 長い例文が1行へ切り詰められていた。文字サイズ設定で行の高さは変わるので、
+    /// 行数で確保して端末側に計算させる。
     private func exampleArea(question: QuizQuestion, metrics: QuizMetrics) -> some View {
         let example = question.word.example.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        return Group {
-            if example.isEmpty {
-                // 中身の無いカードは不具合に見えるため、場所だけ空けて何も描かない
-                Color.clear
-            } else {
-                Text(example)
-                    .font(.callout)
-                    // 収録されている例文は最長59文字で、2行に収まる
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.8)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(12)
-                    .background(.background, in: RoundedRectangle(cornerRadius: 14))
-            }
-        }
-        .frame(height: metrics.exampleHeight)
+        return Text(example)
+            .font(.callout)
+            .lineLimit(2, reservesSpace: true)
+            // 利用者が自分で追加した語には収録分より長い例文もありうる。少し縮めて収める
+            .minimumScaleFactor(0.8)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(metrics.examplePadding)
+            .background(.background, in: RoundedRectangle(cornerRadius: 14))
+            // 中身の無いカードは不具合に見えるため、場所だけ空けて見せない
+            .opacity(example.isEmpty ? 0 : 1)
     }
 
     /// 正解の選択肢の中心を、紙吹雪の発生源に変換する
@@ -408,7 +406,7 @@ private struct QuizMetrics {
     let cardSpacing: CGFloat
     let choiceSpacing: CGFloat
     let choiceVerticalPadding: CGFloat
-    let exampleHeight: CGFloat
+    let examplePadding: CGFloat
 
     static let regular = QuizMetrics(
         stackSpacing: 16,
@@ -416,7 +414,7 @@ private struct QuizMetrics {
         cardSpacing: 20,
         choiceSpacing: 12,
         choiceVerticalPadding: 16,
-        exampleHeight: 64
+        examplePadding: 12
     )
 
     static let compact = QuizMetrics(
@@ -425,7 +423,7 @@ private struct QuizMetrics {
         cardSpacing: 12,
         choiceSpacing: 8,
         choiceVerticalPadding: 10,
-        exampleHeight: 52
+        examplePadding: 8
     )
 
     /// iPhone SE で約555pt、iPhone 16 Pro で約750pt。その間で分ける

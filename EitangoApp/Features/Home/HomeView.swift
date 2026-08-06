@@ -44,6 +44,8 @@ struct HomeView: View {
                 PaywallView()
             }
             .task { viewModel.configure(context: modelContext) }
+            // 「学習の記録」から戻ったとき、向こうで変えた集計範囲を反映する
+            .onAppear { viewModel.syncScopeFromSettings() }
             .onChange(of: router.selectedTab) { _, newValue in
                 // 日付をまたいでも残り日数が更新されるよう、ホームに戻るたびに見直す
                 if newValue == .home {
@@ -232,7 +234,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 10) {
                 // 3,955語をまとめて見るとバーはほとんど動かない。
                 // 範囲を狭められること自体が「進んでいる実感」に効く。
-                masteryScopeMenu(scope: $viewModel.masteryScope)
+                MasteryScopeMenu(scope: $viewModel.masteryScope, hasUserWords: viewModel.hasUserWords)
 
                 MasteryBar(counts: viewModel.statusCounts)
 
@@ -264,62 +266,6 @@ struct HomeView: View {
                 }
             }
         }
-    }
-
-    /// 習熟度の集計範囲。出題範囲のカードほど場所を取れないので、1行のメニューにまとめる。
-    private func masteryScopeMenu(scope: Binding<StudyScope>) -> some View {
-        HStack(spacing: 8) {
-            Menu {
-                Button("すべての階層") { scope.wrappedValue.tier = nil }
-                ForEach(VocabularyTier.allCases) { tier in
-                    Button(tier.displayName) { scope.wrappedValue.tier = tier }
-                }
-            } label: {
-                scopeLabel("階層", scope.wrappedValue.tier?.displayName ?? "すべて")
-            }
-
-            Menu {
-                Button("すべての分野") { scope.wrappedValue.domain = nil }
-                ForEach(VocabularyDomain.allCases) { domain in
-                    Button(domain.displayName) { scope.wrappedValue.domain = domain }
-                }
-            } label: {
-                scopeLabel("分野", scope.wrappedValue.domain?.displayName ?? "すべて")
-            }
-
-            Menu {
-                Button("すべての頻出度") { scope.wrappedValue.category = nil }
-                ForEach(FrequencyRank.allCases) { rank in
-                    Button(rank.displayName) { scope.wrappedValue.category = rank }
-                }
-                if viewModel.hasUserWords {
-                    Divider()
-                    Button("自分で追加した単語のみ") { scope.wrappedValue.onlyUserWords = true }
-                }
-                if !scope.wrappedValue.isDefault {
-                    Divider()
-                    Button("リセット") { scope.wrappedValue = .default }
-                }
-            } label: {
-                scopeLabel("頻出度", scope.wrappedValue.category?.displayName ?? "すべて")
-            }
-
-            Spacer(minLength: 0)
-        }
-    }
-
-    private func scopeLabel(_ title: String, _ value: String) -> some View {
-        HStack(spacing: 3) {
-            Text(title).foregroundStyle(.secondary)
-            Text(value).foregroundStyle(.primary)
-            Image(systemName: "chevron.down").font(.system(size: 8))
-                .foregroundStyle(.secondary)
-        }
-        .font(.caption)
-        .lineLimit(1)
-        .padding(.horizontal, 8)
-        .padding(.vertical, 5)
-        .background(Color(.secondarySystemBackground), in: Capsule())
     }
 
     private var quickActionsCard: some View {

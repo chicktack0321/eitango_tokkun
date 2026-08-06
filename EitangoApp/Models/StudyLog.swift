@@ -17,18 +17,25 @@ final class StudyLog {
     /// 解答のたびにその日のスナップショットを上書きして残しておく。
     var masteredWordCount: Int = 0
 
+    /// 上の内訳（キーは `MasteryBreakdown` が決める）。
+    /// 合計値だけでは階層や分野で分けたグラフを描けないため、セルごとの数も残す。
+    /// この項目より前に記録された日は空になり、絞り込みの対象外として扱う。
+    var masteredBreakdown: [String: Int] = [:]
+
     init(
         date: Date,
         studiedWordCount: Int = 0,
         correctCount: Int = 0,
         attemptCount: Int = 0,
-        masteredWordCount: Int = 0
+        masteredWordCount: Int = 0,
+        masteredBreakdown: [String: Int] = [:]
     ) {
         self.date = date
         self.studiedWordCount = studiedWordCount
         self.correctCount = correctCount
         self.attemptCount = attemptCount
         self.masteredWordCount = masteredWordCount
+        self.masteredBreakdown = masteredBreakdown
     }
 
     var accuracy: Double {

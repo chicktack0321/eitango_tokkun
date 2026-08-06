@@ -285,7 +285,8 @@ struct TypingView: View {
     }
 
     private func progressDots(word: String) -> some View {
-        HStack(spacing: 6) {
+        // 文字数ぶん並ぶので、自分で追加した長い語でもはみ出さないよう折り返す
+        WrappingHStack(spacing: 6, lineSpacing: 6) {
             ForEach(Array(word.enumerated()), id: \.offset) { index, _ in
                 Circle()
                     .fill(dotColor(index: index))
@@ -310,7 +311,9 @@ private struct TypingCharsView: View {
     var hidesUntyped: Bool = false
 
     var body: some View {
-        HStack(spacing: 1) {
+        // 収録語は最長23文字（artificial intelligence）で、この文字サイズだと
+        // iPhoneの幅には1行で収まらない。HStackのままだと文字が潰れて重なるため折り返す。
+        WrappingHStack(spacing: 1, lineSpacing: 6) {
             ForEach(Array(word.enumerated()), id: \.offset) { index, character in
                 Text(display(character, at: index))
                     .font(.system(size: 40, weight: .black, design: .monospaced))
@@ -338,6 +341,67 @@ private struct TypingCharsView: View {
         if index < charIndex { return .green }
         if index == charIndex { return missFlash ? .red : .primary }
         return .secondary
+    }
+}
+
+/// 子を左から並べ、幅に入らなくなったら次の行へ折り返す。各行は中央に寄せる。
+///
+/// 1文字ずつ色と下線を変える必要があって `Text` をひとつにまとめられないため、
+/// 標準の折り返しが使えない。`HStack` に任せると幅が足りないぶん文字が潰れて重なる。
+private struct WrappingHStack: Layout {
+    var spacing: CGFloat = 1
+    var lineSpacing: CGFloat = 6
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let maxWidth = proposal.width ?? .infinity
+        let rows = rows(maxWidth: maxWidth, subviews: subviews)
+        let width = rows.map(\.width).max() ?? 0
+        let height = rows.reduce(0) { $0 + $1.height } + lineSpacing * CGFloat(max(0, rows.count - 1))
+        return CGSize(width: min(width, maxWidth), height: height)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        var y = bounds.minY
+        for row in rows(maxWidth: bounds.width, subviews: subviews) {
+            var x = bounds.minX + (bounds.width - row.width) / 2
+            for index in row.indices {
+                let size = subviews[index].sizeThatFits(.unspecified)
+                subviews[index].place(
+                    at: CGPoint(x: x, y: y + (row.height - size.height) / 2),
+                    proposal: ProposedViewSize(size)
+                )
+                x += size.width + spacing
+            }
+            y += row.height + lineSpacing
+        }
+    }
+
+    private struct Row {
+        var indices: [Int] = []
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+    }
+
+    private func rows(maxWidth: CGFloat, subviews: Subviews) -> [Row] {
+        var rows: [Row] = []
+        var current = Row()
+
+        for index in subviews.indices {
+            let size = subviews[index].sizeThatFits(.unspecified)
+            let advance = current.indices.isEmpty ? size.width : size.width + spacing
+            // 1文字でも幅を超える場合に無限に改行しないよう、行頭の1文字は必ず載せる
+            if !current.indices.isEmpty, current.width + advance > maxWidth {
+                rows.append(current)
+                current = Row(indices: [index], width: size.width, height: size.height)
+            } else {
+                current.indices.append(index)
+                current.width += advance
+                current.height = max(current.height, size.height)
+            }
+        }
+
+        if !current.indices.isEmpty { rows.append(current) }
+        return rows
     }
 }
 

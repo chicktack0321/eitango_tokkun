@@ -64,6 +64,13 @@ final class HomeViewModel {
         }
     }
 
+    /// 集計範囲は「学習の記録」の画面とも共有しているため、向こうで変えられていることがある。
+    /// ホームへ戻ったときに読み直さないと、同じ範囲設定なのに画面ごとに違う数字が出る。
+    func syncScopeFromSettings() {
+        guard masteryScope != StudySettings.masteryScope else { return }
+        masteryScope = StudySettings.masteryScope
+    }
+
     /// 習熟度だけを集計し直す。絞り込みを変えたときは全体を読み直す必要がない。
     func reloadMastery() {
         guard let wordRepository, let progressRepository else { return }
