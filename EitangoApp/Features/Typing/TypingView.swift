@@ -377,31 +377,23 @@ private struct WrappingHStack: Layout {
     }
 
     private struct Row {
-        var indices: [Int] = []
-        var width: CGFloat = 0
-        var height: CGFloat = 0
+        var indices: [Int]
+        var width: CGFloat
+        var height: CGFloat
     }
 
+    /// 折り返しの判断そのものは `LineWrapping` にある（そちらでテストしている）
     private func rows(maxWidth: CGFloat, subviews: Subviews) -> [Row] {
-        var rows: [Row] = []
-        var current = Row()
-
-        for index in subviews.indices {
-            let size = subviews[index].sizeThatFits(.unspecified)
-            let advance = current.indices.isEmpty ? size.width : size.width + spacing
-            // 1文字でも幅を超える場合に無限に改行しないよう、行頭の1文字は必ず載せる
-            if !current.indices.isEmpty, current.width + advance > maxWidth {
-                rows.append(current)
-                current = Row(indices: [index], width: size.width, height: size.height)
-            } else {
-                current.indices.append(index)
-                current.width += advance
-                current.height = max(current.height, size.height)
+        let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
+        return LineWrapping.rows(widths: sizes.map(\.width), maxWidth: maxWidth, spacing: spacing)
+            .map { indices in
+                Row(
+                    indices: indices,
+                    width: indices.reduce(0) { $0 + sizes[$1].width }
+                        + spacing * CGFloat(max(0, indices.count - 1)),
+                    height: indices.map { sizes[$0].height }.max() ?? 0
+                )
             }
-        }
-
-        if !current.indices.isEmpty { rows.append(current) }
-        return rows
     }
 }
 
