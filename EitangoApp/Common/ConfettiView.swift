@@ -21,7 +21,9 @@ struct ConfettiView: View {
     @State private var isAnimating = false
 
     struct Piece: Identifiable {
-        let id = UUID()
+        /// 添字をそのまま id にする。毎回 UUID を振ると弾けるたびに
+        /// ForEach が全ての紙片を破棄して作り直すことになり、正解の瞬間に引っかかる。
+        let id: Int
         let dx: CGFloat
         let dy: CGFloat
         let size: CGFloat
@@ -67,11 +69,12 @@ struct ConfettiView: View {
     }
 
     private func burst() {
-        pieces = (0..<pieceCount).map { _ in
+        pieces = (0..<pieceCount).map { index in
             // 上向きの扇形に飛ばし、最後に落ちる分を足す。クラッカーらしい軌跡になる
             let angle = Double.random(in: (-165 * .pi / 180)...(-15 * .pi / 180))
             let distance = CGFloat.random(in: 70...150)
             return Piece(
+                id: index,
                 dx: cos(angle) * distance,
                 dy: sin(angle) * distance + .random(in: 40...90),
                 size: .random(in: 5...10),

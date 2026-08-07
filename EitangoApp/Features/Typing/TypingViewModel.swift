@@ -91,6 +91,14 @@ final class TypingViewModel {
         return words[wordIndex]
     }
 
+    /// いま打っている語を小文字の文字配列にしたもの。
+    /// 照合は1打鍵ごとに走るので、そのつど作り直さず語が変わったときだけ更新する。
+    private var currentWordLetters: [Character] = []
+
+    private func refreshCurrentWordLetters() {
+        currentWordLetters = Array(currentWord?.word.lowercased() ?? "")
+    }
+
     var accuracy: Double {
         let total = correctCharCount + missCount
         return total == 0 ? 1 : Double(correctCharCount) / Double(total)
@@ -128,6 +136,10 @@ final class TypingViewModel {
             return
         }
 
+        // 当日の「覚えた」語数の基準をここで作る。打鍵中は増減ぶんしか足し引きしないため。
+        // 全語の走査になるが、すぐ上で出題プールと進捗を読んでいるので追加の負担は小さい。
+        progressRepository.refreshMasterySnapshot()
+
         words = pool
         wordIndex = 0
         charIndex = 0
@@ -143,6 +155,7 @@ final class TypingViewModel {
         currentWordMissed = false
         wordToken = 0
         achievement = .none
+        refreshCurrentWordLetters()
         phase = .inProgress
         GameAudio.shared.play(.start)
         GameAudio.shared.startBGM()
@@ -165,6 +178,8 @@ final class TypingViewModel {
         )
         achievement = scoreRepository?.record(record) ?? .none
         bestScores = scoreRepository?.best() ?? []
+        // 1語ごとの保存は打鍵の待ち時間になるのでやめ、区切りでまとめて書き出す
+        progressRepository?.save()
 
         GameAudio.shared.play(achievement.isNewBest ? .fanfare : .gameOver)
     }
@@ -172,7 +187,8 @@ final class TypingViewModel {
     /// 1文字分の入力を受け取り、現在の単語の現在位置の文字と照合する
     func inputCharacter(_ character: Character) {
         guard phase == .inProgress, let word = currentWord else { return }
-        let letters = Array(word.word.lowercased())
+        // 打鍵のたびに小文字化と配列確保をやり直さない。単語が変わるときだけ作る
+        let letters = currentWordLetters
         guard charIndex < letters.count else { return }
 
         if character.lowercased() == String(letters[charIndex]) {
@@ -202,11 +218,12 @@ final class TypingViewModel {
         lastTimeBonus = bonus
         correctWordCount += 1
 
-        progressRepository?.recordAnswer(wordId: word.wordId, isCorrect: !currentWordMissed)
+        progressRepository?.recordAnswer(word: word, isCorrect: !currentWordMissed)
         currentWordMissed = false
 
         charIndex = 0
         wordIndex = (wordIndex + 1) % words.count
+        refreshCurrentWordLetters()
         wordToken += 1
     }
 
@@ -235,6 +252,7 @@ final class TypingViewModel {
         missFlash = false
         phase = .notStarted
         GameAudio.shared.stopBGM()
+        progressRepository?.save()
     }
 
     /// 別タブへ移動した・アプリが背面に回ったときに計測を止める。
@@ -244,6 +262,8 @@ final class TypingViewModel {
         timerTask?.cancel()
         timerTask = nil
         GameAudio.shared.stopBGM()
+        // 背面に回されたまま終了されても記録が消えないよう、ここで書き出しておく
+        progressRepository?.save()
     }
 
     /// 画面に戻ったときに、残り時間を引き継いで計測を再開する

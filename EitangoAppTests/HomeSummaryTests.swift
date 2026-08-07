@@ -32,18 +32,19 @@ final class HomeSummaryTests: XCTestCase {
         container = nil
     }
 
-    private func makeWord(_ index: Int) {
-        context.insert(
-            WordMaster(
-                wordId: "W\(index)",
-                word: "word\(index)",
-                meaning: "意味\(index)",
-                example: "",
-                frequencyCount: 0,
-                category: .a,
-                partOfSpeech: .noun
-            )
+    @discardableResult
+    private func makeWord(_ index: Int) -> WordMaster {
+        let word = WordMaster(
+            wordId: "W\(index)",
+            word: "word\(index)",
+            meaning: "意味\(index)",
+            example: "",
+            frequencyCount: 0,
+            category: .a,
+            partOfSpeech: .noun
         )
+        context.insert(word)
+        return word
     }
 
     private func makeViewModel() -> HomeViewModel {
@@ -98,10 +99,10 @@ final class HomeSummaryTests: XCTestCase {
 
     /// 解答した語のぶんだけ「未学習」が減ること
     func testStudiedWordsAreSubtractedFromNotStudied() {
-        for index in 0..<10 { makeWord(index) }
+        let words = (0..<10).map { makeWord($0) }
         let repository = ProgressRepository(context: context)
-        repository.recordAnswer(wordId: "W0", isCorrect: true)
-        repository.recordAnswer(wordId: "W1", isCorrect: false)
+        repository.recordAnswer(word: words[0], isCorrect: true)
+        repository.recordAnswer(word: words[1], isCorrect: false)
 
         let viewModel = makeViewModel()
 
@@ -113,10 +114,16 @@ final class HomeSummaryTests: XCTestCase {
 
     /// 単語が消えた後の孤立した進捗行があっても、未学習が負の数にならないこと
     func testNotStudiedNeverGoesNegative() {
-        makeWord(0)
+        let word = makeWord(0)
         let repository = ProgressRepository(context: context)
-        repository.recordAnswer(wordId: "W0", isCorrect: true)
-        repository.recordAnswer(wordId: "GHOST", isCorrect: true)
+        repository.recordAnswer(word: word, isCorrect: true)
+
+        // 単語マスターには入れない。単語データの更新で語が消え、進捗行だけ残った状態を作る
+        let ghost = WordMaster(
+            wordId: "GHOST", word: "ghost", meaning: "亡霊", example: "",
+            frequencyCount: 0, category: .a, partOfSpeech: .noun
+        )
+        repository.recordAnswer(word: ghost, isCorrect: true)
 
         let viewModel = makeViewModel()
 

@@ -120,6 +120,12 @@ final class QuizViewModel {
             return
         }
 
+        // 当日の「覚えた」語数の基準をここで作る。解答中は増減ぶんしか足し引きしないので、
+        // 日付をまたいで復習期限が来た語や、単語帳から直接変えた分はこの時点で取り込む。
+        // 全語の走査になるが、開始時は利用者が待っている場面ではなく、
+        // すぐ上で出題プールと進捗をすでに読み込んでいるので追加の負担は小さい。
+        progressRepository.refreshMasterySnapshot()
+
         phase = .inProgress
         GameAudio.shared.play(.start)
         GameAudio.shared.startBGM()
@@ -194,12 +200,12 @@ final class QuizViewModel {
     private func record(question: QuizQuestion, isCorrect: Bool) {
         guard let progressRepository else { return }
 
-        // 「覚えた」に到達したかは記録の前後で比べる必要があるので、先に段階を控えておく
-        let before = progressRepository.progress(for: question.word.wordId).status
-        progressRepository.recordAnswer(wordId: question.word.wordId, isCorrect: isCorrect)
-        let after = progressRepository.progress(for: question.word.wordId).status
+        // 「覚えた」に到達したかは記録の前後の比較が要る。以前はこの前後で
+        // progress(for:) を引き直していたが、1解答につき取得が3回になっていた。
+        // 判定は recordAnswer が返す
+        let outcome = progressRepository.recordAnswer(word: question.word, isCorrect: isCorrect)
 
-        if before != .memorized, after == .memorized {
+        if outcome.reachedMemorized {
             newlyMemorizedCount += 1
         }
         if !isCorrect {
@@ -215,6 +221,8 @@ final class QuizViewModel {
             }
             phase = .finished
             GameAudio.shared.stopBGM()
+            // 1問ごとの保存は待ち時間になるのでやめ、区切りでまとめて書き出す
+            progressRepository?.save()
             // 結果画面のグレードと揃える。A以上（75%以上）なら祝う音にする。
             GameAudio.shared.play(resultSummary.accuracyPercent >= 75 ? .fanfare : .gameOver)
             return
@@ -236,6 +244,7 @@ final class QuizViewModel {
         timerTask?.cancel()
         timerTask = nil
         GameAudio.shared.stopBGM()
+        progressRepository?.save()
         questions = []
         currentQuestionIndex = 0
         selectedChoiceIndex = nil
@@ -251,6 +260,8 @@ final class QuizViewModel {
         timerTask = nil
         // 別タブや別アプリに移ったあともBGMが鳴り続けないようにする
         GameAudio.shared.stopBGM()
+        // 背面に回されたまま終了されても解答が消えないよう、ここで書き出しておく
+        progressRepository?.save()
     }
 
     /// 画面に戻ったときに、残り時間を引き継いで計測を再開する

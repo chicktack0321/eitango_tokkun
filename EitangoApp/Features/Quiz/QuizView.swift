@@ -50,7 +50,11 @@ struct QuizView: View {
             .sheet(isPresented: $isShowingPaywall) {
                 PaywallView()
             }
-            .task { viewModel.configure(context: modelContext) }
+            .task {
+                viewModel.configure(context: modelContext)
+                // 効果音とBGMの合成を裏で先に済ませておく。スタートを押してからだと待たされる
+                GameAudio.shared.warmUp()
+            }
             // ホームの「復習する単語がN語あります」から来たときは、押した通りに復習だけを始める
             .onChange(of: router.pendingQuizScope) { _, scope in
                 guard scope != nil, let requested = router.consumePendingQuizScope() else { return }
@@ -171,7 +175,7 @@ struct QuizView: View {
         let isLastQuestion = viewModel.currentQuestionIndex + 1 >= viewModel.questions.count
 
         return VStack(spacing: metrics.stackSpacing) {
-            progressCard
+            QuizProgressCard(viewModel: viewModel)
                 // 問題数と残り時間は常に見えていなければならない。
                 // スワイプで動く問題カードが手前に来ないよう、描画順を上に固定する。
                 .zIndex(1)
@@ -231,6 +235,8 @@ struct QuizView: View {
         .onChange(of: viewModel.currentQuestionIndex, initial: true) { _, _ in
             guard let word = viewModel.currentQuestion?.word.word else { return }
             WordPronouncer.shared.speak(word)
+            // 次の解答で震わせるので、手が空いているこのタイミングで温めておく
+            Haptics.prepare()
         }
         // 解答が確定した瞬間に手応えを返す。正解は1回、不正解は3回でタイピングと揃えている。
         .onChange(of: viewModel.selectedChoiceIndex) { _, selected in
@@ -278,7 +284,7 @@ struct QuizView: View {
         WordPronouncer.shared.stop()
 
         // 1. 指を離した位置から、そのまま上へ抜ける
-        withAnimation(.easeIn(duration: 0.16)) {
+        withAnimation(.easeIn(duration: Self.advanceDuration)) {
             dragOffset = -Self.offscreenDistance
         } completion: {
             // 2. 画面外にいる間に問題を入れ替え、下へ回り込ませる（ここは動かして見せない）
@@ -292,7 +298,7 @@ struct QuizView: View {
             // 3. 下から入ってくる。同じ描画のタイミングで指定すると
             //    2の位置移動ごとアニメーションになってしまうため、1回ずらす
             DispatchQueue.main.async {
-                withAnimation(.easeOut(duration: 0.16)) {
+                withAnimation(.easeOut(duration: Self.advanceDuration)) {
                     dragOffset = 0
                 }
                 isAdvancing = false
@@ -302,6 +308,10 @@ struct QuizView: View {
 
     /// カードを完全に隠すのに十分な距離。表示領域は切り取っているのでこれ以上は見えない
     private static let offscreenDistance: CGFloat = 700
+
+    /// 送り出しと入れ替えのそれぞれにかける時間。合計はこの倍になる。
+    /// テンポを優先して短めにしてある。長いと「次の問題へ」を押してから待たされる感じが出る。
+    private static let advanceDuration: Double = 0.12
 
     /// 解答後に、選択肢と「次の問題へ」の間の余白へ例文を出す。
     ///
@@ -343,24 +353,6 @@ struct QuizView: View {
         )
     }
 
-    private var progressCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text("第\(viewModel.currentQuestionIndex + 1)問 / \(viewModel.questions.count)問")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                Spacer()
-                Label("\(viewModel.remainingSeconds)秒", systemImage: "timer")
-                    .font(.subheadline).bold()
-                    .foregroundStyle(viewModel.remainingSeconds <= 3 ? .red : .primary)
-                    .contentTransition(.numericText())
-            }
-            ProgressView(value: viewModel.progressFraction)
-        }
-        .padding()
-        .background(.background, in: RoundedRectangle(cornerRadius: 14))
-    }
-
     private func questionCard(question: QuizQuestion, metrics: QuizMetrics) -> some View {
         VStack(spacing: metrics.cardSpacing) {
             Text(question.word.word)
@@ -391,6 +383,33 @@ struct QuizView: View {
         if index == question.correctIndex { return .correct }
         if index == selected { return .incorrect }
         return .disabled
+    }
+}
+
+/// 問題番号と残り時間。
+///
+/// クイズ画面の関数ビューから切り出してある。同じ本体に置くと、残り時間の表示が
+/// 1秒刻むだけで画面全体が作り直され、選択肢の位置の再計算から紙吹雪のオーバーレイの
+/// 組み直しまで毎秒走ってしまう。ここだけを別のビューにすると、更新はこのカードで止まる。
+private struct QuizProgressCard: View {
+    let viewModel: QuizViewModel
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("第\(viewModel.currentQuestionIndex + 1)問 / \(viewModel.questions.count)問")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Label("\(viewModel.remainingSeconds)秒", systemImage: "timer")
+                    .font(.subheadline).bold()
+                    .foregroundStyle(viewModel.remainingSeconds <= 3 ? .red : .primary)
+                    .contentTransition(.numericText())
+            }
+            ProgressView(value: viewModel.progressFraction)
+        }
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 14))
     }
 }
 

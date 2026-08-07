@@ -142,38 +142,81 @@ final class MasteryBreakdownTests: XCTestCase {
 
     // MARK: - 日ごとのスナップショット
 
-    /// 解答のたびに全語を走査すると判定が目に見えて遅れるため、
-    /// 「覚えた」が増減しうるときだけ焼き直している。省いた分で数字がずれないことを見る。
-    func testDailySnapshotStaysCorrectWhileSkippingUnneededRescans() throws {
+    /// 解答経路では全語を走査せず増減ぶんだけ足し引きしている。
+    /// 走査した場合の数字とずれないことを、突き合わせて確かめる。
+    func testIncrementalUpdateMatchesFullRescan() throws {
         let repository = ProgressRepository(context: context)
-        context.insert(makeWord(id: "A", tier: .core, category: .a, domain: .general))
-        context.insert(makeWord(id: "B", tier: .core, category: .b, domain: .general))
+        let a = makeWord(id: "A", tier: .core, category: .a, domain: .general)
+        let b = makeWord(id: "B", tier: .core, category: .b, domain: .general)
+        context.insert(a)
+        context.insert(b)
         try context.save()
+
+        // セッション開始時に当日の基準を作る
+        repository.refreshMasterySnapshot()
 
         // 正解3回で間隔が7日に届き「覚えた」になる
-        for _ in 0..<3 { repository.recordAnswer(wordId: "A", isCorrect: true) }
+        for _ in 0..<3 { repository.recordAnswer(word: a, isCorrect: true) }
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
+        XCTAssertEqual(repository.todayLog()?.masteredWordCount, repository.masteredSnapshot().total)
+
+        // 境目をまたがない解答。数字は動かない
+        repository.recordAnswer(word: b, isCorrect: true)
         XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
 
-        // 境目をまたがない解答では焼き直さない。それでも数字は合っていること
-        repository.recordAnswer(wordId: "B", isCorrect: true)
-        XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
-
-        for _ in 0..<2 { repository.recordAnswer(wordId: "B", isCorrect: true) }
+        for _ in 0..<2 { repository.recordAnswer(word: b, isCorrect: true) }
         XCTAssertEqual(repository.todayLog()?.masteredWordCount, 2)
-        XCTAssertEqual(repository.todayLog()?.masteredBreakdown.values.reduce(0, +), 2)
+        XCTAssertEqual(repository.todayLog()?.masteredBreakdown, repository.masteredSnapshot().breakdown)
     }
 
-    /// 間違えて「覚えた」から外れたときも数え直すこと（減る側の境目）
-    func testDailySnapshotRefreshesWhenAWordFallsOutOfMemorized() throws {
+    /// 間違えて「覚えた」から外れたときも減ること（減る側の境目）
+    func testCountDecreasesWhenAWordFallsOutOfMemorized() throws {
         let repository = ProgressRepository(context: context)
-        context.insert(makeWord(id: "A", tier: .core, category: .a, domain: .general))
+        let a = makeWord(id: "A", tier: .core, category: .a, domain: .general)
+        context.insert(a)
         try context.save()
+        repository.refreshMasterySnapshot()
 
-        for _ in 0..<3 { repository.recordAnswer(wordId: "A", isCorrect: true) }
+        for _ in 0..<3 { repository.recordAnswer(word: a, isCorrect: true) }
         XCTAssertEqual(repository.todayLog()?.masteredWordCount, 1)
 
-        repository.recordAnswer(wordId: "A", isCorrect: false)
+        repository.recordAnswer(word: a, isCorrect: false)
         XCTAssertEqual(repository.todayLog()?.masteredWordCount, 0)
+        // 0になったセルは残さない。走査した結果と一致すること
+        XCTAssertEqual(repository.todayLog()?.masteredBreakdown, repository.masteredSnapshot().breakdown)
+    }
+
+    /// 「覚えた」に到達したかどうかを呼び出し側へ返すこと。
+    /// 以前は前後で progress(for:) を引き直していて、1解答につき取得が3回になっていた。
+    func testRecordAnswerReportsReachingMemorized() throws {
+        let repository = ProgressRepository(context: context)
+        let a = makeWord(id: "A", tier: .core, category: .a, domain: .general)
+        context.insert(a)
+        try context.save()
+
+        XCTAssertFalse(repository.recordAnswer(word: a, isCorrect: true).reachedMemorized)
+        XCTAssertFalse(repository.recordAnswer(word: a, isCorrect: true).reachedMemorized)
+        XCTAssertTrue(repository.recordAnswer(word: a, isCorrect: true).reachedMemorized)
+        // すでに覚えている語に正解しても「到達」にはしない
+        XCTAssertFalse(repository.recordAnswer(word: a, isCorrect: true).reachedMemorized)
+    }
+
+    /// 解答経路が語彙数に引きずられないこと。
+    /// 以前は正解のたびに全単語を読み込んでおり、判定が目に見えて遅れていた。
+    func testRecordAnswerDoesNotScaleWithVocabularySize() throws {
+        let repository = ProgressRepository(context: context)
+        let words = (0..<1000).map {
+            makeWord(id: "W\($0)", tier: .core, category: .a, domain: .general)
+        }
+        words.forEach { context.insert($0) }
+        try context.save()
+        repository.refreshMasterySnapshot()
+
+        measure {
+            for word in words.prefix(100) {
+                repository.recordAnswer(word: word, isCorrect: true)
+            }
+        }
     }
 
     private func makeWord(

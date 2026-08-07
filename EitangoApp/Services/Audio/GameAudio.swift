@@ -47,6 +47,9 @@ final class GameAudio {
     private var effectBuffers: [String: AVAudioPCMBuffer] = [:]
     private var bgmBuffer: AVAudioPCMBuffer?
     private var isEngineReady = false
+    private var isPreparing = false
+    /// 準備が済む前にBGMを頼まれていたか。済んだ時点で鳴らし始める
+    private var wantsBGM = false
 
     private init() {
         // 初期化中のプロパティ代入では didSet が走らないので、保存し直しは起きない
@@ -55,8 +58,26 @@ final class GameAudio {
 
     // MARK: - 準備
 
-    /// 波形の生成は数十msかかるので、ゲーム開始前にまとめて用意する
-    private func prepareIfNeeded() {
+    /// 波形の合成を裏で先に済ませておく。
+    ///
+    /// BGMと効果音を合わせて百万サンプル規模の三角関数計算になる。以前はスタートを
+    /// 押した流れの中でメインスレッドで合成しており、開始のたびに待たされていた。
+    /// スタート画面が出た時点で呼んでおけば、押すころには終わっている。
+    func warmUp() {
+        guard !isEngineReady, !isPreparing else { return }
+        isPreparing = true
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            let bgm = Self.makeBGMLoop()
+            let effects = Self.makeEffectBuffers()
+            DispatchQueue.main.async {
+                self.install(bgm: bgm, effects: effects)
+            }
+        }
+    }
+
+    private func install(bgm: AVAudioPCMBuffer?, effects: [String: AVAudioPCMBuffer]) {
+        isPreparing = false
         guard !isEngineReady else { return }
 
         let format = AVAudioFormat(standardFormatWithSampleRate: ToneSynth.sampleRate, channels: 1)
@@ -65,18 +86,26 @@ final class GameAudio {
         engine.connect(bgmPlayer, to: engine.mainMixerNode, format: format)
         engine.connect(effectPlayer, to: engine.mainMixerNode, format: format)
 
-        bgmBuffer = Self.makeBGMLoop()
-        effectBuffers = Self.makeEffectBuffers()
+        bgmBuffer = bgm
+        effectBuffers = effects
 
         // BGMは伴奏なので、効果音より控えめにして打鍵音を埋もれさせない
         bgmPlayer.volume = 0.35
         effectPlayer.volume = 0.9
 
         isEngineReady = true
+
+        // 準備の前にBGMを頼まれていたぶんをここで始める
+        if wantsBGM { startBGM() }
     }
 
+    /// - Returns: いま鳴らせるか。準備が済んでいなければ合成を始めて false を返す。
+    ///   ここで待って合成すると操作が止まるので、間に合わなかった音は鳴らさない。
     private func startEngineIfNeeded() -> Bool {
-        prepareIfNeeded()
+        guard isEngineReady else {
+            warmUp()
+            return false
+        }
         guard !engine.isRunning else { return true }
         do {
             try engine.start()
@@ -99,18 +128,23 @@ final class GameAudio {
     }
 
     func startBGM() {
-        guard isEnabled, startEngineIfNeeded(), let bgmBuffer else { return }
+        guard isEnabled else { return }
+        // 合成が終わっていなければ、終わった時点で鳴らし始める
+        wantsBGM = true
+        guard startEngineIfNeeded(), let bgmBuffer else { return }
         guard !bgmPlayer.isPlaying else { return }
         bgmPlayer.scheduleBuffer(bgmBuffer, at: nil, options: [.loops], completionHandler: nil)
         bgmPlayer.play()
     }
 
     func stopBGM() {
+        wantsBGM = false
         guard bgmPlayer.isPlaying else { return }
         bgmPlayer.stop()
     }
 
     func stopAll() {
+        wantsBGM = false
         // まだエンジンに繋いでいないノードを操作しないようにする（音を一度も鳴らさずに
         // 設定だけ切り替えた場合や、テストからの呼び出しがこの経路を通る）
         guard isEngineReady else { return }
@@ -133,7 +167,8 @@ final class GameAudio {
         }
     }
 
-    private static func makeEffectBuffers() -> [String: AVAudioPCMBuffer] {
+    /// バックグラウンドで合成するため、メインアクターから外してある（`ToneSynth` の計算だけで完結する）
+    nonisolated private static func makeEffectBuffers() -> [String: AVAudioPCMBuffer] {
         var buffers: [String: AVAudioPCMBuffer] = [:]
 
         if let hit = ToneSynth.makeBuffer(seconds: 0.12) {
@@ -234,7 +269,7 @@ final class GameAudio {
     /// 継ぎ目でリズムが崩れていた。
     /// 長さは秒ではなくサンプル数で決める。8分音符1つ分のサンプル数を先に確定させ、
     /// その32個分をループ長とすることで、拍が割り切れて周回してもテンポがずれない。
-    static func makeBGMLoop() -> AVAudioPCMBuffer? {
+    nonisolated static func makeBGMLoop() -> AVAudioPCMBuffer? {
         let bpm = 130.0
         let bars = 4
         let stepsPerBar = 8  // 8分音符

@@ -60,11 +60,11 @@ struct WordDetailView: View {
 
                 Button("もう一度復習する") {
                     progress?.markForReview()
-                    try? modelContext.save()
+                    refreshMasteryRecord()
                 }
                 Button("覚えたことにする") {
                     progress?.markAsMemorized()
-                    try? modelContext.save()
+                    refreshMasteryRecord()
                 }
             } header: {
                 Text("習熟度")
@@ -95,6 +95,14 @@ struct WordDetailView: View {
             progress = ProgressRepository(context: modelContext).progress(for: word.wordId)
             reloadUserWord()
         }
+    }
+
+    /// 解答を経ずに習熟段階を変えたので、当日の記録も取り直す。
+    /// 学習の記録のグラフは日ごとのスナップショットで持っており、
+    /// ここで直さないと画面ごとに違う「覚えた語数」が出る。
+    private func refreshMasteryRecord() {
+        ProgressRepository(context: modelContext).refreshMasterySnapshot()
+        try? modelContext.save()
     }
 
     private func reloadUserWord() {

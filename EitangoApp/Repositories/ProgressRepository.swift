@@ -21,37 +21,72 @@ struct ProgressRepository {
         return Dictionary(uniqueKeysWithValues: all.map { ($0.wordId, $0) })
     }
 
-    /// 1問分の採点結果を UserProgress と当日の StudyLog の両方に反映する
-    func recordAnswer(wordId: String, isCorrect: Bool, at date: Date = .now) {
-        let p = progress(for: wordId)
+    /// 1問の採点結果。呼び出し側が「覚えた」への到達を数えるのに使う
+    struct AnswerOutcome {
+        let wasMemorized: Bool
+        let isMemorized: Bool
+
+        var reachedMemorized: Bool { !wasMemorized && isMemorized }
+    }
+
+    /// 1問分の採点結果を UserProgress と当日の StudyLog の両方に反映する。
+    ///
+    /// ここは解答のたびに通る道なので、語彙数ぶんの走査を持ち込まないこと。
+    /// 以前は習熟度のスナップショットをここで焼き直していて、正解のたびに
+    /// 全単語（数千語）を読み込んでいた。判定が目に見えて遅れる原因になる。
+    /// 当日の基準値はセッション開始時に `refreshMasterySnapshot` で作り、
+    /// ここでは増減ぶんだけを足し引きする。
+    ///
+    /// - Parameter word: 呼び出し側が持っているものをそのまま渡す。
+    ///   内訳のセルを決めるのに階層・頻出度・分野が要るが、ここで引き直すと
+    ///   1解答につき単語の取得が1回増える。
+    @discardableResult
+    func recordAnswer(word: WordMaster, isCorrect: Bool, at date: Date = .now) -> AnswerOutcome {
+        let p = progress(for: word.wordId)
         let wasMemorized = p.status(at: date) == .memorized
         p.record(isCorrect: isCorrect, reviewedAt: date)
         let isMemorized = p.status(at: date) == .memorized
 
         // studiedWordCount は延べ数（同じ単語を複数回復習した場合もその都度カウント）とする。
         // 「今日新しく覚えた語だけ数える」のような厳密な集計は将来ここを拡張して対応する。
-        let (log, isNewLog) = studyLog(for: date)
+        let log = studyLog(for: date)
         log.attemptCount += 1
         log.studiedWordCount += 1
         if isCorrect { log.correctCount += 1 }
 
-        // 習熟度は現在の状態しか残らないので、その日の最新値をここで焼き付けておく。
-        // でないと推移グラフを後から描けない。
-        //
-        // ただし焼き直しは語彙数ぶんの走査になるので、値が変わりうるときだけにする。
-        // 毎回やると解答のたびに数千語を読み込むことになり、判定が目に見えて遅れる。
-        // 「覚えた」の増減はこの語が境目をまたいだときにしか起きない。
-        // 日付をまたいで復習期限が来た語は、その日の最初の解答で拾える。
-        let needsRefresh = isNewLog
-            || wasMemorized != isMemorized
-            // 内訳を持たない日（この項目より前の記録）を、その日のうちに埋め直す
-            || (log.masteredBreakdown.isEmpty && log.masteredWordCount > 0)
-        if needsRefresh {
-            let snapshot = masteredSnapshot(at: date)
-            log.masteredWordCount = snapshot.total
-            log.masteredBreakdown = snapshot.breakdown
+        // 習熟度は現在の状態しか残らないので、その日の最新値を残しておく。
+        // でないと推移グラフを後から描けない。増減はこの語が境目をまたいだときだけ起きる。
+        if wasMemorized != isMemorized {
+            let delta = isMemorized ? 1 : -1
+            log.masteredWordCount = max(0, log.masteredWordCount + delta)
+            let key = MasteryBreakdown.key(for: word)
+            let updated = (log.masteredBreakdown[key] ?? 0) + delta
+            if updated > 0 {
+                log.masteredBreakdown[key] = updated
+            } else {
+                log.masteredBreakdown.removeValue(forKey: key)
+            }
         }
 
+        // ここでは保存しない。1問ごとの save はそれ自体が待ち時間になる。
+        // mainContext の自動保存に任せ、区切りで `save()` を呼ぶ。
+        return AnswerOutcome(wasMemorized: wasMemorized, isMemorized: isMemorized)
+    }
+
+    /// 当日の「覚えた」語数を数え直して焼き直す。
+    ///
+    /// 全単語を走査するので、解答中には呼ばないこと。想定している呼び出し元は
+    /// セッションの開始時、単語詳細で「覚えた」「やり直す」を押したとき、学習の記録を開いたとき。
+    /// 日付をまたいで復習期限が来た語や、解答を経ない状態変更はここで拾う。
+    func refreshMasterySnapshot(at date: Date = .now) {
+        let snapshot = masteredSnapshot(at: date)
+        let log = studyLog(for: date)
+        log.masteredWordCount = snapshot.total
+        log.masteredBreakdown = snapshot.breakdown
+    }
+
+    /// 区切りでの保存。解答ごとには呼ばない
+    func save() {
         try? context.save()
     }
 
@@ -75,16 +110,15 @@ struct ProgressRepository {
         return MasterySnapshot(total: total, breakdown: breakdown)
     }
 
-    /// その日のログを返す。新しく作ったかどうかも返す（習熟度を焼き直すかの判断に使う）
-    private func studyLog(for date: Date) -> (log: StudyLog, isNew: Bool) {
+    private func studyLog(for date: Date) -> StudyLog {
         let day = Calendar.current.startOfDay(for: date)
         let descriptor = FetchDescriptor<StudyLog>(predicate: #Predicate { $0.date == day })
         if let existing = try? context.fetch(descriptor).first {
-            return (existing, false)
+            return existing
         }
         let created = StudyLog(date: day)
         context.insert(created)
-        return (created, true)
+        return created
     }
 
     /// 直近 `days` 日分の日次ログを取得する。

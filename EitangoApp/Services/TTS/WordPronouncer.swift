@@ -18,6 +18,9 @@ final class WordPronouncer {
     private let synthesizer = AVSpeechSynthesizer()
     private var hasConfiguredSession = false
 
+    /// 音声の取得は内部で一覧を引くため安くない。出題のたびに作らず1回だけ用意する
+    private lazy var englishVoice = AVSpeechSynthesisVoice(language: "en-US")
+
     private init() {}
 
     /// 出題された語を読み上げる。
@@ -34,7 +37,7 @@ final class WordPronouncer {
         }
 
         let utterance = AVSpeechUtterance(string: word)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = englishVoice
         // 出題の邪魔にならないよう、聞き流しよりわずかに速くする
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate
         synthesizer.speak(utterance)

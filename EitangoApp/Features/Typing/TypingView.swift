@@ -49,7 +49,11 @@ struct TypingView: View {
                     SoundToggleButton(isSessionActive: viewModel.phase == .inProgress)
                 }
             }
-            .task { viewModel.configure(context: modelContext) }
+            .task {
+                viewModel.configure(context: modelContext)
+                // 効果音とBGMの合成を裏で先に済ませておく。スタートを押してからだと待たされる
+                GameAudio.shared.warmUp()
+            }
             // 画面を離れている間に制限時間が減り続けないようにする
             .onDisappear { viewModel.suspendTimer() }
             .onAppear { viewModel.resumeTimer() }
@@ -285,12 +289,15 @@ struct TypingView: View {
     }
 
     private func progressDots(word: String) -> some View {
-        // 文字数ぶん並ぶので、自分で追加した長い語でもはみ出さないよう折り返す
+        // 文字数ぶん並ぶので、自分で追加した長い語でもはみ出さないよう折り返す。
+        //
+        // 大きさは変えず色だけで現在位置を示す。以前は現在位置のドットだけ大きくしていたが、
+        // 打鍵のたびに2つのドットの寸法が変わるので、必ずレイアウトの組み直しが走っていた。
         WrappingHStack(spacing: 6, lineSpacing: 6) {
             ForEach(Array(word.enumerated()), id: \.offset) { index, _ in
                 Circle()
                     .fill(dotColor(index: index))
-                    .frame(width: index == viewModel.charIndex ? 8 : 6, height: index == viewModel.charIndex ? 8 : 6)
+                    .frame(width: 7, height: 7)
             }
         }
     }
@@ -352,20 +359,50 @@ private struct WrappingHStack: Layout {
     var spacing: CGFloat = 1
     var lineSpacing: CGFloat = 6
 
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+    /// 子の大きさを測った結果を持ち回す。
+    ///
+    /// キャッシュが無いと、1回のレイアウトで `sizeThatFits` と `placeSubviews` が
+    /// それぞれ全ての子を測り直し、子の数の3倍の測定が走る。ここに並ぶのは40ptの
+    /// テキストで、1文字ぶんの測定でもCoreTextを通るため安くない。
+    /// タイピングは1打鍵ごとにこのレイアウトが動くので、測定は1回に抑える。
+    struct Cache {
+        var sizes: [CGSize]
+        /// 直前に組んだ行。同じ幅で聞かれたら組み直さない
+        var maxWidth: CGFloat
+        var rows: [Row]
+    }
+
+    struct Row {
+        var indices: [Int]
+        var width: CGFloat
+        var height: CGFloat
+    }
+
+    func makeCache(subviews: Subviews) -> Cache {
+        Cache(sizes: subviews.map { $0.sizeThatFits(.unspecified) }, maxWidth: .nan, rows: [])
+    }
+
+    func updateCache(_ cache: inout Cache, subviews: Subviews) {
+        cache.sizes = subviews.map { $0.sizeThatFits(.unspecified) }
+        // 大きさが変われば行の組み直しが要る
+        cache.maxWidth = .nan
+        cache.rows = []
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) -> CGSize {
         let maxWidth = proposal.width ?? .infinity
-        let rows = rows(maxWidth: maxWidth, subviews: subviews)
+        let rows = rows(maxWidth: maxWidth, cache: &cache)
         let width = rows.map(\.width).max() ?? 0
         let height = rows.reduce(0) { $0 + $1.height } + lineSpacing * CGFloat(max(0, rows.count - 1))
         return CGSize(width: min(width, maxWidth), height: height)
     }
 
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) {
         var y = bounds.minY
-        for row in rows(maxWidth: bounds.width, subviews: subviews) {
+        for row in rows(maxWidth: bounds.width, cache: &cache) {
             var x = bounds.minX + (bounds.width - row.width) / 2
             for index in row.indices {
-                let size = subviews[index].sizeThatFits(.unspecified)
+                let size = cache.sizes[index]
                 subviews[index].place(
                     at: CGPoint(x: x, y: y + (row.height - size.height) / 2),
                     proposal: ProposedViewSize(size)
@@ -376,16 +413,12 @@ private struct WrappingHStack: Layout {
         }
     }
 
-    private struct Row {
-        var indices: [Int]
-        var width: CGFloat
-        var height: CGFloat
-    }
-
     /// 折り返しの判断そのものは `LineWrapping` にある（そちらでテストしている）
-    private func rows(maxWidth: CGFloat, subviews: Subviews) -> [Row] {
-        let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
-        return LineWrapping.rows(widths: sizes.map(\.width), maxWidth: maxWidth, spacing: spacing)
+    private func rows(maxWidth: CGFloat, cache: inout Cache) -> [Row] {
+        if cache.maxWidth == maxWidth { return cache.rows }
+
+        let sizes = cache.sizes
+        let rows = LineWrapping.rows(widths: sizes.map(\.width), maxWidth: maxWidth, spacing: spacing)
             .map { indices in
                 Row(
                     indices: indices,
@@ -394,6 +427,9 @@ private struct WrappingHStack: Layout {
                     height: indices.map { sizes[$0].height }.max() ?? 0
                 )
             }
+        cache.maxWidth = maxWidth
+        cache.rows = rows
+        return rows
     }
 }
 
