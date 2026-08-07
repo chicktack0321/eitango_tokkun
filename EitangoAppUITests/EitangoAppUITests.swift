@@ -186,6 +186,44 @@ final class EitangoAppUITests: XCTestCase {
         capture(app, "02b_AddWord_SpellCheck")
     }
 
+    /// App内課金の審査用スクリーンショット。
+    ///
+    /// App Store Connect の「App内課金」→「審査に関する情報」に添える画像で、
+    /// 利用者が実際に見る購入画面であること、価格・購入の復元・規約へのリンクが
+    /// 確認できることが求められる。画面を変えるたびに撮り直すので自動化しておく。
+    ///
+    /// 価格はシミュレータでは App Store から取れないため、スキームに指定した
+    /// `Products.storekit` から読み込ませている（project.yml のスキーム設定を参照）。
+    func testCapturePurchaseScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        // ホームの「お試し期間」カードが購入画面への入口
+        let accessCard = app.buttons["accessCard"]
+        guard accessCard.waitForExistence(timeout: 10) else {
+            XCTFail("ホームに購入画面への導線が見つかりません")
+            return
+        }
+        accessCard.tap()
+        settle()
+
+        // 価格の読み込みを待つ。読めていないとボタンは「価格を読み込んでいます」のままで、
+        // 審査用の画像として使えない。
+        let purchaseButton = app.buttons.matching(
+            NSPredicate(format: "label CONTAINS '解放する'")
+        ).firstMatch
+        XCTAssertTrue(
+            purchaseButton.waitForExistence(timeout: 15),
+            "購入ボタンに価格が出ていません。StoreKitの設定ファイルがスキームに効いているか確認すること"
+        )
+        // 「購入を復元」と規約リンクが同じ画面に写っていること
+        XCTAssertTrue(app.buttons["購入を復元"].exists)
+        XCTAssertTrue(app.links["プライバシーポリシー"].exists || app.buttons["プライバシーポリシー"].exists)
+
+        settle()
+        capture(app, "09_Purchase_ReviewScreenshot")
+    }
+
     /// 4択の1つ目を押す。選択肢の文言は出題ごとに変わるため、識別子で掴む。
     /// 正解でも不正解でも解答後の画面になるので、どれを押すかは問わない。
     @discardableResult

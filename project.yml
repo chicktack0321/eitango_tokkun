@@ -89,10 +89,15 @@ schemes:
         EitangoApp: all
         EitangoAppTests: [test]
         EitangoAppUITests: [test]
+    # シミュレータにはApp Storeが無いため、StoreKitの設定ファイルを指定しないと
+    # 商品情報を取得できず、購入画面の価格が「読み込んでいます」のままになる。
+    # 審査用のスクリーンショットは価格が見えていなければならない。
     run:
       config: Debug
+      storeKitConfiguration: Products.storekit
     test:
       config: Debug
+      storeKitConfiguration: Products.storekit
       targets:
         - EitangoAppTests
         - EitangoAppUITests
