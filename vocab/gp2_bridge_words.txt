@@ -1,0 +1,629 @@
+# GP2（英検準2級）の bridge（3級帯・中3〜高校入門）に置く語。
+# G2 の tier1（基礎 1,512語）からの選定。ここに無い tier1 の語は basic（4級以下）になる。
+# 1行1語。master.json の word フィールドと完全一致させること。行頭 # はコメント。
+ache
+advise
+airline
+ambulance
+angle
+announcer
+appetizer
+architect
+army
+arrow
+artwork
+ash
+assemble
+attic
+audio
+avenue
+baggage
+balcony
+bamboo
+bandage
+barber
+bark
+beginner
+believe
+bin
+biology
+blanket
+blind
+blow
+boarding pass
+bomb
+bone
+bottom
+brand
+bravery
+brick
+broadcast
+bucket
+bulletin
+bunch
+business
+cabin
+cage
+calm down
+campus
+canoe
+canvas
+capital city
+captain
+care
+careful
+carpet
+cave
+cereal
+chapter
+charger
+chart
+chat
+cheer
+chef
+chemistry
+chest
+childhood
+chin
+choir
+clap
+cleaner
+clearly
+cliff
+coach
+coastline
+collar
+collection
+comb
+comedy
+compass
+competitor
+composer
+concentration
+conductor
+cone
+container
+contest
+copper
+correction
+costume
+cottage
+cotton
+cough
+couple
+courtyard
+cover letter
+creature
+crew
+cross
+crown
+cupboard
+curtain
+curve
+cushion
+customer service
+daily life
+dairy
+damp
+darkness
+daytime
+dead
+deaf
+death
+deck
+delight
+delivery
+dentist
+detective
+diagram
+die
+direct flight
+dirt
+disc
+discussion
+dishwasher
+distance learning
+dive
+document
+dormitory
+drawer
+dressing
+drill
+dry season
+dust
+duty free
+eagle
+earring
+economy class
+editor
+education system
+elbow
+electric
+elementary
+emergency exit
+employee benefit
+entry fee
+escalator
+exam
+exchange student
+exit
+expiration
+eyebrow
+eyesight
+fabric
+fact
+factory
+factory worker
+failure
+fair price
+fairy tale
+fare
+farewell
+farmland
+fashionable
+feather
+feature
+fence
+ferry
+fiction
+field trip
+final exam
+fingerprint
+first aid
+fisherman
+fitness
+flag
+flashlight
+flavor
+flea market
+flight attendant
+flour
+flu
+fog
+folder
+folk
+following
+forehead
+foreigner
+fortune
+fountain
+frame
+freezer
+freshman
+fridge
+friendship
+frozen
+frying pan
+fuel cost
+full time
+funeral
+fur
+furthermore
+gallery
+garage
+gardening
+garlic
+gas
+gasoline
+generally
+gentleman
+geography
+giant
+glacier
+global market
+goods delivery
+government office
+grade school
+graduation
+graph
+greenhouse gas
+greeting
+grill
+ground
+guest room
+guidebook
+gun
+hallway
+hammer
+handout
+handwriting
+hanger
+harbor
+hardly
+hate
+headline
+headquarters
+health
+heater
+helmet
+herb
+highway
+hint
+horizon
+hostel
+housework
+housing
+however
+human
+humor
+hunger
+hunt
+hurricane
+identification
+ill
+income tax
+index
+indoor pool
+information
+insect
+instructor
+insurance company
+interpreter
+invitation
+iron
+jar
+jewelry
+journal
+jungle
+junior
+kettle
+kingdom
+lamb
+landmark
+laptop
+laundry
+lawn
+layer
+lazy
+leather
+lecture hall
+leftover
+librarian
+lie
+lifeboat
+lighthouse
+lightning
+lipstick
+liquid
+literature class
+lobby
+local government
+lock
+locker
+log
+lottery
+loudspeaker
+luggage
+lung
+mailbox
+main dish
+maintenance
+makeup
+mammal
+manager
+manual
+marathon
+marry
+mask
+massage
+mate
+mayor
+meaning
+mechanic
+medal
+medical care
+membership
+memo
+merchant
+metro
+microphone
+microscope
+microwave
+midterm
+military
+million
+mirror
+mission
+mist
+mobile
+mood
+monthly
+monument
+motor
+mud
+muscle
+mystery
+nail
+napkin
+national park
+navy
+necklace
+needle
+nephew
+nest
+network connection
+niece
+nightmare
+nobody
+none
+novel
+nowhere
+nut
+oatmeal
+observation
+oil
+online course
+operator
+opinion poll
+orchestra
+organic
+outfit
+outline
+overnight
+owl
+package
+pain relief
+pale
+panel
+paragraph
+parcel
+parking lot
+part time
+partly
+pass
+passport
+password
+past
+path
+patience
+pavement
+peak
+pearl
+pedestrian
+peel
+penalty
+pension
+percent
+performance review
+perfume
+pharmacy
+physics
+pigeon
+pin
+pipe
+pitch
+plastic
+platform
+plug
+plum
+poem
+poet
+point
+poison
+polar
+politician
+pollen
+population growth
+port
+portrait
+poultry
+powder
+power
+prayer
+prediction
+preparation
+presentation
+press
+price tag
+priest
+producer
+profile
+progress report
+proposal
+protein
+public health
+publisher
+pyramid
+railroad
+railway station
+ranch
+rank
+rate of growth
+razor
+receipt
+receiver
+reception
+recorder
+recycling bin
+refrigerator
+refund policy
+registration
+regular customer
+remote
+rental
+repairman
+reporter
+reptile
+rescue team
+research paper
+reservation
+resort
+restroom
+resume
+riddle
+roast
+roller
+roof top
+rope
+row
+rubber
+sailor
+salesperson
+satisfaction
+schoolyard
+scissors
+sculpture
+seat belt
+search engine
+secretary
+security guard
+seed
+senior
+sensor
+series
+servant
+session
+sewing
+shade
+shadow
+shellfish
+shelter
+shift work
+shipping
+shoelace
+shopkeeper
+shopping cart
+sidewalk
+sightseeing
+signboard
+silk
+similarity
+sink
+site
+sketch
+slide show
+smoke
+soldier
+solar system
+sore throat
+sound wave
+souvenir
+speed limit
+spice
+spinach
+sponsor
+square
+stadium
+staff meeting
+stage light
+staircase
+stall
+standard time
+statue
+steam
+steel
+stem
+stomach
+storage
+stove
+straw
+stream
+strike
+string
+stroller
+studio
+subscription
+surgeon
+surname
+survival
+switch
+syllable
+syrup
+tablet
+tag
+tank
+target
+tea ceremony
+teapot
+teenager
+telescope
+temperature rise
+temple
+terminal
+therapy
+thermometer
+thief
+thread
+throat
+thunder
+tide
+timetable
+tin
+tissue
+title
+tongue
+topic sentence
+torch
+tourism
+tournament
+track
+trade show
+trail
+trainer
+translation
+translator
+trash
+travel agency
+tray
+treasure
+tropical fish
+tube
+tunnel
+turkey
+twin
+typhoon
+underground
+underline
+union
+universe
+usage
+useless
+user
+utility bill
+valley
+van
+vase
+vegetarian
+vending machine
+veterinarian
+video call
+viewer
+vinegar
+visa
+vitamin
+volcano
+voltage
+voting
+waiting room
+wallpaper
+warning sign
+washing machine
+waste water
+waterfall
+wave
+weakness
+wealth
+weather report
+web page
+wedding
+weed
+weekday
+weight loss
+wetland
+wheat
+wheel
+wheelchair
+whisper
+whistle
+willingness
+wind power
+wire
+wisdom
+wool
+working hours
+workplace
+worm
+worse
+worst
+wrist
+zone

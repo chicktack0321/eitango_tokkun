@@ -94,6 +94,13 @@
 
 ### P1-1: 語彙設計と placement
 
+> **進捗（2026-08-08）**: 先行着手済み。`vocab/master.json`（逆輸入済み・G2再現一致を確認）に
+> GP2 placement を反映済み — core 1,169 / bridge 626 / basic 886（計2,681語）。
+> core = G2 tier2 全体、bridge = `vocab/gp2_bridge_words.txt` の選定（G2 tier1 由来）。
+> 残り: **bridge 626語の例文執筆**（G2ではbasicだったため例文が無い。
+> `build_seed.py --edition GP2` がこの626件のエラーで止まるのが現在の正常な状態）、
+> 下位級向けの訳の平易化レビュー（`editions.GP2` の override で行う）。
+
 - `vocab/master.json` に GP2 の placement を追加。目安: core（準2級帯・A2）1,000〜1,500語、
   bridge=3級帯、basic=4級以下
 - 2級の既存語を再利用してよい（2級 core の平易な語 → GP2 core/bridge、下位語 → basic）。
