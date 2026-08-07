@@ -21,7 +21,9 @@
   "settings" : {
     "_applicationInternalID" : "0",
     "_developerTeamID" : "5PT8D8SKN8",
-    "_lastSynchronizedDate" : 0
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "ja_JP",
+    "_storefront" : "JPN"
   },
   "subscriptionGroups" : [],
   "version" : {

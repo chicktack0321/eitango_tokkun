@@ -216,6 +216,12 @@ final class EitangoAppUITests: XCTestCase {
             purchaseButton.waitForExistence(timeout: 15),
             "購入ボタンに価格が出ていません。StoreKitの設定ファイルがスキームに効いているか確認すること"
         )
+        // 日本のApp Store向けなので円で出ていること。
+        // ストアフロントの指定が抜けると米国扱いになり、ドル表記の画像ができてしまう。
+        XCTAssertTrue(
+            purchaseButton.label.contains("￥") || purchaseButton.label.contains("¥"),
+            "価格が円になっていません: \(purchaseButton.label)"
+        )
         // 「購入を復元」と規約リンクが同じ画面に写っていること
         XCTAssertTrue(app.buttons["購入を復元"].exists)
         XCTAssertTrue(app.links["プライバシーポリシー"].exists || app.buttons["プライバシーポリシー"].exists)
