@@ -112,6 +112,24 @@ App Store Connect の設定項目は**3つの階層**に分かれている。ど
 課金アイテム側のステータスが「送信準備完了」になっていることも確認する。
 スクリーンショットと審査用の説明が未入力だと、この状態にならない。
 
+#### 審査用スクリーンショット
+
+課金アイテムの「App内課金の情報」→「審査に関する情報」に添える画像。
+**`docs/assets/iap-review-screenshot.png`** をそのまま添付する。
+
+利用者が実際に見る購入画面で、価格・購入の復元・規約リンクが1枚で確認できる必要がある。
+画面を変えたら撮り直すことになるので、UIテスト
+（`EitangoAppUITests` の `testCapturePurchaseScreen`）で撮っている。
+
+再取得の手順:
+
+1. Actions の **iOS Build** の成果物 `ui-screenshots` を落とす
+2. `09_Purchase_ReviewScreenshot_*.png` を `docs/assets/iap-review-screenshot.png` へ置き換える
+
+シミュレータにはApp Storeが無いため、価格は `Products.storekit` から読ませている。
+`SKTestSession` でストアフロントを日本に指定しないと**ドル表記になる**ので、
+テスト側で円になっていることを検証している（崩れたらCIが落ちる）。
+
 ### 4-5. App Review に関する情報
 
 | 項目 | 入力 |
