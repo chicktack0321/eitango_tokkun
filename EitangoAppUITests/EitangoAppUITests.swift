@@ -1,3 +1,4 @@
+import StoreKitTest
 import XCTest
 
 /// 実機やMacが手元になくても各画面の見た目を確認できるよう、主要画面を一通り遷移しながら
@@ -192,9 +193,17 @@ final class EitangoAppUITests: XCTestCase {
     /// 利用者が実際に見る購入画面であること、価格・購入の復元・規約へのリンクが
     /// 確認できることが求められる。画面を変えるたびに撮り直すので自動化しておく。
     ///
-    /// 価格はシミュレータでは App Store から取れないため、スキームに指定した
-    /// `Products.storekit` から読み込ませている（project.yml のスキーム設定を参照）。
+    /// 価格はシミュレータでは App Store から取れないため、`Products.storekit` から
+    /// テスト用のストアを立てて読み込ませる。スキーム側で指定する方法だと
+    /// ストアフロントが米国のままで、ドル表記の画像になってしまう。
     func testCapturePurchaseScreen() throws {
+        let store = try SKTestSession(configurationFileNamed: "Products")
+        store.resetToDefaultState()
+        store.clearTransactions()
+        store.disableDialogs = true
+        // 日本のApp Storeとして扱わせる。登録する価格（¥500）と揃った画像にする
+        store.storefront = "JPN"
+
         let app = XCUIApplication()
         app.launch()
 

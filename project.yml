@@ -72,6 +72,11 @@ targets:
 
     sources:
       - path: EitangoAppUITests
+      # 審査用スクリーンショットの撮影で、テスト用のストアを立てるのに読み込む。
+      # スキーム側の指定ではストアフロントを日本にできず、ドル表記になってしまうため、
+      # UIテストから SKTestSession で明示的に設定する。
+      - path: Products.storekit
+        buildPhase: resources
 
     settings:
       base:
@@ -95,9 +100,10 @@ schemes:
     run:
       config: Debug
       storeKitConfiguration: Products.storekit
+    # テスト実行時のストアはUIテスト側が SKTestSession で用意する。
+    # ここで指定するとストアフロントを米国から変えられず、審査用の画像がドル表記になる。
     test:
       config: Debug
-      storeKitConfiguration: Products.storekit
       targets:
         - EitangoAppTests
         - EitangoAppUITests
