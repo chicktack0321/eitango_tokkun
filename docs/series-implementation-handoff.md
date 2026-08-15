@@ -11,7 +11,8 @@
     `gh run watch` / `gh run download` で確認
   - TestFlight 配信は `testflight.yml` を `gh workflow run` で手動起動
 - `.xcodeproj` はコミットしない。**`project.yml`（XcodeGen）が唯一の正**。CI が毎回 `xcodegen generate` する
-- 語彙: `EitangoApp/Resources/word_master_seed.json`（3,955語。tier 1:1512 / 2:1169 / 3:1274）
+- 語彙: `EitangoApp/Resources/word_master_seed.json`（3,955語。tier 1:1512 / 2:1169 / 3:1274）。
+  正本は `vocab/master.json`。**語彙まわりの仕様は `docs/vocab-database-spec.md` が正**
 - テスト: `EitangoAppTests/`（純粋ロジック中心。SwiftData は in-memory）、`EitangoAppUITests/`
   （スクリーンショット撮影 + 審査用画像。壊すと提出物が作れなくなる）
 
@@ -97,17 +98,29 @@
 > **進捗（2026-08-08）**: 先行着手済み。`vocab/master.json`（逆輸入済み・G2再現一致を確認）に
 > GP2 placement を反映済み — core 1,169 / bridge 626 / basic 886（計2,681語）。
 > core = G2 tier2 全体、bridge = `vocab/gp2_bridge_words.txt` の選定（G2 tier1 由来）。
-> 残り: **bridge 626語の例文執筆**（G2ではbasicだったため例文が無い。
-> `build_seed.py --edition GP2` がこの626件のエラーで止まるのが現在の正常な状態）、
-> 下位級向けの訳の平易化レビュー（`editions.GP2` の override で行う）。
+>
+> **是正が必要（2026-08-15 判明）**: この配置は core（＝課金対象）が G2 の無料 bridge の
+> 全量であり、**準2級アプリの課金対象が2級アプリでは無料で出題される**。
+> `python scripts/check_core_exclusivity.py` が独自性 0.0%（目標30%）で NG を返す。
+> 設計と是正案は `docs/vocab-database-spec.md` §4。
 
-- `vocab/master.json` に GP2 の placement を追加。目安: core（準2級帯・A2）1,000〜1,500語、
-  bridge=3級帯、basic=4級以下
-- 2級の既存語を再利用してよい（2級 core の平易な語 → GP2 core/bridge、下位語 → basic）。
-  級に不釣り合いな訳・例文は `editions.GP2` の override で差し替え
-- 新規語は canonical key を新設（`ABANDON` 形式。公開後改名禁止）
-- 受け入れ基準: `build_seed.py --edition GP2` が警告なしで出力。core 語数がレンジ内、
-  **core と bridge の例文カバレッジ 100%**（2級の実績。basic は例文なしでよい — 2級も0%）
+作業内容（是正込み）:
+
+- **core の組み替え**: 再利用を G2 bridge から約800語の選抜に絞り、**準2級専用の新規 core 語を
+  約400語追加**して core ≒1,200語にする（独自性 33.3%）。外した約369語は GP2 bridge へ降ろす
+  （G2 bridge は例文カバレッジ100%なので追加執筆は発生しない）
+- **bridge 626語の例文執筆**（G2 では basic だったため例文が無い。
+  `build_seed.py --edition GP2` がこの626件のエラーで止まるのが現在の正常な状態）
+- **新規 core 約400語**: canonical entry を新設（`key` は `ABANDON` 形式。公開後改名禁止）。
+  訳・例文込みで執筆。準2級帯（A2）で G2 の3,955語に無い語を選ぶ
+- 選定は必ず `vocab/gp2_core_words.txt` 等の**レビュー可能な選定リスト**を残し、
+  `scripts/apply_gp2_placement.py` を改修して冪等に適用する（仕様書§9）
+- 級に不釣り合いな訳・例文は `editions.GP2` の override で差し替え（仕様書§5）
+- 受け入れ基準:
+  - `build_seed.py --edition GP2` が警告なしで出力。core 語数 1,000〜1,500 の範囲内、
+    **core と bridge の例文カバレッジ 100%**（basic は例文なしでよい — 2級も0%）
+  - `check_core_exclusivity.py --gate` が通る（GP2 独自性 30% 以上）
+  - `build_seed.py --edition G2 --check` が **check OK**（公開中アプリの語彙に影響なし）
 
 ### P1-2: エディション一式
 
@@ -149,6 +162,7 @@ gh workflow run testflight.yml --repo <repo> --ref main -f edition=GP2 -f whats_
 | --- | --- |
 | 解答・打鍵のホットパスに fetch 全件走査や毎回の `context.save()` を入れる | 判定が体感で遅れ、ユーザー指摘→2ビルド分の修正になった |
 | wordId・canonical key の改名 | 学習履歴が全ユーザーで消える |
+| 下位級の core（課金対象）を上位級の無料帯へ全量スライドさせる | あるアプリの売り物が別の自社アプリで無料になる。GP2 で実際に起きた（独自性0%）。**特に GP1 の bridge を G2 core 1,274語の全量にすると、販売中の2級アプリの価値を自社で毀損する**。`check_core_exclusivity.py` で検証すること |
 | `Info.plist` を XcodeGen の `info:` 生成に切り替える | 手書き plist が上書きされ、バックグラウンド再生等の宣言が消えた前歴（project.yml のコメント参照） |
 | アイコンに角丸・透過を焼き込む | Apple のマスクで角が欠ける／審査で弾かれる。`make_app_icon.py` の検証を通すこと |
 | 審査中に main のコード変更・TestFlight 連発 | 審査対象とのズレ、テスター通知の氾濫 |

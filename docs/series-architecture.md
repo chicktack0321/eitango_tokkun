@@ -158,12 +158,20 @@ extension EditionSpec {
   完走可能な分量の基準になる。多すぎる級は bridge へ降ろす
 - **同じ語が複数の級に出てよい**。ある級の core は上位級では basic になる（例: 2級 core の
   `abandon` は準1級では basic）。この昇格・降格はマスターの配置表（§5）で級ごとに指定する
+- ただし**下位級の core を上位級の無料帯（basic/bridge）へ全量スライドさせてはならない**。
+  「あるアプリの課金対象が、別の自社アプリでは無料」という商品の不整合が起きる。
+  スライドは頻出上位40〜50%の選抜に留め、各級の core には当該級固有の語を残す。
+  ルールと検証（`scripts/check_core_exclusivity.py`）は
+  **`docs/vocab-database-spec.md` §4** を参照
 - 級内の一意性だけ守ればよい。アプリ間で wordId は独立（学習履歴はアプリをまたがない）
 - TOEIC はスコア帯で切る。表示名は `tierDisplayNames` で「基礎 / 〜600点 / 730点+」等にする
 
 ---
 
 ## 5. 語彙マスター（`vocab/`）
+
+> **本節は概要。スキーマの厳密な定義・全級の語彙帯設計・コア独自性ルール・品質規約・
+> 更新運用は `docs/vocab-database-spec.md`（単語データベース設計仕様書）が正。**
 
 ### 形式
 
@@ -205,6 +213,7 @@ extension EditionSpec {
 - wordId は `<プレフィクス>_<key>`（例: `EIKEN_G2_ABANDON`）で機械的に決まる
 - 生成時に検証する: wordId 重複なし / **core・bridge の例文カバレッジ100%**
   （2級の実績。basic は既習語なので例文なしでよい）/ tier ごとの語数 / 上書きフィールドの型
+- 配置を変えたら `scripts/check_core_exclusivity.py` でコア独自性を検証する（§4 / 仕様書§4）
 
 ### 移行と回帰の受け入れ基準
 
