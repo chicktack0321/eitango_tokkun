@@ -95,32 +95,40 @@
 
 ### P1-1: 語彙設計と placement
 
-> **進捗（2026-08-08）**: 先行着手済み。`vocab/master.json`（逆輸入済み・G2再現一致を確認）に
-> GP2 placement を反映済み — core 1,169 / bridge 626 / basic 886（計2,681語）。
-> core = G2 tier2 全体、bridge = `vocab/gp2_bridge_words.txt` の選定（G2 tier1 由来）。
+> **完了（2026-08-15）**。GP2 = basic 886 / bridge 1,257 / core 1,182（計3,325語）。
+> 受け入れ基準はすべて通っている（下記の検証コマンド参照）。設計は
+> `docs/vocab-database-spec.md` §3〜§4。
 >
-> **是正が必要（2026-08-15 判明）**: この配置は core（＝課金対象）が G2 の無料 bridge の
-> 全量であり、**準2級アプリの課金対象が2級アプリでは無料で出題される**。
-> `python scripts/check_core_exclusivity.py` が独自性 0.0%（目標30%）で NG を返す。
-> 設計と是正案は `docs/vocab-database-spec.md` §4。
+> 途中で商品設計の不整合が1件見つかり、是正した。当初の配置は core（＝課金対象）が
+> G2 の無料 bridge の全量で、**準2級アプリの課金対象が2級アプリでは無料で出題される**
+> 状態だった（独自性 0.0%）。次の3つで 54.5% まで引き上げてある。
 
-作業内容（是正込み）:
+やったこと（横展開のときはこの順でなぞる）:
 
-- **core の組み替え**: 再利用を G2 bridge から約800語の選抜に絞り、**準2級専用の新規 core 語を
-  約400語追加**して core ≒1,200語にする（独自性 33.3%）。外した約369語は GP2 bridge へ降ろす
-  （G2 bridge は例文カバレッジ100%なので追加執筆は発生しない）
-- **bridge 626語の例文執筆**（G2 では basic だったため例文が無い。
-  `build_seed.py --edition GP2` がこの626件のエラーで止まるのが現在の正常な状態）
-- **新規 core 約400語**: canonical entry を新設（`key` は `ABANDON` 形式。公開後改名禁止）。
-  訳・例文込みで執筆。準2級帯（A2）で G2 の3,955語に無い語を選ぶ
-- 選定は必ず `vocab/gp2_core_words.txt` 等の**レビュー可能な選定リスト**を残し、
-  `scripts/apply_gp2_placement.py` を改修して冪等に適用する（仕様書§9）
-- 級に不釣り合いな訳・例文は `editions.GP2` の override で差し替え（仕様書§5）
-- 受け入れ基準:
-  - `build_seed.py --edition GP2` が警告なしで出力。core 語数 1,000〜1,500 の範囲内、
-    **core と bridge の例文カバレッジ 100%**（basic は例文なしでよい — 2級も0%）
-  - `check_core_exclusivity.py --gate` が通る（GP2 独自性 30% 以上）
-  - `build_seed.py --edition G2 --check` が **check OK**（公開中アプリの語彙に影響なし）
+1. **core の再利用を絞る** — G2 bridge の category A（538語）だけ core に残し、
+   B/C の631語は GP2 bridge へ降ろした。無料帯どうしの重複は問題にならない
+2. **専用の新規 core 語を書く** — `vocab/gp2_new_core.txt` に644語
+   （`word | 訳 | 例文 | 品詞 | domain | category`）。G2 の3,955語に無い A2 帯の語。
+   品詞の偏りを避けるため、名詞だけでなく動詞・形容詞を意識的に補うこと
+   （最初の486語が名詞87%になり、後から動詞55・形容詞104を足して 名詞48%/動詞25%/形容詞18% にした）
+3. **bridge へ昇格した626語の例文を書く** — `vocab/gp2_bridge_examples.txt`。
+   **canonical ではなく `editions.GP2.example`（override）に入れる。**
+   canonical に書くと G2 の同梱 seed が変わり、公開中アプリの再現一致ゲートが落ちる
+
+いずれも `scripts/apply_gp2_placement.py` が読み込んで master へ反映する（冪等。再実行可）。
+**master.json を手で編集しないこと**（次回の apply で消える）。
+
+検証（すべて通ることを確認済み）:
+
+```bash
+python scripts/apply_gp2_placement.py            # → GP2: 3325語 (886/1257/1182)
+python scripts/build_seed.py --edition GP2       # 例文カバレッジ等の検証を通って出力
+python scripts/check_core_exclusivity.py --gate  # → GP2 独自性 54.5%（目標50%）
+python scripts/build_seed.py --edition G2 --check # → check OK（公開中アプリに影響なし）
+```
+
+残作業: 下位級向けの**訳の平易化レビュー**（`editions.GP2` の override で行う。未着手）と、
+core のレベル妥当性のサンプリング確認（仕様書§9）。
 
 ### P1-2: エディション一式
 

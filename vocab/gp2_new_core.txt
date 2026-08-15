@@ -1,0 +1,651 @@
+# GP2（準2級）専用の core 語
+#
+# 形式: <word> | <訳> | <例文> | <partOfSpeech> | <domain> | <category>
+# 位置づけ: 2級アプリの語彙（3,955語）に無い、準2級（A2）帯の語。
+#           これが準2級アプリの「買う理由」になる（docs/vocab-database-spec.md §4 ルールA）。
+#           canonical key は word から機械的に決まり、公開後は改名禁止。
+# 方針: 例文は1文・4〜10語・準2級までの語彙で構成する（同 §6）
+apron | エプロン | She wore an apron while cooking. | noun | daily | C
+armchair | ひじ掛け椅子 | He fell asleep in the old armchair. | noun | daily | C
+backyard | 裏庭 | The children played in the backyard. | noun | daily | B
+bakery | パン屋 | I buy bread at the bakery every morning. | noun | daily | A
+broom | ほうき | He swept the floor with a broom. | noun | daily | C
+ceiling fan | 天井扇 | The ceiling fan turned slowly above us. | noun | daily | C
+chopsticks | はし | She taught me how to use chopsticks. | noun | daily | B
+doorbell | 呼び鈴 | Someone rang the doorbell twice. | noun | daily | B
+dustpan | ちり取り | Sweep the dust into the dustpan. | noun | daily | C
+faucet | 蛇口 | Please turn off the faucet tightly. | noun | daily | B
+flowerpot | 植木鉢 | A small flowerpot sits on the window. | noun | daily | C
+front door | 玄関 | He locked the front door carefully. | noun | daily | A
+garbage bag | ごみ袋 | Put the garbage bag outside tonight. | noun | daily | B
+grocery store | 食料品店 | The grocery store opens at nine. | noun | daily | A
+housekeeper | 家政婦 | A housekeeper cleans the rooms daily. | noun | daily | C
+ironing board | アイロン台 | She set up the ironing board. | noun | daily | C
+kitchen sink | 台所の流し | Dirty plates filled the kitchen sink. | noun | daily | B
+lamp shade | ランプの傘 | The lamp shade is slightly torn. | noun | daily | C
+laundry basket | 洗濯かご | Put your socks in the laundry basket. | noun | daily | B
+lawn mower | 芝刈り機 | The lawn mower broke last summer. | noun | daily | C
+light switch | 電灯のスイッチ | The light switch is beside the door. | noun | daily | B
+mattress | マットレス | This mattress is too soft for me. | noun | daily | C
+mop | モップ | He cleaned the floor with a mop. | noun | daily | C
+pillowcase | 枕カバー | She washed every pillowcase. | noun | daily | C
+porch | 玄関先 | We sat on the porch until sunset. | noun | daily | C
+recipe book | 料理本 | My mother keeps an old recipe book. | noun | daily | B
+roommate | 同居人 | My roommate studies late every night. | noun | daily | B
+rug | 敷物 | A small rug lies under the table. | noun | daily | C
+saucer | 受け皿 | She placed the cup on a saucer. | noun | daily | C
+spare key | 予備の鍵 | We keep a spare key with a neighbor. | noun | daily | B
+stepladder | 脚立 | He used a stepladder to reach the light. | noun | daily | C
+storage room | 物置 | Old furniture fills the storage room. | noun | daily | B
+tablecloth | テーブルクロス | She spread a white tablecloth. | noun | daily | C
+tap water | 水道水 | Tap water here tastes very clean. | noun | daily | B
+tenant | 借家人 | The tenant moved out last week. | noun | daily | C
+towel rack | タオル掛け | Hang the towel on the towel rack. | noun | daily | C
+vacuum cleaner | 掃除機 | The vacuum cleaner is very loud. | noun | daily | B
+wardrobe | 洋服だんす | Her wardrobe is full of winter coats. | noun | daily | C
+water heater | 給湯器 | The water heater stopped working. | noun | daily | C
+window frame | 窓枠 | Paint is peeling off the window frame. | noun | daily | C
+yard sale | 庭先の売り出し | We sold old toys at a yard sale. | noun | daily | C
+baked goods | 焼き菓子 | This shop sells fresh baked goods. | noun | daily | C
+boiled egg | ゆで卵 | He eats a boiled egg every morning. | noun | daily | B
+canned food | 缶詰 | Keep some canned food for emergencies. | noun | daily | B
+chopping board | まな板 | Cut the onion on the chopping board. | noun | daily | C
+cookbook | 料理本 | She followed a recipe from her cookbook. | noun | daily | C
+dessert menu | デザートの品書き | May we see the dessert menu? | noun | daily | C
+dining table | 食卓 | Six people can sit at this dining table. | noun | daily | B
+food stall | 屋台 | We bought noodles at a food stall. | noun | daily | B
+fresh produce | 生鮮食品 | This market sells fresh produce daily. | noun | daily | B
+frozen food | 冷凍食品 | Frozen food is convenient on busy days. | noun | daily | B
+grocery list | 買い物リスト | Do not forget the grocery list. | noun | daily | B
+homemade | 手作りの | She brought homemade cookies. | adjective | daily | B
+leftover food | 残り物 | We packed the leftover food. | noun | daily | B
+lunch box | 弁当箱 | He forgot his lunch box at home. | noun | daily | A
+meal plan | 献立 | She made a weekly meal plan. | noun | daily | B
+refill | おかわり | Coffee refills are free here. | noun | daily | B
+seasoning | 調味料 | Add a little seasoning to the soup. | noun | daily | C
+serving | 一人前 | Each serving contains two hundred calories. | noun | daily | B
+side dish | 副菜 | The side dish was boiled spinach. | noun | daily | B
+snack bar | 軽食堂 | Meet me at the snack bar. | noun | daily | C
+takeout | 持ち帰り | We ordered takeout for dinner. | noun | daily | B
+tasty | おいしい | This soup is really tasty. | adjective | daily | A
+vegetable garden | 菜園 | They grow tomatoes in their vegetable garden. | noun | daily | B
+whole grain | 全粒穀物 | Whole grain bread is healthier. | noun | health | C
+appointment book | 予定帳 | Write it in your appointment book. | noun | daily | C
+birth date | 生年月日 | Please write your birth date here. | noun | daily | B
+free time | 自由時間 | I read novels in my free time. | noun | daily | A
+leisure | 余暇 | People need leisure as well as work. | noun | daily | B
+oversleep | 寝過ごす | I overslept and missed the bus. | verb | daily | B
+schedule change | 予定変更 | A schedule change was announced. | noun | daily | B
+spare time | 空き時間 | She paints in her spare time. | noun | daily | B
+weekly | 毎週の | We hold a weekly practice. | adjective | daily | B
+wake up call | モーニングコール | I asked for a wake up call at six. | noun | daily | C
+academic record | 成績記録 | The school keeps every academic record. | noun | education | C
+after school | 放課後 | We practice tennis after school. | adverb | education | A
+answer sheet | 解答用紙 | Write your name on the answer sheet. | noun | education | B
+book report | 読書感想文 | I finished my book report last night. | noun | education | B
+brainstorm | 意見を出し合う | Let us brainstorm ideas for the poster. | verb | education | C
+break time | 休み時間 | We chat during break time. | noun | education | B
+bulletin board | 掲示板 | Notices are posted on the bulletin board. | noun | education | B
+calculator | 計算機 | You may not use a calculator. | noun | education | B
+class president | 学級委員長 | She was chosen as class president. | noun | education | C
+club activity | 部活動 | Club activities start after lunch. | noun | education | A
+correct answer | 正解 | Only one correct answer is allowed. | noun | education | A
+counselor | 相談員 | The school counselor listened carefully. | noun | education | B
+course schedule | 履修予定 | Check your course schedule online. | noun | education | C
+cram school | 塾 | Many students attend cram school. | noun | education | B
+detention | 居残り | He got detention for being late. | noun | education | C
+dropout | 中退者 | The school helps every dropout return. | noun | education | C
+essay topic | 作文の題 | Choose an essay topic you like. | noun | education | B
+exam result | 試験結果 | The exam results come out Friday. | noun | education | A
+extra credit | 追加点 | You can earn extra credit for this. | noun | education | C
+grade point | 評点 | Her grade point improved this term. | noun | education | C
+group work | 共同作業 | We finished the group work quickly. | noun | education | B
+gym class | 体育の授業 | Gym class is my favorite. | noun | education | A
+homeroom | ホームルーム | Homeroom starts at eight forty. | noun | education | B
+honor student | 優等生 | He has been an honor student for years. | noun | education | C
+lecture note | 講義ノート | She lent me her lecture notes. | noun | education | B
+lesson plan | 指導案 | The teacher prepared a lesson plan. | noun | education | C
+multiple choice | 多肢選択 | The test uses multiple choice questions. | noun | education | B
+notebook page | ノートの一枚 | He tore out a notebook page. | noun | education | C
+oral test | 口頭試験 | The oral test lasted ten minutes. | noun | education | B
+pass mark | 合格点 | The pass mark is sixty percent. | noun | education | C
+pencil case | 筆箱 | My pencil case is full of pens. | noun | education | B
+reading list | 読書リスト | The teacher gave us a reading list. | noun | education | C
+report card | 通知表 | My report card arrived yesterday. | noun | education | B
+review session | 復習の時間 | A review session is held before exams. | noun | education | C
+school festival | 学園祭 | Our school festival is in November. | noun | education | A
+school rule | 校則 | School rules must be followed. | noun | education | B
+school trip | 修学旅行 | The school trip was to Nara. | noun | education | A
+science fair | 科学展 | His project won the science fair. | noun | education | B
+staff room | 職員室 | Ask your teacher in the staff room. | noun | education | B
+student council | 生徒会 | The student council planned the event. | noun | education | B
+study abroad | 留学する | She wants to study abroad next year. | verb | education | A
+study group | 勉強会 | We formed a study group for math. | noun | education | B
+subject teacher | 教科担任 | Ask your subject teacher about it. | noun | education | C
+summer course | 夏期講習 | He took a summer course in English. | noun | education | B
+teaching material | 教材 | New teaching materials arrived today. | noun | education | C
+term paper | 学期末論文 | My term paper is almost finished. | noun | education | B
+textbook page | 教科書のページ | Open your textbook page thirty. | noun | education | C
+vocabulary test | 単語テスト | We have a vocabulary test tomorrow. | noun | education | A
+whiteboard | ホワイトボード | She drew a chart on the whiteboard. | noun | education | B
+writing skill | 文章力 | Reading improves your writing skill. | noun | education | B
+bank account | 銀行口座 | I opened a bank account yesterday. | noun | business | A
+bank clerk | 銀行員 | The bank clerk counted the money. | noun | business | B
+bonus | 賞与 | Workers received a summer bonus. | noun | business | B
+branch office | 支店 | He works at the branch office. | noun | business | B
+business card | 名刺 | Please take my business card. | noun | business | B
+business hours | 営業時間 | Our business hours are nine to six. | noun | business | A
+business trip | 出張 | He is on a business trip to Osaka. | noun | business | A
+cash register | レジ | Please pay at the cash register. | noun | business | B
+cashier | レジ係 | The cashier gave me the change. | noun | business | B
+checkout counter | 会計台 | A long line formed at the checkout counter. | noun | business | B
+coffee break | 休憩 | Let us take a coffee break. | noun | business | B
+complaint form | 苦情用紙 | Fill in the complaint form here. | noun | business | C
+coworker | 同僚 | A coworker recommended this cafe. | noun | business | B
+customer review | 客の評価 | Customer reviews of the hotel were good. | noun | business | B
+day off | 休日 | Tuesday is my day off. | noun | business | A
+discount coupon | 割引券 | Use this discount coupon before Sunday. | noun | business | B
+earn a living | 生計を立てる | He earns a living by teaching. | verb | business | B
+exchange rate | 為替相場 | The exchange rate changed sharply. | noun | business | B
+free sample | 試供品 | They handed out free samples. | noun | business | B
+full refund | 全額返金 | She asked for a full refund. | noun | business | B
+in stock | 在庫がある | That size is not in stock. | adjective | business | B
+job fair | 就職説明会 | Many students visited the job fair. | noun | business | B
+job opening | 求人 | There is a job opening at the cafe. | noun | business | B
+lunch break | 昼休み | Our lunch break lasts one hour. | noun | business | A
+mail order | 通信販売 | She bought the desk by mail order. | noun | business | C
+manager position | 管理職 | He applied for a manager position. | noun | business | C
+market price | 市場価格 | Market prices rose last month. | noun | business | B
+meeting room | 会議室 | The meeting room is on the fifth floor. | noun | business | B
+minimum wage | 最低賃金 | The minimum wage went up. | noun | business | B
+name tag | 名札 | Every guest wore a name tag. | noun | business | C
+night shift | 夜勤 | He works the night shift twice a week. | noun | business | B
+office supplies | 事務用品 | We ordered more office supplies. | noun | business | C
+online shopping | ネット通販 | Online shopping saves time. | noun | business | A
+order form | 注文書 | Please complete the order form. | noun | business | B
+out of stock | 在庫切れ | That model is out of stock. | adjective | business | B
+paycheck | 給料 | My paycheck comes on the twenty fifth. | noun | business | B
+pay raise | 昇給 | She asked for a pay raise. | noun | business | B
+price list | 価格表 | Ask the shop for a price list. | noun | business | C
+receipt copy | 領収書の控え | Keep a receipt copy for the office. | noun | business | C
+sales clerk | 販売員 | A sales clerk showed me the shoes. | noun | business | B
+sales report | 売上報告 | The sales report is due today. | noun | business | B
+service charge | サービス料 | A service charge is added at night. | noun | business | C
+shopping mall | 商業施設 | We met at the shopping mall. | noun | business | A
+staff member | 職員 | A staff member will help you soon. | noun | business | B
+supervisor | 上司 | My supervisor approved the plan. | noun | business | B
+tax free | 免税の | This shop has a tax free counter. | adjective | business | B
+trainee | 研修生 | The trainee starts work on Monday. | noun | business | C
+wholesale | 卸売の | They buy rice at wholesale prices. | adjective | business | C
+work experience | 職業体験 | Students gain work experience in summer. | noun | business | B
+band aid | ばんそうこう | Put a band aid on the cut. | noun | health | B
+blood pressure | 血圧 | The nurse checked my blood pressure. | noun | health | B
+blood test | 血液検査 | He had a blood test this morning. | noun | health | B
+breathe deeply | 深呼吸する | Breathe deeply and relax. | verb | health | B
+checkup | 健康診断 | I have a checkup once a year. | noun | health | A
+dizzy | めまいがする | I felt dizzy after standing up. | adjective | health | B
+emergency room | 救急室 | They rushed him to the emergency room. | noun | health | B
+eye drop | 目薬 | Use these eye drops twice a day. | noun | health | C
+first aid kit | 救急箱 | Keep a first aid kit in the car. | noun | health | B
+food poisoning | 食中毒 | Several guests got food poisoning. | noun | health | B
+health insurance | 健康保険 | Health insurance covers most costs. | noun | health | B
+heartbeat | 心拍 | His heartbeat returned to normal. | noun | health | C
+hospital bed | 病床 | Every hospital bed was full. | noun | health | C
+injection | 注射 | The injection did not hurt at all. | noun | health | B
+medicine cabinet | 薬棚 | The pills are in the medicine cabinet. | noun | health | C
+mental health | 心の健康 | Sleep is important for mental health. | noun | health | B
+nurse station | 看護師詰所 | Ask at the nurse station. | noun | health | C
+operation room | 手術室 | The operation room was ready. | noun | health | C
+painkiller | 鎮痛剤 | She took a painkiller for her headache. | noun | health | B
+pill | 錠剤 | Take one pill after each meal. | noun | health | B
+recover from | 回復する | He recovered from the flu in a week. | verb | health | A
+side effect | 副作用 | This medicine has few side effects. | noun | health | B
+sleep well | よく眠る | I did not sleep well last night. | verb | health | A
+stay in shape | 体調を保つ | Running helps me stay in shape. | verb | health | B
+stomachache | 腹痛 | He had a stomachache after lunch. | noun | health | B
+toothache | 歯痛 | A toothache kept me awake. | noun | health | B
+wheelchair ramp | 車いす用傾斜路 | A wheelchair ramp was added last year. | noun | health | C
+acorn | どんぐり | Squirrels gather acorns in autumn. | noun | environment | C
+air pollution | 大気汚染 | Air pollution worsens in summer. | noun | environment | A
+beehive | 蜂の巣 | A beehive hangs from that branch. | noun | environment | C
+coral reef | サンゴ礁 | The coral reef is slowly dying. | noun | environment | B
+dust storm | 砂嵐 | A dust storm closed the airport. | noun | environment | C
+earthquake drill | 地震訓練 | We had an earthquake drill today. | noun | environment | B
+frost | 霜 | Frost covered the field this morning. | noun | environment | C
+global warming | 地球温暖化 | Global warming affects every country. | noun | environment | A
+grassland | 草原 | Wild horses run across the grassland. | noun | environment | C
+hive | 巣箱 | The farmer keeps bees in a hive. | noun | environment | C
+landslide | 地滑り | A landslide blocked the mountain road. | noun | environment | C
+litter | ごみを捨てる | Do not litter in the park. | verb | environment | B
+marine life | 海洋生物 | Plastic harms marine life. | noun | environment | B
+natural resource | 天然資源 | Water is a precious natural resource. | noun | environment | B
+ozone layer | オゾン層 | The ozone layer protects the earth. | noun | environment | B
+peninsula | 半島 | A small town sits on the peninsula. | noun | environment | C
+pine tree | 松の木 | Pine trees grow along the shore. | noun | environment | B
+renewable energy | 再生可能エネルギー | Renewable energy is growing fast. | noun | environment | B
+riverbank | 川岸 | We walked along the riverbank. | noun | environment | C
+sandstorm | 砂嵐 | A sandstorm hit the desert town. | noun | environment | C
+seashell | 貝がら | She collected seashells on the beach. | noun | environment | C
+swamp | 沼地 | Frogs live in the swamp. | noun | environment | C
+tide pool | 潮だまり | Small crabs hide in the tide pool. | noun | environment | C
+trunk | 幹 | The trunk of this tree is huge. | noun | environment | B
+water shortage | 水不足 | A water shortage hit the region. | noun | environment | B
+aisle seat | 通路側の席 | I prefer an aisle seat on long flights. | noun | daily | B
+arrival gate | 到着ゲート | We waited at the arrival gate. | noun | daily | B
+boarding time | 搭乗時刻 | Boarding time is thirty minutes before departure. | noun | daily | B
+book a room | 部屋を予約する | I booked a room for two nights. | verb | daily | A
+bullet train | 新幹線 | The bullet train reaches Kyoto quickly. | noun | daily | B
+bus stop sign | バス停の標識 | The bus stop sign was knocked down. | noun | daily | C
+cancel a flight | 便を欠航する | Snow canceled our flight. | verb | daily | B
+carry on bag | 機内持ち込み手荷物 | Your carry on bag is too large. | noun | daily | B
+departure time | 出発時刻 | The departure time changed to noon. | noun | daily | B
+express train | 急行列車 | Take the express train to save time. | noun | daily | B
+front desk | フロント | Leave the key at the front desk. | noun | daily | A
+guided tour | 案内付きの見学 | We joined a guided tour of the castle. | noun | daily | B
+highway exit | 高速道路の出口 | Take the next highway exit. | noun | daily | B
+hotel guest | 宿泊客 | Hotel guests may use the pool. | noun | daily | B
+last train | 終電 | I almost missed the last train. | noun | daily | A
+local specialty | 名産品 | This town is famous for a local specialty. | noun | daily | B
+lost and found | 遺失物取扱所 | Ask at the lost and found office. | noun | daily | B
+one way ticket | 片道切符 | A one way ticket costs less. | noun | daily | B
+overhead bin | 頭上の物入れ | Put your bag in the overhead bin. | noun | daily | C
+package tour | 団体旅行 | They joined a package tour to Italy. | noun | daily | B
+railway crossing | 踏切 | The gate closed at the railway crossing. | noun | daily | C
+round trip | 往復 | A round trip takes about six hours. | noun | daily | B
+rush hour | 混雑時 | Avoid the train during rush hour. | noun | daily | A
+sightseeing bus | 観光バス | A sightseeing bus leaves every hour. | noun | daily | B
+subway line | 地下鉄の路線 | This subway line runs to the airport. | noun | daily | B
+taxi stand | タクシー乗り場 | The taxi stand is outside the exit. | noun | daily | B
+ticket gate | 改札口 | Wait for me at the ticket gate. | noun | daily | A
+tour guide | 添乗員 | Our tour guide spoke three languages. | noun | daily | B
+traffic jam | 交通渋滞 | We sat in a traffic jam for an hour. | noun | daily | A
+travel insurance | 旅行保険 | Travel insurance is strongly recommended. | noun | daily | B
+window seat | 窓側の席 | She always chooses a window seat. | noun | daily | B
+youth hostel | ユースホステル | We stayed at a youth hostel. | noun | daily | C
+city hall | 市役所 | Get the form at city hall. | noun | society | A
+civil right | 市民権 | Everyone should enjoy equal civil rights. | noun | society | C
+community center | 公民館 | Classes are held at the community center. | noun | society | B
+crime rate | 犯罪率 | The crime rate fell last year. | noun | society | B
+crosswalk | 横断歩道 | Cross the street at the crosswalk. | noun | society | B
+fire station | 消防署 | The fire station is near the park. | noun | society | B
+housing cost | 住居費 | Housing costs keep rising. | noun | society | B
+neighborly | 隣人らしい | He is always neighborly and kind. | adjective | society | C
+nursery school | 保育園 | Our son attends nursery school. | noun | society | B
+police station | 警察署 | He reported the theft at the police station. | noun | society | A
+post office | 郵便局 | The post office closes at five. | noun | society | A
+public library | 公立図書館 | The public library lends free books. | noun | society | A
+public transport | 公共交通機関 | Public transport here is very reliable. | noun | society | A
+recycling center | 資源回収施設 | Take the bottles to the recycling center. | noun | society | B
+retirement home | 老人ホーム | She visits a retirement home weekly. | noun | society | B
+rural area | 農村部 | Fewer young people live in rural areas. | noun | society | B
+social media | 交流サイト | Social media spreads news quickly. | noun | society | A
+street light | 街灯 | The street light stopped working. | noun | society | B
+traffic accident | 交通事故 | A traffic accident closed the road. | noun | society | A
+volunteer work | 奉仕活動 | She does volunteer work on weekends. | noun | society | A
+voter | 有権者 | Young voters increased this time. | noun | society | B
+bring back | 持ち帰る | Bring back the book by Friday. | verb | general | B
+check on | 様子を見る | Please check on the baby. | verb | general | B
+head for | 〜へ向かう | They headed for the station. | verb | general | B
+pass by | 通り過ぎる | A bus passed by without stopping. | verb | general | B
+pick out | 選び出す | She picked out a blue scarf. | verb | general | B
+put on weight | 太る | I put on weight over the holidays. | verb | health | B
+sign up for | 申し込む | I signed up for a cooking class. | verb | education | A
+take after | 似ている | He takes after his mother. | verb | general | B
+try on | 試着する | May I try on this jacket? | verb | daily | A
+use up | 使い切る | We used up all the paper. | verb | general | B
+wake up | 目を覚ます | I wake up at six every day. | verb | daily | A
+amazed | 驚いた | We were amazed by the view. | adjective | general | B
+annoying | いらだたしい | That noise is really annoying. | adjective | general | B
+confusing | 紛らわしい | The instructions were confusing. | adjective | general | B
+disappointed | 落胆した | She was disappointed with the result. | adjective | general | A
+dull | 退屈な | The lecture was rather dull. | adjective | education | B
+exhausted | 疲れ切った | We were exhausted after the hike. | adjective | health | B
+fantastic | すばらしい | The concert was fantastic. | adjective | general | B
+frightened | おびえた | The cat was frightened by the noise. | adjective | general | B
+guilty | 罪悪感のある | She felt guilty about lying. | adjective | general | B
+impatient | 短気な | He grew impatient in the long line. | adjective | general | B
+lively | 活気のある | The market was lively this morning. | adjective | daily | B
+messy | 散らかった | Your desk is really messy. | adjective | daily | B
+peaceful | 平和な | The village is quiet and peaceful. | adjective | society | B
+rapid | 急速な | The city saw rapid growth. | adjective | society | B
+relaxed | くつろいだ | He looked relaxed after the trip. | adjective | health | B
+satisfied | 満足した | Customers were satisfied with the service. | adjective | business | A
+sincere | 誠実な | She sent a sincere apology. | adjective | general | B
+talented | 才能のある | He is a talented young pianist. | adjective | general | B
+thick | 厚い | She wore a thick winter coat. | adjective | daily | B
+unusual | 珍しい | It is unusual to see him angry. | adjective | general | B
+obviously | 明らかに | She was obviously tired. | adverb | general | B
+originally | もともとは | The house was originally a school. | adverb | general | B
+personally | 個人的には | Personally, I prefer tea. | adverb | general | B
+possibly | ひょっとすると | The train may possibly be late. | adverb | general | B
+seriously | 真剣に | Take this warning seriously. | adverb | general | B
+slightly | わずかに | The price rose slightly. | adverb | business | B
+art museum | 美術館 | The art museum opens at ten. | noun | education | A
+audience seat | 観客席 | Every audience seat was taken. | noun | daily | C
+badminton | バドミントン | We played badminton after class. | noun | daily | B
+baseball glove | 野球のグローブ | He left his baseball glove at school. | noun | daily | B
+board game | ボードゲーム | We played a board game all evening. | noun | daily | B
+bowling alley | ボウリング場 | The bowling alley is open until midnight. | noun | daily | C
+brass band | 吹奏楽団 | She plays flute in the brass band. | noun | education | B
+calligraphy | 書道 | He practices calligraphy every Sunday. | noun | education | B
+camping gear | キャンプ用品 | We packed our camping gear. | noun | daily | B
+cheerleader | 応援団員 | The cheerleaders practiced in the gym. | noun | education | C
+chess | チェス | My grandfather taught me chess. | noun | daily | B
+concert hall | 演奏会場 | The concert hall was completely full. | noun | daily | B
+crossword puzzle | クロスワード | She solves a crossword puzzle daily. | noun | daily | C
+dance lesson | 舞踊のけいこ | I take a dance lesson on Fridays. | noun | daily | B
+drawing paper | 画用紙 | Bring drawing paper to art class. | noun | education | C
+fireworks | 花火 | We watched fireworks from the bridge. | noun | daily | A
+fishing rod | 釣りざお | He bought a new fishing rod. | noun | daily | C
+guitar lesson | ギターの練習 | My guitar lesson starts at four. | noun | daily | B
+gymnastics | 体操 | She has practiced gymnastics since childhood. | noun | daily | B
+hiking trail | 登山道 | The hiking trail was muddy. | noun | environment | B
+horse riding | 乗馬 | Horse riding is popular at that ranch. | noun | daily | C
+ice skating | アイススケート | We went ice skating in January. | noun | daily | B
+karate | 空手 | He has practiced karate for six years. | noun | daily | B
+knitting | 編み物 | Knitting is her winter hobby. | noun | daily | C
+martial art | 武道 | Judo is a traditional martial art. | noun | daily | B
+movie theater | 映画館 | The movie theater was almost empty. | noun | daily | A
+musical instrument | 楽器 | She plays three musical instruments. | noun | daily | A
+opening ceremony | 開会式 | The opening ceremony starts at nine. | noun | education | B
+painting class | 絵画教室 | She joined a painting class. | noun | education | B
+photo album | 写真帳 | We looked through an old photo album. | noun | daily | B
+photography | 写真撮影 | Photography is his main hobby. | noun | daily | B
+piano recital | ピアノ発表会 | Her piano recital is next Sunday. | noun | daily | C
+pottery | 陶芸 | This town is famous for pottery. | noun | education | B
+practice game | 練習試合 | We won the practice game easily. | noun | daily | B
+running track | 陸上競技場 | Students ran around the running track. | noun | education | B
+score board | 得点板 | The score board showed a tie. | noun | daily | C
+skiing | スキー | Skiing is popular in this town. | noun | daily | B
+sports day | 運動会 | Sports day was moved to Saturday. | noun | education | A
+stage performance | 舞台公演 | Their stage performance impressed everyone. | noun | daily | B
+swimming pool | 水泳プール | The swimming pool closes in September. | noun | daily | A
+table tennis | 卓球 | We played table tennis after school. | noun | daily | B
+team captain | 主将 | The team captain gave a short speech. | noun | daily | B
+ticket booth | 切符売り場 | Buy your ticket at the ticket booth. | noun | daily | C
+trophy | 優勝杯 | Our team won the silver trophy. | noun | daily | B
+warm up | 準備運動をする | Warm up before you start running. | verb | health | B
+watercolor | 水彩画 | She paints watercolors of flowers. | noun | education | C
+weight training | 筋力訓練 | He does weight training twice weekly. | noun | health | B
+antenna | アンテナ | The antenna on the roof fell down. | noun | technology | C
+app store | アプリ配信所 | I downloaded it from the app store. | noun | technology | B
+battery life | 電池の持ち | This phone has long battery life. | noun | technology | B
+cable | ケーブル | Connect the cable to the monitor. | noun | technology | B
+charging port | 充電端子 | The charging port is dirty. | noun | technology | C
+computer screen | 画面 | Do not stare at the computer screen too long. | noun | technology | B
+data plan | 通信契約 | My data plan runs out quickly. | noun | technology | B
+digital camera | デジタルカメラ | He bought a small digital camera. | noun | technology | B
+download | 取り込む | Download the file before the trip. | verb | technology | A
+email address | メールアドレス | Write your email address clearly. | noun | technology | A
+error message | 誤り表示 | An error message appeared on screen. | noun | technology | B
+file size | ファイル容量 | The file size is too large. | noun | technology | B
+home appliance | 家電 | Home appliances are on the fifth floor. | noun | technology | B
+inbox | 受信箱 | My inbox is full of messages. | noun | technology | B
+mobile app | アプリ | The mobile app is free to use. | noun | technology | A
+online meeting | オンライン会議 | We joined an online meeting from home. | noun | technology | B
+remote control | リモコン | The remote control is under the sofa. | noun | technology | B
+robot | ロボット | This robot cleans the floor. | noun | technology | B
+screen time | 画面利用時間 | Try to reduce your screen time. | noun | technology | B
+security camera | 防犯カメラ | A security camera records the entrance. | noun | technology | B
+smart speaker | スマートスピーカー | She asked the smart speaker for the weather. | noun | technology | C
+software update | ソフト更新 | A software update fixed the problem. | noun | technology | B
+text message | 携帯メール | Send me a text message when you arrive. | noun | technology | A
+touch screen | タッチ画面 | The touch screen stopped responding. | noun | technology | B
+upload | 送信する | She uploaded the photos last night. | verb | technology | A
+username | 利用者名 | Enter your username and password. | noun | technology | B
+video game | テレビゲーム | He plays video games on weekends. | noun | technology | A
+voice message | 音声メッセージ | I left a voice message for her. | noun | technology | B
+baby shower | 出産祝いの会 | We held a baby shower for her. | noun | daily | C
+best wishes | ご多幸を祈る | She sent best wishes for the new year. | noun | daily | C
+birthday card | 誕生日カード | He wrote a birthday card for his sister. | noun | daily | B
+congratulate | 祝う | We congratulated her on the award. | verb | daily | B
+family gathering | 親族の集まり | A family gathering is planned for August. | noun | daily | B
+farewell gift | 餞別 | They gave him a farewell gift. | noun | daily | C
+gift shop | 土産物店 | The gift shop closes at six. | noun | daily | B
+greeting card | あいさつ状 | She keeps every greeting card. | noun | daily | B
+guest list | 招待客名簿 | The guest list is almost finished. | noun | daily | C
+holiday season | 行楽期 | Hotels are full during the holiday season. | noun | daily | B
+housewarming | 新築祝い | We were invited to a housewarming party. | noun | daily | C
+invitation card | 招待状 | The invitation card arrived yesterday. | noun | daily | B
+national holiday | 祝日 | Monday is a national holiday. | noun | society | A
+new year | 新年 | We visit a shrine every new year. | noun | society | A
+party host | 主催者 | The party host welcomed each guest. | noun | daily | C
+reception desk | 受付 | Please sign in at the reception desk. | noun | business | B
+retirement party | 退職祝い | His retirement party was held Friday. | noun | business | C
+thank you note | 礼状 | She wrote a thank you note by hand. | noun | daily | B
+wedding anniversary | 結婚記念日 | Today is their tenth wedding anniversary. | noun | daily | B
+conversation topic | 話題 | Weather is a safe conversation topic. | noun | general | B
+first impression | 第一印象 | First impressions matter at interviews. | noun | general | B
+handshake | 握手 | They exchanged a firm handshake. | noun | general | C
+misunderstanding | 誤解 | A small misunderstanding caused the trouble. | noun | general | B
+nod | うなずく | He nodded and left the room. | verb | general | B
+reminder | 注意喚起 | Send a reminder before the meeting. | noun | business | B
+rumor | うわさ | The rumor spread across the school. | noun | society | B
+sign language | 手話 | She is learning sign language. | noun | society | B
+small talk | 世間話 | We made small talk in the elevator. | noun | general | B
+speech contest | 弁論大会 | He won the English speech contest. | noun | education | A
+warning | 警告 | The warning came too late. | noun | general | A
+belt | ベルト | His belt is made of leather. | noun | daily | B
+blouse | ブラウス | She ironed her white blouse. | noun | daily | B
+button hole | ボタン穴 | The button hole is too small. | noun | daily | C
+casual clothes | 普段着 | Wear casual clothes to the picnic. | noun | daily | B
+dressing room | 試着室 | The dressing room is at the back. | noun | daily | B
+fitting | 試着 | The fitting took only five minutes. | noun | daily | C
+hood | フード | Pull up your hood in the rain. | noun | daily | C
+pajamas | パジャマ | He was still in his pajamas. | noun | daily | B
+raincoat | 雨具 | Take a raincoat with you. | noun | daily | B
+sandal | サンダル | She wore sandals to the beach. | noun | daily | B
+size chart | 寸法表 | Check the size chart before ordering. | noun | business | C
+sleeve | そで | The sleeves are a little long. | noun | daily | B
+sunglasses | サングラス | He wears sunglasses while driving. | noun | daily | B
+zipper | ファスナー | The zipper on my bag broke. | noun | daily | B
+adhesive tape | 粘着テープ | Fix the box with adhesive tape. | noun | daily | C
+battery charger | 充電器 | The battery charger stopped working. | noun | technology | C
+bolt | ボルト | Tighten the bolt with a wrench. | noun | technology | C
+flashcard | 単語カード | She studies with flashcards every night. | noun | education | B
+glue | のり | Stick the paper with glue. | noun | education | B
+highlighter | 蛍光ペン | Mark the key words with a highlighter. | noun | education | B
+magnet | 磁石 | A magnet holds the note on the door. | noun | technology | B
+paper clip | クリップ | Fasten the pages with a paper clip. | noun | business | C
+pliers | ペンチ | Cut the wire with pliers. | noun | technology | C
+screwdriver | ねじ回し | I need a small screwdriver. | noun | technology | C
+sharpener | 鉛筆削り | The sharpener is on my desk. | noun | education | C
+stapler | ホチキス | Pass me the stapler, please. | noun | business | C
+tape measure | 巻き尺 | Measure the desk with a tape measure. | noun | daily | C
+toolbox | 道具箱 | His toolbox is under the stairs. | noun | technology | C
+wrench | レンチ | Loosen the nut with a wrench. | noun | technology | C
+air conditioner | 冷房装置 | The air conditioner is too cold. | noun | daily | A
+bar code | バーコード | The clerk scanned the bar code. | noun | business | B
+bicycle parking | 駐輪場 | Leave your bike in the bicycle parking. | noun | society | B
+blood donation | 献血 | He gives a blood donation twice a year. | noun | health | C
+bus route | バス路線 | This bus route was changed. | noun | daily | B
+camping site | キャンプ場 | The camping site is beside a river. | noun | environment | B
+cash payment | 現金払い | Cash payment gets a small discount. | noun | business | B
+ceremony hall | 式場 | The ceremony hall holds three hundred people. | noun | society | C
+change of address | 住所変更 | Report your change of address early. | noun | society | C
+cleaning staff | 清掃員 | The cleaning staff work at night. | noun | business | C
+drinking water | 飲料水 | Drinking water is provided free. | noun | health | B
+elevator button | エレベーターのボタン | She pressed the elevator button twice. | noun | daily | C
+entrance hall | 玄関ホール | Wait for me in the entrance hall. | noun | daily | B
+fire escape | 非常階段 | Use the fire escape in an emergency. | noun | society | B
+fitting room | 試着室 | Only three items in the fitting room. | noun | business | B
+free of charge | 無料で | Delivery is free of charge. | adjective | business | B
+health center | 保健所 | The health center offers free checkups. | noun | health | B
+information desk | 案内所 | Ask at the information desk downstairs. | noun | business | B
+lost item | 遺失物 | Report any lost item to the staff. | noun | society | C
+meeting point | 集合場所 | The meeting point is the main gate. | noun | daily | B
+night view | 夜景 | The night view from here is famous. | noun | daily | B
+noise pollution | 騒音公害 | Noise pollution troubles the neighborhood. | noun | environment | C
+opening hours | 開館時間 | Check the opening hours before you go. | noun | business | B
+outdoor activity | 野外活動 | Outdoor activities are popular in spring. | noun | daily | B
+parking fee | 駐車料金 | The parking fee is three hundred yen. | noun | business | B
+power outage | 停電 | A power outage lasted two hours. | noun | society | B
+public bath | 公衆浴場 | This town has an old public bath. | noun | society | C
+rest area | 休憩所 | We stopped at a highway rest area. | noun | daily | B
+safety check | 安全点検 | A safety check is done monthly. | noun | society | B
+seating area | 座席区域 | The seating area was quite small. | noun | daily | C
+self service | セルフサービス | This cafe is self service. | noun | business | B
+smoking area | 喫煙所 | The smoking area is outside. | noun | society | B
+staff entrance | 職員通用口 | Use the staff entrance at the back. | noun | business | C
+ticket machine | 券売機 | The ticket machine takes coins only. | noun | daily | B
+trash can | ごみ箱 | The trash can is already full. | noun | daily | B
+water bill | 水道料金 | Our water bill rose this month. | noun | society | B
+weather forecast | 天気予報 | The weather forecast says rain tomorrow. | noun | environment | A
+bend | 曲げる | Bend your knees before you jump. | verb | health | B
+bite | かむ | The dog never bites anyone. | verb | daily | B
+bounce | 弾む | The ball bounced off the wall. | verb | daily | C
+chase | 追いかける | The cat chased a small bird. | verb | daily | B
+chew | かむ | Chew your food slowly. | verb | health | B
+crawl | はう | The baby crawled across the floor. | verb | daily | C
+decorate | 飾る | We decorated the room with flowers. | verb | daily | B
+drag | 引きずる | He dragged the heavy box outside. | verb | daily | B
+fetch | 取ってくる | The dog fetched the stick. | verb | daily | C
+fold | 折りたたむ | Fold the towels and put them away. | verb | daily | B
+forbid | 禁じる | The school forbids mobile phones in class. | verb | education | B
+glance | ちらっと見る | She glanced at her watch. | verb | general | B
+guess | 推測する | Guess how old this tree is. | verb | general | A
+hang | 掛ける | Hang your jacket on the hook. | verb | daily | A
+hug | 抱きしめる | She hugged her little brother. | verb | general | B
+kneel | ひざまずく | He knelt to tie his shoe. | verb | general | C
+lean | 寄りかかる | Do not lean against the door. | verb | daily | B
+leap | 跳ぶ | The frog leaped into the pond. | verb | environment | C
+owe | 借りがある | I owe you five hundred yen. | verb | business | B
+participate | 参加する | Everyone participated in the cleanup. | verb | society | A
+polish | 磨く | He polished his shoes carefully. | verb | daily | B
+pronounce | 発音する | How do you pronounce this word? | verb | education | A
+punish | 罰する | The teacher rarely punishes students. | verb | education | B
+quit | やめる | He quit smoking last year. | verb | health | A
+resist | 抵抗する | I could not resist the smell of bread. | verb | general | B
+rub | こする | She rubbed her tired eyes. | verb | health | B
+ruin | 台なしにする | Rain ruined our picnic. | verb | daily | B
+rush | 急ぐ | Do not rush your homework. | verb | education | A
+scream | 叫ぶ | Someone screamed in the dark street. | verb | general | B
+sew | 縫う | She sewed a button on my shirt. | verb | daily | C
+shake | 振る | Shake the bottle before opening it. | verb | daily | A
+sigh | ため息をつく | He sighed and closed the book. | verb | general | B
+skip | 抜かす | Never skip breakfast. | verb | health | B
+slip | 滑る | She slipped on the icy road. | verb | daily | B
+sneeze | くしゃみをする | He sneezed three times in a row. | verb | health | C
+spill | こぼす | I spilled coffee on my desk. | verb | daily | B
+spin | 回る | The wheel spun slowly. | verb | technology | C
+split | 分ける | Let us split the bill. | verb | business | B
+spoil | だめにする | Heat will spoil the milk. | verb | daily | B
+squeeze | 絞る | Squeeze the lemon over the fish. | verb | daily | B
+stare | じっと見る | The child stared at the puppy. | verb | general | B
+stir | かき混ぜる | Stir the soup with a spoon. | verb | daily | B
+submit | 提出する | Submit your form before Friday. | verb | business | A
+swallow | 飲み込む | Swallow the pill with water. | verb | health | B
+swear | 誓う | He swore to tell the truth. | verb | society | C
+sweep | 掃く | Sweep the floor before you leave. | verb | daily | B
+tap | 軽くたたく | She tapped the screen twice. | verb | technology | B
+tighten | 締める | Tighten the screw a little more. | verb | technology | C
+twist | ねじる | He twisted his ankle on the stairs. | verb | health | B
+unite | 団結する | The town united after the flood. | verb | society | C
+unlock | 解錠する | Unlock the door with this key. | verb | daily | B
+urge | 促す | Doctors urge people to exercise. | verb | health | B
+wander | ぶらつく | We wandered around the old town. | verb | daily | B
+wipe | ふく | Wipe the table after dinner. | verb | daily | B
+yell | どなる | Do not yell in the library. | verb | education | B
+additional | 追加の | Additional seats were prepared. | adjective | business | B
+aggressive | 攻撃的な | That dog looks aggressive. | adjective | general | B
+bold | 大胆な | It was a bold decision. | adjective | general | B
+careless | 不注意な | A careless mistake cost us the game. | adjective | general | B
+chilly | 肌寒い | The evening air feels chilly. | adjective | environment | B
+clever | 利口な | That was a clever answer. | adjective | general | B
+clumsy | 不器用な | He is clumsy with chopsticks. | adjective | general | C
+concerned | 心配している | Parents are concerned about the change. | adjective | society | B
+cruel | 残酷な | It is cruel to leave a pet alone. | adjective | general | B
+cultural | 文化の | The festival has deep cultural meaning. | adjective | society | B
+delicate | 繊細な | Handle this delicate glass carefully. | adjective | general | B
+doubtful | 疑わしい | His story sounds doubtful. | adjective | general | C
+elegant | 優雅な | She wore an elegant dress. | adjective | daily | B
+extreme | 極端な | Extreme heat closed the pool. | adjective | environment | B
+faithful | 忠実な | The dog stayed faithful to its owner. | adjective | general | C
+fierce | 激しい | A fierce wind shook the trees. | adjective | environment | B
+fluent | 流ちょうな | She is fluent in three languages. | adjective | education | B
+foggy | 霧の深い | The road was foggy this morning. | adjective | environment | B
+foolish | 愚かな | It was foolish to go out alone. | adjective | general | B
+formal | 正式な | Wear formal clothes to the ceremony. | adjective | business | B
+gifted | 才能のある | He is a gifted young writer. | adjective | education | C
+golden | 金色の | The hills turned golden at sunset. | adjective | environment | C
+greedy | 欲深い | Do not be greedy with the snacks. | adjective | general | C
+handy | 便利な | This small tool is very handy. | adjective | daily | B
+harsh | 厳しい | The winter here is harsh. | adjective | environment | B
+hidden | 隠れた | A hidden path leads to the beach. | adjective | environment | B
+horrible | ひどい | The soup tasted horrible. | adjective | daily | B
+innocent | 無実の | The court found him innocent. | adjective | society | B
+internal | 内部の | The company made internal changes. | adjective | business | C
+invisible | 目に見えない | Germs are invisible to the eye. | adjective | health | B
+keen | 熱心な | She is keen on classical music. | adjective | general | B
+limited | 限られた | We have limited time today. | adjective | business | A
+loose | ゆるい | This screw is loose. | adjective | technology | B
+loyal | 忠実な | He has loyal customers. | adjective | business | B
+lucky | 幸運な | You are lucky to get a seat. | adjective | general | A
+mature | 成熟した | She is mature for her age. | adjective | general | B
+mild | 穏やかな | The climate is mild all year. | adjective | environment | B
+minor | 小さな | It was only a minor injury. | adjective | health | B
+modest | 控えめな | He is modest about his success. | adjective | general | C
+mysterious | 神秘的な | A mysterious light appeared in the sky. | adjective | general | B
+nasty | 不快な | There is a nasty smell in here. | adjective | daily | C
+naughty | いたずらな | The naughty boy hid my shoes. | adjective | daily | C
+noble | 高貴な | It was a noble act of kindness. | adjective | society | C
+numerous | 多数の | Numerous visitors came this weekend. | adjective | society | B
+obedient | 従順な | Their dog is quiet and obedient. | adjective | daily | C
+odd | 奇妙な | That is an odd question. | adjective | general | B
+oral | 口頭の | We had an oral exam today. | adjective | education | B
+painful | 苦痛な | The injection was not painful. | adjective | health | B
+poisonous | 有毒な | Some snakes here are poisonous. | adjective | environment | B
+pregnant | 妊娠した | Pregnant women may use these seats. | adjective | health | B
+protective | 保護的な | Wear protective gloves. | adjective | health | C
+punctual | 時間を守る | He is always punctual for meetings. | adjective | business | C
+random | 無作為の | We asked a random group of students. | adjective | education | B
+realistic | 現実的な | Set a realistic goal. | adjective | general | B
+relevant | 関連のある | Keep your answer relevant to the question. | adjective | education | B
+ridiculous | ばかげた | That price is ridiculous. | adjective | business | B
+ripe | 熟した | These peaches are not ripe yet. | adjective | daily | B
+romantic | 恋愛の | They watched a romantic movie. | adjective | daily | B
+rotten | 腐った | Throw away the rotten apples. | adjective | daily | B
+royal | 王室の | The royal family visited the town. | adjective | society | B
+rude | 無礼な | It is rude to interrupt. | adjective | general | A
+salty | 塩辛い | This soup is a little salty. | adjective | daily | B
+scared | おびえた | The child looked scared. | adjective | general | B
+selfish | 利己的な | Do not be selfish with the toys. | adjective | general | B
+shallow | 浅い | The river is shallow here. | adjective | environment | B
+shiny | 光沢のある | She wore shiny black shoes. | adjective | daily | C
+shy | 内気な | He is too shy to speak up. | adjective | general | A
+silly | ばかげた | That was a silly mistake. | adjective | general | B
+slim | ほっそりした | The phone is light and slim. | adjective | technology | B
+sour | すっぱい | This lemon is very sour. | adjective | daily | B
+spicy | 辛い | The curry was too spicy. | adjective | daily | B
+splendid | すばらしい | We had a splendid view. | adjective | daily | C
+steep | 険しい | The path became steep near the top. | adjective | environment | B
+sticky | ねばねばした | My hands are sticky with honey. | adjective | daily | B
+stiff | 硬い | My shoulders feel stiff. | adjective | health | B
+surprising | 驚くべき | The result was surprising. | adjective | general | A
+swift | 迅速な | They made a swift decision. | adjective | business | C
+sympathetic | 同情的な | She gave me a sympathetic look. | adjective | general | C
+technical | 技術的な | We had a technical problem. | adjective | technology | B
+tender | 柔らかい | The meat was very tender. | adjective | daily | B
+terrific | すばらしい | You did a terrific job. | adjective | general | B
+thoughtful | 思いやりのある | That was a thoughtful gift. | adjective | general | B
+tidy | 整った | Her desk is always tidy. | adjective | daily | B
+traditional | 伝統的な | They wore traditional clothes. | adjective | society | A
+tragic | 悲惨な | It was a tragic accident. | adjective | society | B
+ugly | 醜い | The old building looks ugly. | adjective | general | B
+unable | できない | I was unable to attend. | adjective | general | B
+uncomfortable | 心地よくない | These shoes are uncomfortable. | adjective | daily | B
+unfair | 不公平な | The rule seems unfair. | adjective | society | B
+unhappy | 不幸な | She looked unhappy about the news. | adjective | general | B
+unknown | 未知の | The cause is still unknown. | adjective | general | B
+unlikely | ありそうにない | Rain is unlikely today. | adjective | environment | B
+unnecessary | 不要な | Cut out unnecessary spending. | adjective | business | B
+upper | 上の | Books are on the upper shelf. | adjective | daily | B
+vacant | 空いている | The seat beside me is vacant. | adjective | daily | B
+vague | あいまいな | His answer was vague. | adjective | general | B
+vast | 広大な | A vast field spread before us. | adjective | environment | B
+violent | 暴力的な | The film is too violent for children. | adjective | society | B
+visible | 目に見える | The mountain is visible from here. | adjective | environment | B
+vivid | 鮮やかな | The photo has vivid colors. | adjective | general | C
+weak | 弱い | He felt weak after the fever. | adjective | health | A
+weird | 奇妙な | I heard a weird noise. | adjective | general | B
+wonderful | すばらしい | We had a wonderful time. | adjective | general | A

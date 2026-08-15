@@ -1,0 +1,634 @@
+# GP2（準2級）bridge 語の例文
+#
+# 形式: <canonical key> | <例文>
+# 対象: G2 では basic（例文なし）だが GP2 では bridge になる語。
+#       editions.GP2.example として適用される。**canonical には書かない**
+#       （書くと G2 の同梱 seed が変わり、公開中アプリの再現一致ゲートが落ちる）
+# 方針: 1文・4〜10語・準2級（A2）までの語彙で構成し、見出し語を含める（docs/vocab-database-spec.md §6）
+
+ACHE | My legs ache after the long walk.
+ADVISE | The teacher advised me to study harder.
+AIRLINE | The airline changed our departure time.
+AMBULANCE | Someone called an ambulance right away.
+ANGLE | Draw two lines at a right angle.
+ANNOUNCER | The announcer read the evening news.
+APPETIZER | We ordered a small appetizer first.
+ARCHITECT | The architect designed our new library.
+ARMY | His grandfather served in the army.
+ARROW | Follow the arrow to the exit.
+ARTWORK | The artwork on this wall is beautiful.
+ASH | Gray ash covered the whole garden.
+ASSEMBLE | We assembled the desk in an hour.
+ATTIC | Old toys are stored in the attic.
+AUDIO | The audio quality of this video is poor.
+AVENUE | Her shop stands on a busy avenue.
+BAGGAGE | Please put your baggage on the belt.
+BALCONY | We dried the towels on the balcony.
+BAMBOO | This basket is made of bamboo.
+BANDAGE | The nurse put a bandage on my arm.
+BARBER | The barber cut my hair very short.
+BARK | That dog barks at every visitor.
+BEGINNER | This class is perfect for beginners.
+BELIEVE | I believe he is telling the truth.
+BIN | Throw the empty bottle in the bin.
+BIOLOGY | She studies biology at university.
+BLANKET | He put a warm blanket on the bed.
+BLIND | The blind man walked with his dog.
+BLOW | A cold wind blew all night.
+BOARDING_PASS | Show your boarding pass at the gate.
+BOMB | An old bomb was found near the river.
+BONE | He broke a bone in his foot.
+BOTTOM | The key sank to the bottom of the pool.
+BRAND | This brand of coffee is very popular.
+BRAVERY | Everyone praised the boy for his bravery.
+BRICK | The old house is made of brick.
+BROADCAST | They will broadcast the game live.
+BUCKET | She filled the bucket with clean water.
+BULLETIN | The notice is on the bulletin board.
+BUNCH | He bought a bunch of bananas.
+BUSINESS | Her business is growing every year.
+CABIN | We stayed in a small cabin.
+CAGE | The bird flew out of its cage.
+CALM_DOWN | Take a deep breath and calm down.
+CAMPUS | The campus is quiet during summer.
+CANOE | They crossed the lake by canoe.
+CANVAS | She painted a bird on the canvas.
+CAPITAL_CITY | Paris is the capital city of France.
+CAPTAIN | The captain welcomed us on board.
+CARE | Thank you for taking care of my cat.
+CAREFUL | Be careful on the wet floor.
+CARPET | A red carpet covers the stairs.
+CAVE | We explored a dark cave.
+CEREAL | He eats cereal for breakfast.
+CHAPTER | Read the first chapter tonight.
+CHARGER | I forgot my phone charger at home.
+CHART | The chart shows last year's sales.
+CHAT | We chatted about our summer plans.
+CHEER | The crowd cheered for the runners.
+CHEF | The chef made a special soup.
+CHEMISTRY | Chemistry is my favorite subject.
+CHEST | He felt a sharp pain in his chest.
+CHILDHOOD | She spent her childhood in the country.
+CHIN | He rested his chin on his hand.
+CHOIR | My sister sings in the school choir.
+CLAP | The audience clapped for a long time.
+CLEANER | The cleaner comes every Monday morning.
+CLEARLY | Please speak a little more clearly.
+CLIFF | The path runs along the cliff.
+COACH | Our coach taught us a new play.
+COASTLINE | The coastline is beautiful at sunset.
+COLLAR | The collar of his shirt was dirty.
+COLLECTION | His stamp collection is quite large.
+COMB | She fixed her hair with a comb.
+COMEDY | We watched a funny comedy last night.
+COMPASS | Use a compass to find north.
+COMPETITOR | Our main competitor lowered its prices.
+COMPOSER | The composer wrote music for films.
+CONCENTRATION | The noise broke my concentration.
+CONDUCTOR | The conductor checked our tickets.
+CONE | Traffic cones blocked half the road.
+CONTAINER | Put the rice in a plastic container.
+CONTEST | She won first prize in the contest.
+COPPER | These old coins are made of copper.
+CORRECTION | The teacher made a few corrections.
+COSTUME | His costume looked like a lion.
+COTTAGE | They rented a cottage by the lake.
+COTTON | This shirt is made of soft cotton.
+COUGH | He coughed all through the night.
+COUPLE | The couple moved here last spring.
+COURTYARD | Students eat lunch in the courtyard.
+COVER_LETTER | Send a cover letter with your application.
+CREATURE | Strange creatures live deep in the sea.
+CREW | The crew prepared the ship for sailing.
+CROSS | Look both ways before you cross.
+CROWN | The queen wore a gold crown.
+CUPBOARD | The cups are in the cupboard.
+CURTAIN | Please close the curtain before bed.
+CURVE | The road makes a sharp curve here.
+CUSHION | She sat on a soft cushion.
+CUSTOMER_SERVICE | Call customer service about the broken item.
+DAILY_LIFE | Smartphones have changed our daily life.
+DAIRY | He cannot eat dairy products.
+DAMP | The towel is still damp.
+DARKNESS | We walked home in the darkness.
+DAYTIME | The store is busy in the daytime.
+DEAD | That plant has been dead for weeks.
+DEAF | She has been deaf since birth.
+DEATH | The news of his death shocked us.
+DECK | We watched the sunset from the deck.
+DELIGHT | The children shouted with delight.
+DELIVERY | The delivery arrived this morning.
+DENTIST | I have an appointment with the dentist.
+DETECTIVE | The detective solved the case quickly.
+DIAGRAM | This diagram explains how the machine works.
+DIE | The old tree died last winter.
+DIRECT_FLIGHT | There is no direct flight to that city.
+DIRT | His boots were covered with dirt.
+DISC | Put the disc into the player.
+DISCUSSION | We had a long discussion about it.
+DISHWASHER | Please load the dishwasher after dinner.
+DISTANCE_LEARNING | Distance learning saves a lot of travel time.
+DIVE | He dived into the cold pool.
+DOCUMENT | Please sign this document today.
+DORMITORY | She lives in the school dormitory.
+DRAWER | The scissors are in the top drawer.
+DRESSING | Put some dressing on the salad.
+DRILL | We had a fire drill this morning.
+DRY_SEASON | Few plants grow in the dry season.
+DUST | There is dust on the top shelf.
+DUTY_FREE | She bought perfume at a duty free shop.
+EAGLE | An eagle flew over the valley.
+EARRING | She lost one earring at the party.
+ECONOMY_CLASS | We flew economy class to save money.
+EDITOR | The editor checked my article carefully.
+EDUCATION_SYSTEM | The education system changed last year.
+ELBOW | He hurt his elbow playing tennis.
+ELECTRIC | They bought an electric car.
+ELEMENTARY | My brother goes to elementary school.
+EMERGENCY_EXIT | The emergency exit is right behind you.
+EMPLOYEE_BENEFIT | The company offers good employee benefits.
+ENTRY_FEE | The entry fee is five hundred yen.
+ESCALATOR | Take the escalator to the third floor.
+EXAM | I passed the math exam.
+EXCHANGE_STUDENT | An exchange student joined our class.
+EXIT | The exit is on your left.
+EXPIRATION | Check the expiration date on the milk.
+EYEBROW | He raised one eyebrow in surprise.
+EYESIGHT | My eyesight is getting worse.
+FABRIC | This fabric feels very soft.
+FACT | That story is based on fact.
+FACTORY | The factory makes car parts.
+FACTORY_WORKER | The factory workers start at eight.
+FAILURE | We learned a lot from the failure.
+FAIR_PRICE | He sold the bike at a fair price.
+FAIRY_TALE | My father read me a fairy tale.
+FARE | The bus fare went up again.
+FAREWELL | We held a farewell party for her.
+FARMLAND | Houses were built on old farmland.
+FASHIONABLE | That jacket is very fashionable.
+FEATHER | A white feather fell from the bird.
+FEATURE | The best feature of this phone is its camera.
+FENCE | A wooden fence surrounds the garden.
+FERRY | We took the ferry to the island.
+FICTION | She only reads science fiction.
+FIELD_TRIP | Our field trip was canceled by rain.
+FINAL_EXAM | The final exam is next Friday.
+FINGERPRINT | Every fingerprint is different.
+FIRST_AID | She learned first aid at school.
+FISHERMAN | The fisherman left before sunrise.
+FITNESS | He goes to a fitness club every day.
+FLAG | The flag moved in the wind.
+FLASHLIGHT | Take a flashlight into the cave.
+FLAVOR | This tea has a fresh flavor.
+FLEA_MARKET | I found this lamp at a flea market.
+FLIGHT_ATTENDANT | The flight attendant brought us water.
+FLOUR | Mix the flour with warm water.
+FLU | He stayed home with the flu.
+FOG | Thick fog covered the whole road.
+FOLDER | Save the file in this folder.
+FOLK | She sings old folk songs.
+FOLLOWING | We will meet again the following week.
+FOREHEAD | He wiped his forehead with a towel.
+FOREIGNER | Many foreigners visit this old temple.
+FORTUNE | He made a fortune in business.
+FOUNTAIN | Children played near the fountain.
+FRAME | She put the photo in a wooden frame.
+FREEZER | Keep the ice cream in the freezer.
+FRESHMAN | He is a freshman at that college.
+FRIDGE | There is fresh milk in the fridge.
+FRIENDSHIP | Their friendship lasted many years.
+FROZEN | The lake was completely frozen.
+FRYING_PAN | Heat the oil in a frying pan.
+FUEL_COST | Rising fuel costs hurt the airline.
+FULL_TIME | She finally got a full time job.
+FUNERAL | Many people came to the funeral.
+FUR | The cat has soft white fur.
+FURTHERMORE | Furthermore, the price includes breakfast.
+GALLERY | Her paintings hang in a small gallery.
+GARAGE | He parked the car in the garage.
+GARDENING | Gardening is her favorite hobby.
+GARLIC | Add some garlic to the soup.
+GAS | Turn off the gas after cooking.
+GASOLINE | Gasoline prices rose again this month.
+GENERALLY | Generally, prices are higher downtown.
+GENTLEMAN | An old gentleman opened the door for us.
+GEOGRAPHY | We studied the geography of Asia.
+GIANT | A giant tree stands in the park.
+GLACIER | The glacier is melting quickly.
+GLOBAL_MARKET | They sell their products on the global market.
+GOODS_DELIVERY | Goods delivery takes about three days.
+GOVERNMENT_OFFICE | You can get the form at the government office.
+GRADE_SCHOOL | My cousin still goes to grade school.
+GRADUATION | Her graduation is in early March.
+GRAPH | The graph shows a sharp rise.
+GREENHOUSE_GAS | Cars produce a lot of greenhouse gas.
+GREETING | He gave us a warm greeting.
+GRILL | We grilled fish on the beach.
+GROUND | The ground was still wet from rain.
+GUEST_ROOM | Our guest room has a nice view.
+GUIDEBOOK | I bought a guidebook before the trip.
+GUN | The police officer carried a gun.
+HALLWAY | Please do not run in the hallway.
+HAMMER | He fixed the box with a hammer.
+HANDOUT | The teacher gave us a handout.
+HANDWRITING | Her handwriting is easy to read.
+HANGER | Put your coat on a hanger.
+HARBOR | Several boats stayed in the harbor.
+HARDLY | I can hardly hear you.
+HATE | He hates waiting in long lines.
+HEADLINE | The headline caught my attention.
+HEADQUARTERS | The company headquarters is in Osaka.
+HEALTH | Walking every day is good for your health.
+HEATER | Please turn on the heater.
+HELMET | Always wear a helmet when cycling.
+HERB | She grows herbs on the balcony.
+HIGHWAY | The highway was crowded this morning.
+HINT | Give me a hint about the answer.
+HORIZON | The sun rose above the horizon.
+HOSTEL | We stayed at a cheap hostel.
+HOUSEWORK | My brother helps with the housework.
+HOUSING | Housing near the station is expensive.
+HOWEVER | However, the plan may still change.
+HUMAN | Humans need clean water to live.
+HUMOR | His sense of humor makes everyone laugh.
+HUNGER | Many people still suffer from hunger.
+HUNT | Wild cats hunt small animals at night.
+HURRICANE | The hurricane damaged many houses.
+IDENTIFICATION | Please show some identification here.
+ILL | She was ill for a whole week.
+INCOME_TAX | Everyone must pay income tax.
+INDEX | Look up the word in the index.
+INDOOR_POOL | The hotel has an indoor pool.
+INFORMATION | I need more information about the tour.
+INSECT | Many insects live in this forest.
+INSTRUCTOR | Our swimming instructor is very kind.
+INSURANCE_COMPANY | The insurance company paid for the repair.
+INTERPRETER | An interpreter helped the foreign guests.
+INVITATION | I received an invitation to the wedding.
+IRON | This gate is made of iron.
+JAR | She keeps sugar in a glass jar.
+JEWELRY | Her jewelry was kept in a safe.
+JOURNAL | He writes in his journal every night.
+JUNGLE | Rare birds live in the jungle.
+JUNIOR | He is a junior member of the club.
+KETTLE | Put the kettle on for tea.
+KINGDOM | The old kingdom disappeared long ago.
+LAMB | The farmer sold two young lambs.
+LANDMARK | That tower is a famous landmark.
+LAPTOP | I left my laptop in the office.
+LAUNDRY | I have to do the laundry today.
+LAWN | He cuts the lawn every Sunday.
+LAYER | Add a layer of cheese on top.
+LAZY | Do not be lazy about your homework.
+LEATHER | These leather shoes were expensive.
+LECTURE_HALL | The lecture hall was almost full.
+LEFTOVER | We ate the leftovers for lunch.
+LIBRARIAN | The librarian helped me find the book.
+LIE | Never lie to your friends.
+LIFEBOAT | Passengers climbed into the lifeboat.
+LIGHTHOUSE | An old lighthouse stands on the cape.
+LIGHTNING | Lightning flashed across the sky.
+LIPSTICK | She put on red lipstick.
+LIQUID | Do not carry liquids on the plane.
+LITERATURE_CLASS | I enjoy my literature class.
+LOBBY | Let us meet in the hotel lobby.
+LOCAL_GOVERNMENT | The local government built a new park.
+LOCK | Lock the door before you leave.
+LOCKER | Put your bag in the locker.
+LOG | Someone put a log on the fire.
+LOTTERY | He won a small prize in the lottery.
+LOUDSPEAKER | A voice came from the loudspeaker.
+LUGGAGE | We left our luggage at the hotel.
+LUNG | Smoking damages your lungs.
+MAILBOX | There were three letters in the mailbox.
+MAIN_DISH | The main dish was grilled chicken.
+MAINTENANCE | The elevator is closed for maintenance.
+MAKEUP | She put on makeup before the party.
+MAMMAL | Whales are mammals, not fish.
+MANAGER | The manager will call you back.
+MANUAL | Read the manual before using it.
+MARATHON | He finished the marathon in four hours.
+MARRY | They married last autumn.
+MASK | Please wear a mask in the clinic.
+MASSAGE | A massage helped my sore shoulders.
+MATE | He shared the room with a mate.
+MAYOR | The mayor spoke at the ceremony.
+MEANING | I do not know the meaning of this word.
+MECHANIC | The mechanic fixed my car quickly.
+MEDAL | She won a gold medal in the race.
+MEDICAL_CARE | Everyone should receive good medical care.
+MEMBERSHIP | My gym membership ends next month.
+MEMO | He left a memo on my desk.
+MERCHANT | The merchant sold silk and tea.
+METRO | Take the metro to the museum.
+MICROPHONE | Please speak into the microphone.
+MICROSCOPE | We looked at the leaf under a microscope.
+MICROWAVE | Heat the soup in the microwave.
+MIDTERM | The midterm was harder than I expected.
+MILITARY | His father works at a military hospital.
+MILLION | Over a million people live in this city.
+MIRROR | She looked at herself in the mirror.
+MISSION | Their mission was to save the forest.
+MIST | Morning mist covered the valley.
+MOBILE | I lost my mobile phone yesterday.
+MOOD | He is in a good mood today.
+MONTHLY | We hold a monthly meeting.
+MONUMENT | A stone monument stands in the square.
+MOTOR | The motor of this fan is broken.
+MUD | Their shoes were covered in mud.
+MUSCLE | Swimming builds strong muscles.
+MYSTERY | The cause of the fire is still a mystery.
+NAIL | He hit the nail with a hammer.
+NAPKIN | Put a napkin beside each plate.
+NATIONAL_PARK | We camped in a national park.
+NAVY | Her uncle served in the navy.
+NECKLACE | He gave her a pearl necklace.
+NEEDLE | She sewed the button with a needle.
+NEPHEW | My nephew turns ten this year.
+NEST | Two birds built a nest in the tree.
+NETWORK_CONNECTION | The network connection is very slow today.
+NIECE | My niece loves drawing animals.
+NIGHTMARE | She woke up from a bad nightmare.
+NOBODY | Nobody answered the phone.
+NONE | None of the shops were open.
+NOVEL | He is writing his first novel.
+NOWHERE | The keys were nowhere to be found.
+NUT | Squirrels store nuts for winter.
+OATMEAL | I eat oatmeal every morning.
+OBSERVATION | Careful observation led to a discovery.
+OIL | Add a little oil to the pan.
+ONLINE_COURSE | She is taking an online course in design.
+OPERATOR | The operator connected my call.
+OPINION_POLL | The opinion poll showed strong support.
+ORCHESTRA | The orchestra played for two hours.
+ORGANIC | This shop sells organic vegetables.
+OUTFIT | She wore a bright outfit to the party.
+OUTLINE | Write an outline before the essay.
+OVERNIGHT | We took an overnight bus to Kyoto.
+OWL | An owl called from the dark woods.
+PACKAGE | A package arrived for you.
+PAIN_RELIEF | This medicine gives quick pain relief.
+PALE | You look pale and tired today.
+PANEL | A solar panel sits on the roof.
+PARAGRAPH | Read the second paragraph aloud.
+PARCEL | I sent the parcel by air mail.
+PARKING_LOT | The parking lot was already full.
+PART_TIME | He has a part time job at a cafe.
+PARTLY | The sky was partly cloudy.
+PASS | She passed the driving test.
+PASSPORT | My passport expires next year.
+PASSWORD | I forgot the password to my account.
+PAST | We cannot change the past.
+PATH | A narrow path leads to the lake.
+PATIENCE | Teaching children requires patience.
+PAVEMENT | Snow covered the pavement.
+PEAK | We reached the peak before noon.
+PEARL | She wore a single pearl ring.
+PEDESTRIAN | Drivers must watch for pedestrians.
+PEEL | Peel the potatoes before boiling them.
+PENALTY | There is a penalty for late payment.
+PENSION | He lives on a small pension.
+PERCENT | About thirty percent of students agreed.
+PERFORMANCE_REVIEW | My performance review is next Monday.
+PERFUME | This perfume smells like roses.
+PHARMACY | The pharmacy closes at seven.
+PHYSICS | Physics was my hardest subject.
+PIGEON | Pigeons gathered around the bench.
+PIN | She fixed the paper with a pin.
+PIPE | A water pipe broke under the road.
+PITCH | He pitched the ball too high.
+PLASTIC | Try to use less plastic.
+PLATFORM | The train leaves from platform three.
+PLUG | Pull out the plug before cleaning.
+PLUM | The plum tree is full of fruit.
+POEM | She read a short poem in class.
+POET | The poet was born in this town.
+POINT | That is a very good point.
+POISON | Some mushrooms contain poison.
+POLAR | Polar bears live on the ice.
+POLITICIAN | The politician promised lower taxes.
+POLLEN | Pollen makes my eyes itch in spring.
+POPULATION_GROWTH | Population growth has slowed recently.
+PORT | The ship left the port at dawn.
+PORTRAIT | A portrait of the founder hangs here.
+POULTRY | This farm raises poultry.
+POWDER | Mix the powder with cold water.
+POWER | The storm cut off the power.
+PRAYER | She said a short prayer.
+PREDICTION | His prediction turned out to be right.
+PREPARATION | Preparation for the trip took a week.
+PRESENTATION | Her presentation was clear and short.
+PRESS | The press reported the news quickly.
+PRICE_TAG | The price tag says two thousand yen.
+PRIEST | The priest welcomed the visitors.
+PRODUCER | The producer chose a new actor.
+PROFILE | Please update your online profile.
+PROGRESS_REPORT | Send a progress report every Friday.
+PROPOSAL | The company accepted our proposal.
+PROTEIN | Beans are a good source of protein.
+PUBLIC_HEALTH | Clean water improves public health.
+PUBLISHER | The publisher printed ten thousand copies.
+PYRAMID | We visited a pyramid in Egypt.
+RAILROAD | A railroad runs along the river.
+RAILWAY_STATION | The railway station is close to my house.
+RANCH | They raise horses on a large ranch.
+RANK | Our team rose to second rank.
+RATE_OF_GROWTH | The rate of growth slowed last year.
+RAZOR | He cut his chin with a razor.
+RECEIPT | Keep the receipt for your records.
+RECEIVER | She put down the receiver quietly.
+RECEPTION | Ask for the key at reception.
+RECORDER | He turned on the recorder before the interview.
+RECYCLING_BIN | Put the cans in the recycling bin.
+REFRIGERATOR | The refrigerator makes a strange noise.
+REFUND_POLICY | Please read our refund policy first.
+REGISTRATION | Registration closes at the end of May.
+REGULAR_CUSTOMER | She is a regular customer at that cafe.
+REMOTE | The village is in a remote area.
+RENTAL | The rental fee includes insurance.
+REPAIRMAN | A repairman came to fix the heater.
+REPORTER | A reporter asked him several questions.
+REPTILE | Snakes and lizards are reptiles.
+RESCUE_TEAM | The rescue team reached the climbers.
+RESEARCH_PAPER | She published her first research paper.
+RESERVATION | I made a reservation for two.
+RESORT | We spent a week at a beach resort.
+RESTROOM | The restroom is down the hall.
+RESUME | Attach your resume to the email.
+RIDDLE | Nobody could solve the riddle.
+ROAST | We roasted the chicken for an hour.
+ROLLER | Paint the wall with a roller.
+ROOF_TOP | There is a garden on the roof top.
+ROPE | Tie the boat with a strong rope.
+ROW | We sat in the front row.
+RUBBER | These gloves are made of rubber.
+SAILOR | The sailor told us about his voyage.
+SALESPERSON | A salesperson explained the new model.
+SATISFACTION | Customer satisfaction is our first goal.
+SCHOOLYARD | Children were playing in the schoolyard.
+SCISSORS | Cut the paper with these scissors.
+SCULPTURE | A stone sculpture stands in the garden.
+SEAT_BELT | Fasten your seat belt, please.
+SEARCH_ENGINE | I found the article through a search engine.
+SECRETARY | The secretary arranged the meeting.
+SECURITY_GUARD | A security guard checked our bags.
+SEED | Plant the seeds in early spring.
+SENIOR | He is two years senior to me.
+SENSOR | The sensor turns on the light automatically.
+SERIES | I watched the whole series in a week.
+SERVANT | The old story is about a loyal servant.
+SESSION | The morning session starts at nine.
+SEWING | She learned sewing from her mother.
+SHADE | Let us rest in the shade.
+SHADOW | His shadow grew long in the evening.
+SHELLFISH | I am allergic to shellfish.
+SHELTER | The hikers found shelter from the storm.
+SHIFT_WORK | Shift work makes sleeping difficult.
+SHIPPING | Shipping is free for large orders.
+SHOELACE | Tie your shoelace before you run.
+SHOPKEEPER | The shopkeeper greeted us kindly.
+SHOPPING_CART | She filled the shopping cart with food.
+SIDEWALK | Walk on the sidewalk, not the road.
+SIGHTSEEING | We went sightseeing all afternoon.
+SIGNBOARD | A large signboard shows the way.
+SILK | This scarf is made of silk.
+SIMILARITY | There is a clear similarity between them.
+SINK | Leave the dishes in the sink.
+SITE | They chose a new site for the factory.
+SKETCH | He drew a quick sketch of the bridge.
+SLIDE_SHOW | She showed a slide show of her trip.
+SMOKE | Smoke rose from the small chimney.
+SOLDIER | The soldier returned home safely.
+SOLAR_SYSTEM | Earth is part of the solar system.
+SORE_THROAT | I have a sore throat today.
+SOUND_WAVE | Sound waves travel through the air.
+SOUVENIR | I bought a souvenir for my sister.
+SPEED_LIMIT | The speed limit here is forty.
+SPICE | This curry needs more spice.
+SPINACH | Spinach is rich in iron.
+SPONSOR | A local company became our sponsor.
+SQUARE | People gathered in the town square.
+STADIUM | The stadium holds fifty thousand people.
+STAFF_MEETING | The staff meeting was moved to Tuesday.
+STAGE_LIGHT | The stage lights went out suddenly.
+STAIRCASE | A wooden staircase leads upstairs.
+STALL | We bought noodles at a street stall.
+STANDARD_TIME | Japan standard time is nine hours ahead.
+STATUE | A bronze statue stands at the gate.
+STEAM | Steam rose from the hot soup.
+STEEL | The bridge is made of steel.
+STEM | Cut the stem of the flower.
+STOMACH | My stomach hurts after lunch.
+STORAGE | We rented a small storage room.
+STOVE | Something is boiling on the stove.
+STRAW | May I have a straw, please?
+STREAM | A clear stream runs behind the house.
+STRIKE | The bus drivers went on strike.
+STRING | Tie the box with this string.
+STROLLER | She pushed the stroller through the park.
+STUDIO | The band recorded in a small studio.
+SUBSCRIPTION | My magazine subscription ends in June.
+SURGEON | The surgeon explained the operation.
+SURNAME | Please write your surname first.
+SURVIVAL | Water is necessary for survival.
+SWITCH | The switch is by the door.
+SYLLABLE | This word has three syllables.
+SYRUP | Pour some syrup on the pancakes.
+TABLET | She reads the news on her tablet.
+TAG | The price tag fell off the shirt.
+TANK | The water tank is almost empty.
+TARGET | We reached our sales target.
+TEA_CEREMONY | She studies tea ceremony every Saturday.
+TEAPOT | Pour the hot water into the teapot.
+TEENAGER | Many teenagers use this app.
+TELESCOPE | We looked at Mars through a telescope.
+TEMPERATURE_RISE | A temperature rise affects the crops.
+TEMPLE | The temple is over five hundred years old.
+TERMINAL | Our flight leaves from terminal two.
+THERAPY | He started therapy after the accident.
+THERMOMETER | The thermometer showed thirty degrees.
+THIEF | A thief stole her bicycle.
+THREAD | She needs black thread for the button.
+THROAT | My throat is dry.
+THUNDER | Thunder woke the whole family.
+TIDE | The tide comes in every evening.
+TIMETABLE | Check the timetable before you leave.
+TIN | He opened a tin of tomatoes.
+TISSUE | Do you have a tissue?
+TITLE | I forgot the title of the movie.
+TONGUE | He burned his tongue on the soup.
+TOPIC_SENTENCE | Each paragraph needs a topic sentence.
+TORCH | They lit a torch inside the cave.
+TOURISM | Tourism brings money to this island.
+TOURNAMENT | Our school won the tennis tournament.
+TRACK | The train left the track.
+TRADE_SHOW | We showed our products at a trade show.
+TRAIL | The trail leads to a waterfall.
+TRAINER | My trainer made a new exercise plan.
+TRANSLATION | The translation took three months.
+TRANSLATOR | A translator worked on the novel.
+TRASH | Please take out the trash.
+TRAVEL_AGENCY | The travel agency booked our hotel.
+TRAY | She carried the cups on a tray.
+TREASURE | They searched for treasure on the island.
+TROPICAL_FISH | He keeps tropical fish at home.
+TUBE | Squeeze the tube from the bottom.
+TUNNEL | The train passed through a long tunnel.
+TURKEY | We ate turkey at the party.
+TWIN | Her twin brother lives in Canada.
+TYPHOON | A strong typhoon hit the coast.
+UNDERGROUND | The shop has an underground parking lot.
+UNDERLINE | Underline the important words.
+UNION | The workers formed a union.
+UNIVERSE | The universe is still expanding.
+USAGE | Check the usage of this word.
+USELESS | This old key is now useless.
+USER | The app has millions of users.
+UTILITY_BILL | Utility bills rise every winter.
+VALLEY | A small river runs through the valley.
+VAN | They moved the boxes in a van.
+VASE | She put the roses in a vase.
+VEGETARIAN | My sister has been a vegetarian for years.
+VENDING_MACHINE | There is a vending machine near the door.
+VETERINARIAN | The veterinarian examined our dog.
+VIDEO_CALL | We had a video call with our teacher.
+VIEWER | The program has many young viewers.
+VINEGAR | Add a little vinegar to the salad.
+VISA | You need a visa to enter that country.
+VITAMIN | Oranges are full of vitamin C.
+VOLCANO | The volcano has been quiet for years.
+VOLTAGE | Check the voltage before plugging it in.
+VOTING | Voting begins at seven in the morning.
+WAITING_ROOM | Please wait in the waiting room.
+WALLPAPER | We changed the wallpaper in the bedroom.
+WARNING_SIGN | A warning sign stood beside the road.
+WASHING_MACHINE | The washing machine stopped working.
+WASTE_WATER | The factory cleans its waste water.
+WATERFALL | We hiked to a beautiful waterfall.
+WAVE | Large waves hit the rocks.
+WEAKNESS | Speaking fast is my weakness.
+WEALTH | He gave much of his wealth away.
+WEATHER_REPORT | The weather report says it will snow.
+WEB_PAGE | This web page loads very slowly.
+WEDDING | Their wedding is in October.
+WEED | He pulled the weeds from the garden.
+WEEKDAY | The museum is quiet on weekdays.
+WEIGHT_LOSS | Regular exercise helps weight loss.
+WETLAND | Rare birds visit this wetland.
+WHEAT | Bread is made from wheat.
+WHEEL | The front wheel of my bike is bent.
+WHEELCHAIR | The building is easy to enter by wheelchair.
+WHISPER | She whispered the answer to me.
+WHISTLE | The referee blew his whistle.
+WILLINGNESS | He showed a real willingness to help.
+WIND_POWER | This town uses wind power.
+WIRE | Cut the wire with these pliers.
+WISDOM | We learn wisdom from experience.
+WOOL | This sweater is made of wool.
+WORKING_HOURS | Our working hours are flexible.
+WORKPLACE | Safety in the workplace comes first.
+WORM | A bird pulled a worm from the ground.
+WORSE | The weather got worse in the afternoon.
+WORST | That was the worst movie of the year.
+WRIST | He wears a watch on his left wrist.
+ZONE | Cars cannot enter this zone.
