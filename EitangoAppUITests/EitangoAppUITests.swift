@@ -227,7 +227,11 @@ final class EitangoAppUITests: XCTestCase {
             // 出ていないのかを手元（Windows・Xcodeなし）で切り分けられない。
             capture(app, "09_Purchase_FAILED")
             let labels = app.buttons.allElementsBoundByIndex.map(\.label)
-            XCTFail("購入ボタンに価格が出ていません。画面上のボタン: \(labels)")
+            XCTFail("""
+            購入ボタンに価格が出ていません。
+            テスト用ストアの商品: \(bundledProductIDs())
+            画面上のボタン: \(labels)
+            """)
             return
         }
         // 日本のApp Store向けなので円で出ていること。
@@ -257,6 +261,20 @@ final class EitangoAppUITests: XCTestCase {
     /// 画面遷移アニメーションが落ち着くのを待つ（厳密な待機条件がない箇所向けの簡易対応）
     private func settle() {
         Thread.sleep(forTimeInterval: 1)
+    }
+
+    /// テストバンドルに実際に入っている storekit 設定の商品ID。
+    ///
+    /// エディションごとに別の設定ファイルを同梱するため、取り違えると
+    /// 「購入画面は正しいのに価格だけ出ない」という分かりにくい失敗になる。
+    private func bundledProductIDs() -> [String] {
+        guard let url = Bundle(for: Self.self).url(forResource: "Products", withExtension: "storekit"),
+              let data = try? Data(contentsOf: url),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let products = json["products"] as? [[String: Any]] else {
+            return ["(Products.storekit を読めません)"]
+        }
+        return products.compactMap { $0["productID"] as? String }
     }
 
     private func capture(_ app: XCUIApplication, _ name: String) {
