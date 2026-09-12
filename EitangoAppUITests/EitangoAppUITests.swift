@@ -221,10 +221,15 @@ final class EitangoAppUITests: XCTestCase {
         let purchaseButton = app.buttons.matching(
             NSPredicate(format: "label CONTAINS '解放する'")
         ).firstMatch
-        XCTAssertTrue(
-            purchaseButton.waitForExistence(timeout: 15),
-            "購入ボタンに価格が出ていません。StoreKitの設定ファイルがスキームに効いているか確認すること"
-        )
+        let priceLoaded = purchaseButton.waitForExistence(timeout: 15)
+        if !priceLoaded {
+            // 失敗したときに画面が残らないと、価格が読めていないのか購入画面自体が
+            // 出ていないのかを手元（Windows・Xcodeなし）で切り分けられない。
+            capture(app, "09_Purchase_FAILED")
+            let labels = app.buttons.allElementsBoundByIndex.map(\.label)
+            XCTFail("購入ボタンに価格が出ていません。画面上のボタン: \(labels)")
+            return
+        }
         // 日本のApp Store向けなので円で出ていること。
         // ストアフロントの指定が抜けると米国扱いになり、ドル表記の画像ができてしまう。
         XCTAssertTrue(
