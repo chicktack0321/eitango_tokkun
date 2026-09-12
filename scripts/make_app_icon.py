@@ -8,19 +8,21 @@ App Store のアイコンには決まりがある。
 アプリ内ロゴ（AppLogo）も同じ素材から作る。こちらは cornerRadius: 10 の浅いクリップなので、
 角丸なしの正方形でないと角の残りがそのまま見える。
 
-使い方: リポジトリのどこからでも `python scripts/make_app_icon.py`
+使い方: リポジトリのどこからでも `python scripts/make_app_icon.py [--edition G2]`
 必要なもの: Pillow
 """
+import argparse
 import sys
 from pathlib import Path
 
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "docs/assets/eitango-tokkun-logo-03.png"
-ASSETS = ROOT / "EitangoApp/Resources/Assets.xcassets"
-OUT_ICON = ASSETS / "AppIcon.appiconset/AppIcon-1024.png"
-OUT_LOGO_DIR = ASSETS / "AppLogo.imageset"
+
+# 級ごとの元画像。級の判別はアイコン内の級表記と配色で行う（ロゴ部は共通）
+SOURCES = {
+    "G2": ROOT / "docs/assets/eitango-tokkun-logo-03.png",
+}
 
 LOGO_SIZES = [("AppLogo.png", 80), ("AppLogo@2x.png", 160), ("AppLogo@3x.png", 240)]
 
@@ -135,8 +137,28 @@ def fit_inside_mask(im):
 
 
 def main():
-    src = Image.open(SRC)
-    print(f"source: {SRC.name} {src.size} {src.mode}")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--edition", default="G2", help="エディション識別子（既定: G2）")
+    parser.add_argument("--src", type=Path, help="元画像を明示指定する（既定はエディションの元画像）")
+    args = parser.parse_args()
+
+    source = args.src or SOURCES.get(args.edition)
+    if source is None:
+        print(f"error: {args.edition} の元画像が SOURCES に未登録です", file=sys.stderr)
+        return 1
+    if not source.exists():
+        print(f"error: 元画像がありません: {source}", file=sys.stderr)
+        return 1
+
+    assets = ROOT / f"Editions/{args.edition}/Assets.xcassets"
+    out_icon = assets / "AppIcon.appiconset/AppIcon-1024.png"
+    out_logo_dir = assets / "AppLogo.imageset"
+    if not out_logo_dir.exists():
+        print(f"error: 出力先がありません: {assets}", file=sys.stderr)
+        return 1
+
+    src = Image.open(source)
+    print(f"source: {source.name} {src.size} {src.mode}")
 
     if src.size[0] != src.size[1]:
         print(f"error: 正方形ではありません（{src.size}）", file=sys.stderr)
@@ -148,11 +170,11 @@ def main():
     src = fit_inside_mask(src)
 
     icon = src if src.size == (1024, 1024) else src.resize((1024, 1024), Image.LANCZOS)
-    icon.save(OUT_ICON, "PNG", optimize=True)
-    print(f"wrote {OUT_ICON.name} {icon.size} {icon.mode}")
+    icon.save(out_icon, "PNG", optimize=True)
+    print(f"wrote {out_icon.name} {icon.size} {icon.mode}")
 
     for name, size in LOGO_SIZES:
-        src.resize((size, size), Image.LANCZOS).save(OUT_LOGO_DIR / name, "PNG", optimize=True)
+        src.resize((size, size), Image.LANCZOS).save(out_logo_dir / name, "PNG", optimize=True)
         print(f"wrote {name} {size}")
 
     return 0

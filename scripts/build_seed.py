@@ -30,10 +30,9 @@ EDITIONS = {
     "TOEIC": "TOEIC_",
 }
 
-# 移行完了までは現行アプリの同梱パスが G2 の正
-DEFAULT_OUT = {
-    "G2": ROOT / "EitangoApp/Resources/word_master_seed.json",
-}
+def default_out(edition):
+    """同梱先。エディション一式は Editions/<ID>/ に閉じ込めてある（設計書§7）"""
+    return ROOT / f"Editions/{edition}/word_master_seed.json"
 
 OVERRIDABLE = ["meaning", "example", "category", "domain"]
 
@@ -105,8 +104,8 @@ def main():
     print(f"{args.edition}: {len(words)}語 (basic {counts[1]} / bridge {counts[2]} / core {counts[3]})")
 
     if args.check:
-        current_path = DEFAULT_OUT.get(args.edition)
-        if current_path is None or not current_path.exists():
+        current_path = default_out(args.edition)
+        if not current_path.exists():
             print("error: 比較対象の既存 seed がありません", file=sys.stderr)
             return 1
         current = json.loads(current_path.read_text(encoding="utf-8"))["words"]

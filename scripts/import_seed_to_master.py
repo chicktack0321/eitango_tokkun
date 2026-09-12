@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SEED = ROOT / "EitangoApp/Resources/word_master_seed.json"
+SEED = ROOT / "Editions/G2/word_master_seed.json"
 OUT = ROOT / "vocab/master.json"
 
 G2_PREFIX = "EIKEN_G2_"
