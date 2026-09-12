@@ -134,9 +134,8 @@ Apple の「正確な説明」の要件にも触れる。
 
 ## 審査メモ（App Review に関する情報 → 備考）
 
-2級の初回審査で 2.1（Information Needed）の差し戻しを受けている。聞かれた8項目は
-`docs/app-review-reply.md` にまとめてあり、**同じ内容を最初から備考に入れておく**こと。
-級と語数だけ準2級の値に置き換える。
+**貼り付ける文面は `docs/gp2/app-review-notes.md` にある。** 2級の初回審査で受けた
+2.1（Information Needed）の8項目を、最初から備考に入れて提出する。
 
 要点:
 
