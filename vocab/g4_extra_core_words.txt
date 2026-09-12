@@ -1,0 +1,112 @@
+# G4（英検4級）の core に追加する動詞・形容詞・副詞。
+#
+# `g3_extra_core_words.txt` の易しい側の部分集合。4級で扱える単純な動作と状態の語に絞り、
+# 句動詞と抽象的な形容詞は3級に残す。
+#
+# なぜ要るか: 母体の886語は名詞が中心で、頻出度で bridge / core を割ると
+# core の94%が名詞になってしまう。動詞と形容詞を補って学習の偏りを直す。
+#
+# 出どころは3級と同じく2級アプリの架け橋帯の category B/C（準2級でも無料の帯）。
+# category A は準2級の課金対象なので入れない（スクリプトが弾く）。
+#
+# 1行1語。master.json の word フィールドと完全一致させること。行頭 # はコメント。
+
+# --- 動詞 ---
+attack
+bury
+crash
+escape
+fasten
+float
+flow
+forgive
+freeze
+frighten
+greet
+hire
+judge
+measure
+pour
+praise
+refuse
+rescue
+sail
+select
+shine
+slide
+steal
+stretch
+swing
+tear
+tie
+vote
+warn
+weigh
+wrap
+hand out
+hang up
+put away
+put out
+take away
+take back
+turn down
+get together
+go ahead
+show up
+stay up
+
+# --- 形容詞 ---
+alike
+alive
+awake
+awful
+bare
+bitter
+blank
+brave
+broad
+calm
+cheerful
+curious
+false
+female
+flat
+gentle
+grateful
+lonely
+male
+medium
+narrow
+neat
+ordinary
+plain
+pleasant
+proper
+pure
+rare
+rough
+sharp
+silent
+smooth
+solid
+sore
+sudden
+tight
+tiny
+upset
+wise
+wooden
+
+# --- 副詞 ---
+aloud
+apart
+aside
+briefly
+cheerfully
+closely
+comfortably
+downtown
+forever
+luckily
+mostly
+rapidly

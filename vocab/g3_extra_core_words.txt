@@ -1,0 +1,195 @@
+# G3（英検3級）の core に追加する動詞・形容詞・副詞。
+#
+# なぜ要るか: 母体にした2級アプリの基礎1,512語は74%が名詞で、そのまま3級アプリにすると
+# 出題対象の77%が名詞になる（2級アプリは名詞40%・動詞33%）。名詞ばかり出題しても
+# 3級の読解や英作文には届かないため、動詞と形容詞を補う。
+#
+# 出どころ: 2級アプリの架け橋帯のうち **category B/C** の631語。
+#   - category A（538語）は準2級アプリの課金対象なので**絶対に入れない**。
+#     無料アプリに入れると準2級の売り物が無料で配られる（仕様書§4 ルールA）。
+#     スクリプトが category A を弾く。
+#   - この帯は例文カバレッジ100%なので、例文の追加執筆は発生しない。
+#     ただし例文は2級向けに書かれている。3級には硬い例文が混じりうるので、
+#     §9 のサンプリングで確認すること（未実施）。
+#
+# 1行1語。master.json の word フィールドと完全一致させること。行頭 # はコメント。
+
+# --- 動詞・句動詞 ---
+add up to
+attack
+be filled with
+be fond of
+be married to
+be short of
+be tired of
+behave
+believe in
+bring up
+bury
+call off
+care for
+carry on
+come along
+count on
+crash
+cut off
+disagree
+do without
+doubt
+drop by
+escape
+fasten
+float
+flow
+forgive
+freeze
+frighten
+get in touch with
+get over
+get rid of
+get together
+go ahead
+go over
+go through
+greet
+hand out
+hang up
+help oneself
+hire
+judge
+keep away from
+keep in mind
+knock down
+learn by heart
+leave out
+let go of
+look out
+look up to
+make a difference
+make up for
+make up one's mind
+measure
+pay back
+pour
+praise
+put away
+put out
+put up with
+refuse
+rescue
+run into
+sail
+select
+set off
+shine
+show up
+slide
+stand for
+stand out
+stay in touch
+stay up
+steal
+stick to
+stretch
+swing
+take away
+take back
+take turns
+tear
+tie
+turn down
+turn in
+vote
+warn
+watch out
+weigh
+wrap
+
+# --- 形容詞 ---
+absent
+accidental
+alike
+alive
+anxious
+ashamed
+awake
+awful
+awkward
+bare
+bitter
+blank
+brand new
+brave
+brilliant
+broad
+calm
+casual
+cheerful
+creative
+curious
+detailed
+diligent
+emotional
+false
+female
+flat
+former
+gentle
+grateful
+ideal
+independent
+indoor
+inexpensive
+lonely
+male
+medium
+narrow
+native
+neat
+negative
+ordinary
+plain
+pleasant
+precious
+proper
+pure
+rare
+rough
+scientific
+sharp
+silent
+smooth
+solid
+sore
+steady
+sudden
+tight
+tiny
+typical
+upset
+wise
+wooden
+
+# --- 副詞 ---
+aloud
+apart
+aside
+beforehand
+briefly
+cheerfully
+closely
+comfortably
+commonly
+constantly
+downtown
+forever
+fortunately
+lately
+luckily
+meanwhile
+mostly
+nowadays
+overseas
+rapidly
+shortly
+sincerely

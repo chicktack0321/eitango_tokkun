@@ -8,7 +8,7 @@ import Foundation
 /// （docs/vocab-database-spec.md §4「無料エディション」）。上位級への入口として無料で出す。
 ///
 /// 語彙は `vocab/master.json` の `editions.G3` 配置から生成する
-/// （basic 297 / bridge 589 / core 626）。
+/// （計1,686語。basic 297 / bridge 589 / core 800）。
 extension EditionSpec {
 
     static let current = EditionSpec(

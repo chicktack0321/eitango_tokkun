@@ -31,6 +31,7 @@ G4 の bridge と core を頻出度（category）で割るのは、2級過去問
 
 再実行してよい（毎回計算し直して上書きする）。
 """
+import collections
 import io
 import json
 import sys
@@ -44,12 +45,19 @@ BAND3_EXAMPLES = ROOT / "vocab/gp2_bridge_examples.txt"
 G4_BASIC_LIST = ROOT / "vocab/g4_basic_words.txt"
 G4_STUDY_LIST = ROOT / "vocab/g4_core_words.txt"
 JHS_EXAMPLES = ROOT / "vocab/jhs_band_examples.txt"
+G3_EXTRA_LIST = ROOT / "vocab/g3_extra_core_words.txt"
+G4_EXTRA_LIST = ROOT / "vocab/g4_extra_core_words.txt"
 
 # レビュー用に書き出す（仕様書§9: 配置の根拠を人が確認できる形で残す）
 G4_BRIDGE_REVIEW = ROOT / "vocab/g4_bridge_words.txt"
 
 # G4 で bridge に残す頻出度ランク。残りが core になる
 G4_BRIDGE_CATEGORIES = {"A"}
+
+# 品詞を補うために2級アプリの架け橋帯から持ってこられる頻出度ランク。
+# category A は準2級アプリの課金対象なので、無料アプリに入れてはならない
+# （入れると準2級の売り物が無料で配られる。仕様書§4 ルールA）
+EXTRA_SOURCE_CATEGORIES = {"B", "C"}
 
 
 def read_word_list(path):
@@ -109,6 +117,29 @@ def main():
             keys.add(entry["key"])
         return keys
 
+    # 品詞を補うための追加語。母体（G2 tier1）の外から採るので resolve は使わない
+    def resolve_extra(names, label):
+        keys = set()
+        for name in names:
+            entry = by_word.get(name)
+            if entry is None:
+                problems.append(f"{label}: master に無い語 '{name}'")
+                continue
+            if (entry["editions"].get("G2") or {}).get("tier") != 2:
+                problems.append(f"{label}: 2級アプリの架け橋帯の外の語 '{name}'")
+                continue
+            if entry["category"] not in EXTRA_SOURCE_CATEGORIES:
+                problems.append(
+                    f"{label}: category {entry['category']} は準2級の課金対象。"
+                    f"無料アプリに入れられない '{name}'"
+                )
+                continue
+            if not entry["example"]:
+                problems.append(f"{label}: 例文が無い '{name}'")
+                continue
+            keys.add(entry["key"])
+        return keys
+
     band3 = resolve(read_word_list(BAND3_LIST), "3級帯リスト")
     lower = {e["key"] for e in jhs} - band3
 
@@ -146,19 +177,28 @@ def main():
             continue
         example_by_key[key] = sentence
 
+    g3_extra = resolve_extra(read_word_list(G3_EXTRA_LIST), "3級の品詞補充リスト")
+    g4_extra = resolve_extra(read_word_list(G4_EXTRA_LIST), "4級の品詞補充リスト")
+    if g4_extra - g3_extra:
+        problems.append(
+            "4級の品詞補充リストは3級のリストの部分集合であること。"
+            f"3級に無い語が {len(g4_extra - g3_extra)}語"
+        )
+
     g4_bridge = {k for k in g4_study if by_key[k]["category"] in G4_BRIDGE_CATEGORIES}
-    g4_core = g4_study - g4_bridge
+    g4_core = (g4_study - g4_bridge) | g4_extra
 
     placements = {
         "G4": {1: g4_basic, 2: g4_bridge, 3: g4_core},
-        "G3": {1: g4_basic, 2: g4_study, 3: band3},
+        "G3": {1: g4_basic, 2: g4_study, 3: band3 | g3_extra},
     }
 
     # 例文の取りこぼしは build_seed.py でも落ちるが、そこでは
     # 「どのリストに足せばよいか」が分からないのでここで具体的に言う
     for edition, bands in placements.items():
         for tier in (2, 3):
-            missing = sorted(k for k in bands[tier] if not example_by_key.get(k))
+            missing = sorted(k for k in bands[tier]
+                             if not (example_by_key.get(k) or by_key[k]["example"]))
             if missing:
                 problems.append(
                     f"{edition} tier{tier}: 例文が無い語が {len(missing)}語 "
@@ -178,12 +218,20 @@ def main():
         for tier, keys in bands.items():
             for key in keys:
                 placement = {"tier": tier}
-                if tier in (2, 3):
+                # 母体の語は2級では basic で例文を持たないので override を与える。
+                # 品詞補充で持ってきた語は canonical に例文があるのでそのまま使う
+                if tier in (2, 3) and key in example_by_key:
                     placement["example"] = example_by_key[key]
                 by_key[key]["editions"][edition] = placement
         counts = {t: len(bands[t]) for t in (1, 2, 3)}
+        pos = collections.Counter(
+            by_key[k]["partOfSpeech"] for t in (2, 3) for k in bands[t]
+        )
+        total = sum(pos.values())
+        mix = " / ".join(f"{name} {100 * pos[name] / total:.0f}%"
+                         for name in ("noun", "verb", "adjective"))
         print(f"{edition}: {sum(counts.values())}語 "
-              f"(basic {counts[1]} / bridge {counts[2]} / core {counts[3]})")
+              f"(basic {counts[1]} / bridge {counts[2]} / core {counts[3]})  出題対象の品詞 {mix}")
 
     MASTER.write_text(
         json.dumps(master, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

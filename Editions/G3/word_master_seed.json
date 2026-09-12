@@ -1,5 +1,5 @@
 {
-  "version": 20,
+  "version": 21,
   "words": [
     {
       "wordId": "EIKEN_G3_ABLE",
@@ -47,6 +47,30 @@
       "partOfSpeech": "adverb",
       "tier": 2,
       "domain": "society",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ABSENT",
+      "word": "absent",
+      "meaning": "欠席の",
+      "example": "He was absent from school yesterday.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ACCIDENTAL",
+      "word": "accidental",
+      "meaning": "偶然の",
+      "example": "It was an accidental discovery.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -120,6 +144,18 @@
       "tier": 2,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ADD_UP_TO",
+      "word": "add up to",
+      "meaning": "合計〜になる",
+      "example": "The costs add up to over 3,000 dollars.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_ADVISE",
@@ -254,6 +290,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_ALIKE",
+      "word": "alike",
+      "meaning": "似ている",
+      "example": "The twins look very alike.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ALIVE",
+      "word": "alive",
+      "meaning": "生きている",
+      "example": "The plant is still alive.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_ALL",
       "word": "all",
       "meaning": "すべての",
@@ -287,6 +347,18 @@
       "partOfSpeech": "other",
       "tier": 2,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ALOUD",
+      "word": "aloud",
+      "meaning": "声を出して",
+      "example": "Read the passage aloud.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "education",
       "isIdiom": false
     },
     {
@@ -422,6 +494,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_ANXIOUS",
+      "word": "anxious",
+      "meaning": "心配して、切望して",
+      "example": "She was anxious about the results.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_ANY",
       "word": "any",
       "meaning": "どれか、少しも",
@@ -466,6 +550,18 @@
       "category": "A",
       "partOfSpeech": "adverb",
       "tier": 2,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_APART",
+      "word": "apart",
+      "meaning": "離れて",
+      "example": "The two houses are 500 meters apart.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
       "domain": "general",
       "isIdiom": false
     },
@@ -626,6 +722,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_ASHAMED",
+      "word": "ashamed",
+      "meaning": "恥じて",
+      "example": "He felt ashamed of his mistake.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ASIDE",
+      "word": "aside",
+      "meaning": "わきに",
+      "example": "She put the book aside.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_ASK",
       "word": "ask",
       "meaning": "尋ねる",
@@ -647,6 +767,18 @@
       "partOfSpeech": "verb",
       "tier": 3,
       "domain": "technology",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ATTACK",
+      "word": "attack",
+      "meaning": "攻撃する、攻撃",
+      "example": "The village was attacked long ago.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -722,6 +854,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_AWAKE",
+      "word": "awake",
+      "meaning": "目が覚めて",
+      "example": "I was awake most of the night.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_AWAY",
       "word": "away",
       "meaning": "離れて",
@@ -731,6 +875,30 @@
       "partOfSpeech": "adverb",
       "tier": 2,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_AWFUL",
+      "word": "awful",
+      "meaning": "ひどい",
+      "example": "The weather was awful.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_AWKWARD",
+      "word": "awkward",
+      "meaning": "ぎこちない",
+      "example": "There was an awkward silence.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -875,6 +1043,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "business",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BARE",
+      "word": "bare",
+      "meaning": "むき出しの",
+      "example": "The walls were bare.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -1094,6 +1274,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_BEFOREHAND",
+      "word": "beforehand",
+      "meaning": "前もって",
+      "example": "Let me know beforehand.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_BEGIN",
       "word": "begin",
       "meaning": "始める",
@@ -1130,6 +1322,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_BEHAVE",
+      "word": "behave",
+      "meaning": "振る舞う",
+      "example": "The children behaved well.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_BEHIND",
       "word": "behind",
       "meaning": "〜の後ろに",
@@ -1152,6 +1356,18 @@
       "tier": 3,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BELIEVE_IN",
+      "word": "believe in",
+      "meaning": "〜の存在を信じる",
+      "example": "She believes in fair treatment.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_BELL",
@@ -1250,6 +1466,66 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_BE_FILLED_WITH",
+      "word": "be filled with",
+      "meaning": "〜でいっぱいである",
+      "example": "The hall was filled with visitors.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_BE_FOND_OF",
+      "word": "be fond of",
+      "meaning": "〜が好きである",
+      "example": "She is fond of classical music.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_BE_MARRIED_TO",
+      "word": "be married to",
+      "meaning": "〜と結婚している",
+      "example": "She is married to a doctor.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_BE_SHORT_OF",
+      "word": "be short of",
+      "meaning": "〜が不足している",
+      "example": "We are short of staff today.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_BE_TIRED_OF",
+      "word": "be tired of",
+      "meaning": "〜に飽きる",
+      "example": "I am tired of the same food.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_BICYCLE",
       "word": "bicycle",
       "meaning": "自転車",
@@ -1334,6 +1610,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_BITTER",
+      "word": "bitter",
+      "meaning": "苦い、つらい",
+      "example": "The medicine tastes bitter.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_BLACK",
       "word": "black",
       "meaning": "黒い",
@@ -1354,6 +1642,18 @@
       "category": "B",
       "partOfSpeech": "noun",
       "tier": 1,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BLANK",
+      "word": "blank",
+      "meaning": "空白の",
+      "example": "Fill in the blank spaces.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
       "domain": "education",
       "isIdiom": false
     },
@@ -1610,6 +1910,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_BRAND_NEW",
+      "word": "brand new",
+      "meaning": "新品の",
+      "example": "The bike is brand new.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BRAVE",
+      "word": "brave",
+      "meaning": "勇敢な",
+      "example": "It was a brave decision.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_BRAVERY",
       "word": "bravery",
       "meaning": "勇敢さ",
@@ -1682,6 +2006,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_BRIEFLY",
+      "word": "briefly",
+      "meaning": "手短に",
+      "example": "Explain briefly what happened.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BRILLIANT",
+      "word": "brilliant",
+      "meaning": "見事な、輝く",
+      "example": "That was a brilliant idea.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_BRING",
       "word": "bring",
       "meaning": "持ってくる",
@@ -1690,6 +2038,30 @@
       "category": "A",
       "partOfSpeech": "verb",
       "tier": 2,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BRING_UP",
+      "word": "bring up",
+      "meaning": "育てる、話題に出す",
+      "example": "She was brought up in the countryside.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_BROAD",
+      "word": "broad",
+      "meaning": "広い",
+      "example": "The river is very broad here.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
       "domain": "general",
       "isIdiom": false
     },
@@ -1835,6 +2207,18 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_BURY",
+      "word": "bury",
+      "meaning": "埋める",
+      "example": "The waste is buried underground.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "environment",
       "isIdiom": false
     },
     {
@@ -2015,6 +2399,30 @@
       "partOfSpeech": "verb",
       "tier": 1,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CALL_OFF",
+      "word": "call off",
+      "meaning": "中止する",
+      "example": "They called off the meeting.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_CALM",
+      "word": "calm",
+      "meaning": "落ち着いた",
+      "example": "Try to stay calm.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
       "isIdiom": false
     },
     {
@@ -2222,6 +2630,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_CARE_FOR",
+      "word": "care for",
+      "meaning": "世話をする、好む",
+      "example": "She cares for her elderly mother.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_CARPET",
       "word": "carpet",
       "meaning": "じゅうたん",
@@ -2258,6 +2678,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_CARRY_ON",
+      "word": "carry on",
+      "meaning": "続ける",
+      "example": "Please carry on with your work.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_CARTOON",
       "word": "cartoon",
       "meaning": "漫画",
@@ -2266,6 +2698,18 @@
       "category": "B",
       "partOfSpeech": "noun",
       "tier": 2,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CASUAL",
+      "word": "casual",
+      "meaning": "くだけた",
+      "example": "The office has a casual dress code.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
       "domain": "daily",
       "isIdiom": false
     },
@@ -2409,6 +2853,30 @@
       "frequencyCount": 0,
       "category": "B",
       "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CHEERFUL",
+      "word": "cheerful",
+      "meaning": "陽気な",
+      "example": "She has a cheerful voice.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CHEERFULLY",
+      "word": "cheerfully",
+      "meaning": "明るく",
+      "example": "She answered cheerfully.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adverb",
       "tier": 3,
       "domain": "daily",
       "isIdiom": false
@@ -2750,6 +3218,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_CLOSELY",
+      "word": "closely",
+      "meaning": "密接に、注意深く",
+      "example": "Watch the demonstration closely.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_CLOSET",
       "word": "closet",
       "meaning": "クローゼット",
@@ -2966,6 +3446,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_COME_ALONG",
+      "word": "come along",
+      "meaning": "一緒に来る",
+      "example": "Would you like to come along?",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_COMFORTABLY",
+      "word": "comfortably",
+      "meaning": "快適に",
+      "example": "The room seats fifty comfortably.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_COMIC",
       "word": "comic",
       "meaning": "漫画",
@@ -2975,6 +3479,18 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_COMMONLY",
+      "word": "commonly",
+      "meaning": "一般に",
+      "example": "This word is commonly used.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "education",
       "isIdiom": false
     },
     {
@@ -3059,6 +3575,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CONSTANTLY",
+      "word": "constantly",
+      "meaning": "絶えず",
+      "example": "Prices change constantly.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -3194,6 +3722,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_COUNT_ON",
+      "word": "count on",
+      "meaning": "頼りにする",
+      "example": "You can count on her.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_COUPLE",
       "word": "couple",
       "meaning": "2人、夫婦",
@@ -3266,6 +3806,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_CRASH",
+      "word": "crash",
+      "meaning": "衝突する、衝突",
+      "example": "The car crashed into a wall.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_CRAYON",
       "word": "crayon",
       "meaning": "クレヨン",
@@ -3287,6 +3839,18 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CREATIVE",
+      "word": "creative",
+      "meaning": "創造的な",
+      "example": "The class encourages creative thinking.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "education",
       "isIdiom": false
     },
     {
@@ -3374,6 +3938,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_CURIOUS",
+      "word": "curious",
+      "meaning": "好奇心の強い",
+      "example": "Children are naturally curious.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_CURTAIN",
       "word": "curtain",
       "meaning": "カーテン",
@@ -3432,6 +4008,18 @@
       "tier": 1,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_CUT_OFF",
+      "word": "cut off",
+      "meaning": "切り離す",
+      "example": "The power was cut off for an hour.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "technology",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_DAD",
@@ -3722,6 +4310,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_DETAILED",
+      "word": "detailed",
+      "meaning": "詳細な",
+      "example": "We received a detailed report.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_DETECTIVE",
       "word": "detective",
       "meaning": "探偵、刑事",
@@ -3806,6 +4406,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_DILIGENT",
+      "word": "diligent",
+      "meaning": "勤勉な",
+      "example": "He is a diligent student.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_DINING_ROOM",
       "word": "dining room",
       "meaning": "食堂",
@@ -3875,6 +4487,18 @@
       "partOfSpeech": "adjective",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_DISAGREE",
+      "word": "disagree",
+      "meaning": "意見が合わない",
+      "example": "I disagree with that opinion.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -4070,6 +4694,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_DOUBT",
+      "word": "doubt",
+      "meaning": "疑う、疑い",
+      "example": "I doubt that he will come.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_DOWN",
       "word": "down",
       "meaning": "下へ",
@@ -4092,6 +4728,30 @@
       "tier": 2,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_DOWNTOWN",
+      "word": "downtown",
+      "meaning": "繁華街へ",
+      "example": "We went downtown for dinner.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_DO_WITHOUT",
+      "word": "do without",
+      "meaning": "〜なしで済ます",
+      "example": "We had to do without electricity for a day.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_DRAGON",
@@ -4200,6 +4860,18 @@
       "tier": 2,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_DROP_BY",
+      "word": "drop by",
+      "meaning": "立ち寄る",
+      "example": "Drop by my office when you have time.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_DRUGSTORE",
@@ -4562,6 +5234,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_EMOTIONAL",
+      "word": "emotional",
+      "meaning": "感情的な",
+      "example": "It was an emotional moment.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_EMPLOYEE_BENEFIT",
       "word": "employee benefit",
       "meaning": "福利厚生",
@@ -4655,6 +5339,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_ESCAPE",
+      "word": "escape",
+      "meaning": "逃げる",
+      "example": "The animals escaped from the zoo.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -4934,6 +5630,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_FALSE",
+      "word": "false",
+      "meaning": "誤った",
+      "example": "Mark the sentence true or false.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_FAMILY",
       "word": "family",
       "meaning": "家族",
@@ -5054,6 +5762,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_FASTEN",
+      "word": "fasten",
+      "meaning": "締める",
+      "example": "Please fasten your seat belt.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_FATHER",
       "word": "father",
       "meaning": "父",
@@ -5111,6 +5831,18 @@
       "partOfSpeech": "verb",
       "tier": 2,
       "domain": "health",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FEMALE",
+      "word": "female",
+      "meaning": "女性の",
+      "example": "Half of the members are female.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -5426,6 +6158,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_FLAT",
+      "word": "flat",
+      "meaning": "平らな",
+      "example": "The land here is flat.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_FLAVOR",
       "word": "flavor",
       "meaning": "風味",
@@ -5462,6 +6206,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_FLOAT",
+      "word": "float",
+      "meaning": "浮かぶ",
+      "example": "Leaves floated on the water.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "environment",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_FLOUR",
       "word": "flour",
       "meaning": "小麦粉",
@@ -5471,6 +6227,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FLOW",
+      "word": "flow",
+      "meaning": "流れる",
+      "example": "The river flows into the sea.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "environment",
       "isIdiom": false
     },
     {
@@ -5630,6 +6398,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_FOREVER",
+      "word": "forever",
+      "meaning": "永遠に",
+      "example": "Nothing lasts forever.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FORGIVE",
+      "word": "forgive",
+      "meaning": "許す",
+      "example": "She forgave him at last.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_FORK",
       "word": "fork",
       "meaning": "フォーク",
@@ -5639,6 +6431,30 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FORMER",
+      "word": "former",
+      "meaning": "前の",
+      "example": "The former mayor now teaches.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FORTUNATELY",
+      "word": "fortunately",
+      "meaning": "幸いにも",
+      "example": "Fortunately, no one was hurt.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -5711,6 +6527,18 @@
       "partOfSpeech": "adjective",
       "tier": 2,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FREEZE",
+      "word": "freeze",
+      "meaning": "凍る",
+      "example": "The lake freezes in winter.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "environment",
       "isIdiom": false
     },
     {
@@ -5795,6 +6623,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "society",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_FRIGHTEN",
+      "word": "frighten",
+      "meaning": "怖がらせる",
+      "example": "The noise frightened the cat.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
       "isIdiom": false
     },
     {
@@ -6062,6 +6902,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_GENTLE",
+      "word": "gentle",
+      "meaning": "優しい、穏やかな",
+      "example": "She spoke in a gentle voice.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_GENTLEMAN",
       "word": "gentleman",
       "meaning": "紳士",
@@ -6108,6 +6960,54 @@
       "tier": 2,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_GET_IN_TOUCH_WITH",
+      "word": "get in touch with",
+      "meaning": "連絡を取る",
+      "example": "Get in touch with me next week.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_GET_OVER",
+      "word": "get over",
+      "meaning": "克服する、回復する",
+      "example": "It took him a month to get over the flu.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_GET_RID_OF",
+      "word": "get rid of",
+      "meaning": "取り除く",
+      "example": "We got rid of the old sofa.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_GET_TOGETHER",
+      "word": "get together",
+      "meaning": "集まる",
+      "example": "The club gets together every Friday.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_GHOST",
@@ -6314,6 +7214,42 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_GO_AHEAD",
+      "word": "go ahead",
+      "meaning": "先に進む",
+      "example": "Go ahead and start without me.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_GO_OVER",
+      "word": "go over",
+      "meaning": "見直す、復習する",
+      "example": "Let us go over the answers together.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_GO_THROUGH",
+      "word": "go through",
+      "meaning": "経験する、通り抜ける",
+      "example": "She went through a difficult time.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_GRADE_SCHOOL",
       "word": "grade school",
       "meaning": "小学校",
@@ -6410,6 +7346,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_GRATEFUL",
+      "word": "grateful",
+      "meaning": "感謝している",
+      "example": "I am grateful for your help.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_GRAY",
       "word": "gray",
       "meaning": "灰色の",
@@ -6455,6 +7403,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "environment",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_GREET",
+      "word": "greet",
+      "meaning": "あいさつする",
+      "example": "The host greeted every guest.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
       "isIdiom": false
     },
     {
@@ -6674,6 +7634,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_HAND_OUT",
+      "word": "hand out",
+      "meaning": "配る",
+      "example": "The teacher handed out the sheets.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_HANGER",
       "word": "hanger",
       "meaning": "ハンガー",
@@ -6684,6 +7656,18 @@
       "tier": 3,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_HANG_UP",
+      "word": "hang up",
+      "meaning": "電話を切る",
+      "example": "He hung up before I could answer.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_HAPPEN",
@@ -6938,6 +7922,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_HELP_ONESELF",
+      "word": "help oneself",
+      "meaning": "自由に取る",
+      "example": "Please help yourself to the cake.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_HERB",
       "word": "herb",
       "meaning": "ハーブ",
@@ -7031,6 +8027,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_HIRE",
+      "word": "hire",
+      "meaning": "雇う",
+      "example": "The store hired two students.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "business",
       "isIdiom": false
     },
     {
@@ -7382,6 +8390,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_IDEAL",
+      "word": "ideal",
+      "meaning": "理想的な",
+      "example": "This is an ideal place for a picnic.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_IDENTIFICATION",
       "word": "identification",
       "meaning": "身分証明",
@@ -7454,6 +8474,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_INDEPENDENT",
+      "word": "independent",
+      "meaning": "独立した",
+      "example": "The country became independent in 1960.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_INDEX",
       "word": "index",
       "meaning": "索引",
@@ -7466,6 +8498,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_INDOOR",
+      "word": "indoor",
+      "meaning": "屋内の",
+      "example": "We moved to an indoor court.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_INDOOR_POOL",
       "word": "indoor pool",
       "meaning": "屋内プール",
@@ -7475,6 +8519,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_INEXPENSIVE",
+      "word": "inexpensive",
+      "meaning": "安価な",
+      "example": "The hotel was clean and inexpensive.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "business",
       "isIdiom": false
     },
     {
@@ -7766,6 +8822,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_JUDGE",
+      "word": "judge",
+      "meaning": "判断する、裁判官",
+      "example": "Do not judge people by appearance.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_JUICE",
       "word": "juice",
       "meaning": "ジュース",
@@ -7872,6 +8940,30 @@
       "tier": 2,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_KEEP_AWAY_FROM",
+      "word": "keep away from",
+      "meaning": "〜に近づかない",
+      "example": "Keep away from the edge.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_KEEP_IN_MIND",
+      "word": "keep in mind",
+      "meaning": "心に留めておく",
+      "example": "Keep in mind that the deadline is Monday.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_KETTLE",
@@ -8054,6 +9146,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_KNOCK_DOWN",
+      "word": "knock down",
+      "meaning": "倒す、取り壊す",
+      "example": "The old building was knocked down.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_KNOW",
       "word": "know",
       "meaning": "知っている",
@@ -8174,6 +9278,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_LATELY",
+      "word": "lately",
+      "meaning": "最近",
+      "example": "I have not seen him lately.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_LATER",
       "word": "later",
       "meaning": "後で",
@@ -8270,6 +9386,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_LEARN_BY_HEART",
+      "word": "learn by heart",
+      "meaning": "暗記する",
+      "example": "Learn these ten words by heart.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_LEATHER",
       "word": "leather",
       "meaning": "革",
@@ -8292,6 +9420,18 @@
       "tier": 2,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_LEAVE_OUT",
+      "word": "leave out",
+      "meaning": "省く",
+      "example": "You left out one important point.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_LECTURE_HALL",
@@ -8376,6 +9516,18 @@
       "tier": 2,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_LET_GO_OF",
+      "word": "let go of",
+      "meaning": "手放す",
+      "example": "She let go of the rope.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_LIBRARIAN",
@@ -8666,6 +9818,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_LONELY",
+      "word": "lonely",
+      "meaning": "孤独な",
+      "example": "He felt lonely in the new city.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_LONG",
       "word": "long",
       "meaning": "長い",
@@ -8688,6 +9852,30 @@
       "tier": 1,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_LOOK_OUT",
+      "word": "look out",
+      "meaning": "気をつける",
+      "example": "Look out for cars.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_LOOK_UP_TO",
+      "word": "look up to",
+      "meaning": "尊敬する",
+      "example": "He looks up to his older sister.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_LOSE",
@@ -8758,6 +9946,18 @@
       "category": "A",
       "partOfSpeech": "adjective",
       "tier": 2,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_LUCKILY",
+      "word": "luckily",
+      "meaning": "運よく",
+      "example": "Luckily, we found a seat.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
       "domain": "general",
       "isIdiom": false
     },
@@ -8891,6 +10091,54 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_MAKE_A_DIFFERENCE",
+      "word": "make a difference",
+      "meaning": "違いを生む",
+      "example": "Small actions can make a difference.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_MAKE_UP_FOR",
+      "word": "make up for",
+      "meaning": "埋め合わせる",
+      "example": "He worked late to make up for lost time.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_MAKE_UP_ONE_S_MIND",
+      "word": "make up one's mind",
+      "meaning": "決心する",
+      "example": "He made up his mind to study abroad.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_MALE",
+      "word": "male",
+      "meaning": "男性の",
+      "example": "Most of the drivers are male.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -9134,6 +10382,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_MEANWHILE",
+      "word": "meanwhile",
+      "meaning": "その間に",
+      "example": "Meanwhile, I will prepare lunch.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_MEASURE",
+      "word": "measure",
+      "meaning": "測る、対策",
+      "example": "Measure the width first.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "technology",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_MEAT",
       "word": "meat",
       "meaning": "肉",
@@ -9179,6 +10451,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "health",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_MEDIUM",
+      "word": "medium",
+      "meaning": "中くらいの",
+      "example": "I would like a medium size.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
       "isIdiom": false
     },
     {
@@ -9602,6 +10886,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_MOSTLY",
+      "word": "mostly",
+      "meaning": "主に",
+      "example": "The visitors are mostly families.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_MOTHER",
       "word": "mother",
       "meaning": "母",
@@ -9854,6 +11150,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_NARROW",
+      "word": "narrow",
+      "meaning": "狭い",
+      "example": "The street is very narrow.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_NATIONAL_PARK",
       "word": "national park",
       "meaning": "国立公園",
@@ -9863,6 +11171,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "environment",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_NATIVE",
+      "word": "native",
+      "meaning": "母国の、出身の",
+      "example": "English is not her native language.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -9887,6 +11207,18 @@
       "partOfSpeech": "other",
       "tier": 2,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_NEAT",
+      "word": "neat",
+      "meaning": "きちんとした",
+      "example": "His desk is always neat.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
       "isIdiom": false
     },
     {
@@ -9935,6 +11267,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "health",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_NEGATIVE",
+      "word": "negative",
+      "meaning": "否定的な",
+      "example": "The response was mostly negative.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -10262,6 +11606,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_NOWADAYS",
+      "word": "nowadays",
+      "meaning": "近ごろ",
+      "example": "Nowadays most people shop online.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_NOWHERE",
       "word": "nowhere",
       "meaning": "どこにも〜ない",
@@ -10526,6 +11882,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_ORDINARY",
+      "word": "ordinary",
+      "meaning": "普通の",
+      "example": "It was an ordinary Monday morning.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_ORGANIC",
       "word": "organic",
       "meaning": "有機の",
@@ -10631,6 +11999,18 @@
       "partOfSpeech": "adjective",
       "tier": 3,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_OVERSEAS",
+      "word": "overseas",
+      "meaning": "海外へ",
+      "example": "He works overseas.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -10968,6 +12348,18 @@
       "tier": 2,
       "domain": "business",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_PAY_BACK",
+      "word": "pay back",
+      "meaning": "返済する",
+      "example": "He paid back the loan in two years.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_PEACH",
@@ -11366,6 +12758,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_PLAIN",
+      "word": "plain",
+      "meaning": "質素な、明白な",
+      "example": "She wore a plain white shirt.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_PLAN",
       "word": "plan",
       "meaning": "計画",
@@ -11470,6 +12874,18 @@
       "category": "B",
       "partOfSpeech": "noun",
       "tier": 2,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_PLEASANT",
+      "word": "pleasant",
+      "meaning": "快い",
+      "example": "We had a pleasant evening.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
       "domain": "daily",
       "isIdiom": false
     },
@@ -11738,6 +13154,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_POUR",
+      "word": "pour",
+      "meaning": "注ぐ",
+      "example": "Pour the milk into the cup.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_POWDER",
       "word": "powder",
       "meaning": "粉",
@@ -11762,6 +13190,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_PRAISE",
+      "word": "praise",
+      "meaning": "ほめる",
+      "example": "The teacher praised his effort.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_PRAYER",
       "word": "prayer",
       "meaning": "祈り",
@@ -11771,6 +13211,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "society",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_PRECIOUS",
+      "word": "precious",
+      "meaning": "貴重な",
+      "example": "Time is precious.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -11918,6 +13370,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_PROPER",
+      "word": "proper",
+      "meaning": "適切な",
+      "example": "Use the proper tool for the job.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_PROPOSAL",
       "word": "proposal",
       "meaning": "提案書",
@@ -12014,6 +13478,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_PURE",
+      "word": "pure",
+      "meaning": "純粋な",
+      "example": "The water here is pure.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "environment",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_PURPLE",
       "word": "purple",
       "meaning": "紫の",
@@ -12060,6 +13536,42 @@
       "tier": 2,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_PUT_AWAY",
+      "word": "put away",
+      "meaning": "片付ける",
+      "example": "Put away your books.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_PUT_OUT",
+      "word": "put out",
+      "meaning": "消す",
+      "example": "Firefighters put out the fire quickly.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_PUT_UP_WITH",
+      "word": "put up with",
+      "meaning": "我慢する",
+      "example": "I cannot put up with this noise.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_PUZZLE",
@@ -12278,6 +13790,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_RAPIDLY",
+      "word": "rapidly",
+      "meaning": "急速に",
+      "example": "The city grew rapidly.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_RARE",
+      "word": "rare",
+      "meaning": "まれな",
+      "example": "This bird is rare in Japan.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "environment",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_RATE_OF_GROWTH",
       "word": "rate of growth",
       "meaning": "成長率",
@@ -12446,6 +13982,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_REFUSE",
+      "word": "refuse",
+      "meaning": "断る",
+      "example": "He refused the invitation.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_REGISTRATION",
       "word": "registration",
       "meaning": "登録",
@@ -12539,6 +14087,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "environment",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_RESCUE",
+      "word": "rescue",
+      "meaning": "救助する",
+      "example": "Firefighters rescued two people.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -12818,6 +14378,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_ROUGH",
+      "word": "rough",
+      "meaning": "荒い、おおよその",
+      "example": "The sea was rough that day.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_ROW",
       "word": "row",
       "meaning": "列",
@@ -12878,6 +14450,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_RUN_INTO",
+      "word": "run into",
+      "meaning": "偶然会う、ぶつかる",
+      "example": "I ran into an old friend.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_SAD",
       "word": "sad",
       "meaning": "悲しい",
@@ -12886,6 +14470,18 @@
       "category": "A",
       "partOfSpeech": "adjective",
       "tier": 2,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SAIL",
+      "word": "sail",
+      "meaning": "航行する",
+      "example": "The ship sails at dawn.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
       "domain": "daily",
       "isIdiom": false
     },
@@ -13065,6 +14661,18 @@
       "frequencyCount": 0,
       "category": "C",
       "partOfSpeech": "noun",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SCIENTIFIC",
+      "word": "scientific",
+      "meaning": "科学的な",
+      "example": "There is scientific evidence for this.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
       "tier": 3,
       "domain": "education",
       "isIdiom": false
@@ -13250,6 +14858,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SELECT",
+      "word": "select",
+      "meaning": "選ぶ",
+      "example": "Select one topic from the list.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SELF_STUDY",
       "word": "self study",
       "meaning": "独学",
@@ -13358,6 +14978,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SET_OFF",
+      "word": "set off",
+      "meaning": "出発する",
+      "example": "They set off before dawn.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_SEVEN",
       "word": "seven",
       "meaning": "7",
@@ -13442,6 +15074,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SHARP",
+      "word": "sharp",
+      "meaning": "鋭い",
+      "example": "Be careful; the knife is sharp.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SHE",
       "word": "she",
       "meaning": "彼女は",
@@ -13511,6 +15155,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "business",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SHINE",
+      "word": "shine",
+      "meaning": "輝く",
+      "example": "The sun shone all day.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "environment",
       "isIdiom": false
     },
     {
@@ -13634,6 +15290,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SHORTLY",
+      "word": "shortly",
+      "meaning": "まもなく",
+      "example": "The bus will arrive shortly.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SHOULD",
       "word": "should",
       "meaning": "〜すべきだ",
@@ -13680,6 +15348,18 @@
       "tier": 2,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SHOW_UP",
+      "word": "show up",
+      "meaning": "現れる",
+      "example": "He did not show up for the meeting.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_SHRINE",
@@ -13766,6 +15446,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SILENT",
+      "word": "silent",
+      "meaning": "静かな",
+      "example": "The class went silent.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SILK",
       "word": "silk",
       "meaning": "絹",
@@ -13799,6 +15491,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "education",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SINCERELY",
+      "word": "sincerely",
+      "meaning": "心から",
+      "example": "I sincerely hope you are well.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adverb",
+      "tier": 3,
+      "domain": "business",
       "isIdiom": false
     },
     {
@@ -13994,6 +15698,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SLIDE",
+      "word": "slide",
+      "meaning": "滑る",
+      "example": "The box slid across the floor.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SLIDE_SHOW",
       "word": "slide show",
       "meaning": "スライド上映",
@@ -14063,6 +15779,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "health",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SMOOTH",
+      "word": "smooth",
+      "meaning": "滑らかな",
+      "example": "The road is smooth and new.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -14210,6 +15938,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SOLID",
+      "word": "solid",
+      "meaning": "固体の、しっかりした",
+      "example": "Water becomes solid below zero.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "technology",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SOME",
       "word": "some",
       "meaning": "いくつかの",
@@ -14327,6 +16067,18 @@
       "partOfSpeech": "adverb",
       "tier": 2,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SORE",
+      "word": "sore",
+      "meaning": "痛い",
+      "example": "I have a sore throat.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
       "isIdiom": false
     },
     {
@@ -14654,6 +16406,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_STAND_FOR",
+      "word": "stand for",
+      "meaning": "表す、意味する",
+      "example": "What does this letter stand for?",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_STAND_OUT",
+      "word": "stand out",
+      "meaning": "目立つ",
+      "example": "The design stands out.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_STAR",
       "word": "star",
       "meaning": "星",
@@ -14714,6 +16490,54 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_STAY_IN_TOUCH",
+      "word": "stay in touch",
+      "meaning": "連絡を保つ",
+      "example": "Let us stay in touch.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_STAY_UP",
+      "word": "stay up",
+      "meaning": "夜更かしする",
+      "example": "He stayed up late studying.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_STEADY",
+      "word": "steady",
+      "meaning": "安定した",
+      "example": "Sales have shown a steady increase.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_STEAL",
+      "word": "steal",
+      "meaning": "盗む",
+      "example": "Someone stole his bicycle.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_STEAM",
       "word": "steam",
       "meaning": "蒸気",
@@ -14748,6 +16572,18 @@
       "tier": 3,
       "domain": "environment",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_STICK_TO",
+      "word": "stick to",
+      "meaning": "〜を守り通す",
+      "example": "Stick to your plan.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_STOMACH",
@@ -14882,6 +16718,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_STRETCH",
+      "word": "stretch",
+      "meaning": "伸ばす",
+      "example": "Stretch before you run.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "health",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_STRIKE",
       "word": "strike",
       "meaning": "ストライキ、打つ",
@@ -14975,6 +16823,18 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_SUDDEN",
+      "word": "sudden",
+      "meaning": "突然の",
+      "example": "There was a sudden change in the weather.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -15218,6 +17078,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_SWING",
+      "word": "swing",
+      "meaning": "揺れる",
+      "example": "The door swung open.",
+      "frequencyCount": 0,
+      "category": "C",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_SWITCH",
       "word": "switch",
       "meaning": "スイッチ、切り替える",
@@ -15300,6 +17172,42 @@
       "tier": 2,
       "domain": "general",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_TAKE_AWAY",
+      "word": "take away",
+      "meaning": "持ち去る",
+      "example": "Please take away the empty plates.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_TAKE_BACK",
+      "word": "take back",
+      "meaning": "返品する、撤回する",
+      "example": "I took back the shirt to the store.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "business",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_TAKE_TURNS",
+      "word": "take turns",
+      "meaning": "交代でする",
+      "example": "We took turns driving.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_TALK",
@@ -15441,6 +17349,18 @@
       "frequencyCount": 0,
       "category": "C",
       "partOfSpeech": "noun",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_TEAR",
+      "word": "tear",
+      "meaning": "裂く、涙",
+      "example": "He tore the paper in half.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
       "tier": 3,
       "domain": "daily",
       "isIdiom": false
@@ -15902,6 +17822,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_TIE",
+      "word": "tie",
+      "meaning": "結ぶ、同点",
+      "example": "Tie the rope tightly.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_TIGHT",
+      "word": "tight",
+      "meaning": "きつい",
+      "example": "The schedule is tight.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_TIME",
       "word": "time",
       "meaning": "時間、回",
@@ -15935,6 +17879,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "environment",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_TINY",
+      "word": "tiny",
+      "meaning": "とても小さい",
+      "example": "The room was tiny.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -16502,6 +18458,30 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_TURN_DOWN",
+      "word": "turn down",
+      "meaning": "断る、音量を下げる",
+      "example": "He turned down the offer.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": true
+    },
+    {
+      "wordId": "EIKEN_G3_TURN_IN",
+      "word": "turn in",
+      "meaning": "提出する",
+      "example": "Turn in your homework tomorrow.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "education",
+      "isIdiom": true
+    },
+    {
       "wordId": "EIKEN_G3_TURTLE",
       "word": "turtle",
       "meaning": "カメ",
@@ -16571,6 +18551,18 @@
       "partOfSpeech": "noun",
       "tier": 3,
       "domain": "environment",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_TYPICAL",
+      "word": "typical",
+      "meaning": "典型的な",
+      "example": "It was a typical summer day.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "society",
       "isIdiom": false
     },
     {
@@ -16691,6 +18683,18 @@
       "partOfSpeech": "adverb",
       "tier": 1,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_UPSET",
+      "word": "upset",
+      "meaning": "動揺した",
+      "example": "She was upset about the news.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "health",
       "isIdiom": false
     },
     {
@@ -16982,6 +18986,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_VOTE",
+      "word": "vote",
+      "meaning": "投票する",
+      "example": "Citizens will vote next Sunday.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_VOTING",
       "word": "voting",
       "meaning": "投票",
@@ -17114,6 +19130,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_WARN",
+      "word": "warn",
+      "meaning": "警告する",
+      "example": "The sign warns of falling rocks.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_WARNING_SIGN",
       "word": "warning sign",
       "meaning": "警告標識",
@@ -17172,6 +19200,18 @@
       "tier": 1,
       "domain": "daily",
       "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_WATCH_OUT",
+      "word": "watch out",
+      "meaning": "注意する",
+      "example": "Watch out for the step.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "society",
+      "isIdiom": true
     },
     {
       "wordId": "EIKEN_G3_WATER",
@@ -17375,6 +19415,18 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "daily",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_WEIGH",
+      "word": "weigh",
+      "meaning": "重さがある",
+      "example": "The bag weighs five kilograms.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "general",
       "isIdiom": false
     },
     {
@@ -17750,6 +19802,18 @@
       "isIdiom": false
     },
     {
+      "wordId": "EIKEN_G3_WISE",
+      "word": "wise",
+      "meaning": "賢明な",
+      "example": "That was a wise decision.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "general",
+      "isIdiom": false
+    },
+    {
       "wordId": "EIKEN_G3_WISH",
       "word": "wish",
       "meaning": "願う",
@@ -17819,6 +19883,18 @@
       "partOfSpeech": "noun",
       "tier": 2,
       "domain": "environment",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_WOODEN",
+      "word": "wooden",
+      "meaning": "木製の",
+      "example": "They sat on a wooden bench.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "adjective",
+      "tier": 3,
+      "domain": "daily",
       "isIdiom": false
     },
     {
@@ -17975,6 +20051,18 @@
       "partOfSpeech": "other",
       "tier": 2,
       "domain": "general",
+      "isIdiom": false
+    },
+    {
+      "wordId": "EIKEN_G3_WRAP",
+      "word": "wrap",
+      "meaning": "包む",
+      "example": "Please wrap it as a gift.",
+      "frequencyCount": 0,
+      "category": "B",
+      "partOfSpeech": "verb",
+      "tier": 3,
+      "domain": "daily",
       "isIdiom": false
     },
     {
