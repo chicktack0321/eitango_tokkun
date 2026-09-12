@@ -204,6 +204,12 @@ core のレベル妥当性のサンプリング確認（仕様書§9）。
 
 ### P1-3: 公開準備物
 
+> **文書は用意済み（2026-09-12）**。`docs/series-publishing.md` に準2級・3級・4級の
+> 公開手順をまとめてある（2級との差分だけを書いた形）。掲載文は
+> `docs/gp2/store-listing.md` / `docs/g3/store-listing.md` / `docs/g4/store-listing.md`。
+> 残るのは Googleサイトと App Store Connect での実作業。
+
+
 - Googleサイト: プライバシーポリシー文面を「シリーズ各アプリ」へ一般化（既存URLのまま更新）、
   `/support-gp2` ページ新設、問い合わせフォームに「対象アプリ」設問を追加
 - `docs/` に GP2 用の store-listing / 提出手順（G2 版を雛形に）
