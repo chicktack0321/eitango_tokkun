@@ -115,6 +115,29 @@ targets:
     dependencies:
       - target: EitangoApp
 
+  # 審査用スクリーンショット（testCapturePurchaseScreen）は、そのエディションの
+  # アプリを起動して撮る必要がある。テストのソースは EitangoAppUITests と同じものを
+  # コンパイルし、依存先と読み込む storekit だけが違う。
+  # 単体テストは共通ロジックの検証なので G2 側だけでよく、ここでは増やさない。
+  EitangoGP2UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppUITests
+      - path: Editions/GP2/Products.storekit
+        buildPhase: resources
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.gp2.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoGP2
+
 schemes:
   EitangoApp:
     build:
@@ -144,8 +167,15 @@ schemes:
     build:
       targets:
         EitangoGP2: all
+        EitangoGP2UITests: [test]
     run:
       config: Debug
       storeKitConfiguration: Editions/GP2/Products.storekit
+    # G2 と同じく、テスト実行時のストアはUIテスト側が SKTestSession で用意する。
+    # ここで指定するとストアフロントを米国から変えられず、審査用の画像がドル表記になる。
+    test:
+      config: Debug
+      targets:
+        - EitangoGP2UITests
     archive:
       config: Release

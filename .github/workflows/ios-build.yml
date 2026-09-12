@@ -111,11 +111,14 @@ jobs:
             -resultBundlePath TestResults.xcresult \
             CODE_SIGNING_ALLOWED=NO
 
+      # build ではなく build-for-testing。スキームのテストターゲット（審査用
+      # スクリーンショットを撮るUIテスト）までコンパイルされるので、そちらが
+      # 壊れたまま気付かない状態にならない。実行はしないので時間は増えない。
       - name: Build only
         if: ${{ !matrix.run_tests }}
         run: |
           set -o pipefail
-          xcodebuild build \
+          xcodebuild build-for-testing \
             -project EitangoApp.xcodeproj \
             -scheme ${{ matrix.scheme }} \
             -destination "id=${{ steps.sim.outputs.udid }}" \

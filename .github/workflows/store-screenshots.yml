@@ -7,6 +7,14 @@ name: Store Screenshots
 on:
   workflow_dispatch:
     inputs:
+      edition:
+        description: "撮影するエディション"
+        required: true
+        default: G2
+        type: choice
+        options:
+          - G2
+          - GP2
       device:
         description: "撮影に使うシミュレータ"
         required: true
@@ -24,6 +32,17 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
+
+      - name: Resolve edition
+        id: ed
+        run: |
+          case "${{ inputs.edition }}" in
+            G2)  scheme=EitangoApp; uitests=EitangoAppUITests ;;
+            GP2) scheme=EitangoGP2; uitests=EitangoGP2UITests ;;
+            *)   echo "::error::未対応のエディション: ${{ inputs.edition }}"; exit 1 ;;
+          esac
+          echo "scheme=$scheme" >> "$GITHUB_OUTPUT"
+          echo "uitests=$uitests" >> "$GITHUB_OUTPUT"
 
       - name: Install XcodeGen and xcparse
         run: |
@@ -63,9 +82,9 @@ jobs:
           set -o pipefail
           xcodebuild test \
             -project EitangoApp.xcodeproj \
-            -scheme EitangoApp \
+            -scheme ${{ steps.ed.outputs.scheme }} \
             -destination "id=${{ steps.sim.outputs.udid }}" \
-            -only-testing:EitangoAppUITests \
+            -only-testing:${{ steps.ed.outputs.uitests }} \
             -resultBundlePath StoreShots.xcresult \
             CODE_SIGNING_ALLOWED=NO
 
@@ -85,6 +104,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: store-screenshots
+          name: store-screenshots-${{ inputs.edition }}
           path: store-screenshots
           if-no-files-found: error
