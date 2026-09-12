@@ -17,7 +17,7 @@ struct AccessRights: Equatable {
 
     /// 出題（クイズ・タイピング・聞き流し）の対象にできる語彙階層。
     ///
-    /// 権利が無くても機能そのものは止めない。止まるのは 2級コア発展語彙（Tier 3）が
+    /// 権利が無くても機能そのものは止めない。止まるのは コア発展語彙（Tier 3）が
     /// 出題対象から外れることだけで、単語帳での閲覧・検索・発音は常に全語できる。
     var availableTiers: Set<VocabularyTier> {
         hasFullAccess ? Set(VocabularyTier.allCases) : [.basic, .bridge]

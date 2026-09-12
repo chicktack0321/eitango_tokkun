@@ -73,12 +73,12 @@ struct HomeView: View {
                         Text("お試し期間 残り\(remaining)日")
                             .font(.subheadline).bold()
                             .foregroundStyle(.primary)
-                        Text("いまは2級コア発展語彙まで出題されています。期間後も学習は続けられます。")
+                        Text("いまは\(Edition.current.coreVocabularyName)まで出題されています。期間後も学習は続けられます。")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.leading)
                     } else {
-                        Text("2級コア発展語彙がロック中です")
+                        Text("\(Edition.current.coreVocabularyName)がロック中です")
                             .font(.subheadline).bold()
                             .foregroundStyle(.primary)
                         Text("試験で問われる語を出題対象に戻すには解放が必要です。基礎・架け橋の語彙では引き続き学習できます。")
@@ -125,10 +125,10 @@ struct HomeView: View {
                 .frame(width: 44, height: 44)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .leading, spacing: 2) {
-                Text(AppConfig.appDisplayName)
+                Text(Edition.current.appDisplayName)
                     .font(.title2).bold()
                 // 商標なので®を付ける（権利表記は「このアプリについて」に常設）
-                Text(AppConfig.gradeDisplayName)
+                Text(Edition.current.gradeDisplayName)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

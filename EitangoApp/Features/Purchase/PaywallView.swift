@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-/// 2級コア発展語彙を解放するための購入画面。
+/// 課金対象の語彙帯（core）を解放するための購入画面。
 ///
 /// 売り物は「機能」ではなく「語彙の範囲」なので、何が増えるのかを語数と分野で具体的に示す。
 /// 機能を止める作りにはしていないため、ここで買わなくても学習は続けられることも明記する
@@ -28,7 +28,7 @@ struct PaywallView: View {
                 .padding()
             }
             .background(Color(.systemGroupedBackground))
-            .navigationTitle("2級コア語彙の解放")
+            .navigationTitle(Edition.current.paywallTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -73,7 +73,7 @@ struct PaywallView: View {
                         .font(.headline)
                         .foregroundStyle(.secondary)
                 }
-                Text("2級コア発展語彙（CEFR B1）。環境・科学技術・医療・経済・社会など、2級で実際に問われる領域の語です。")
+                Text(Edition.current.coreTierDescription)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
 
@@ -131,11 +131,11 @@ struct PaywallView: View {
     private var footnote: some View {
         VStack(spacing: 8) {
             HStack(spacing: 16) {
-                Link("プライバシーポリシー", destination: AppConfig.privacyPolicyURL)
-                Link("使い方・お問い合わせ", destination: AppConfig.supportURL)
+                Link("プライバシーポリシー", destination: Edition.current.privacyPolicyURL)
+                Link("使い方・お問い合わせ", destination: Edition.current.supportURL)
             }
             .font(.caption)
-            Text(AppConfig.trademarkNotice)
+            Text(Edition.current.trademarkNotice)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

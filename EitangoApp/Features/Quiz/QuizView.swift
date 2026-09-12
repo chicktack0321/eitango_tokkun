@@ -142,7 +142,7 @@ struct QuizView: View {
                     .font(.caption)
                     .foregroundStyle(.orange)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("2級コア発展語彙はいま出題されません")
+                    Text("\(Edition.current.coreVocabularyName)はいま出題されません")
                         .font(.caption).bold()
                     Text("解放すると、試験で問われる語が出題対象に加わります")
                         .font(.caption2)

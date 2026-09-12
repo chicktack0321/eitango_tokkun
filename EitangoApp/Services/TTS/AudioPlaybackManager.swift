@@ -309,7 +309,7 @@ final class AudioPlaybackManager: NSObject {
         var info: [String: Any] = [
             MPMediaItemPropertyTitle: item.word,
             MPMediaItemPropertyArtist: item.meaning,
-            MPMediaItemPropertyAlbumTitle: "英検2級 英単語特訓",
+            MPMediaItemPropertyAlbumTitle: Edition.current.nowPlayingAlbumTitle,
             MPNowPlayingInfoPropertyPlaybackRate: state == .playing ? 1.0 : 0.0
         ]
         if !playlist.isEmpty {

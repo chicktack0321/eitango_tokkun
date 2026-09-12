@@ -20,6 +20,9 @@ targets:
       - path: EitangoApp
         excludes:
           - "App/Info.plist"
+      # 級ごとに変わる値の定義。このファイルだけがターゲット別で、
+      # ターゲットを増やすときは Editions/<ID>/Edition.swift を差し替える。
+      - path: Editions/G2/Edition.swift
 
     # `info:` は「指定パスにInfo.plistを生成する」指定であり、手書きのInfo.plistを
     # xcodegen generate のたびに上書きしてしまう。実際、CFBundleDisplayName /

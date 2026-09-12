@@ -54,7 +54,7 @@ final class Entitlements {
 
     private func loadProduct() async {
         do {
-            product = try await Product.products(for: [AppConfig.unlockProductID]).first
+            product = try await Product.products(for: [Edition.current.unlockProductID]).first
         } catch {
             // 電波が無い場所では読めなくて当然なので、失敗しても学習機能には影響させない
             logger.notice("商品情報を取得できませんでした: \(error.localizedDescription, privacy: .public)")
@@ -68,7 +68,7 @@ final class Entitlements {
             guard case .verified(let transaction) = result else { continue }
             // revocationDate が入るのは払い戻し・ファミリー共有の解除など。
             // ここを見ないと返金後も解放されたままになる。
-            guard transaction.productID == AppConfig.unlockProductID,
+            guard transaction.productID == Edition.current.unlockProductID,
                   transaction.revocationDate == nil else { continue }
             purchased = true
         }
