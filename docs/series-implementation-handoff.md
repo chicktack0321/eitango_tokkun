@@ -209,6 +209,18 @@ core のレベル妥当性のサンプリング確認（仕様書§9）。
 - `docs/` に GP2 用の store-listing / 提出手順（G2 版を雛形に）
 - 審査用スクリーンショット: `testCapturePurchaseScreen` を GP2 ターゲットで実行して取得
   （ストアフロント JPN 指定は実装済み。ドル表記になっていたら storefront 設定を疑う）
+
+> **取得済み（2026-09-12）**: `docs/assets/gp2/iap-review-screenshot.png`。
+> `gh workflow run store-screenshots.yml -f edition=GP2 -f device="iPhone 16 Pro Max"` で
+> 撮り直せる。UIテストターゲットは `EitangoGP2UITests`（ソースは G2 と同じファイルで、
+> 依存先と読み込む storekit だけが違う）。
+>
+> 最初は価格が「読み込んでいます」のままで撮れなかった。テスト用ストアには正しい商品が
+> 入っていたので、原因は**アプリ側が起動時の一度しか商品情報を取りに行かないこと**だった。
+> 起動時に取れないと購入画面を開いても永久に買えないという実利用上の不具合でもあったため、
+> 購入画面を開いたときに読み直すよう直した（`Entitlements.ensureProductLoaded`）。
+> 同種の症状が出たら、まず失敗時のスクリーンショットと失敗メッセージ（画面上のボタンと
+> テスト用ストアの商品IDを出す）を見ること。
 - App Store Connect: 新規アプリ登録（bundle ID `com.eitango.gp2`）、課金アイテム登録
   （審査用スクリーンショット＋説明文が無いと「送信準備完了」にならない）、
   **初回提出時はバージョンページでの課金アイテム紐付けを忘れない**（G2 提出手順書の 4-4 参照）
