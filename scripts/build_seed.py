@@ -129,8 +129,7 @@ def main():
     if problems:
         return 1
 
-    out_path = args.out or DEFAULT_OUT.get(args.edition) \
-        or ROOT / f"Editions/{args.edition}/word_master_seed.json"
+    out_path = args.out or default_out(args.edition)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     seed_version = master.get("seedVersion", 1)
     out_path.write_text(

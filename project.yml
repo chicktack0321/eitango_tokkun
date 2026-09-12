@@ -67,6 +67,15 @@ targets:
       bundle_id: com.eitango.app
       product_name: EitangoApp
 
+  # 英検準2級（パイロット）。増える差分は Editions/GP2/ の中だけで、
+  # アプリのコードは EitangoApp と同一のものをコンパイルする。
+  EitangoGP2:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: GP2
+      bundle_id: com.eitango.gp2
+      product_name: EitangoGP2
+
   EitangoAppTests:
     type: bundle.unit-test
     platform: iOS
@@ -126,5 +135,17 @@ schemes:
       targets:
         - EitangoAppTests
         - EitangoAppUITests
+    archive:
+      config: Release
+
+  # テストは G2 のスキームでのみ回す。共通コードは同一で、級ごとに回しても
+  # 同じものを確かめるだけになるため（実装指示書 P0-4）。
+  EitangoGP2:
+    build:
+      targets:
+        EitangoGP2: all
+    run:
+      config: Debug
+      storeKitConfiguration: Editions/GP2/Products.storekit
     archive:
       config: Release

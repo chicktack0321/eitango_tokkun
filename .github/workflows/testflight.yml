@@ -14,6 +14,7 @@ on:
         type: choice
         options:
           - G2
+          - GP2
       whats_new:
         description: "テスターに表示する変更点（省略可）"
         required: false

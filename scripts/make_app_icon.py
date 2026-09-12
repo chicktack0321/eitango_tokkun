@@ -20,8 +20,10 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 
 # 級ごとの元画像。級の判別はアイコン内の級表記と配色で行う（ロゴ部は共通）
+# 2級だけ手作業の元画像。それ以外は scripts/make_edition_logo.py が描き起こす
 SOURCES = {
     "G2": ROOT / "docs/assets/eitango-tokkun-logo-03.png",
+    "GP2": ROOT / "docs/assets/eitango-tokkun-logo-gp2.png",
 }
 
 LOGO_SIZES = [("AppLogo.png", 80), ("AppLogo@2x.png", 160), ("AppLogo@3x.png", 240)]

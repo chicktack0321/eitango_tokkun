@@ -58,6 +58,8 @@ jobs:
           - edition: G2
             scheme: EitangoApp
             run_tests: true
+          - edition: GP2
+            scheme: EitangoGP2
 
     steps:
       - uses: actions/checkout@v4
