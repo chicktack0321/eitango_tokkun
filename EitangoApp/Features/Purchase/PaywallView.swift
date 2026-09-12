@@ -35,7 +35,12 @@ struct PaywallView: View {
                     Button("閉じる") { dismiss() }
                 }
             }
-            .task { countCoreWords() }
+            .task {
+                countCoreWords()
+                // 起動時に読めていなければここで取り直す。購入画面を開いたのに
+                // 価格が出ないままだと、利用者は買う手段が無い
+                await entitlements.ensureProductLoaded()
+            }
             .alert("お知らせ", isPresented: .constant(message != nil)) {
                 Button("OK") { message = nil }
             } message: {

@@ -52,9 +52,22 @@ final class Entitlements {
 
     // MARK: - StoreKit
 
+    /// 購入画面を開くたびに呼ぶ。すでに読めていれば何もしない。
+    ///
+    /// 起動時の一度きりにしていたため、そのとき通信できなかった利用者は購入画面を開いても
+    /// 「価格を読み込んでいます」のままで、アプリを再起動するまで買えなかった。
+    /// 買えない状態が自力で直らないのは、売り物として成立していない。
+    func ensureProductLoaded() async {
+        guard product == nil else { return }
+        await loadProduct()
+    }
+
     private func loadProduct() async {
         do {
             product = try await Product.products(for: [Edition.current.unlockProductID]).first
+            if product == nil {
+                logger.notice("商品が見つかりません: \(Edition.current.unlockProductID, privacy: .public)")
+            }
         } catch {
             // 電波が無い場所では読めなくて当然なので、失敗しても学習機能には影響させない
             logger.notice("商品情報を取得できませんでした: \(error.localizedDescription, privacy: .public)")
