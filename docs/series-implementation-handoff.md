@@ -11,8 +11,9 @@
     `gh run watch` / `gh run download` で確認
   - TestFlight 配信は `testflight.yml` を `gh workflow run` で手動起動
 - `.xcodeproj` はコミットしない。**`project.yml`（XcodeGen）が唯一の正**。CI が毎回 `xcodegen generate` する
-- 語彙: `EitangoApp/Resources/word_master_seed.json`（3,955語。tier 1:1512 / 2:1169 / 3:1274）。
-  正本は `vocab/master.json`。**語彙まわりの仕様は `docs/vocab-database-spec.md` が正**
+- 語彙: 正本は `vocab/master.json`。同梱 seed は `Editions/<ID>/word_master_seed.json` で、
+  `scripts/build_seed.py --edition <ID>` の生成物（G2 は 3,955語。tier 1:1512 / 2:1169 / 3:1274）。
+  **語彙まわりの仕様は `docs/vocab-database-spec.md` が正**。CI が再現一致を検証する
 - テスト: `EitangoAppTests/`（純粋ロジック中心。SwiftData は in-memory）、`EitangoAppUITests/`
   （スクリーンショット撮影 + 審査用画像。壊すと提出物が作れなくなる）
 
@@ -37,6 +38,17 @@
 
 完了条件: 既存テスト全通過 / UIテストのスクリーンショットに差なし / §P0-3 の seed 再現一致。
 
+> **完了（2026-09-12）**。ブランチ `feature/series-phase0` で実施。2級が審査中
+> （2.1 Information Needed）のため main へは入れていない。**審査完了後にマージする**。
+> 審査中に main を動かさないのは、審査対象のビルドと手元のコードがずれると、
+> 追加質問への回答や再提出のときに何を出したのか分からなくなるため。
+>
+> この時点で、級を1つ増やす作業は次だけになっている:
+> `Editions/<ID>/` に5ファイル（Edition.swift / Info.plist / Assets.xcassets /
+> Products.storekit / word_master_seed.json）を置き、`project.yml` の targets に
+> 1ブロック、`ios-build.yml` の matrix に1行、`testflight.yml` の options と
+> Resolve edition に1行ずつ足す。アプリのコードは1行も増えない。
+
 ### P0-1: EditionSpec の導入と級依存値の集約
 
 - 目的: 級ごとに変わる値を1型に集め、共通コードから「2級」を消す
@@ -54,6 +66,17 @@
   - `grep -rn "2級" EitangoApp/` のヒットが**コメントを除きゼロ**（文言はすべて Editions/G2 側）
   - 既存テスト全通過。UIテストのスクリーンショット文言が従来と一致
 
+> **完了（2026-09-12 / コミット 4bc3573）**。`AppConfig` は廃止し、全フィールドを
+> `EditionSpec` へ移した。共通コードからは `Edition.current`（`EditionSpec` の別名）で参照する。
+> 棚卸しの5か所に加えて、購入画面のタイトルと `coreVocabularyName`（「2級コア発展語彙」）を
+> Spec に足した。ホームとクイズのロック案内は同じ語を3か所で使っており、
+> 級名を1か所で持てないと横展開で必ず食い違うため。
+>
+> 転記漏れはビルドを通ってしまい、審査済みのスクリーンショットとの文言ズレになるだけなので、
+> `EitangoAppTests/EditionSpecTests.swift` で実際の文字列・プロダクトID・階層定義の
+> 網羅性を直接押さえてある。**文言を変えたらこのテストも一緒に直すこと**（意図せず変えた場合は
+> ここで落ちる）。
+
 ### P0-2: project.yml の targetTemplates 化
 
 - 目的: ターゲットを足すだけでエディションが増える状態にする
@@ -66,6 +89,15 @@
     UIテスト用 resources 参照も追従させる
 - 受け入れ基準: CI green。`testflight.yml` を**動かさずに** Archive まで通ることは
   ios-build の build で担保（署名は不要）
+
+> **完了（2026-09-12 / コミット a055482）**。設計書§7の例と1点だけ違う。例では
+> `- path: EitangoApp` に `excludes` を並べているが、対象ファイルを `Editions/G2/` へ
+> 移動した時点で不要になるため置いていない。代わりに `Editions/${edition_dir}` 側で
+> `Info.plist`（INFOPLIST_FILE で指定するため）と `Products.storekit`
+> （UIテスト専用。製品に同梱しない）を除外している。
+>
+> `PRODUCT_NAME` もテンプレート変数にした（G2 は `EitangoApp` のまま）。
+> `.app` の名前＝アーカイブ内のパスなので、testflight.yml 側もこの値で解決する。
 
 ### P0-3: 語彙マスターの逆輸入と生成
 
@@ -80,6 +112,11 @@
     （比較スクリプトを CI に追加。キー順・空白の差は無視してよい）
   - 一致するまで `Editions/G2/word_master_seed.json` は**手で置き換えない**
 
+> **完了（2026-09-12）**。スクリプト3本（`import_seed_to_master.py` /
+> `build_seed.py` / `check_core_exclusivity.py`）は先行して用意してあり、
+> P0-2 で同梱先が `Editions/<ID>/` に移ったのに合わせてパスを揃えた。
+> 再現一致は ios-build.yml の `vocab` ジョブがゲートにしている（下記 P0-4）。
+
 ### P0-4: CI のエディション対応
 
 - 変更:
@@ -88,6 +125,13 @@
   - `testflight.yml`: `workflow_dispatch` に `edition` choice を追加し、scheme・
     アイコン検証（PrivacyInfo / CFBundleDisplayName 等の焼き込み確認ステップ）を切り替え
 - 受け入れ基準: G2 の従来フロー（push で CI、dispatch で TestFlight）が無変更で動く
+
+> **完了（2026-09-12 / コミット f2381d4）**。`vocab` ジョブを ubuntu で先に回し、
+> 全エディションの seed 再現一致とコア独自性を検査してから macOS ランナーへ進む
+> （Xcode の要らない検証で macOS の枠と時間を使わないため）。
+> スクリーンショットの成果物名は従来どおり `ui-screenshots`。§4 の
+> `gh run download <id> --name ui-screenshots` がそのまま使える。
+> 他エディションでもテストを回すようになったら名前を分ける必要がある。
 
 ## 3. Phase 1 — パイロット（準2級 = GP2）
 
