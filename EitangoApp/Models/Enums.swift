@@ -19,38 +19,30 @@ enum FrequencyRank: String, Codable, CaseIterable, Identifiable {
 
 /// 語彙階層。
 ///
-/// 2級の語彙は単一の頻度分布ではなく、既習の基礎層と、試験で直接問われる発展層という
+/// 級の語彙は単一の頻度分布ではなく、既習の基礎層と、試験で直接問われる発展層という
 /// 二重構造になっている。同じ土俵で出題すると、既に知っている基礎語ばかりが並んで
 /// 学習時間が薄まるため、階層を属性として持ち、出題の主対象を発展層に寄せる。
+///
+/// 数値と意味は全エディション共通で、表示名だけが級ごとに変わる（`EditionSpec`）。
 enum VocabularyTier: Int, Codable, CaseIterable, Identifiable {
-    /// 中学〜高校基礎（CEFR A1–A2）。文脈理解の前提となる既習語彙
+    /// 下位級までの既習語彙。文脈理解の前提となる語
     case basic = 1
-    /// 準2級・2級の架け橋（CEFR A2+）。抽象概念の初歩と基本句動詞
+    /// 前級帯からの橋渡し。抽象概念の初歩と基本句動詞
     case bridge = 2
-    /// 2級コア発展語彙（CEFR B1）。筆記大問1の直接的な得点源
+    /// 当該級の得点源となる発展語彙。課金で解放する売り物
     case core = 3
 
     var id: Int { rawValue }
 
-    var displayName: String {
-        switch self {
-        case .basic: return "基礎"
-        case .bridge: return "架け橋"
-        case .core: return "2級コア"
-        }
-    }
+    /// 表示名は級ごとに変わる（下位級の core は上位級では basic になる）ため、
+    /// 階層そのものではなくエディション定義が持つ。
+    var displayName: String { Edition.current.displayName(for: self) }
 
-    var summary: String {
-        switch self {
-        case .basic: return "中学〜高校基礎。すでに知っている前提の語"
-        case .bridge: return "準2級〜2級の橋渡し。抽象語の初歩と句動詞"
-        case .core: return "2級の得点源。環境・技術・医療・経済・社会の語"
-        }
-    }
+    var summary: String { Edition.current.summary(for: self) }
 }
 
 /// 語彙のドメイン（使用文脈）。
-/// 2級では出題トピックが日常会話から社会的・アカデミックな領域へ移るため、
+/// 級が上がると出題トピックが日常会話から社会的・アカデミックな領域へ移るため、
 /// 苦手な話題だけを集中的に回せるようにする。
 enum VocabularyDomain: String, Codable, CaseIterable, Identifiable {
     case daily

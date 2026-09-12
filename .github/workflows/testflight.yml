@@ -5,6 +5,16 @@ name: TestFlight
 on:
   workflow_dispatch:
     inputs:
+      # 級ごとに別アプリ（別bundle ID）として配信する。増やすときは
+      # ここの options と下の Resolve edition に1行ずつ足す。
+      edition:
+        description: "配信するエディション"
+        required: true
+        default: G2
+        type: choice
+        options:
+          - G2
+          - GP2
       whats_new:
         description: "テスターに表示する変更点（省略可）"
         required: false
@@ -21,6 +31,20 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
+
+      # エディションごとに変わるのは scheme と PRODUCT_NAME（=.app名）だけ。
+      # 値をここ1か所に集め、以降のステップは参照するだけにする。
+      - name: Resolve edition
+        id: ed
+        run: |
+          case "${{ inputs.edition }}" in
+            G2)  scheme=EitangoApp; product=EitangoApp ;;
+            GP2) scheme=EitangoGP2; product=EitangoGP2 ;;
+            *)   echo "::error::未対応のエディション: ${{ inputs.edition }}"; exit 1 ;;
+          esac
+          echo "scheme=$scheme" >> "$GITHUB_OUTPUT"
+          echo "product=$product" >> "$GITHUB_OUTPUT"
+          echo "plist=Editions/${{ inputs.edition }}/Info.plist" >> "$GITHUB_OUTPUT"
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -56,17 +80,18 @@ jobs:
       # Info.plist へ直接書き込んで確実に反映させる。
       - name: Set build number
         run: |
-          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" EitangoApp/App/Info.plist
-          echo "CFBundleVersion=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' EitangoApp/App/Info.plist)"
+          PLIST="${{ steps.ed.outputs.plist }}"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" "$PLIST"
+          echo "CFBundleVersion=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$PLIST")"
 
       - name: Archive (unsigned)
         run: |
           set -o pipefail
           xcodebuild archive \
             -project EitangoApp.xcodeproj \
-            -scheme EitangoApp \
+            -scheme ${{ steps.ed.outputs.scheme }} \
             -destination "generic/platform=iOS" \
-            -archivePath "$RUNNER_TEMP/EitangoApp.xcarchive" \
+            -archivePath "$RUNNER_TEMP/${{ steps.ed.outputs.product }}.xcarchive" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -76,7 +101,8 @@ jobs:
       # 実際に焼き込まれた Info.plist をここで検証する。
       - name: Verify built Info.plist
         run: |
-          APP="$RUNNER_TEMP/EitangoApp.xcarchive/Products/Applications/EitangoApp.app"
+          PRODUCT="${{ steps.ed.outputs.product }}"
+          APP="$RUNNER_TEMP/$PRODUCT.xcarchive/Products/Applications/$PRODUCT.app"
           PLIST="$APP/Info.plist"
           echo "--- built Info.plist ---"
           plutil -p "$PLIST"
@@ -114,7 +140,7 @@ jobs:
 
           # ホーム画面に出る日本語のアプリ名
           if ! /usr/libexec/PlistBuddy -c "Print :CFBundleDisplayName" "$PLIST" >/dev/null 2>&1; then
-            echo "::error::CFBundleDisplayName がありません（アプリ名が EitangoApp になります）"
+            echo "::error::CFBundleDisplayName がありません（アプリ名が $PRODUCT になります）"
             fail=1
           fi
 
@@ -129,7 +155,7 @@ jobs:
           set -o pipefail
           # ExportOptions.plist の destination=upload により、書き出しと同時に送信される
           xcodebuild -exportArchive \
-            -archivePath "$RUNNER_TEMP/EitangoApp.xcarchive" \
+            -archivePath "$RUNNER_TEMP/${{ steps.ed.outputs.product }}.xcarchive" \
             -exportOptionsPlist ExportOptions.plist \
             -exportPath "$RUNNER_TEMP/export" \
             -allowProvisioningUpdates \
@@ -147,6 +173,7 @@ jobs:
           {
             echo "### TestFlightへアップロードしました"
             echo ""
+            echo "- エディション: ${{ inputs.edition }}"
             echo "- バージョン: 1.0 (ビルド ${{ github.run_number }})"
             echo "- コミット: ${{ github.sha }}"
             echo ""

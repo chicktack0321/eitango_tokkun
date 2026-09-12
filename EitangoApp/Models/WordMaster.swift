@@ -7,7 +7,7 @@ import SwiftData
 /// 「マスターは総入れ替え、学習履歴は絶対保持」という要件上、意図的に疎結合にしている。
 @Model
 final class WordMaster {
-    /// 英検2級単語帳内で一意なID（例: "EIKEN_G2_0001"）。JSON側の主キーと一致させる。
+    /// エディション内で一意なID（例: "EIKEN_G2_ABANDON"）。JSON側の主キーと一致させる。
     @Attribute(.unique) var wordId: String
 
     var word: String
@@ -30,7 +30,7 @@ final class WordMaster {
     /// 既存ストアからのアップデートでも既定値が入るよう、省略可能な初期値を持たせている。
     var sourceRaw: String = WordSource.bundled.rawValue
 
-    /// 語彙階層（1:基礎 / 2:架け橋 / 3:2級コア）。
+    /// 語彙階層（1:基礎 / 2:架け橋 / 3:コア）。
     /// 既存ストアからのアップデートでも既定値が入るよう、省略可能な初期値を持たせている。
     var tierRaw: Int = VocabularyTier.core.rawValue
 

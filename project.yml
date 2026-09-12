@@ -10,16 +10,25 @@ configs:
   Debug: debug
   Release: release
 
-targets:
-  EitangoApp:
+# エディション（級）を増やすときは targets に1件足すだけで済むようにする。
+# 共通コードは EitangoApp/ 側が全ターゲットで同じファイルを参照するため、
+# 改善や不具合修正の反映漏れが構造的に起きない。
+targetTemplates:
+  EditionApp:
     type: application
     platform: iOS
     deploymentTarget: "17.0"
 
     sources:
+      # 共通コード。級に依存する値は一切持たない（EditionSpec 経由で参照する）
       - path: EitangoApp
+      # 級ごとに差し替わるもの: Edition.swift / Assets.xcassets / 同梱seed。
+      # Info.plist は INFOPLIST_FILE で指定するのでリソースとして取り込まない。
+      # Products.storekit はUIテスト用なので製品には同梱しない。
+      - path: Editions/${edition_dir}
         excludes:
-          - "App/Info.plist"
+          - "Info.plist"
+          - "Products.storekit"
 
     # `info:` は「指定パスにInfo.plistを生成する」指定であり、手書きのInfo.plistを
     # xcodegen generate のたびに上書きしてしまう。実際、CFBundleDisplayName /
@@ -28,12 +37,12 @@ targets:
     # 既存のファイルをそのまま使わせるため INFOPLIST_FILE を直接指定する。
     settings:
       base:
-        INFOPLIST_FILE: EitangoApp/App/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.app
+        INFOPLIST_FILE: Editions/${edition_dir}/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: ${bundle_id}
         # 日本語＋スペースの PRODUCT_NAME はバンドル名・モジュール名・ビルドパスに波及し、
         # テストターゲットの TEST_HOST 解決に失敗する。ホーム画面に出る名前は
-        # Info.plist の CFBundleDisplayName（英検2級 英単語特訓）が担うため、ここはASCIIで固定する。
-        PRODUCT_NAME: EitangoApp
+        # Info.plist の CFBundleDisplayName が担うため、ここはASCIIで固定する。
+        PRODUCT_NAME: ${product_name}
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
@@ -47,6 +56,25 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         SWIFT_STRICT_CONCURRENCY: complete
         ENABLE_PREVIEWS: YES
+
+targets:
+  # 英検2級（公開済み）。ターゲット名・bundle ID・PRODUCT_NAME は変更禁止。
+  # CI の -scheme、テストの TEST_HOST、App Store の同一性がすべてこれに依存する。
+  EitangoApp:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: G2
+      bundle_id: com.eitango.app
+      product_name: EitangoApp
+
+  # 英検準2級（パイロット）。増える差分は Editions/GP2/ の中だけで、
+  # アプリのコードは EitangoApp と同一のものをコンパイルする。
+  EitangoGP2:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: GP2
+      bundle_id: com.eitango.gp2
+      product_name: EitangoGP2
 
   EitangoAppTests:
     type: bundle.unit-test
@@ -75,7 +103,7 @@ targets:
       # 審査用スクリーンショットの撮影で、テスト用のストアを立てるのに読み込む。
       # スキーム側の指定ではストアフロントを日本にできず、ドル表記になってしまうため、
       # UIテストから SKTestSession で明示的に設定する。
-      - path: Products.storekit
+      - path: Editions/G2/Products.storekit
         buildPhase: resources
 
     settings:
@@ -99,7 +127,7 @@ schemes:
     # 審査用のスクリーンショットは価格が見えていなければならない。
     run:
       config: Debug
-      storeKitConfiguration: Products.storekit
+      storeKitConfiguration: Editions/G2/Products.storekit
     # テスト実行時のストアはUIテスト側が SKTestSession で用意する。
     # ここで指定するとストアフロントを米国から変えられず、審査用の画像がドル表記になる。
     test:
@@ -107,5 +135,17 @@ schemes:
       targets:
         - EitangoAppTests
         - EitangoAppUITests
+    archive:
+      config: Release
+
+  # テストは G2 のスキームでのみ回す。共通コードは同一で、級ごとに回しても
+  # 同じものを確かめるだけになるため（実装指示書 P0-4）。
+  EitangoGP2:
+    build:
+      targets:
+        EitangoGP2: all
+    run:
+      config: Debug
+      storeKitConfiguration: Editions/GP2/Products.storekit
     archive:
       config: Release

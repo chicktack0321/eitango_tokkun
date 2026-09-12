@@ -20,8 +20,8 @@ struct AboutView: View {
                             .frame(width: 44, height: 44)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(AppConfig.appDisplayName).font(.headline)
-                            Text(AppConfig.gradeDisplayName)
+                            Text(Edition.current.appDisplayName).font(.headline)
+                            Text(Edition.current.gradeDisplayName)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
@@ -59,12 +59,12 @@ struct AboutView: View {
             }
 
             Section("リンク") {
-                Link("プライバシーポリシー", destination: AppConfig.privacyPolicyURL)
-                Link("使い方・お問い合わせ", destination: AppConfig.supportURL)
+                Link("プライバシーポリシー", destination: Edition.current.privacyPolicyURL)
+                Link("使い方・お問い合わせ", destination: Edition.current.supportURL)
             }
 
             Section {
-                Text(AppConfig.trademarkNotice)
+                Text(Edition.current.trademarkNotice)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

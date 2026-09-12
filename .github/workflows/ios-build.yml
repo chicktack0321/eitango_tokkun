@@ -6,9 +6,60 @@ on:
   workflow_dispatch:
 
 jobs:
+  # 語彙の正本は vocab/master.json で、各アプリの同梱 seed はその生成物。
+  # 手で seed をいじると正本と静かにズレるため、再現一致をここで止める
+  # （docs/series-architecture.md §5 / 実装指示書 P0-3 の受け入れ基準）。
+  # Xcode の要らない検証は ubuntu で先に回す。macOSランナーを待たずに落ちる。
+  vocab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check bundled seeds reproduce from the master
+        run: |
+          set -e
+          found=0
+          for dir in Editions/*/; do
+            edition=$(basename "$dir")
+            [ -f "$dir/word_master_seed.json" ] || continue
+            echo "--- $edition ---"
+            python scripts/build_seed.py --edition "$edition" --check
+            found=1
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "::error::同梱 seed が1件も見つかりません（Editions/ の構成を確認）"
+            exit 1
+          fi
+
+      # ある級の課金対象が別の自社アプリで無料になっていないかを検査する。
+      # GP2 の設計で実際に独自性0%の状態が発生した（docs/vocab-database-spec.md §4）。
+      - name: Check core vocabulary exclusivity
+        run: python scripts/check_core_exclusivity.py --gate
+
   build:
+    needs: vocab
+    name: build (${{ matrix.edition }})
     # Mac実機がないため、GitHub提供のmacOSランナー上でXcodeビルド・UIテストを検証する
     runs-on: macos-15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 単体テストとUIテスト（スクリーンショット）は G2 でのみ回す。
+          # 共通コードはどのターゲットでも同じものをコンパイルしており、
+          # 全エディションでテストまで回すと実行時間が級の数だけ倍になる。
+          # 他のエディションはビルドが通ることだけ確認する。
+          - edition: G2
+            scheme: EitangoApp
+            run_tests: true
+          - edition: GP2
+            scheme: EitangoGP2
 
     steps:
       - uses: actions/checkout@v4
@@ -50,24 +101,38 @@ jobs:
           echo "udid=$UDID" >> "$GITHUB_OUTPUT"
 
       - name: Build and run UI tests (captures screenshots)
+        if: matrix.run_tests
         run: |
           set -o pipefail
           xcodebuild test \
             -project EitangoApp.xcodeproj \
-            -scheme EitangoApp \
+            -scheme ${{ matrix.scheme }} \
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -resultBundlePath TestResults.xcresult \
             CODE_SIGNING_ALLOWED=NO
 
+      - name: Build only
+        if: ${{ !matrix.run_tests }}
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project EitangoApp.xcodeproj \
+            -scheme ${{ matrix.scheme }} \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            CODE_SIGNING_ALLOWED=NO
+
       - name: Extract screenshots from test results
-        if: always()
+        if: always() && matrix.run_tests
         run: |
           mkdir -p screenshots
           xcparse screenshots TestResults.xcresult screenshots || true
           ls -la screenshots
 
+      # 成果物名は G2 の従来どおり。手順書の
+      # `gh run download <id> --name ui-screenshots` をそのまま使えるようにしてある。
+      # 他エディションでテストを回すようになったら名前を分ける必要がある。
       - name: Upload screenshots
-        if: always()
+        if: always() && matrix.run_tests
         uses: actions/upload-artifact@v4
         with:
           name: ui-screenshots
@@ -75,7 +140,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Upload raw .xcresult (for debugging)
-        if: always()
+        if: always() && matrix.run_tests
         uses: actions/upload-artifact@v4
         with:
           name: test-results-xcresult
