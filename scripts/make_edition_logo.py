@@ -1,16 +1,18 @@
-"""級ごとのアイコン元画像を描き起こす。
+"""級ごとのアイコン元画像を描き起こす（手描きの素材が無いときの叩き台）。
 
-2級の元画像（`docs/assets/eitango-tokkun-logo-03.png`）は手作業で作ったもので、
-公開済みのアプリがそれを使っている。シリーズを増やすたびに同じ手作業を繰り返すと、
-級ごとに配色や字面の位置が微妙にずれて「同じシリーズに見えない」状態になるため、
-2級以外はここでレイアウトを決め打ちにして機械的に生成する。
+**2級・準2級・3級・4級は手描きの素材に差し替え済み**（2026-09-12）。このスクリプトが
+作るのはWindows標準フォントによる近似で、書体が本物と違う。既にある素材は
+`--force` を付けない限り上書きしない。
 
-2級の元画像は**再生成しない**（公開済みのアイコンを描き直さない）。配色と余白は
-その画像から実測した値をそのまま使うので、並べたときに同じシリーズとして見える。
+残りの級（準1級・1級）を作るときの出発点として残してある。出力した画像を
+そのまま使うのではなく、デザインの当たりを見るために使うこと。
+
+配色と背景グラデーションは2級の元画像から実測する。目分量で近い色を置くと、
+ホーム画面に並べたときに違う青に見える。
 
 使い方:
-    python scripts/make_edition_logo.py --edition GP2
-    python scripts/make_app_icon.py --edition GP2   # ← 続けてこちらでアイコン一式に変換
+    python scripts/make_edition_logo.py --edition GP1
+    python scripts/make_app_icon.py --edition GP1   # ← 続けてこちらでアイコン一式に変換
 
 出力: docs/assets/eitango-tokkun-logo-<小文字ID>.png（1024×1024・アルファなし）
 必要なもの: Pillow
@@ -98,7 +100,9 @@ def render(grade):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--edition", required=True, help="エディション識別子（GP2 など）")
+    parser.add_argument("--edition", required=True, help="エディション識別子（GP1 など）")
+    parser.add_argument("--force", action="store_true",
+                        help="既にある元画像を上書きする")
     args = parser.parse_args()
 
     if args.edition == "G2":
@@ -113,8 +117,14 @@ def main():
         print(f"error: フォントがありません: {FONT_PATH}", file=sys.stderr)
         return 1
 
-    image = render(grade)
     out = ROOT / f"docs/assets/eitango-tokkun-logo-{args.edition.lower()}.png"
+    if out.exists() and not args.force:
+        print(f"error: 既に元画像があります: {out}", file=sys.stderr)
+        print("       手描きの素材を上書きしないため中断した。"
+              "本当に描き直すなら --force", file=sys.stderr)
+        return 1
+
+    image = render(grade)
     # アルファを持たせない。透過つきのアイコンは審査で弾かれる
     image.convert("RGB").save(out, "PNG", optimize=True)
     print(f"wrote {out} {image.size}")
