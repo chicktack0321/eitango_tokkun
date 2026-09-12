@@ -76,6 +76,22 @@ targets:
       bundle_id: com.eitango.gp2
       product_name: EitangoGP2
 
+  # 英検3級（無料）。課金が無いので Products.storekit を持たない。
+  EitangoG3:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: G3
+      bundle_id: com.eitango.g3
+      product_name: EitangoG3
+
+  # 英検4級（無料）。同上。
+  EitangoG4:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: G4
+      bundle_id: com.eitango.g4
+      product_name: EitangoG4
+
   EitangoAppTests:
     type: bundle.unit-test
     platform: iOS
@@ -138,6 +154,42 @@ targets:
     dependencies:
       - target: EitangoGP2
 
+  # 掲載用スクリーンショットの撮影に使う。課金が無いので storekit は同梱せず、
+  # 審査用の購入画面を撮るテストは自分で skip する（バンドルに storekit が無いことで判定）。
+  EitangoG3UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppUITests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.g3.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoG3
+
+  EitangoG4UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppUITests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.g4.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoG4
+
 schemes:
   EitangoApp:
     build:
@@ -163,6 +215,35 @@ schemes:
 
   # テストは G2 のスキームでのみ回す。共通コードは同一で、級ごとに回しても
   # 同じものを確かめるだけになるため（実装指示書 P0-4）。
+  # 無料エディションは storeKitConfiguration を持たない（商品が無い）
+  EitangoG3:
+    build:
+      targets:
+        EitangoG3: all
+        EitangoG3UITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - EitangoG3UITests
+    archive:
+      config: Release
+
+  EitangoG4:
+    build:
+      targets:
+        EitangoG4: all
+        EitangoG4UITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - EitangoG4UITests
+    archive:
+      config: Release
+
   EitangoGP2:
     build:
       targets:

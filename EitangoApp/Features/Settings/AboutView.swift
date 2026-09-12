@@ -40,22 +40,26 @@ struct AboutView: View {
                 }
             }
 
-            Section {
-                Button {
-                    restore()
-                } label: {
-                    HStack {
-                        Text("購入を復元")
-                        if isRestoring {
-                            Spacer()
-                            ProgressView()
+            // 課金の無いエディション（4級・3級）には復元するものが無い。
+            // ボタンを残すと「買ったはずのものが復元されない」という問い合わせを生む。
+            if Edition.current.isPaid {
+                Section {
+                    Button {
+                        restore()
+                    } label: {
+                        HStack {
+                            Text("購入を復元")
+                            if isRestoring {
+                                Spacer()
+                                ProgressView()
+                            }
                         }
                     }
+                    .disabled(isRestoring)
+                } footer: {
+                    // 機種変更・再インストール時の案内はストアの審査でも所在を見られる
+                    Text("機種変更やアプリの入れ直しのあと、同じ Apple アカウントであれば無料で復元できます。")
                 }
-                .disabled(isRestoring)
-            } footer: {
-                // 機種変更・再インストール時の案内はストアの審査でも所在を見られる
-                Text("機種変更やアプリの入れ直しのあと、同じ Apple アカウントであれば無料で復元できます。")
             }
 
             Section("リンク") {

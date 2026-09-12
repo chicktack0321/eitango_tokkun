@@ -34,13 +34,27 @@ DEFAULT_TARGET = 50
 # 到達不能とみて 30% を置いていたが、専用の新規 core 語を書き足して既定値を満たした。
 TARGETS = {}
 
+# App内課金を持たないエディション。守るべき売り物が無いので独自性は評価しない。
+# 一方、**そのエディションでは core も無料で出題される**ため、他エディションの
+# core がここへ流れ込んでいないかは見る必要がある（core を無料帯として数える）。
+#
+# G4・G3 がこれに当たる。4級・3級の語彙帯は公開中の2級アプリの basic 帯に
+# 構造的にほぼ全部含まれており（中学レベルの語を143語サンプリングして
+# master に無いのは5語）、独自性50%を満たすには級に合わない語で水増しするしかない。
+# 有料にせず、上位級への入口として無料で出す判断をした（2026-09-12）。
+# 根拠は docs/vocab-database-spec.md §4「無料エディション」。
+FREE_EDITIONS = {"G4", "G3"}
+
 
 def load_master():
     return json.loads(MASTER.read_text(encoding="utf-8"))
 
 
 def index_by_edition(words):
-    """エディション -> {core: set(key), free: set(key)}"""
+    """エディション -> {core: set(key), free: set(key)}
+
+    課金の無いエディションでは core も無料で出題されるので free にも入れる。
+    """
     result = {}
     for entry in words:
         for edition, placement in entry["editions"].items():
@@ -48,6 +62,8 @@ def index_by_edition(words):
             tier = placement.get("tier")
             if tier == CORE_TIER:
                 slot["core"].add(entry["key"])
+                if edition in FREE_EDITIONS:
+                    slot["free"].add(entry["key"])
             elif tier in FREE_TIERS:
                 slot["free"].add(entry["key"])
     return result
@@ -60,6 +76,9 @@ def report(index, gate):
     for edition in editions:
         core = index[edition]["core"]
         if not core:
+            continue
+        if edition in FREE_EDITIONS:
+            print(f"[--] {edition}: core {len(core)}語 / 課金なし（独自性は評価しない）")
             continue
         others = [e for e in editions if e != edition]
         leaked_any = set()

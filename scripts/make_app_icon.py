@@ -24,6 +24,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCES = {
     "G2": ROOT / "docs/assets/eitango-tokkun-logo-03.png",
     "GP2": ROOT / "docs/assets/eitango-tokkun-logo-gp2.png",
+    "G3": ROOT / "docs/assets/eitango-tokkun-logo-g3.png",
+    "G4": ROOT / "docs/assets/eitango-tokkun-logo-g4.png",
 }
 
 LOGO_SIZES = [("AppLogo.png", 80), ("AppLogo@2x.png", 160), ("AppLogo@3x.png", 240)]

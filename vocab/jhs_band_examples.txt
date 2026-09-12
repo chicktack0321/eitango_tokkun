@@ -1,0 +1,604 @@
+# 中学基礎帯（4級帯）の例文。G4 の bridge/core と G3 の bridge に使う。
+#
+# 形式: <word> | <例文>
+# word は master.json の word フィールドと完全一致させること（key は機械的に解決する）。
+#
+# なぜ canonical ではなく override なのか:
+#   ここに挙げた語は公開中の2級アプリでは basic（既習語）で、例文を持たない。
+#   canonical の example に書くと2級の同梱 seed が変わり、再現一致ゲートが落ちる。
+#   したがって editions.G4 / editions.G3 の example として与える（仕様書§5）。
+#
+# 書式（仕様書§6）:
+#   - 1文で完結。4〜10語。クイズ画面は2行で打ち切るため長文は不可
+#   - A1帯の語だけで組む。見出し語以外に難しい語を入れない
+#   - 見出し語をそのままの形で含める（活用形の変化は可）
+#   - 固有名詞・時事ネタ・特定の文化前提を避ける
+able | She is able to swim well.
+about | Tell me about your new school.
+above | The clock is above the door.
+abroad | My sister wants to study abroad.
+across | We walked across the bridge.
+act | He acted like a real hero.
+action | Your action made everyone happy.
+actor | The actor smiled at the camera.
+add | Please add some sugar to the tea.
+against | The chair is against the wall.
+age | Children of that age love animals.
+ago | I finished my homework an hour ago.
+air | The air is cool in the morning.
+airport | We met my aunt at the airport.
+alarm clock | My alarm clock rings at six.
+album | She showed me her photo album.
+almost | It is almost six o'clock.
+along | We walked along the river.
+alphabet | He can write the alphabet now.
+ankle | I hurt my ankle in the game.
+another | Can I have another cup of tea?
+anyone | Did anyone see my pen?
+anything | I did not eat anything for lunch.
+anyway | It was cold, but we went anyway.
+apartment building | They live in a tall apartment building.
+arrive | The train will arrive at noon.
+art | I like art class the best.
+aunt | My aunt lives near the park.
+autumn | The leaves turn red in autumn.
+away | The station is far away.
+baker | The baker makes bread every morning.
+bank | I went to the bank with my mother.
+basket | She put the apples in a basket.
+bath | I take a bath before dinner.
+beach | We played on the beach all day.
+bear | A big bear lives in that forest.
+become | He wants to become a doctor.
+beef | My father cooked beef for dinner.
+beginning | The beginning of the story is sad.
+behind | The cat is behind the door.
+below | The town is below the hill.
+bench | Let's sit on that bench.
+berry | These red berries taste sweet.
+beside | She sat beside her friend.
+best | This is the best cake in town.
+better | My cold is better today.
+between | The shop is between the bank and the park.
+block | The store is two blocks away.
+boat | We saw a small boat on the lake.
+body | Wash your body in the shower.
+bookshelf | My books are on the bookshelf.
+boot | I wear boots on rainy days.
+boring | The movie was long and boring.
+both | Both of my brothers play soccer.
+bottle | Please bring a bottle of water.
+bowl | He ate a bowl of soup.
+break | Let's take a short break.
+bridge | We walked over the old bridge.
+bring | Please bring your textbook tomorrow.
+broken | My watch is broken.
+brush | I brush my teeth after breakfast.
+bug | A little bug flew into the room.
+build | They will build a new library.
+building | That building has ten floors.
+burger | I ate a burger for lunch.
+busy | My mother is busy every morning.
+butter | Put some butter on the bread.
+butterfly | A butterfly sat on the flower.
+button | Push the red button to start.
+cabbage | She cut the cabbage for the salad.
+cafeteria | We eat lunch in the school cafeteria.
+calendar | The calendar is on the wall.
+camp | We will camp near the lake.
+campfire | We sang songs around the campfire.
+candle | She put ten candles on the cake.
+cap | He wears a blue cap every day.
+card | I sent a birthday card to my friend.
+carrot | Rabbits like carrots very much.
+carry | Can you carry this box for me?
+cartoon | My brother watches cartoons on Sunday.
+catch | He can catch the ball well.
+chalk | The teacher wrote with white chalk.
+change | The weather changed in the afternoon.
+cherry | The cherry trees are beautiful in spring.
+child | That child is only three years old.
+chopstick | I can use chopsticks well.
+church | The old church stands on the hill.
+cinema | We went to the cinema last night.
+circle | Draw a big circle on the paper.
+city | My uncle lives in a large city.
+classmate | My classmate helped me with math.
+clean | I clean my room every Sunday.
+clear | The sky is clear today.
+climb | They climbed the mountain in summer.
+closet | Your coat is in the closet.
+clothes | I wash my clothes on Saturday.
+clothing | This shop sells children's clothing.
+cloud | There is one white cloud in the sky.
+cloudy | It was cloudy all morning.
+club | She joined the tennis club.
+coat | Put on your coat before you go out.
+coin | He found an old coin in the yard.
+comic | I read comics after school.
+cool | The wind feels cool tonight.
+corn | We ate corn soup for lunch.
+country | Japan is a beautiful country.
+cousin | My cousin came to my birthday party.
+cow | The cows are eating grass.
+crab | We saw a small crab on the beach.
+crayon | The child drew a house with crayons.
+cream | She put cream in her coffee.
+cry | The baby cried all night.
+dark | It gets dark early in winter.
+date | What is the date today?
+daughter | Their daughter is in high school.
+dear | Dear friends, thank you for coming.
+deer | A deer walked into the garden.
+department store | We bought shoes at the department store.
+dessert | I want ice cream for dessert.
+diary | She writes in her diary every night.
+dictionary | Look up the word in your dictionary.
+different | These two bags are different.
+difficult | This question is too difficult for me.
+dining room | We eat dinner in the dining room.
+dinosaur | My brother loves dinosaur books.
+dirty | Your shoes are very dirty.
+dish | Please wash the dishes after dinner.
+doll | She gave her sister a doll.
+dollar | This book costs ten dollars.
+dolphin | We saw dolphins from the boat.
+donut | He ate two donuts for breakfast.
+downstairs | My father is downstairs now.
+dragon | The story is about a big dragon.
+drama | She likes drama class very much.
+dream | I had a strange dream last night.
+drive | My father drives to work every day.
+driver | The bus driver smiled at us.
+drugstore | I bought soap at the drugstore.
+drum | He plays the drums in a band.
+duck | Some ducks swam on the pond.
+each | Each student has a textbook.
+early | I got up early this morning.
+earphone | She listens to music with earphones.
+earth | The earth goes around the sun.
+east | The sun rises in the east.
+easy | This question is very easy.
+eggplant | My mother cooked eggplant for dinner.
+elevator | Let's take the elevator to the fifth floor.
+email | I sent an email to my teacher.
+end | The end of the movie was sad.
+enjoy | We enjoyed the concert very much.
+eraser | May I use your eraser?
+ever | Have you ever seen a whale?
+every | I walk to school every day.
+everybody | Everybody likes her songs.
+everyone | Everyone was quiet in the room.
+everything | Everything in this shop is cheap.
+everywhere | I looked everywhere for my key.
+face | Wash your face before breakfast.
+fall | Leaves fall from the trees in autumn.
+fan | Please turn on the fan.
+far | The station is not far from here.
+farm | My grandfather works on a farm.
+farmer | The farmer grows rice and vegetables.
+fast | That train is very fast.
+feel | I feel happy today.
+few | Only a few students came early.
+fifth | This is my fifth cup of tea.
+fight | The two boys had a short fight.
+file | Put the papers in this file.
+find | I cannot find my notebook.
+finger | She cut her finger on the knife.
+finish | I finished my homework before dinner.
+fire | They made a fire outside the tent.
+fire alarm | The fire alarm rang at noon.
+fireplace | A warm fire burned in the fireplace.
+firework | We watched fireworks by the river.
+fly | Birds fly over the lake.
+foot | My left foot hurts.
+football | They play football after school.
+fork | Please give me a fork.
+fourth | Our room is on the fourth floor.
+free | I am free this afternoon.
+front | Wait in front of the station.
+funny | His story was very funny.
+garden | Flowers grow in our garden.
+gate | Please close the gate.
+get | I get a letter from her every month.
+ghost | The children talked about ghosts.
+gift | She gave me a birthday gift.
+giraffe | The giraffe has a very long neck.
+glad | I am glad to see you.
+glass | He drank a glass of milk.
+glove | Wear gloves when it is cold.
+goat | A goat is eating grass.
+gold | Her ring is made of gold.
+grandparent | My grandparents live in the country.
+grape | These grapes are sweet.
+grass | The children sat on the grass.
+gray | The sky was gray all day.
+great | We had a great time at the park.
+group | Our group has five students.
+grow | Tomatoes grow well in summer.
+gym | We play basketball in the gym.
+hair | Her hair is long and black.
+half | I ate half of the cake.
+hall | The students met in the hall.
+happen | What happened to your bike?
+hard | This question is too hard.
+headphone | He wears headphones on the train.
+healthy | Vegetables keep us healthy.
+hear | I can hear a bird outside.
+heart | My heart beat fast before the test.
+helpful | Your map was very helpful.
+hero | The boy became a hero that day.
+high | That mountain is very high.
+hiking | We went hiking last Sunday.
+hill | Our school is on a small hill.
+history | I like history better than math.
+hobby | My hobby is taking pictures.
+holiday | We have a holiday next Monday.
+honey | She puts honey in her tea.
+hospital | My mother works at a hospital.
+hotel | We stayed at a hotel near the sea.
+hour | I studied for two hours.
+hundred | There are a hundred students here.
+hungry | I am hungry after the game.
+husband | Her husband is a teacher.
+ice | Put some ice in my water.
+idea | That is a good idea.
+important | This letter is very important.
+ink | The pen has no ink.
+inside | Let's play inside today.
+into | The cat ran into the room.
+jacket | Wear a jacket. It is cold.
+jam | I like jam on my toast.
+jeans | He wears blue jeans on Sunday.
+job | My sister has a new job.
+jogging | I go jogging every morning.
+join | Will you join our club?
+joke | His joke made us laugh.
+juice bar | We stopped at a juice bar.
+just | I just finished my lunch.
+keep | Please keep this book for me.
+key | I lost the key to my house.
+keyboard | She types fast on the keyboard.
+kick | He kicked the ball to me.
+kid | The kids played in the yard.
+kill | Do not kill the little bug.
+kilometer | We walked three kilometers today.
+kind | She is kind to everyone.
+kindergarten | My brother goes to kindergarten.
+king | The king lived in a big castle.
+kitten | Our cat has three kittens.
+knee | He fell and hurt his knee.
+knife | Cut the bread with this knife.
+ladder | He climbed up the ladder.
+lady | A kind lady helped me.
+lake | We swam in the lake.
+lamp | Turn on the lamp, please.
+large | They live in a large house.
+late | I was late for school today.
+later | I will call you later.
+laugh | We laughed at his story.
+leaf | A red leaf fell on my hand.
+learn | I want to learn the guitar.
+leave | We leave home at seven.
+left | Turn left at the next corner.
+lemon | Put a lemon in the tea.
+lesson | I have a piano lesson today.
+letter | She wrote a letter to her aunt.
+life | Life in the country is quiet.
+light | The light in my room is bright.
+line | Draw a line under the word.
+list | Make a list of the things you need.
+little | We have a little time before dinner.
+living room | The family watches TV in the living room.
+lose | Do not lose your ticket.
+lot | There are a lot of books here.
+low | The table is too low for me.
+machine | This machine makes coffee.
+magazine | She reads a magazine on the bus.
+magic | The boy loves magic shows.
+mall | We went shopping at the mall.
+map | Look at the map on the wall.
+marker | Write your name with this marker.
+math | Math is my favorite subject.
+maybe | Maybe it will rain tomorrow.
+meal | We had a big meal last night.
+meat | He does not eat meat.
+meet | Let's meet at the station.
+meeting | The meeting starts at ten.
+melon | This melon is very sweet.
+member | She is a member of the music club.
+menu | May I see the menu, please?
+mine | That red bag is mine.
+minute | Wait for five minutes, please.
+model | He makes model planes.
+moon | The moon is bright tonight.
+more | I want more time for my homework.
+most | Most students walk to school.
+motorcycle | My uncle rides a motorcycle.
+mountain | We climbed the mountain in July.
+mouse | A mouse ran under the desk.
+move | They moved to a new town.
+much | I do not have much money.
+museum | We visited a science museum.
+mushroom | She put mushrooms in the soup.
+musical | We saw a musical last month.
+musician | The musician played for an hour.
+must | You must finish your homework first.
+near | The park is near my house.
+neck | My neck hurts a little.
+need | I need a new pencil.
+never | He never eats breakfast.
+news | I watch the news every evening.
+newspaper | My father reads the newspaper at breakfast.
+next | I will see you next week.
+noodle | We ate noodles for lunch.
+noon | The class ends at noon.
+north | Birds fly north in spring.
+note | She wrote a note to her teacher.
+nothing | There is nothing in the box.
+off | Please turn off the light.
+office | My mother works in an office.
+often | We often play tennis after school.
+onion | Cut the onion into small pieces.
+only | I have only one pencil.
+other | The other students are outside.
+out | He went out ten minutes ago.
+outside | The children are playing outside.
+oven | She put the cake in the oven.
+over | A bird flew over the house.
+page | Open your book to page ten.
+painting | That painting is very beautiful.
+pan | Put the eggs in the pan.
+pancake | We had pancakes for breakfast.
+pants | His pants are too long.
+parent | My parents work in the city.
+part | This is my favorite part of the song.
+pay | I will pay for the tickets.
+peach | These peaches are very sweet.
+pepper | Put some salt and pepper on it.
+person | She is a very kind person.
+pet | We have two pets at home.
+photographer | The photographer took our picture.
+pick | Pick the red apples, please.
+piece | May I have a piece of cake?
+pig | The pigs are eating on the farm.
+pilot | He wants to be a pilot.
+pineapple | We ate pineapple after dinner.
+place | This is a good place for lunch.
+plan | We made a plan for the trip.
+plane | The plane left at noon.
+plant | She waters the plants every morning.
+plate | Put the fish on this plate.
+player | He is the best player on the team.
+playground | The children ran to the playground.
+pocket | The key is in my pocket.
+police | The police came to the store.
+pool | We swam in the pool all afternoon.
+pork | My father cooked pork for dinner.
+postcard | She sent me a postcard from the beach.
+poster | A big poster is on the wall.
+pot | Put the soup in the pot.
+potato | We had potatoes with our meat.
+printer | The printer is next to the computer.
+problem | I cannot answer this problem.
+program | I watch that program every Sunday.
+pull | Pull the door, do not push it.
+pumpkin | We made a pumpkin pie.
+puppy | Their puppy is only two months old.
+purchase order | She sent the purchase order by email.
+purple | She wore a purple skirt.
+purse | Her purse is on the table.
+push | Do not push the little children.
+put | Put your books on the desk.
+puzzle | We finished the puzzle together.
+queen | The queen visited the town.
+question | May I ask you a question?
+quick | He had a quick breakfast.
+quickly | She walked quickly to the station.
+quiz | We had a short quiz in math.
+racket | I bought a new tennis racket.
+radio | My grandfather listens to the radio.
+rainbow | We saw a rainbow after the rain.
+rainfall | The rainfall was heavy last night.
+rainy | I stay home on rainy days.
+ready | Are you ready for the test?
+real | Is that a real diamond?
+really | I really like this song.
+remember | I remember her name now.
+ribbon | She wore a red ribbon in her hair.
+rich | The rich man built a hospital.
+ride | I ride my bike to school.
+ring | She wears a ring on her finger.
+river | We swam in the river last summer.
+road | This road goes to the lake.
+rock | He sat on a large rock.
+rocket | The rocket went up into the sky.
+rose | He gave her ten red roses.
+rugby | They play rugby in winter.
+ruler | Draw the line with a ruler.
+sad | The story made me sad.
+salad | She made a salad for lunch.
+salt | Please pass me the salt.
+same | We go to the same school.
+sand | The sand was hot on the beach.
+sauce | Put some sauce on the meat.
+sausage | I ate a sausage for breakfast.
+say | What did your teacher say?
+scarf | She wears a warm scarf in winter.
+score | Our score was ten to eight.
+screen | Look at the screen, please.
+sea | The sea is blue and quiet today.
+seafood | This restaurant is famous for seafood.
+season | Spring is my favorite season.
+second | This is my second cup of coffee.
+seesaw | The children played on the seesaw.
+self study | I do self study for an hour.
+seller | The seller was very kind to us.
+semester | The new semester starts in April.
+shall | Shall we go to the park?
+shampoo | I bought shampoo at the store.
+shark | We saw a shark at the aquarium.
+sheep | The sheep are on the hill.
+sheet | Take a sheet of paper.
+ship | The ship left the port at six.
+shop | This shop sells old books.
+shopping | We went shopping on Saturday.
+short | His hair is very short.
+should | You should go to bed early.
+shoulder | My shoulder hurts a little.
+show | Please show me your picture.
+shower | I take a shower every morning.
+shrine | We visited a shrine on New Year's Day.
+shut | Please shut the window.
+sick | My sister is sick today.
+side | Sit on this side of the table.
+silver | She has a silver watch.
+singer | That singer is popular with children.
+size | What size are your shoes?
+skate | We skate on the pond in winter.
+skateboard | He rides a skateboard in the park.
+ski | We ski in the mountains every winter.
+skin | The baby has soft skin.
+skirt | Her skirt is blue and white.
+sky | The sky was full of stars.
+slipper | Please wear slippers in the house.
+slowly | Please speak more slowly.
+smartphone | She takes pictures with her smartphone.
+snack | We had a snack after school.
+snake | A long snake was in the grass.
+sneaker | I bought new sneakers yesterday.
+snowy | It was snowy all weekend.
+soap | Wash your hands with soap.
+sock | My socks are in the closet.
+sofa | The cat is sleeping on the sofa.
+somebody | Somebody left a bag here.
+someday | I want to visit that country someday.
+someone | Someone is waiting for you outside.
+something | I have something to tell you.
+sometimes | I sometimes walk to school.
+somewhere | Let's eat somewhere near the station.
+son | Their son plays the piano.
+soon | Dinner will be ready soon.
+soup | The soup is still hot.
+south | Our town is south of the river.
+spaceship | The boy drew a spaceship.
+speak | Can you speak English?
+speaker | Please turn up the speaker.
+special | Today is a special day for us.
+spider | A small spider is on the wall.
+spoon | Eat the soup with this spoon.
+stamp | I put a stamp on the letter.
+stand | Please stand near the door.
+star | We looked at the stars all night.
+start | The game starts at three.
+stay | We stayed at my aunt's house.
+stone | The old bridge is made of stone.
+stop | The bus stopped in front of us.
+store | The store opens at nine.
+story | She told us a funny story.
+street | Cross the street carefully.
+subway | I go to work by subway.
+sugar | Do you take sugar in your tea?
+suit | He wore a black suit.
+suitcase | My suitcase is very heavy.
+sunburn | I got a sunburn at the beach.
+sunflower | The sunflowers are tall this year.
+sunrise | We watched the sunrise from the hill.
+sunset | The sunset was beautiful yesterday.
+supermarket | I bought eggs at the supermarket.
+supplier | The supplier sent the boxes today.
+surfing | He goes surfing every summer.
+sweater | Wear a sweater. It is cold outside.
+swimsuit | Do not forget your swimsuit.
+take | I take the bus to school.
+talk | We talked about our summer plans.
+tall | My brother is very tall.
+tape | Put some tape on the box.
+taxi | We took a taxi to the airport.
+teach | She teaches music at our school.
+team | Our team won the game.
+teammate | My teammate passed me the ball.
+telephone | The telephone rang three times.
+tell | Please tell me your name.
+tent | We put up the tent near the river.
+test | The math test was difficult.
+textbook | Open your textbook to page twenty.
+than | My bag is heavier than yours.
+then | We ate dinner and then watched TV.
+thing | I have many things to do.
+third | This is my third year here.
+thirsty | I am thirsty after the game.
+thousand | The city has ten thousand people.
+through | The train went through a tunnel.
+throw | Do not throw the ball inside.
+ticket | I bought two tickets for the concert.
+tired | I was tired after the long walk.
+toast | She ate toast and eggs.
+toe | I hurt my toe on the chair.
+together | Let's study together this evening.
+toilet | The toilet is on the first floor.
+tonight | We will eat out tonight.
+too | This soup is too hot.
+tooth | My tooth hurts today.
+toothbrush | I bought a new toothbrush.
+top | The bird sat on the top of the tree.
+touch | Do not touch the hot pan.
+towel | Please bring a clean towel.
+town | Our town is small and quiet.
+traffic light | Stop at the traffic light.
+triangle | Draw a triangle on the paper.
+truck | A big truck stopped in front of us.
+true | Her story is true.
+try | Try this cake. It is good.
+turtle | The turtle walked slowly to the water.
+umbrella | Take an umbrella. It will rain.
+uncle | My uncle lives in the country.
+under | The ball is under the table.
+understand | I do not understand this question.
+until | We waited until six o'clock.
+upstairs | My room is upstairs.
+use | May I use your pen?
+video | We watched a short video in class.
+violin | She plays the violin very well.
+visit | I will visit my grandmother on Sunday.
+volleyball | We played volleyball in the gym.
+wait | Please wait for me here.
+waiter | The waiter brought our food.
+wake | I wake up at six every morning.
+wall | There is a map on the wall.
+war | The country was quiet after the war.
+warm | The room is warm and bright.
+wash | Wash your hands before dinner.
+way | Do you know the way to the station?
+wear | She wears glasses at school.
+website | I found the answer on their website.
+weekend | We go hiking every weekend.
+welcome | Welcome to our school.
+well | She sings very well.
+west | The sun goes down in the west.
+whale | We saw a whale from the ship.
+which | Which bag is yours?
+while | He read a book while I cooked.
+wife | His wife is a doctor.
+will | I will call you tomorrow.
+win | Our team will win the game.
+wind | The wind is strong today.
+windy | It was windy at the beach.
+wing | The bird has a hurt wing.
+wish | I wish you a happy birthday.
+without | He left without his umbrella.
+wolf | A wolf lives in that forest.
+wood | This table is made of wood.
+word | I do not know this word.
+work | My father works at a hospital.
+workbook | Finish the workbook by Friday.
+worker | The workers built a new road.
+world | She wants to travel around the world.
+worry | Do not worry about the test.
+would | Would you like some tea?
+writer | He became a famous writer.
+wrong | Your answer is wrong.
+yard | The children played in the yard.
+yogurt | I eat yogurt every morning.
+young | My sister is too young for school.
+zebra | We saw zebras at the zoo.

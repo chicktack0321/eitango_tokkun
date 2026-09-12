@@ -20,8 +20,12 @@ struct EditionSpec: Sendable {
     /// 画面に出す級の表記。商標なので®を付ける
     let gradeDisplayName: String
 
-    /// App内課金のプロダクトID
-    let unlockProductID: String
+    /// App内課金のプロダクトID。`nil` なら課金の無いエディション。
+    ///
+    /// 4級・3級は無料で出す。両級の語彙帯は公開中の2級アプリの基礎帯にほぼ全部
+    /// 含まれており、「その級を買う理由になる語」を作れないため
+    /// （docs/vocab-database-spec.md §4）。上位級への入口として置く。
+    let unlockProductID: String?
 
     /// 商標の帰属表示。アプリ内とストアの説明文に同じ文言を出す
     let trademarkNotice: String
@@ -38,7 +42,7 @@ struct EditionSpec: Sendable {
     /// 課金対象の語彙帯の呼び名。ホームとクイズのロック案内を組み立てるのに使う
     let coreVocabularyName: String
 
-    /// 購入画面のタイトル
+    /// 購入画面のタイトル。課金の無いエディションでは使わない
     let paywallTitle: String
 
     /// 購入画面で「何が解放されるか」を説明する文
@@ -56,6 +60,9 @@ struct EditionSpec: Sendable {
 typealias Edition = EditionSpec
 
 extension EditionSpec {
+
+    /// App内課金を持つか。false なら購入導線を一切出さず、全語彙を最初から出題する
+    var isPaid: Bool { unlockProductID != nil }
 
     /// 階層の表示名。エディション定義に無い階層は共通の既定名で埋める
     func displayName(for tier: VocabularyTier) -> String {

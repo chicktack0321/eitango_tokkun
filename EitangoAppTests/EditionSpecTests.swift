@@ -41,6 +41,20 @@ final class EditionSpecTests: XCTestCase {
         XCTAssertEqual(EditionSpec.seedResourceName, "word_master_seed")
     }
 
+    /// 2級は課金あり。nil になっていると購入導線ごと消えて売上が止まる。
+    func testG2IsPaidEdition() {
+        XCTAssertTrue(spec.isPaid)
+    }
+
+    /// 課金の無いエディションでは、購入も試用も無しに全語彙が出題対象になる。
+    /// ここが false のままだと、無料アプリなのにコア語彙が出題されない。
+    func testFreeEditionHasFullAccessWithoutPurchase() {
+        let free = AccessRights(isPurchased: false, isTrialActive: false, isFreeEdition: true)
+        XCTAssertTrue(free.hasFullAccess)
+        XCTAssertEqual(free.availableTiers, Set(VocabularyTier.allCases))
+        XCTAssertEqual(free.summary, "すべての語彙")
+    }
+
     /// 商標表記とURLは審査で見られる。空や http は事故になる。
     func testNoticesAndURLs() {
         XCTAssertTrue(spec.trademarkNotice.contains("登録商標"))

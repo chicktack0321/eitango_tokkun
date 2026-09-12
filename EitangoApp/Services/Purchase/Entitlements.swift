@@ -34,6 +34,12 @@ final class Entitlements {
 
     /// アプリ起動時に一度だけ呼ぶ
     func start() {
+        // 課金の無いエディション（4級・3級）では、StoreKit に一切触れずに
+        // 全語彙を出題対象にする。購入導線も試用期間も画面に出さない。
+        guard Edition.current.isPaid else {
+            rights = AccessRights(isPurchased: false, isTrialActive: false, isFreeEdition: true)
+            return
+        }
         refreshTrial()
         observeTransactionUpdates()
         Task {
@@ -45,6 +51,7 @@ final class Entitlements {
     /// 試用の起点を確定し、残り日数を反映する。
     /// 画面に戻るたびに呼んでよい（起点は初回のみ記録される）。
     func refreshTrial(now: Date = .now) {
+        guard Edition.current.isPaid else { return }
         trial.startIfNeeded(now: now)
         rights.isTrialActive = trial.isActive(now: now)
         trialDaysRemaining = trial.daysRemaining(now: now)
@@ -58,15 +65,16 @@ final class Entitlements {
     /// 「価格を読み込んでいます」のままで、アプリを再起動するまで買えなかった。
     /// 買えない状態が自力で直らないのは、売り物として成立していない。
     func ensureProductLoaded() async {
-        guard product == nil else { return }
+        guard Edition.current.isPaid, product == nil else { return }
         await loadProduct()
     }
 
     private func loadProduct() async {
+        guard let productID = Edition.current.unlockProductID else { return }
         do {
-            product = try await Product.products(for: [Edition.current.unlockProductID]).first
+            product = try await Product.products(for: [productID]).first
             if product == nil {
-                logger.notice("商品が見つかりません: \(Edition.current.unlockProductID, privacy: .public)")
+                logger.notice("商品が見つかりません: \(productID, privacy: .public)")
             }
         } catch {
             // 電波が無い場所では読めなくて当然なので、失敗しても学習機能には影響させない
@@ -76,12 +84,13 @@ final class Entitlements {
 
     /// 端末が持っている購入権を読み直す
     func refreshPurchaseState() async {
+        guard let productID = Edition.current.unlockProductID else { return }
         var purchased = false
         for await result in Transaction.currentEntitlements {
             guard case .verified(let transaction) = result else { continue }
             // revocationDate が入るのは払い戻し・ファミリー共有の解除など。
             // ここを見ないと返金後も解放されたままになる。
-            guard transaction.productID == Edition.current.unlockProductID,
+            guard transaction.productID == productID,
                   transaction.revocationDate == nil else { continue }
             purchased = true
         }

@@ -197,6 +197,11 @@ final class EitangoAppUITests: XCTestCase {
     /// テスト用のストアを立てて読み込ませる。スキーム側で指定する方法だと
     /// ストアフロントが米国のままで、ドル表記の画像になってしまう。
     func testCapturePurchaseScreen() throws {
+        // 課金の無いエディション（4級・3級）には購入画面が無い。
+        // テスト用ストアの設定ファイルを同梱していないことでそれと分かる。
+        guard storeKitConfigurationURL() != nil else {
+            throw XCTSkip("課金の無いエディションのため、審査用の購入画面は撮らない")
+        }
         let store = try SKTestSession(configurationFileNamed: "Products")
         store.resetToDefaultState()
         store.clearTransactions()
@@ -267,8 +272,12 @@ final class EitangoAppUITests: XCTestCase {
     ///
     /// エディションごとに別の設定ファイルを同梱するため、取り違えると
     /// 「購入画面は正しいのに価格だけ出ない」という分かりにくい失敗になる。
+    private func storeKitConfigurationURL() -> URL? {
+        Bundle(for: Self.self).url(forResource: "Products", withExtension: "storekit")
+    }
+
     private func bundledProductIDs() -> [String] {
-        guard let url = Bundle(for: Self.self).url(forResource: "Products", withExtension: "storekit"),
+        guard let url = storeKitConfigurationURL(),
               let data = try? Data(contentsOf: url),
               let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let products = json["products"] as? [[String: Any]] else {

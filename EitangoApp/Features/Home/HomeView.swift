@@ -20,7 +20,8 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     titleHeader
-                    if !entitlements.rights.isPurchased {
+                    // 課金の無いエディションでは購入導線そのものを出さない
+                    if Edition.current.isPaid && !entitlements.rights.isPurchased {
                         accessCard
                     }
                     todayCard

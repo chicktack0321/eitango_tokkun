@@ -60,6 +60,10 @@ jobs:
             run_tests: true
           - edition: GP2
             scheme: EitangoGP2
+          - edition: G3
+            scheme: EitangoG3
+          - edition: G4
+            scheme: EitangoG4
 
     steps:
       - uses: actions/checkout@v4
