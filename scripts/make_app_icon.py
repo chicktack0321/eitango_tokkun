@@ -26,6 +26,8 @@ SOURCES = {
     "GP2": ROOT / "docs/assets/eitango-tokkun-logo-gp2.png",
     "G3": ROOT / "docs/assets/eitango-tokkun-logo-g3.png",
     "G4": ROOT / "docs/assets/eitango-tokkun-logo-g4.png",
+    "GP1": ROOT / "docs/assets/eitango-tokkun-logo-gp1.png",
+    "G1": ROOT / "docs/assets/eitango-tokkun-logo-g1.png",
 }
 
 LOGO_SIZES = [("AppLogo.png", 80), ("AppLogo@2x.png", 160), ("AppLogo@3x.png", 240)]

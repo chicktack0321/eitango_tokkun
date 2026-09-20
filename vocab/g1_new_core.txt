@@ -1,0 +1,1237 @@
+# G1（1級）専用の core 語
+#
+# 形式: <word> | <訳> | <例文> | <partOfSpeech> | <domain> | <category>
+# 位置づけ: master.json に無い、1級（C1）帯の新規語。これが1級アプリの core（課金対象）で、
+#           全語が1級専用（他エディションには載せない）。docs/vocab-database-spec.md §4。
+#           canonical key は word から機械的に決まり、公開後は改名禁止。
+# 方針: 例文は1文・4〜10語で、1級までの語彙で構成する（同 §6）。
+#       準1級の core と重ならないことは apply スクリプトが検査する。
+
+# === 動詞 299語 ===
+abate | 弱まる、和らぐ | The storm abated before dawn. | verb | environment | B
+abdicate | 退位する、放棄する | The king abdicated in favor of his son. | verb | society | C
+abhor | 忌み嫌う | She abhors any form of cruelty. | verb | society | C
+abstain | 控える、棄権する | Three members abstained from the vote. | verb | society | B
+accede | 同意する、就任する | The board acceded to the union's request. | verb | business | C
+accentuate | 際立たせる | The light accentuates the carved pattern. | verb | general | B
+acclaim | 称賛する | Critics acclaimed her second novel. | verb | education | B
+acquiesce | 黙って従う | He acquiesced rather than argue. | verb | society | C
+admonish | 戒める | The teacher admonished the noisy class. | verb | education | C
+adorn | 飾る | Lanterns adorn the temple gate. | verb | daily | C
+allude | ほのめかす | She alluded to a coming change. | verb | business | B
+amalgamate | 合併する | The two unions amalgamated last year. | verb | business | C
+annihilate | 全滅させる | Frost annihilated the young plants. | verb | environment | C
+annotate | 注釈をつける | Students annotate the text as they read. | verb | education | C
+appraise | 評価する、鑑定する | An expert appraised the old clock. | verb | business | B
+apprise | 知らせる | Please apprise us of any delay. | verb | business | C
+arbitrate | 仲裁する | A retired judge arbitrated the dispute. | verb | society | C
+ascertain | 突き止める | Police could not ascertain the cause. | verb | society | B
+assuage | 和らげる | Warm words assuaged her fears. | verb | health | C
+atone | 償う | He worked hard to atone for the error. | verb | society | C
+attest | 証明する | These records attest to steady growth. | verb | business | B
+avail | 役立つ、利用する | Protests availed them nothing. | verb | society | C
+avow | 公言する | The author avowed a lifelong debt to teachers. | verb | education | C
+baffle | 当惑させる | The symptoms baffled every specialist. | verb | health | B
+banish | 追放する | The custom was banished long ago. | verb | society | C
+barter | 物々交換する | Farmers bartered grain for tools. | verb | business | C
+bask | 浴びる、心地よく過ごす | Seals bask on the warm rocks. | verb | environment | C
+befall | 降りかかる | No harm befell the crew. | verb | general | C
+befriend | 親しくなる | Volunteers befriend isolated seniors. | verb | society | C
+beguile | だます、魅了する | Easy profits beguiled small investors. | verb | business | C
+belie | 偽って伝える、裏切る | Her calm voice belied real anger. | verb | general | C
+bemoan | 嘆く | Critics bemoan the loss of old cinemas. | verb | society | C
+bequeath | 遺贈する | She bequeathed her books to the school. | verb | society | C
+berate | 叱りつける | The coach berated the careless player. | verb | education | C
+beseech | 懇願する | Villagers beseeched the mayor for help. | verb | society | C
+besiege | 包囲する、悩ませる | Reporters besieged the small office. | verb | society | C
+bolster | 強化する | New data bolstered their argument. | verb | education | B
+brandish | 振り回す | He brandished the letter in triumph. | verb | general | C
+bristle | 逆立つ、いらだつ | The staff bristled at the accusation. | verb | business | C
+broach | 切り出す | Nobody dared broach the subject. | verb | business | C
+burgeon | 急成長する | Online tutoring has burgeoned lately. | verb | education | C
+cajole | 言いくるめる | She cajoled him into staying. | verb | daily | C
+canvass | 意見を求めて回る | Volunteers canvassed the neighborhood. | verb | society | C
+capitulate | 降伏する | The firm capitulated to public pressure. | verb | business | C
+castigate | 酷評する | The report castigates weak oversight. | verb | society | C
+censure | 譴責する | The council censured two officials. | verb | society | C
+chastise | 厳しく叱る | He chastised himself for the delay. | verb | general | C
+chide | たしなめる | She chided the boys for shouting. | verb | daily | C
+circumscribe | 制限する | The law circumscribes police powers. | verb | society | C
+clamor | 騒ぎ立てる | Residents clamored for a new crossing. | verb | society | C
+coerce | 強制する | No worker should be coerced into overtime. | verb | business | B
+collate | 照合する | The clerk collated the two lists. | verb | business | C
+commiserate | 同情する | Colleagues commiserated over the loss. | verb | daily | C
+concoct | でっち上げる、調合する | He concocted a weak excuse. | verb | general | C
+condone | 容認する | The school does not condone bullying. | verb | education | B
+confide | 打ち明ける | She confided her doubts to a friend. | verb | daily | B
+conflate | 混同する | Do not conflate cause and effect. | verb | education | C
+confound | 困惑させる | The result confounded the experts. | verb | education | C
+congregate | 集まる | Birds congregate on the sandbar. | verb | environment | C
+conjecture | 推測する | Analysts conjecture that rates will fall. | verb | business | C
+conjure | 呼び起こす、作り出す | The scent conjures a childhood kitchen. | verb | general | C
+consecrate | 神聖にする | The chapel was consecrated in 1890. | verb | society | C
+constrict | 収縮させる、締めつける | Cold air constricts the airways. | verb | health | C
+construe | 解釈する | Silence should not be construed as consent. | verb | society | C
+contort | ゆがめる | Pain contorted his face. | verb | health | C
+contravene | 違反する | The plan contravenes city regulations. | verb | society | C
+covet | 切望する | Young chefs covet that award. | verb | business | C
+cower | 縮こまる | The puppy cowered under the chair. | verb | daily | C
+decry | 非難する | Doctors decry the sale of such drinks. | verb | health | C
+defer | 延期する、従う | We deferred the decision to spring. | verb | business | B
+delineate | 描写する、定める | The map delineates the flood zone. | verb | environment | C
+demarcate | 境界を定める | Fences demarcate each small plot. | verb | environment | C
+denigrate | けなす | Never denigrate a rival in public. | verb | business | C
+depose | 退陣させる | The general was deposed peacefully. | verb | society | C
+deprecate | 非難する、軽んじる | The manual deprecates that old command. | verb | technology | C
+desist | やめる | The court ordered them to desist. | verb | society | C
+despise | 軽蔑する | He despises careless work. | verb | general | B
+detest | ひどく嫌う | She detests long meetings. | verb | daily | B
+digress | 脱線する | The speaker digressed for ten minutes. | verb | education | C
+disband | 解散する | The committee disbanded in March. | verb | society | C
+discredit | 信用を失わせる | Poor records discredited the study. | verb | education | B
+disdain | 軽蔑する | He disdains any kind of flattery. | verb | society | C
+disentangle | 解きほぐす | It is hard to disentangle the two causes. | verb | education | C
+disparage | 見下す | Do not disparage small contributions. | verb | society | C
+dispel | 払いのける | The tour dispelled many false ideas. | verb | education | B
+disseminate | 広める | The agency disseminates weather alerts. | verb | technology | B
+dissipate | 消散させる | The fog dissipated by ten. | verb | environment | C
+divest | 手放す、剝奪する | The fund divested its coal holdings. | verb | business | C
+dwarf | 小さく見せる | The new tower dwarfs the old hall. | verb | society | C
+eclipse | 覆い隠す、しのぐ | Streaming has eclipsed disc sales. | verb | business | B
+edify | 啓発する | The exhibit aims to edify young visitors. | verb | education | C
+efface | 消し去る | Time has effaced the carved letters. | verb | general | C
+emanate | 発する | A faint hum emanated from the machine. | verb | technology | C
+embellish | 飾り立てる | He embellished the story slightly. | verb | general | C
+emulate | 見習う | Rivals tried to emulate her method. | verb | business | B
+encroach | 侵食する | Housing is encroaching on farmland. | verb | environment | B
+engender | 生じさせる | Fair rules engender trust. | verb | society | C
+enrage | 激怒させる | The decision enraged local farmers. | verb | society | C
+enshrine | 明記する、大切に守る | The right is enshrined in the charter. | verb | society | C
+entice | 誘い込む | Free samples entice new customers. | verb | business | B
+enumerate | 列挙する | The report enumerates six risks. | verb | business | C
+envisage | 想定する | We envisage a two-year project. | verb | business | B
+epitomize | 典型を示す | This case epitomizes the problem. | verb | education | C
+equate | 同一視する | Do not equate price with quality. | verb | business | B
+espouse | 支持する | The party espouses green policies. | verb | society | C
+evade | 逃れる | The answer evaded the real question. | verb | society | B
+exalt | 高める、称賛する | The poem exalts ordinary labor. | verb | education | C
+exasperate | いらだたせる | Repeated delays exasperated the crew. | verb | business | C
+exhort | 強く勧める | Coaches exhorted the team to focus. | verb | education | C
+exonerate | 潔白を証明する | New evidence exonerated the driver. | verb | society | C
+expound | 詳しく説明する | She expounded her theory for an hour. | verb | education | C
+extol | 絶賛する | Reviews extol the simple design. | verb | business | C
+extrapolate | 外挿する、推定する | We cannot extrapolate from one case. | verb | education | C
+falsify | 改ざんする | Nobody may falsify safety records. | verb | business | C
+fathom | 理解する | I cannot fathom their reasoning. | verb | general | C
+feign | ふりをする | He feigned surprise at the news. | verb | general | C
+ferment | 発酵する | The beans ferment for three days. | verb | daily | C
+flaunt | 見せびらかす | She never flaunts her success. | verb | society | C
+flout | 公然と無視する | Some drivers flout the speed limit. | verb | society | C
+foment | 助長する | Rumors fomented unrest in the town. | verb | society | C
+forestall | 未然に防ぐ | Early repairs forestalled a shutdown. | verb | technology | C
+forge ahead | 前進する | The team forged ahead despite delays. | verb | business | B
+forsake | 見捨てる | They refused to forsake the old orchard. | verb | environment | C
+gauge | 測る、判断する | Surveys gauge public mood roughly. | verb | society | B
+glean | 拾い集める | We gleaned useful hints from the data. | verb | education | C
+grapple | 取り組む | Cities grapple with rising rents. | verb | society | B
+gravitate | 引き寄せられる | Young workers gravitate toward cities. | verb | society | C
+hail | 称賛する、呼び止める | Critics hailed the film as bold. | verb | education | B
+harbor doubts | 疑念を抱く | Investors harbor doubts about the plan. | verb | business | C
+hasten | 急がせる | Warm winds hastened the thaw. | verb | environment | B
+herald | 予告する | Falling prices heralded a slowdown. | verb | business | C
+hone | 磨きをかける | Daily practice hones your listening. | verb | education | B
+idealize | 理想化する | Films often idealize rural life. | verb | society | C
+ignite | 火をつける、引き起こす | The remark ignited a long debate. | verb | society | B
+immortalize | 不朽のものにする | The mural immortalizes the old market. | verb | society | C
+impart | 伝える、与える | Spices impart a warm flavor. | verb | daily | C
+implicate | 関与を示す | The report implicates several firms. | verb | society | C
+impute | 帰する | Do not impute bad motives too quickly. | verb | society | C
+inculcate | 教え込む | Schools inculcate basic manners. | verb | education | C
+indict | 起訴する | Two officials were indicted last week. | verb | society | C
+infest | はびこる | Beetles infest the dying trees. | verb | environment | C
+infringe | 侵害する | The design infringes an existing patent. | verb | business | B
+ingratiate | 取り入る | He tried to ingratiate himself with the boss. | verb | business | C
+inhabit remote areas | 辺地に住む | Few families inhabit remote areas now. | verb | society | C
+innovate boldly | 大胆に革新する | Small firms must innovate boldly. | verb | business | C
+inscribe | 刻む | Names are inscribed on the stone. | verb | society | C
+insinuate | ほのめかす | The article insinuates hidden funding. | verb | society | C
+instigate | 扇動する、始める | Who instigated the boycott? | verb | society | C
+interject | 差しはさむ | She interjected a brief question. | verb | education | C
+intersperse | 点在させる | Photos are interspersed through the text. | verb | education | C
+inundate | 殺到させる、水浸しにする | Requests inundated the small office. | verb | business | C
+jeopardize funding | 資金を危うくする | Late reports jeopardize funding. | verb | business | C
+jostle | 押し合う | Shoppers jostled near the entrance. | verb | daily | C
+lambaste | 酷評する | Editorials lambasted the delay. | verb | society | C
+languish | 衰える、放置される | The bill languished in committee. | verb | society | C
+leverage | てこ入れする、活用する | Startups leverage open data. | verb | business | B
+loathe | 忌み嫌う | She loathes waste of any kind. | verb | daily | B
+lurk | 潜む | Risks lurk in the fine print. | verb | business | B
+malign | 中傷する | Critics maligned the honest report. | verb | society | C
+manifest | 明らかにする、現れる | Symptoms manifest within two days. | verb | health | B
+marginalize | 隅に追いやる | The policy marginalized small farmers. | verb | society | B
+meander | 曲がりくねる、とりとめなく進む | The river meanders across the plain. | verb | environment | C
+menace | 脅かす | Erosion menaces the coastal road. | verb | environment | C
+mesmerize | 魅了する | The dancers mesmerized the audience. | verb | general | C
+mourn | 悼む | The town mourned its oldest doctor. | verb | society | B
+muster | 奮い起こす、集める | He mustered the courage to speak. | verb | general | C
+mutilate | 損なう、切断する | Vandals mutilated the garden sign. | verb | society | C
+negate | 打ち消す | Extra costs negate the savings. | verb | business | B
+nullify | 無効にする | A missing seal nullified the permit. | verb | society | C
+obfuscate | 曖昧にする | Jargon obfuscates simple facts. | verb | education | C
+obliterate | 消し去る | The flood obliterated the footpath. | verb | environment | C
+omit | 省く | The summary omits two key points. | verb | education | B
+oscillate | 揺れ動く | Opinion oscillated for weeks. | verb | society | C
+ostracize | 仲間外れにする | No child should be ostracized. | verb | education | C
+oust | 追放する | Shareholders ousted the chairman. | verb | business | C
+outstrip | 上回る | Demand outstripped every forecast. | verb | business | B
+overstep | 度を越す | The officer overstepped his authority. | verb | society | C
+pacify | なだめる | A small refund pacified the customer. | verb | business | C
+palliate | 緩和する | The drug palliates pain but cures nothing. | verb | health | C
+parody | 風刺する | The cartoon parodies the campaign. | verb | society | C
+partake | 参加する、食べる | Guests partook of a simple meal. | verb | daily | C
+patronize | ひいきにする | Locals patronize the same bakery. | verb | daily | C
+perish | 死ぬ、滅びる | Many seedlings perished in the frost. | verb | environment | B
+permeate | 浸透する | A quiet optimism permeated the office. | verb | business | C
+perpetrate | 犯す | The fraud was perpetrated over years. | verb | society | C
+pilfer | くすねる | Someone pilfered supplies from the store. | verb | business | C
+placate | なだめる | The apology placated most residents. | verb | society | C
+plagiarize | 盗用する | Students who plagiarize lose credit. | verb | education | B
+postulate | 仮定する | The theory postulates a slow cooling. | verb | education | C
+preach | 説く | He preaches patience to new staff. | verb | education | B
+precipitate | 引き起こす | The strike precipitated a fuel crisis. | verb | society | C
+predispose | かかりやすくする | Poor sleep predisposes people to illness. | verb | health | C
+preempt | 先手を打つ | Early talks preempted a strike. | verb | business | C
+prescribe limits | 限度を定める | The law prescribes strict limits. | verb | society | C
+presuppose | 前提とする | The plan presupposes steady funding. | verb | business | C
+procrastinate | 先延ばしにする | Students often procrastinate before exams. | verb | education | B
+prod | 促す | Reminders prod members to renew. | verb | business | C
+proliferate | 急増する | Delivery apps proliferated after 2020. | verb | technology | B
+promulgate | 公布する | The ministry promulgated new rules. | verb | society | C
+propagate | 繁殖させる、広める | Gardeners propagate herbs from cuttings. | verb | environment | C
+prosecute | 起訴する | The city prosecutes illegal dumping. | verb | society | B
+protrude | 突き出る | A nail protruded from the plank. | verb | daily | C
+purge | 一掃する | The system purges old files monthly. | verb | technology | C
+quell | 鎮める | Clear figures quelled the rumors. | verb | society | C
+quibble | 細かい文句を言う | Let us not quibble over wording. | verb | business | C
+ramble | とりとめなく話す | The speaker rambled past the hour. | verb | education | C
+ransack | 荒らし回る | Thieves ransacked the storage room. | verb | society | C
+rationalize | 正当化する、合理化する | We rationalized the delivery routes. | verb | business | B
+ravage | 荒廃させる | Fire ravaged the northern slope. | verb | environment | C
+rebuff | はねつける | The offer was firmly rebuffed. | verb | business | C
+rebuke | 叱責する | The chair rebuked the interruption. | verb | society | C
+recant | 撤回する | The witness recanted her statement. | verb | society | C
+reciprocate | 報いる | We hope to reciprocate the kindness. | verb | society | C
+redress | 是正する | The policy redresses an old imbalance. | verb | society | C
+refurbish | 改装する | The city refurbished the library. | verb | society | B
+regurgitate | 復唱する、吐き戻す | Do not simply regurgitate the textbook. | verb | education | C
+rehash | 焼き直す | The report rehashes last year's ideas. | verb | business | C
+reinstate | 復職させる、復活させる | The worker was reinstated with pay. | verb | business | C
+relegate | 格下げする | The topic was relegated to an appendix. | verb | education | C
+remunerate | 報酬を払う | Volunteers are not remunerated. | verb | business | C
+repeal | 廃止する | Parliament repealed the old statute. | verb | society | C
+repel | 撃退する、はじく | The coating repels rain. | verb | technology | B
+replicate | 再現する | Other labs replicated the finding. | verb | education | B
+reprove | 戒める | The judge reproved both lawyers. | verb | society | C
+repudiate | 拒絶する | The firm repudiated the rumor. | verb | business | C
+rescind | 撤回する | The office rescinded the earlier notice. | verb | business | C
+resonate | 共鳴する、心に響く | The message resonated with young voters. | verb | society | B
+resuscitate | 蘇生させる | Paramedics resuscitated the swimmer. | verb | health | C
+retaliate | 報復する | The country retaliated with higher duties. | verb | society | C
+revamp | 刷新する | The museum revamped its entrance hall. | verb | society | B
+reverberate | 反響する | The decision reverberated across the sector. | verb | business | C
+revere | 敬う | Students revere the old professor. | verb | education | C
+rupture | 破裂する | A pipe ruptured under the road. | verb | technology | C
+salvage | 救い出す | Crews salvaged most of the cargo. | verb | business | B
+sanction | 制裁する、認可する | The league sanctioned the club heavily. | verb | society | B
+saturate | 飽和させる | Cheap imports saturated the market. | verb | business | B
+savor | 味わう | Savor the quiet of early morning. | verb | daily | C
+scald | やけどさせる | Hot steam can scald your hand. | verb | health | C
+scorn | 軽蔑する | Experts scorned the easy answer. | verb | society | C
+secede | 脱退する | Two branches seceded from the union. | verb | society | C
+shatter | 粉砕する | The result shattered their confidence. | verb | general | B
+shroud | 覆い隠す | Mist shrouded the whole valley. | verb | environment | C
+shun | 避ける | Investors shun unclear accounting. | verb | business | C
+singe | 焦がす | Sparks singed the curtain edge. | verb | daily | C
+slander | 中傷する | He was accused of slandering a rival. | verb | society | C
+smother | 覆い尽くす、窒息させる | Weeds smothered the young shoots. | verb | environment | C
+solidify | 固める | The talks solidified the partnership. | verb | business | B
+sow | 種をまく | Farmers sow wheat in late autumn. | verb | environment | B
+span | 及ぶ、かかる | Her career spans four decades. | verb | business | B
+spawn | 生み出す | The success spawned many imitators. | verb | business | B
+splinter | 分裂する | The movement splintered into factions. | verb | society | C
+sprout | 芽を出す | New cafes sprout near the campus. | verb | business | B
+squander | 浪費する | The town squandered its water reserves. | verb | environment | C
+stagger | よろめく、ずらす | We staggered the start times. | verb | business | B
+stalk | 忍び寄る、つきまとう | Doubt stalked every meeting. | verb | general | C
+startle | 驚かす | The alarm startled the whole floor. | verb | daily | B
+stipulate | 明記する | The contract stipulates monthly checks. | verb | business | B
+strain | 緊張させる、酷使する | Long hours strain family life. | verb | health | B
+stray | それる、迷い込む | The talk strayed from the agenda. | verb | education | B
+subdue | 抑える | Firefighters subdued the blaze by dawn. | verb | society | C
+subjugate | 従属させる | Trade rules subjugated smaller nations. | verb | society | C
+submerge | 水没させる | Rising seas may submerge the atoll. | verb | environment | B
+subside | 静まる、沈む | The fever subsided overnight. | verb | health | B
+substantiate | 立証する | No evidence substantiates the claim. | verb | education | C
+subvert | 転覆させる | Fake reviews subvert honest competition. | verb | business | C
+succeed to the throne | 王位を継承する | She succeeded to the throne at thirty. | verb | society | C
+summon | 呼び出す | The court summoned three experts. | verb | society | B
+supplant | 取って代わる | Electric buses supplanted diesel ones. | verb | technology | C
+surmise | 推測する | We can only surmise the reason. | verb | education | C
+surmount | 乗り越える | They surmounted every technical barrier. | verb | technology | C
+swell | 膨張する、増大する | Crowds swelled after the announcement. | verb | society | B
+tarnish | 汚す、傷つける | The scandal tarnished a long career. | verb | business | B
+taunt | あざける | Never taunt a struggling classmate. | verb | education | C
+thwart | 阻む | Bad weather thwarted the launch. | verb | technology | B
+topple | 倒す | Strong winds toppled the old pine. | verb | environment | C
+transcribe | 書き写す | Volunteers transcribe the old letters. | verb | education | C
+transgress | 違反する | Anyone who transgresses loses membership. | verb | society | C
+trivialize | 軽視する | Do not trivialize their concerns. | verb | society | C
+truncate | 切り詰める | The system truncates long titles. | verb | technology | C
+unearth | 発掘する、暴く | Researchers unearthed a rare coin. | verb | education | B
+unfold | 展開する | The story unfolds over three chapters. | verb | education | B
+unleash | 解き放つ | The reform unleashed a wave of startups. | verb | business | B
+usher | 案内する、導く | The law ushered in a quieter era. | verb | society | C
+usurp | 奪い取る | No branch may usurp that authority. | verb | society | C
+vacillate | 揺れ動く | The board vacillated for months. | verb | business | C
+vanquish | 打ち負かす | They vanquished a much larger rival. | verb | business | C
+veer | 方向を変える | The debate veered toward funding. | verb | society | B
+venerate | 崇敬する | The village venerates its founding family. | verb | society | C
+vent | 発散する、吐き出す | Staff vented their frustration online. | verb | business | B
+vex | 悩ませる | The question still vexes economists. | verb | education | C
+vilify | 中傷する | The press vilified the young official. | verb | society | C
+vindicate | 正しさを証明する | Later tests vindicated her caution. | verb | education | C
+vow | 誓う | The mayor vowed to rebuild the pier. | verb | society | B
+wade | 歩いて渡る、苦労して進む | We waded through hundreds of forms. | verb | business | B
+waver | 揺らぐ | Support for the plan never wavered. | verb | society | B
+whittle | 削り取る | Delays whittled away the savings. | verb | business | C
+wield | 行使する | The committee wields real power. | verb | society | B
+wrestle with | 取り組む、格闘する | Planners wrestle with rising costs. | verb | business | B
+yearn | 切望する | Many city workers yearn for quiet. | verb | society | C
+
+# === 形容詞 193語 ===
+abject | 惨めな、絶望的な | The region suffers abject poverty. | adjective | society | C
+abrasive | 研磨性の、とげとげしい | His abrasive manner upset the team. | adjective | business | C
+acrid | 刺激臭のある | An acrid smoke filled the corridor. | adjective | environment | C
+adamant | 断固とした | She was adamant about the deadline. | adjective | business | B
+adroit | 器用な | He is adroit at handling complaints. | adjective | business | C
+affable | 愛想のよい | The new clerk is remarkably affable. | adjective | daily | C
+agile | 機敏な | Small teams stay agile. | adjective | business | B
+altruistic | 利他的な | Their motive seemed genuinely altruistic. | adjective | society | C
+amenable | 応じやすい | Owners were amenable to the change. | adjective | business | C
+amiable | 感じのよい | An amiable host greeted us. | adjective | daily | C
+anomalous | 異常な | The sensor showed anomalous readings. | adjective | technology | C
+apathetic | 無関心な | Young voters are not apathetic. | adjective | society | B
+appalling | ぞっとするような | The photos show appalling conditions. | adjective | society | B
+arable | 耕作に適した | Arable land is shrinking here. | adjective | environment | C
+arcane | 難解な | The rules remain arcane to outsiders. | adjective | society | C
+archaic | 古風な、廃れた | The form uses archaic wording. | adjective | education | C
+ardent | 熱烈な | She is an ardent supporter of libraries. | adjective | society | C
+arduous | 骨の折れる | Restoring the roof was arduous. | adjective | general | C
+astounding | 驚異的な | The recovery was astounding. | adjective | health | B
+auspicious | 幸先のよい | Sales made an auspicious start. | adjective | business | C
+austere | 質素な、厳格な | The room had an austere beauty. | adjective | general | C
+authoritative | 権威ある | The guide is an authoritative source. | adjective | education | B
+avid | 熱心な | He is an avid reader of history. | adjective | education | B
+belligerent | 好戦的な | The tone grew belligerent. | adjective | society | C
+benevolent | 慈悲深い | A benevolent fund pays the fees. | adjective | society | C
+bleak | 荒涼とした、暗い | The outlook for exports looks bleak. | adjective | business | B
+brittle | もろい | Old plastic becomes brittle. | adjective | technology | B
+callous | 冷淡な | The reply seemed callous. | adjective | society | C
+clandestine | 秘密の | Clandestine dumping continued for years. | adjective | environment | C
+coherent argument | 筋の通った主張 | She made a coherent argument. | adjective | education | C
+commendable | 称賛に値する | Their honesty is commendable. | adjective | society | B
+compelling | 説得力のある | The data makes a compelling case. | adjective | education | A
+complacent | 現状に甘んじた | Success made the firm complacent. | adjective | business | B
+conciliatory | 融和的な | He struck a conciliatory tone. | adjective | society | C
+congenial | 気の合う、快適な | The office has a congenial atmosphere. | adjective | business | C
+contentious | 論争の的になる | Land use is a contentious issue. | adjective | society | B
+contrite | 悔いている | The letter sounded genuinely contrite. | adjective | society | C
+copious | おびただしい | She took copious notes. | adjective | education | C
+cumbersome | 扱いにくい | The old system is cumbersome. | adjective | technology | B
+cursory | ざっとした | A cursory check missed the crack. | adjective | technology | C
+daunting | ひるませるような | The task looked daunting at first. | adjective | general | B
+deft | 巧みな | A deft edit saved the chapter. | adjective | education | C
+derogatory | 軽蔑的な | Derogatory remarks are not tolerated. | adjective | society | C
+despondent | 落胆した | Growers were despondent after the hail. | adjective | environment | C
+destitute | 極貧の | The charity helps destitute families. | adjective | society | C
+devout | 敬虔な | She is a devout follower of the practice. | adjective | society | C
+didactic | 教訓的な | The novel is a bit too didactic. | adjective | education | C
+discernible | 識別できる | There is no discernible improvement. | adjective | education | C
+disingenuous | 不誠実な | That comparison is disingenuous. | adjective | society | C
+disparate | 異質の | The study combines disparate sources. | adjective | education | C
+dubious | 疑わしい | The claim rests on dubious data. | adjective | education | B
+eclectic | 幅広い、折衷的な | The menu is pleasantly eclectic. | adjective | daily | C
+egregious | 甚だしい | It was an egregious oversight. | adjective | business | C
+elated | 大喜びの | Staff were elated by the result. | adjective | daily | C
+eloquent | 雄弁な | Her closing speech was eloquent. | adjective | education | B
+emphatic | 断固とした | The denial was emphatic. | adjective | society | B
+enigmatic | 謎めいた | The artist gave an enigmatic reply. | adjective | general | C
+equivocal | あいまいな | The findings remain equivocal. | adjective | education | C
+erroneous | 誤った | The bill was based on erroneous data. | adjective | business | B
+exorbitant | 法外な | Some clinics charge exorbitant fees. | adjective | health | C
+expedient | 好都合な、便宜的な | Delay was politically expedient. | adjective | society | C
+exquisite | この上なく美しい | The lacquer work is exquisite. | adjective | general | C
+fastidious | 几帳面な | He is fastidious about clean tools. | adjective | health | C
+fervent | 熱烈な | She is a fervent advocate of reading. | adjective | education | C
+flagrant | 目に余る | It was a flagrant breach of rules. | adjective | society | C
+formidable | 手ごわい | They face a formidable rival. | adjective | business | B
+fraudulent | 詐欺の | The bank froze fraudulent accounts. | adjective | business | B
+frivolous | 軽薄な、つまらない | The court dismissed the frivolous claim. | adjective | society | C
+furtive | こそこそした | He gave a furtive glance at the clock. | adjective | general | C
+garrulous | おしゃべりな | Our garrulous guide never paused. | adjective | daily | C
+gregarious | 社交的な | Dolphins are highly gregarious animals. | adjective | environment | C
+gruesome | 陰惨な | The report spares the gruesome details. | adjective | society | C
+haphazard | 行き当たりばったりの | The filing was haphazard at best. | adjective | business | B
+harrowing | 痛ましい | Survivors gave harrowing accounts. | adjective | society | C
+haughty | 横柄な | His haughty tone annoyed the staff. | adjective | society | C
+heinous | 凶悪な | The law targets heinous crimes. | adjective | society | C
+illicit | 違法の | Illicit logging continues at night. | adjective | environment | B
+immaculate | 完璧な、汚れのない | The kitchen was immaculate. | adjective | daily | C
+imminent | 差し迫った | A decision seems imminent. | adjective | business | B
+impeccable | 申し分のない | Her timing was impeccable. | adjective | general | B
+imperceptible | 感知できない | The change is almost imperceptible. | adjective | education | C
+impervious | 影響を受けない、不浸透の | The coating is impervious to water. | adjective | technology | C
+implausible | ありそうもない | The excuse sounds implausible. | adjective | education | B
+impoverished | 貧困に陥った | The scheme targets impoverished districts. | adjective | society | B
+inadvertent | うっかりした | An inadvertent click sent the email. | adjective | technology | B
+incessant | 絶え間ない | Incessant rain delayed the harvest. | adjective | environment | C
+incisive | 鋭い | She gave an incisive analysis. | adjective | education | C
+inconclusive | 決定的でない | The trial results were inconclusive. | adjective | health | B
+incongruous | 不釣り合いな | The tower looks incongruous here. | adjective | society | C
+indignant | 憤慨した | Parents were indignant about the fee. | adjective | society | C
+indiscriminate | 見境のない | Indiscriminate spraying harms bees. | adjective | environment | C
+ineffectual | 効果のない | The warning proved ineffectual. | adjective | society | C
+inept | 無能な | The response was slow and inept. | adjective | business | C
+inexorable | 止められない | The decline seems inexorable. | adjective | society | C
+infallible | 絶対に誤らない | No test is completely infallible. | adjective | education | C
+ingenuous | 純朴な | Her ingenuous question amused us. | adjective | daily | C
+innocuous | 無害な | The additive is innocuous in small amounts. | adjective | health | C
+inordinate | 過度の | The form takes an inordinate amount of time. | adjective | business | C
+insatiable | 飽くことのない | The city has an insatiable thirst for power. | adjective | environment | C
+inscrutable | 計り知れない | His expression stayed inscrutable. | adjective | general | C
+insidious | 気づかぬうちに広がる | Corrosion is an insidious problem. | adjective | technology | C
+insipid | 味気ない | The sauce was thin and insipid. | adjective | daily | C
+insolent | 無礼な | The insolent reply shocked the class. | adjective | education | C
+instrumental | 助けとなる | She was instrumental in the merger. | adjective | business | B
+intangible | 無形の | Trust is an intangible asset. | adjective | business | B
+intermittent | 断続的な | Intermittent rain continued all week. | adjective | environment | B
+intractable | 手に負えない | Homelessness is an intractable problem. | adjective | society | C
+irreparable | 修復できない | The fire caused irreparable damage. | adjective | society | B
+irrevocable | 取り消せない | The transfer is irrevocable. | adjective | business | C
+judicious | 思慮深い | A judicious choice saved the budget. | adjective | business | C
+lavish | 豪華な、惜しみない | The firm held a lavish reception. | adjective | business | B
+lucid | 明快な | The lecture was lucid and short. | adjective | education | B
+malicious | 悪意のある | The site blocks malicious software. | adjective | technology | B
+meager | わずかな | Returns were meager this quarter. | adjective | business | B
+melancholy | 憂鬱な | A melancholy tune filled the hall. | adjective | general | C
+menial | 単純労働の | Menial tasks still deserve fair pay. | adjective | business | C
+meticulous records | 綿密な記録 | The lab keeps meticulous records. | adjective | education | C
+morose | 不機嫌な | He grew morose after the loss. | adjective | health | C
+mournful | 悲しげな | A mournful whistle crossed the bay. | adjective | general | C
+myriad | 無数の | Myriad small shops line the street. | adjective | society | C
+negligent | 怠慢な | The firm was found negligent. | adjective | society | B
+nocturnal | 夜行性の | Owls are strictly nocturnal. | adjective | environment | B
+obstinate | 頑固な | The stain proved obstinate. | adjective | daily | C
+odious | 忌まわしい | The practice is simply odious. | adjective | society | C
+onerous | 厄介な、重荷の | The paperwork is onerous. | adjective | business | C
+opulent | 豪奢な | The hall is opulent but cold. | adjective | general | C
+ostensible | 表向きの | The ostensible reason was cost. | adjective | business | C
+palatable | 口に合う、受け入れやすい | The compromise was barely palatable. | adjective | society | C
+paramount | 最も重要な | Safety is paramount on this site. | adjective | business | B
+partisan | 党派的な | The debate became sharply partisan. | adjective | society | C
+peripheral | 周辺的な | That issue is peripheral to our aim. | adjective | business | B
+perishable | 傷みやすい | Perishable goods travel by air. | adjective | business | B
+pernicious | 有害な | Misinformation has a pernicious effect. | adjective | society | C
+pervasive | 広くいきわたった | Screen use is pervasive among teens. | adjective | society | B
+petulant | 不機嫌な、短気な | He gave a petulant shrug. | adjective | daily | C
+placid | 穏やかな | The lake was placid at dusk. | adjective | environment | C
+poignant | 胸に迫る | The letter ends on a poignant note. | adjective | general | C
+ponderous | 重々しい、退屈な | The report is ponderous and long. | adjective | education | C
+posthumous | 死後の | He received a posthumous award. | adjective | society | C
+precocious | 早熟な | The precocious student skipped a year. | adjective | education | C
+prodigious | 驚異的な | She has a prodigious memory. | adjective | education | C
+profuse | 豊富な、大量の | The hosts offered profuse thanks. | adjective | daily | C
+prudent | 慎重な | A prudent investor keeps reserves. | adjective | business | B
+punitive | 懲罰的な | Punitive fines rarely change habits. | adjective | society | C
+quixotic | 非現実的な | The plan sounds slightly quixotic. | adjective | general | C
+rampant | はびこった | Illegal parking is rampant here. | adjective | society | B
+rancid | 腐敗した | The oil turned rancid in the heat. | adjective | daily | C
+rash | 軽率な | Avoid rash promises to customers. | adjective | business | B
+redolent | 思い起こさせる、香る | The street is redolent of old Kyoto. | adjective | general | C
+remiss | 怠慢な | I would be remiss not to thank them. | adjective | business | C
+repugnant | 不快な | The idea is repugnant to most staff. | adjective | society | C
+resolute | 断固とした | The mayor stayed resolute. | adjective | society | B
+reticent | 寡黙な | Witnesses were reticent at first. | adjective | society | C
+rife | 蔓延した | Rumors were rife that week. | adjective | society | C
+rudimentary | 初歩的な | He has rudimentary Spanish. | adjective | education | B
+ruthless | 容赦ない | The market is ruthless to latecomers. | adjective | business | B
+salient | 顕著な | Let me note the salient points. | adjective | education | C
+sanguine | 楽観的な | Analysts remain sanguine about demand. | adjective | business | C
+scathing | 痛烈な | The review was scathing. | adjective | education | C
+scrupulous | 几帳面な、良心的な | She is scrupulous about sources. | adjective | education | C
+sedentary | 座りがちな | A sedentary job raises health risks. | adjective | health | B
+serendipitous | 幸運な偶然の | The discovery was serendipitous. | adjective | education | C
+somber | 陰鬱な | The mood in the office was somber. | adjective | business | C
+sporadic | 散発的な | Sporadic outages continued all night. | adjective | technology | B
+squalid | 不潔な | The shelter fixed its squalid rooms. | adjective | society | C
+staggering | 驚くべき | The waste figures are staggering. | adjective | environment | B
+staunch | 忠実な、確固たる | He is a staunch supporter of the museum. | adjective | society | C
+strident | 耳障りな、激しい | The debate took a strident tone. | adjective | society | C
+stringent | 厳格な | Stringent rules govern food imports. | adjective | business | B
+succinct | 簡潔な | Keep your answer succinct. | adjective | education | B
+sumptuous | 豪華な | They served a sumptuous dinner. | adjective | daily | C
+superfluous detail | 余計な詳細 | Cut every superfluous detail. | adjective | education | C
+surreptitious | ひそかな | A surreptitious recording surfaced. | adjective | society | C
+tenacious | 粘り強い | Tenacious staff solved the fault. | adjective | business | B
+tenuous | 希薄な、根拠の薄い | The link remains tenuous. | adjective | education | C
+tepid | 生ぬるい、気乗りしない | The plan met a tepid response. | adjective | business | C
+terse | そっけない | The reply was terse but polite. | adjective | business | C
+timely | 時宜を得た | The warning was timely. | adjective | society | B
+treacherous | 危険な、裏切りの | Icy paths are treacherous. | adjective | environment | B
+ubiquitous | どこにでもある | Cameras are now ubiquitous. | adjective | technology | B
+unassuming | 控えめな | The director is quiet and unassuming. | adjective | society | C
+uncanny | 不思議な | She has an uncanny sense of timing. | adjective | general | C
+unequivocal | 明確な | The answer was unequivocal. | adjective | society | C
+unscathed | 無傷の | The crew escaped unscathed. | adjective | society | C
+untenable | 擁護できない | That position is now untenable. | adjective | society | C
+vehement | 激烈な | There was vehement opposition. | adjective | society | C
+venerable | 由緒ある | The venerable inn reopened. | adjective | society | C
+verbose | 冗長な | The manual is far too verbose. | adjective | education | C
+vindictive | 復讐心のある | The tone became vindictive. | adjective | society | C
+voracious | 貪欲な | He is a voracious reader. | adjective | education | C
+wanton | 理不尽な、勝手気ままな | Wanton waste of water is banned. | adjective | environment | C
+wistful | 物思わしげな | She gave a wistful smile. | adjective | general | C
+zealous | 熱心な | Zealous fans queued overnight. | adjective | society | C
+
+# === 副詞 21語 ===
+adamantly | 断固として | He adamantly denied the charge. | adverb | society | C
+albeit | 〜ではあるが | Sales rose, albeit slowly. | adverb | business | B
+conversely | 逆に | Conversely, rural rents fell. | adverb | society | B
+hitherto | これまで | Hitherto unknown records surfaced. | adverb | education | C
+implicitly | 暗黙のうちに | The rule implicitly favors large firms. | adverb | business | C
+inadvertently | うっかりと | She inadvertently deleted the file. | adverb | technology | B
+incidentally | ついでながら | Incidentally, the fee has changed. | adverb | daily | B
+invariably | 例外なく | Late orders invariably cost more. | adverb | business | B
+markedly | 著しく | Air quality improved markedly. | adverb | environment | B
+meticulously | 入念に | The parts were meticulously checked. | adverb | technology | C
+nominally | 名目上は | The post is nominally part-time. | adverb | business | C
+ostensibly | 表向きは | The visit was ostensibly private. | adverb | society | C
+overwhelmingly | 圧倒的に | Members voted overwhelmingly in favor. | adverb | society | B
+paradoxically | 逆説的に | Paradoxically, cheaper fuel raised costs. | adverb | business | C
+perpetually | 絶え間なく | The valley is perpetually damp. | adverb | environment | C
+profoundly | 深く | The trip profoundly changed her plans. | adverb | general | B
+purportedly | 伝えられるところでは | The file was purportedly leaked. | adverb | society | C
+tacitly | 暗黙に | The board tacitly approved the move. | adverb | business | C
+unduly | 過度に | Do not be unduly alarmed. | adverb | health | C
+unwittingly | 知らずに | Shoppers unwittingly spread the rumor. | adverb | society | C
+vehemently | 激しく | Residents vehemently opposed the plan. | adverb | society | C
+
+# === 名詞 619語 ===
+abnormality | 異常 | The scan found no abnormality. | noun | health | B
+abode | 住まい | They finally found a modest abode. | noun | daily | C
+abolition | 廃止 | The abolition of the fee helped families. | noun | society | B
+abstraction | 抽象、抽象概念 | The lecture moves from data to abstraction. | noun | education | C
+abundance of talent | 人材の豊富さ | The city has an abundance of talent. | noun | business | C
+acclamation | 喝采 | The motion passed by acclamation. | noun | society | C
+accolade | 栄誉 | The prize is the field's highest accolade. | noun | education | C
+accord | 協定 | Both sides signed a peace accord. | noun | society | B
+acquittal | 無罪判決 | The acquittal surprised local reporters. | noun | society | C
+actuary | 保険数理士 | An actuary reviewed the pension plan. | noun | business | C
+acuity | 鋭敏さ | Visual acuity declines with age. | noun | health | C
+acumen | 洞察力 | Her business acumen is widely praised. | noun | business | C
+adage | 格言 | An old adage says haste makes waste. | noun | education | C
+adherence | 順守 | Strict adherence to the rules is required. | noun | business | B
+adhesive | 接着剤 | A strong adhesive holds the panels. | noun | technology | C
+adversary | 敵対者 | Their main adversary cut prices. | noun | business | C
+advocacy | 擁護、支持活動 | Her advocacy changed the local law. | noun | society | B
+aerosol | エアロゾル、噴霧 | Aerosol particles scatter sunlight. | noun | environment | C
+aesthetics | 美学 | The debate concerns aesthetics, not cost. | noun | education | C
+affidavit | 宣誓供述書 | The lawyer filed a short affidavit. | noun | society | C
+affiliation | 所属 | Please state your institutional affiliation. | noun | education | B
+affinity | 親近感、親和性 | She feels a strong affinity for the coast. | noun | general | B
+affliction | 苦しみ、病気 | Hay fever is a seasonal affliction. | noun | health | C
+affluence | 裕福さ | Rising affluence changed local diets. | noun | society | C
+aggregate demand | 総需要 | Aggregate demand fell in winter. | noun | business | C
+ailment | 病気、不調 | The clinic treats minor ailments. | noun | health | B
+alcove | 床の間、小部屋 | A small alcove holds the flowers. | noun | daily | C
+algae bloom | 藻の大量発生 | Warm water triggers an algae bloom. | noun | environment | C
+alignment | 整列、連携 | Wheel alignment affects fuel use. | noun | technology | B
+allegation | 申し立て | The allegation remains unproven. | noun | society | B
+allegiance | 忠誠 | Employees owe no allegiance to a brand. | noun | society | C
+allegory | 寓意 | The tale works as a political allegory. | noun | education | C
+allocation of water | 水の配分 | The allocation of water was disputed. | noun | environment | C
+allusion | ほのめかし | The poem contains a classical allusion. | noun | education | C
+ambivalence | 相反する感情 | Voters showed clear ambivalence. | noun | society | C
+amenity | 快適な設備 | The building offers few amenities. | noun | daily | B
+amnesty | 恩赦 | The government offered a brief amnesty. | noun | society | C
+amortization | 償却 | Amortization spreads the cost over years. | noun | business | C
+amplitude | 振幅 | The amplitude of the wave doubled. | noun | technology | C
+anarchy | 無政府状態 | The film imagines a city in anarchy. | noun | society | C
+anesthesia | 麻酔 | The procedure needs local anesthesia. | noun | health | C
+anguish | 苦悩 | The letter expresses real anguish. | noun | health | C
+animosity | 敵意 | Old animosity faded after the festival. | noun | society | C
+annexation | 併合 | The annexation changed the border. | noun | society | C
+annotation | 注釈 | Each page carries a short annotation. | noun | education | C
+antagonism | 反目 | Antagonism between the unions grew. | noun | society | C
+anthology | 選集 | The anthology collects thirty poems. | noun | education | C
+anthropology | 人類学 | She studied anthropology abroad. | noun | education | B
+antiquity | 古代、古物 | The vase dates from antiquity. | noun | education | C
+antithesis | 正反対 | Silence is the antithesis of this style. | noun | education | C
+apartheid | 人種隔離政策 | The museum documents apartheid. | noun | society | C
+aperture | 開口部、絞り | A narrow aperture sharpens the image. | noun | technology | C
+apparatus for testing | 試験装置 | The lab built its own apparatus for testing. | noun | technology | C
+apparel | 衣料品 | The store sells outdoor apparel. | noun | business | B
+appellation | 名称、原産地呼称 | The wine carries a protected appellation. | noun | business | C
+apprentice chef | 見習い料理人 | The apprentice chef works weekends. | noun | business | C
+appropriation | 充当、私物化 | The appropriation of funds was questioned. | noun | business | C
+aptitude | 適性 | He showed an aptitude for languages. | noun | education | B
+aquifer | 帯水層 | Farms drain the shallow aquifer. | noun | environment | C
+arbitration | 仲裁 | The dispute went to arbitration. | noun | business | B
+archetype | 原型 | The hero fits an ancient archetype. | noun | education | C
+arid zone | 乾燥地帯 | Crops fail in the arid zone. | noun | environment | C
+armistice | 休戦 | An armistice halted the fighting. | noun | society | C
+array | 勢ぞろい、配列 | The market offers an array of spices. | noun | daily | B
+arrears | 滞納 | The tenant fell into arrears. | noun | business | C
+artery of trade | 交易の大動脈 | The strait is an artery of trade. | noun | business | C
+articulation | 明確な表現、発音 | Clear articulation helps listeners. | noun | education | C
+artisan | 職人 | Local artisans carve the trays. | noun | business | B
+ascent | 上昇、登攀 | The ascent took six hours. | noun | general | B
+aspersion | 中傷 | He cast aspersions on their motives. | noun | society | C
+asymmetry | 非対称 | Slight asymmetry is normal in leaves. | noun | education | C
+atrocity | 残虐行為 | The tribunal recorded each atrocity. | noun | society | C
+atrophy | 萎縮 | Bed rest can cause muscle atrophy. | noun | health | C
+attainment | 達成 | The award recognizes lifetime attainment. | noun | education | B
+attire | 服装 | Formal attire is required. | noun | daily | C
+attrition | 消耗、自然減 | Staff numbers fell by attrition. | noun | business | C
+attrition rate | 離職率 | The attrition rate doubled after the merger. | noun | business | C
+audacity | 大胆さ | She had the audacity to ask twice. | noun | society | C
+austerity | 緊縮 | Years of austerity closed rural clinics. | noun | society | B
+autocracy | 独裁政治 | The essay contrasts autocracy and democracy. | noun | society | C
+autonomy at work | 職場の裁量 | Autonomy at work improves morale. | noun | business | B
+autopsy | 検死 | The autopsy found no poison. | noun | health | C
+awe | 畏敬 | The canyon fills visitors with awe. | noun | general | B
+backlog | 未処理の山 | The clinic cleared its backlog. | noun | business | B
+bailout | 救済措置 | The airline received a state bailout. | noun | business | B
+banter | 軽口 | Friendly banter filled the kitchen. | noun | daily | C
+barrage | 集中砲火、殺到 | A barrage of questions followed. | noun | society | C
+barrier to entry | 参入障壁 | High costs are a barrier to entry. | noun | business | B
+beacon | かがり火、指針 | The library is a beacon for the town. | noun | society | C
+belligerence | 好戦性 | The speech was full of belligerence. | noun | society | C
+benevolence | 善意 | The fund depends on private benevolence. | noun | society | C
+bequest | 遺贈 | A bequest funded the reading room. | noun | society | C
+bewilderment | 当惑 | The rules caused general bewilderment. | noun | education | C
+bigotry | 偏狭 | Schools must confront bigotry early. | noun | society | C
+biopsy | 生検 | The biopsy result came back clear. | noun | health | C
+blight | 枯れ病、荒廃 | Blight destroyed the potato crop. | noun | environment | C
+blue chip | 優良株 | Funds prefer blue chip shares. | noun | business | C
+bonanza | 大もうけ | The festival was a bonanza for cafes. | noun | business | C
+bounty | 恵み、報奨金 | Autumn brings a bounty of chestnuts. | noun | environment | C
+brevity | 簡潔さ | Brevity improves any report. | noun | education | C
+bribery | 贈収賄 | Two officials face bribery charges. | noun | society | B
+brokerage | 仲介業 | A small brokerage handled the sale. | noun | business | C
+buffer | 緩衝 | Savings act as a buffer. | noun | business | B
+buoyancy | 浮力 | Salt water increases buoyancy. | noun | technology | C
+bystander | 傍観者 | A bystander called for help. | noun | society | B
+calamity | 災難 | The quake was a national calamity. | noun | society | C
+candor | 率直さ | His candor impressed the committee. | noun | business | C
+carcinogen | 発がん物質 | The dye contained a known carcinogen. | noun | health | C
+caricature | 風刺画 | The caricature exaggerates his nose. | noun | education | C
+cartel | カルテル | Regulators broke up the cement cartel. | noun | business | C
+cascade | 連鎖、小滝 | One failure caused a cascade of delays. | noun | technology | C
+catalyst | 触媒、きっかけ | The grant was a catalyst for research. | noun | technology | B
+cataract | 白内障 | Surgery removed the cataract. | noun | health | C
+catharsis | 浄化、カタルシス | The play offers a strange catharsis. | noun | education | C
+censorship | 検閲 | Censorship drove writers abroad. | noun | society | B
+cessation | 中止 | Smoking cessation improves recovery. | noun | health | C
+chromosome | 染色体 | Each cell carries the same chromosome set. | noun | health | C
+chronicle | 年代記 | The book is a chronicle of the port. | noun | education | C
+clarification | 説明、明確化 | We asked for clarification twice. | noun | business | B
+clemency | 寛大な処置 | The family asked for clemency. | noun | society | C
+clout | 影響力 | The union still has real clout. | noun | society | C
+cluster | 集まり | A cluster of cases appeared downtown. | noun | health | B
+coagulation | 凝固 | The drug slows blood coagulation. | noun | health | C
+coercion | 強制 | Consent must be free of coercion. | noun | society | C
+cognition | 認知 | Sleep affects memory and cognition. | noun | health | B
+cohort | 同年代集団 | The study followed one cohort for years. | noun | education | B
+collateral | 担保 | The loan requires no collateral. | noun | business | B
+collusion | 共謀 | Regulators found no collusion. | noun | business | C
+combustion chamber | 燃焼室 | Heat builds in the combustion chamber. | noun | technology | C
+commemoration | 記念 | A tree was planted in commemoration. | noun | society | C
+commentary on society | 社会批評 | The film is a commentary on society. | noun | education | C
+commodity price | 商品価格 | Commodity prices swung sharply. | noun | business | B
+commotion | 騒ぎ | A commotion broke out at the gate. | noun | society | C
+compendium | 概要、便覧 | The book is a compendium of local law. | noun | education | C
+compliance officer | 法令順守責任者 | The bank hired a compliance officer. | noun | business | C
+compost | 堆肥 | Kitchen scraps become compost. | noun | environment | B
+composure | 落ち着き | She kept her composure throughout. | noun | health | C
+conception of justice | 正義の概念 | Each era has its conception of justice. | noun | education | C
+concord | 調和、協定 | The village lived in quiet concord. | noun | society | C
+condescension | 見下す態度 | The tone bordered on condescension. | noun | society | C
+condolence | 哀悼 | The mayor sent a message of condolence. | noun | society | C
+conduct unbecoming | 不適切な行為 | He was fired for conduct unbecoming. | noun | business | C
+conduit | 導管、経路 | The tunnel is a conduit for cables. | noun | technology | C
+confiscation | 没収 | Confiscation of the gear followed. | noun | society | C
+confluence | 合流点 | The city sits at a confluence of rivers. | noun | environment | C
+congenital defect | 先天的欠損 | Surgery corrected a congenital defect. | noun | health | C
+conglomerate | 複合企業 | A conglomerate bought the brewery. | noun | business | B
+conjecture about causes | 原因についての推測 | Much of this is conjecture about causes. | noun | education | C
+connoisseur | 目利き | She is a connoisseur of old prints. | noun | general | C
+connotation | 含み | The word carries a negative connotation. | noun | education | C
+conscription | 徴兵 | The country abolished conscription. | noun | society | C
+conservationist | 自然保護論者 | Conservationists mapped the wetland. | noun | environment | B
+consortium | 企業連合 | A consortium will build the tunnel. | noun | business | C
+constellation | 星座、集まり | A constellation of symptoms appeared. | noun | health | C
+consternation | 驚き、狼狽 | The notice caused consternation. | noun | society | C
+contemplation | 熟考 | The garden invites quiet contemplation. | noun | general | C
+contingency | 不測の事態 | Every plan needs a contingency. | noun | business | B
+contingency fund | 予備費 | The contingency fund covered repairs. | noun | business | C
+conundrum | 難問 | Staffing remains a conundrum. | noun | business | C
+convection | 対流 | Convection carries heat upward. | noun | technology | C
+conveyance | 輸送、譲渡 | The contract covers conveyance of goods. | noun | business | C
+conviction of guilt | 有罪判決 | The conviction of guilt was overturned. | noun | society | C
+corollary | 当然の結果 | Higher demand is a corollary of growth. | noun | education | C
+corrosion | 腐食 | Salt air accelerates corrosion. | noun | technology | B
+counsel | 助言 | She sought counsel from a mentor. | noun | education | B
+covenant | 約定、契約 | The covenant limits building height. | noun | society | C
+credence | 信憑性 | New data lends credence to the theory. | noun | education | C
+crevasse | 氷河の割れ目 | The guide marked every crevasse. | noun | environment | C
+crevice | 裂け目 | Ferns grow in every crevice. | noun | environment | C
+criterion of beauty | 美の基準 | Every age sets its criterion of beauty. | noun | education | C
+crux | 核心 | Cost is the crux of the matter. | noun | business | C
+culmination | 集大成 | The show is the culmination of ten years. | noun | education | C
+culpability | 過失責任 | The inquiry examined corporate culpability. | noun | society | C
+curator | 学芸員 | The curator arranged the exhibit. | noun | education | B
+custodian | 管理人 | The custodian locks the gate at nine. | noun | daily | B
+debenture | 社債 | The firm issued a ten-year debenture. | noun | business | C
+debut | 初登場 | The novel made a quiet debut. | noun | education | B
+decomposition | 分解、腐敗 | Decomposition returns nutrients to soil. | noun | environment | B
+decree | 政令 | A decree closed the border crossing. | noun | society | C
+defamation | 名誉毀損 | He sued for defamation. | noun | society | C
+default on a loan | 債務不履行 | Default on a loan damages your credit. | noun | business | B
+deference | 敬意、服従 | She spoke with deference to elders. | noun | society | C
+deficiency in iron | 鉄分の不足 | A deficiency in iron causes fatigue. | noun | health | C
+deflation | デフレ | Long deflation discouraged investment. | noun | business | B
+degradation of soil | 土壌の劣化 | Degradation of soil reduces yields. | noun | environment | B
+dehydration | 脱水症 | Dehydration is common in summer. | noun | health | B
+delinquency | 滞納、非行 | Payment delinquency rose slightly. | noun | business | C
+deluge | 大洪水 | A deluge closed the coastal road. | noun | environment | C
+demagogue | 扇動政治家 | The essay warns against the demagogue. | noun | society | C
+demeanor | 態度、物腰 | His calm demeanor reassured patients. | noun | health | C
+demise | 消滅、死去 | Critics predicted the demise of print. | noun | business | B
+denizen | 住民、生息する動物 | Owls are denizens of this forest. | noun | environment | C
+denomination | 宗派、額面 | Notes come in three denominations. | noun | business | C
+depiction | 描写 | The depiction of rural life is honest. | noun | education | B
+depletion | 枯渇 | Depletion of stocks worries the fleet. | noun | environment | B
+deportation | 国外追放 | The court halted the deportation. | noun | society | C
+deprivation | 剥奪、欠乏 | Sleep deprivation harms judgment. | noun | health | B
+deregulation | 規制緩和 | Deregulation opened the bus market. | noun | business | B
+derivation | 派生、語源 | The derivation of the word is unclear. | noun | education | C
+dermatologist | 皮膚科医 | The dermatologist prescribed a cream. | noun | health | C
+despotism | 専制 | The novel depicts petty despotism. | noun | society | C
+detachment | 冷静、分離 | She wrote with scholarly detachment. | noun | education | C
+deterrent | 抑止力 | Fines are a weak deterrent. | noun | society | B
+devaluation | 平価切り下げ | Devaluation made exports cheaper. | noun | business | C
+devotion | 献身 | His devotion to teaching is clear. | noun | education | B
+diagnosis of cancer | がんの診断 | Early diagnosis of cancer saves lives. | noun | health | B
+diction | 言葉遣い | The essay praises her plain diction. | noun | education | C
+discord | 不和 | Discord delayed the merger. | noun | business | C
+discourse on ethics | 倫理をめぐる議論 | The book joins the discourse on ethics. | noun | education | C
+discrepancy | 食い違い | A discrepancy appeared in the accounts. | noun | business | B
+discretion | 裁量、慎重さ | Use your discretion on small refunds. | noun | business | B
+disillusionment | 幻滅 | Disillusionment set in after a year. | noun | society | C
+dismay | 落胆 | The closure caused public dismay. | noun | society | B
+disparity in income | 所得格差 | Disparity in income widened again. | noun | society | C
+dispatch | 発送 | Dispatch takes one working day. | noun | business | B
+dispersal | 散布、分散 | Wind aids seed dispersal. | noun | environment | C
+disposition | 気質、処分 | She has a calm disposition. | noun | health | B
+dissertation | 学位論文 | He finished his dissertation in June. | noun | education | B
+dissidence | 反体制 | Quiet dissidence spread through the union. | noun | society | C
+docility | 従順さ | Docility is not the aim of education. | noun | education | C
+dossier | 一件書類 | The inspector kept a thick dossier. | noun | business | C
+downpour | 土砂降り | A sudden downpour flooded the lane. | noun | environment | B
+downsizing | 人員削減 | Downsizing left the team stretched. | noun | business | B
+duct | 管、ダクト | Dust collects inside the duct. | noun | technology | C
+duplicity | 二枚舌 | Customers punish corporate duplicity. | noun | business | C
+duress | 強迫 | The confession was made under duress. | noun | society | C
+economies of scale | 規模の経済 | Economies of scale lowered the price. | noun | business | B
+edict | 布告 | An old edict still governs the park. | noun | society | C
+effluent | 排水 | Factories must treat their effluent. | noun | environment | C
+egalitarianism | 平等主義 | The school was founded on egalitarianism. | noun | society | C
+elasticity | 弾力性 | The rubber loses elasticity in cold. | noun | technology | C
+electorate | 有権者 | The electorate rejected the measure. | noun | society | B
+elite | 選良、精鋭 | The school trains a small elite. | noun | society | B
+eloquence | 雄弁 | Her eloquence moved the audience. | noun | education | C
+emancipation | 解放 | The law marked the emancipation of tenants. | noun | society | C
+embargo | 禁輸 | The embargo raised fuel prices. | noun | business | B
+embezzlement | 横領 | The clerk admitted embezzlement. | noun | business | C
+emissary | 使者 | An emissary carried the proposal. | noun | society | C
+empathy for others | 他者への共感 | The course builds empathy for others. | noun | education | C
+enactment | 制定 | The enactment took three years. | noun | society | C
+enclave | 飛び地 | The district is a quiet enclave. | noun | society | C
+endemic species | 固有種 | The island protects its endemic species. | noun | environment | C
+endowment | 寄付基金 | The endowment funds two chairs. | noun | education | B
+enlightenment | 啓発、悟り | The essay traces the age of enlightenment. | noun | education | C
+enmity | 敵意 | Enmity between the clans ended quietly. | noun | society | C
+entitlement | 受給権 | Check your entitlement before applying. | noun | society | B
+entourage | 随行団 | The singer travels with a small entourage. | noun | society | C
+entropy | 無秩序の度合い | Entropy always increases in the system. | noun | education | C
+enzyme | 酵素 | An enzyme breaks down the starch. | noun | health | B
+epidemiology | 疫学 | She lectures on epidemiology. | noun | health | C
+epithet | 形容辞、あだ名 | The epithet stuck for decades. | noun | education | C
+epitome | 典型 | The inn is the epitome of simplicity. | noun | general | C
+equanimity | 平静 | He faced the loss with equanimity. | noun | health | C
+equilibrium | 均衡 | The market found a new equilibrium. | noun | business | B
+escapade | 無分別な行い | The escapade cost him his license. | noun | daily | C
+escrow | 第三者預託 | The deposit sits in escrow. | noun | business | C
+espionage | スパイ活動 | The trial involved industrial espionage. | noun | society | C
+estuary | 河口 | Birds feed in the shallow estuary. | noun | environment | C
+euphemism | 婉曲表現 | The phrase is a polite euphemism. | noun | education | C
+euphoria | 高揚感 | Post-victory euphoria faded fast. | noun | health | C
+exchequer | 国庫 | The tax filled the exchequer. | noun | business | C
+excretion | 排泄 | The drug leaves the body by excretion. | noun | health | C
+excursion fare | 周遊運賃 | The excursion fare covers two days. | noun | business | C
+exhalation | 呼気 | Each exhalation fogged the glass. | noun | health | C
+exodus | 大量流出 | An exodus of nurses hit rural clinics. | noun | society | B
+extradition | 身柄引き渡し | The extradition request was refused. | noun | society | C
+exuberance | 活気、あふれる喜び | The crowd's exuberance was infectious. | noun | society | C
+fabric of society | 社会の構造 | Trust holds the fabric of society. | noun | society | C
+facade | 建物の正面、見せかけ | The facade hides a modern interior. | noun | society | C
+faction | 派閥 | Two factions blocked the vote. | noun | society | B
+fallacy | 誤った考え | That is a common statistical fallacy. | noun | education | B
+famine relief | 飢饉救済 | Famine relief reached the valley late. | noun | society | C
+fatality | 死亡者 | There were no fatalities. | noun | society | B
+fauna and flora | 動植物 | The park records all fauna and flora. | noun | environment | C
+feat | 偉業 | Crossing the strait was a real feat. | noun | general | B
+felony | 重罪 | Fraud on that scale is a felony. | noun | society | C
+fervor | 熱情 | The campaign began with great fervor. | noun | society | C
+fiasco | 大失敗 | The launch was a costly fiasco. | noun | business | C
+fidelity | 忠実さ | The copy has remarkable fidelity. | noun | education | C
+fissure | 亀裂 | A fissure opened along the slope. | noun | environment | C
+flair | 才能、センス | She has a flair for design. | noun | business | B
+fluke | まぐれ | The win was no fluke. | noun | general | C
+foray | 進出、遠征 | The brand made a foray into Asia. | noun | business | C
+foreboding | 悪い予感 | A sense of foreboding filled the hall. | noun | general | C
+forefront | 最前線 | The lab is at the forefront of research. | noun | technology | B
+foresight | 先見の明 | Her foresight saved the company. | noun | business | B
+forfeiture | 没収 | Late filing risks forfeiture of the grant. | noun | business | C
+formality | 形式、儀礼 | The signing was a mere formality. | noun | business | B
+fortification | 強化、要塞 | Flour fortification reduced deficiency. | noun | health | C
+fortitude | 不屈の精神 | The crew showed great fortitude. | noun | society | C
+franchise right | 選挙権 | Women gained the franchise right in 1945. | noun | society | C
+fringe | 周辺、末端 | The movement began on the fringe. | noun | society | B
+fringe benefit | 付加給付 | Housing is a valued fringe benefit. | noun | business | B
+fusion power | 核融合エネルギー | Fusion power remains experimental. | noun | technology | C
+gauge reading | 計器の読み | The gauge reading looked abnormal. | noun | technology | C
+genocide | 大量虐殺 | The court defined the crime as genocide. | noun | society | C
+genome | ゲノム | Scientists mapped the whole genome. | noun | health | B
+geothermal energy | 地熱エネルギー | The town uses geothermal energy. | noun | environment | B
+germination | 発芽 | Warm soil speeds germination. | noun | environment | C
+gestation | 妊娠期間 | Gestation lasts about eleven months. | noun | health | C
+gimmick | 仕掛け、目玉 | The discount is just a gimmick. | noun | business | B
+glut | 供給過剰 | A glut of apples cut prices. | noun | business | C
+graft | 汚職、賄賂 | Public works were plagued by graft. | noun | society | C
+grandeur | 壮大さ | The hall retains its old grandeur. | noun | general | C
+gratification | 満足 | Instant gratification weakens patience. | noun | health | C
+gratuity | 心づけ、退職金 | A gratuity is included in the bill. | noun | daily | C
+habitat fragmentation | 生息地の分断 | Roads cause habitat fragmentation. | noun | environment | C
+hallmark | 特徴 | Care is the hallmark of her work. | noun | business | B
+haven | 避難所 | The cove is a haven for small boats. | noun | environment | B
+hedge | 保険つなぎ | Gold serves as a hedge against inflation. | noun | business | B
+hegemony | 覇権 | No single firm holds hegemony here. | noun | business | C
+hemorrhage | 出血 | Surgeons stopped the hemorrhage. | noun | health | C
+herbivore | 草食動物 | The herbivore feeds on young shoots. | noun | environment | C
+heyday | 全盛期 | In its heyday the mill employed hundreds. | noun | business | C
+hiatus | 中断 | The series returned after a hiatus. | noun | education | C
+hindsight | 後知恵 | With hindsight, the sign was clear. | noun | general | B
+homage | 敬意、賛辞 | The festival pays homage to local weavers. | noun | society | C
+hormone imbalance | ホルモンの乱れ | A hormone imbalance explains the symptoms. | noun | health | C
+hub of activity | 活動の中心 | The station is a hub of activity. | noun | society | B
+hurdle | 障害 | Funding is the last hurdle. | noun | business | B
+hybridization | 交雑 | Hybridization produced a hardy variety. | noun | environment | C
+idiom | 慣用句 | This idiom has no direct translation. | noun | education | B
+immunity to disease | 病気への免疫 | Vaccines build immunity to disease. | noun | health | B
+impartiality | 公平 | Judges must show impartiality. | noun | society | C
+impasse | 行き詰まり | The talks reached an impasse. | noun | business | B
+impeachment | 弾劾 | The assembly began impeachment hearings. | noun | society | C
+imperative of growth | 成長という至上命題 | Firms question the imperative of growth. | noun | business | C
+impetus | 弾み、推進力 | The grant gave fresh impetus. | noun | business | B
+imprint | 痕跡、刻印 | The era left a deep imprint. | noun | education | C
+impunity | 免責、おとがめなし | Nobody dumps waste with impunity now. | noun | environment | C
+incarceration | 投獄 | Long incarceration hurts families. | noun | society | C
+inception | 開始 | The club has grown since its inception. | noun | business | B
+inclination to help | 手を貸そうとする気持ち | She has a natural inclination to help. | noun | society | C
+incubation period | 潜伏期間 | The incubation period is five days. | noun | health | B
+incumbent | 現職者 | The incumbent kept her seat. | noun | society | B
+indemnity | 補償 | The clause provides full indemnity. | noun | business | C
+indictment | 起訴 | The indictment lists four counts. | noun | society | C
+indifference to risk | 危険への無関心 | Their indifference to risk shocked us. | noun | society | C
+indignation | 憤り | The letter expresses quiet indignation. | noun | society | C
+inequity | 不公正 | The system corrects an old inequity. | noun | society | C
+inertia | 惰性、慣性 | Institutional inertia blocked reform. | noun | business | B
+infatuation | のぼせ上がり | His infatuation with gadgets faded. | noun | daily | C
+inference from data | データからの推論 | The inference from data seems sound. | noun | education | C
+inflammation | 炎症 | Ice reduces inflammation quickly. | noun | health | B
+influx | 流入 | An influx of tourists strained the town. | noun | society | B
+influx of visitors | 来訪者の急増 | The influx of visitors strained hotels. | noun | business | B
+infringement | 侵害 | The design is an obvious infringement. | noun | business | B
+infringement penalty | 侵害に対する罰則 | The infringement penalty was severe. | noun | business | C
+infusion | 注入、点滴 | The patient received an infusion. | noun | health | C
+ingenuity | 創意工夫 | Local ingenuity solved the shortage. | noun | technology | B
+ingenuity of design | 設計の妙 | The ingenuity of design impressed judges. | noun | technology | C
+ingestion | 摂取 | Accidental ingestion requires a doctor. | noun | health | C
+inhibition | 抑制 | Alcohol lowers social inhibition. | noun | health | C
+injunction | 差し止め命令 | A court injunction halted the work. | noun | society | C
+innuendo | 当てこすり | The article relies on innuendo. | noun | society | C
+insecticide | 殺虫剤 | The farm stopped using that insecticide. | noun | environment | B
+insinuation | ほのめかし | She rejected the insinuation firmly. | noun | society | C
+insolvency practitioner | 破産管財人 | An insolvency practitioner took over. | noun | business | C
+insurgency | 反乱 | The insurgency faded after the accord. | noun | society | C
+integrity of data | データの完全性 | The audit confirmed the integrity of data. | noun | technology | C
+intellect | 知性 | The role demands real intellect. | noun | education | B
+interlude | 幕あい、小休止 | The rain was a brief interlude. | noun | general | C
+intermediary | 仲介者 | We removed the intermediary entirely. | noun | business | B
+intimidation | 威嚇 | Voter intimidation is a serious crime. | noun | society | C
+intonation | 抑揚 | Rising intonation signals a question. | noun | education | B
+introspection | 内省 | The illness prompted deep introspection. | noun | health | C
+isotope | 同位体 | Researchers dated the bone by isotope. | noun | technology | C
+jargon | 専門用語 | Avoid jargon in public notices. | noun | education | B
+juncture | 時点、局面 | At this juncture, caution is wise. | noun | business | C
+jurisprudence | 法学 | She teaches comparative jurisprudence. | noun | education | C
+juxtaposition | 並置 | The juxtaposition of old and new works. | noun | education | C
+knack | こつ | She has a knack for explaining. | noun | education | B
+labor union | 労働組合 | The labor union negotiated a raise. | noun | business | B
+labyrinth | 迷路 | The old town is a labyrinth of lanes. | noun | society | C
+larva | 幼虫 | The larva feeds on dead leaves. | noun | environment | C
+layperson | 素人 | The guide is written for the layperson. | noun | education | C
+legion of fans | 大勢のファン | A legion of fans waited outside. | noun | society | C
+legislature | 立法府 | The legislature meets twice a year. | noun | society | B
+legume | 豆類 | Legumes enrich the soil naturally. | noun | environment | C
+leniency | 寛大さ | Auditors showed no leniency. | noun | business | C
+lesion | 病変 | The scan revealed a small lesion. | noun | health | C
+lexicon | 語彙、用語集 | The field has its own lexicon. | noun | education | C
+liaison | 連絡係 | She acts as liaison with the school. | noun | business | B
+libel | 文書による名誉毀損 | The paper settled the libel case. | noun | society | C
+liquidation | 清算 | The chain went into liquidation. | noun | business | C
+liquidity | 流動性 | The bank kept ample liquidity. | noun | business | B
+lobbyist | ロビイスト | Lobbyists filled the corridor. | noun | society | B
+lull | 小休止 | Sales enjoy a lull in February. | noun | business | B
+luminosity | 明るさ | The star's luminosity varies. | noun | education | C
+magistrate | 治安判事 | The magistrate imposed a small fine. | noun | society | C
+magnate | 大立者 | A shipping magnate funded the hall. | noun | business | C
+magnitude of the quake | 地震の規模 | The magnitude of the quake was six. | noun | environment | C
+mainstay | 頼みの綱 | Tourism is the island's mainstay. | noun | business | B
+mainstream | 主流 | The idea entered the mainstream. | noun | society | B
+makeshift shelter | 仮設の避難所 | Families slept in a makeshift shelter. | noun | society | C
+malady | 病 | Loneliness is a modern malady. | noun | health | C
+malaise | 不調、閉塞感 | A general malaise gripped the sector. | noun | society | C
+malpractice | 不正行為、医療過誤 | The board investigated malpractice. | noun | health | B
+mandate of voters | 有権者の負託 | The mayor claimed a clear mandate of voters. | noun | society | C
+manifesto | 宣言、公約集 | The party published its manifesto. | noun | society | B
+manuscript | 原稿 | The manuscript arrived unedited. | noun | education | B
+marsh | 湿地 | Rare frogs breed in the marsh. | noun | environment | B
+martial law | 戒厳令 | Martial law was lifted after a month. | noun | society | C
+mediator | 調停者 | A neutral mediator joined the talks. | noun | business | B
+mediocrity | 凡庸さ | The firm settled into mediocrity. | noun | business | C
+medley | 寄せ集め | The concert ended with a medley. | noun | education | C
+membrane | 膜 | A thin membrane filters the water. | noun | technology | C
+memoir | 回想録 | Her memoir sold widely. | noun | education | B
+metamorphosis | 変態、変身 | The insect completes its metamorphosis. | noun | environment | C
+methane | メタン | Cattle release large amounts of methane. | noun | environment | B
+militia | 民兵組織 | A local militia guarded the bridge. | noun | society | C
+misdemeanor | 軽犯罪 | Littering counts as a misdemeanor. | noun | society | C
+mishap | 災難 | A minor mishap delayed the train. | noun | daily | B
+mnemonic | 記憶術 | A simple mnemonic helps here. | noun | education | C
+momentous occasion | 重大な機会 | The opening was a momentous occasion. | noun | society | C
+momentum of reform | 改革の勢い | The momentum of reform slowed. | noun | society | C
+monologue | 独白 | The play opens with a long monologue. | noun | education | C
+monopoly power | 独占力 | Regulators curbed its monopoly power. | noun | business | B
+moratorium | 一時停止 | The city declared a building moratorium. | noun | society | C
+mortality rate | 死亡率 | The mortality rate fell sharply. | noun | health | B
+nausea | 吐き気 | Nausea is a common side effect. | noun | health | B
+nepotism | 縁故主義 | Hiring rules discourage nepotism. | noun | business | C
+nomenclature | 命名法 | Scientific nomenclature avoids confusion. | noun | education | C
+nominee | 候補者、名義人 | The nominee declined the post. | noun | business | B
+nostalgia | 郷愁 | The photos stirred deep nostalgia. | noun | general | B
+notion of progress | 進歩という観念 | The essay questions the notion of progress. | noun | education | C
+nuance | 微妙な差 | Translation loses some nuance. | noun | education | B
+nuance of tone | 口調の微妙さ | The nuance of tone matters here. | noun | education | C
+obscurity | 無名、不明瞭 | The painter died in obscurity. | noun | education | C
+obstruction | 閉塞、妨害 | The scan showed an obstruction. | noun | health | B
+offshoring | 海外移転 | Offshoring cut local employment. | noun | business | B
+oligarchy | 寡頭政治 | Critics called the system an oligarchy. | noun | society | C
+onslaught | 猛攻、殺到 | The shop survived an onslaught of orders. | noun | business | C
+ordeal | 苦難 | The rescue was a long ordeal. | noun | society | B
+ordinance | 条例 | A new ordinance limits night noise. | noun | society | B
+outburst | 爆発、噴出 | His outburst surprised everyone. | noun | society | B
+outcry | 抗議の声 | Public outcry stopped the demolition. | noun | society | B
+outlay | 支出 | The initial outlay is considerable. | noun | business | C
+outset of the project | 事業の当初 | Costs were clear at the outset of the project. | noun | business | C
+outskirts | 郊外 | They live on the outskirts of town. | noun | society | B
+overture | 申し入れ | The rival made a quiet overture. | noun | business | C
+ozone depletion | オゾン層破壊 | Ozone depletion slowed after the ban. | noun | environment | B
+paleontology | 古生物学 | The museum funds paleontology. | noun | education | C
+paradigm | 枠組み、範例 | The field needs a new paradigm. | noun | education | B
+paradox | 逆説 | The result presents a curious paradox. | noun | education | B
+paraphernalia | 道具一式 | Camping paraphernalia filled the trunk. | noun | daily | C
+parity | 同等、等価 | Women reached wage parity in this firm. | noun | society | B
+pathogen | 病原体 | The pathogen spreads through water. | noun | health | B
+pathos | 哀愁 | The final scene has real pathos. | noun | education | C
+patronage | 後援、庇護 | The arts rely on quiet patronage. | noun | society | C
+payback period | 回収期間 | The payback period is four years. | noun | business | C
+pecuniary loss | 金銭的損失 | The clause covers pecuniary loss. | noun | business | C
+pedagogy | 教育法 | The school revised its pedagogy. | noun | education | C
+peer review | 査読 | The paper passed peer review. | noun | education | B
+penchant | 好み、傾向 | He has a penchant for old maps. | noun | daily | C
+pension scheme | 年金制度 | The pension scheme was reformed. | noun | business | B
+perception of risk | 危険の受け止め方 | Perception of risk varies by age. | noun | society | C
+perjury | 偽証 | He was charged with perjury. | noun | society | C
+permafrost | 永久凍土 | Thawing permafrost releases gas. | noun | environment | C
+persona | 対外的な人格 | His public persona hides shyness. | noun | society | C
+pharmaceutical | 医薬品 | A pharmaceutical firm funded the trial. | noun | health | B
+philanthropy | 慈善活動 | The hall was built through philanthropy. | noun | society | B
+photosynthesis | 光合成 | Photosynthesis needs light and water. | noun | environment | B
+physiology | 生理学 | The course covers basic physiology. | noun | health | C
+pinnacle | 頂点 | The award marks the pinnacle of her career. | noun | education | C
+pittance | わずかな額 | The job pays a pittance. | noun | business | C
+plateau | 高原、停滞期 | Progress reached a plateau. | noun | education | B
+plethora | 過多 | A plethora of options confuses buyers. | noun | business | C
+plight | 苦境 | The report describes the plight of tenants. | noun | society | B
+plurality | 相対多数 | She won by a narrow plurality. | noun | society | C
+plutocracy | 金権政治 | The essay criticizes creeping plutocracy. | noun | society | C
+poise | 落ち着き | She answered with complete poise. | noun | health | C
+pollination | 受粉 | Bees handle most pollination. | noun | environment | B
+populace | 大衆 | The populace welcomed the reform. | noun | society | C
+potency | 効力 | The drug loses potency in heat. | noun | health | C
+precedent | 前例 | The ruling sets a clear precedent. | noun | society | B
+precursor | 前身、前触れ | The device was a precursor to modern phones. | noun | technology | C
+predicament | 窮地 | The team faced a real predicament. | noun | general | B
+premise | 前提 | The argument rests on a false premise. | noun | education | B
+prerequisite | 前提条件 | Basic math is a prerequisite. | noun | education | B
+prerogative | 特権 | Pardon is the governor's prerogative. | noun | society | C
+proceeds | 収益金 | Proceeds go to the animal shelter. | noun | business | B
+proclivity | 性癖、傾向 | He has a proclivity for detail. | noun | education | C
+prodigy | 天才 | The pianist was a child prodigy. | noun | education | C
+proficiency pay | 技能手当 | Proficiency pay rewards certified staff. | noun | business | C
+proliferation | 急増、拡散 | The proliferation of apps overwhelms users. | noun | technology | B
+proponent | 支持者 | Proponents cite lower emissions. | noun | society | B
+proprietor | 所有者 | The proprietor greeted every guest. | noun | business | B
+propriety | 礼儀正しさ、妥当性 | Questions of propriety delayed the deal. | noun | business | C
+prose | 散文 | Her prose is clear and unhurried. | noun | education | B
+protagonist | 主人公 | The protagonist never leaves the village. | noun | education | B
+proximity | 近接 | Proximity to the station raises rent. | noun | society | B
+proxy | 代理人、代理投票 | Shareholders voted by proxy. | noun | business | B
+prudence | 慎重さ | Prudence suggests a smaller loan. | noun | business | C
+quandary | 板挟み | The offer left him in a quandary. | noun | general | C
+quirk | 癖、風変わりな点 | Every old house has its quirks. | noun | daily | B
+rainfall runoff | 降雨流出 | Rainfall runoff floods the low street. | noun | environment | C
+ramification | 波及する影響 | The ruling has wide ramifications. | noun | society | C
+rapport | 信頼関係 | Good teachers build rapport quickly. | noun | education | B
+rapture | 歓喜 | The audience listened in rapture. | noun | general | C
+rationale | 根拠 | Explain the rationale for the change. | noun | business | B
+reagent | 試薬 | The reagent turns blue in acid. | noun | technology | C
+recipient | 受取人 | The recipient must sign here. | noun | business | B
+reconnaissance | 偵察、下見 | The team did a quick reconnaissance. | noun | society | C
+recourse | 頼るもの、償還請求権 | Buyers have legal recourse. | noun | business | C
+redundancy pay | 解雇手当 | Redundancy pay softened the blow. | noun | business | C
+refuge | 避難 | Birds take refuge in the reeds. | noun | environment | B
+rejoinder | 返答 | His rejoinder ended the argument. | noun | education | C
+relic | 遺物 | The lamp is a relic of the war years. | noun | education | B
+reminiscence | 回想 | The book is a gentle reminiscence. | noun | education | C
+remission | 寛解 | The illness went into remission. | noun | health | C
+remuneration | 報酬 | Remuneration includes a travel allowance. | noun | business | C
+rendition | 表現、演奏 | Her rendition of the song was lovely. | noun | general | C
+reparation | 賠償 | The state paid reparation to the families. | noun | society | C
+repatriation | 本国送還 | Repatriation flights began in May. | noun | society | C
+repercussion | 影響、余波 | The tax had wide repercussions. | noun | business | B
+repertoire | レパートリー | The choir expanded its repertoire. | noun | education | B
+reprisal | 報復 | Workers feared reprisal for speaking out. | noun | business | C
+respiration | 呼吸 | Respiration slows during sleep. | noun | health | C
+respite | 小休止、猶予 | The rain gave brief respite from the heat. | noun | environment | C
+restitution | 返還、賠償 | The court ordered full restitution. | noun | society | C
+retainer | 顧問料 | The firm pays a monthly retainer. | noun | business | C
+retribution | 報い、応報 | The novel is about crime and retribution. | noun | society | C
+reverence | 畏敬 | Students speak of her with reverence. | noun | education | C
+rhetoric | 修辞、美辞麗句 | Strip away the rhetoric and check facts. | noun | education | B
+rift | 亀裂 | A rift opened between the partners. | noun | business | B
+rigor | 厳密さ | The study lacks statistical rigor. | noun | education | C
+rubble | がれき | Volunteers cleared the rubble. | noun | society | B
+sabbatical | 研究休暇 | She spent a sabbatical in Kyoto. | noun | education | C
+sabotage | 妨害工作 | Investigators ruled out sabotage. | noun | society | B
+sagacity | 賢明さ | The plan reflects unusual sagacity. | noun | education | C
+salinity | 塩分濃度 | Salinity rose after the drought. | noun | environment | C
+sanitation system | 下水処理 | The village built a sanitation system. | noun | health | B
+sapling | 苗木 | Volunteers planted two hundred saplings. | noun | environment | C
+scaffolding | 足場 | Scaffolding covers the north wall. | noun | technology | C
+scrutiny of records | 記録の精査 | Scrutiny of records revealed the error. | noun | business | C
+secession | 分離独立 | The region abandoned talk of secession. | noun | society | C
+sedition | 扇動 | The old law punished sedition harshly. | noun | society | C
+semantics | 意味論 | The dispute is one of semantics. | noun | education | C
+semblance | 外見、体裁 | Order regained some semblance of calm. | noun | society | C
+sensibility | 感性 | The design suits modern sensibility. | noun | education | C
+sequel | 続編 | The sequel outsold the original. | noun | education | B
+serenity | 静穏 | The garden offers rare serenity. | noun | health | C
+sewage | 下水 | Untreated sewage reached the bay. | noun | environment | B
+silt | 沈泥 | Silt clogged the irrigation channel. | noun | environment | C
+snag | 思わぬ障害 | We hit a snag with the permit. | noun | business | B
+solace | 慰め | Music brought her some solace. | noun | health | C
+solitude | 孤独 | He works best in solitude. | noun | health | B
+solvency | 支払い能力 | Regulators monitor bank solvency. | noun | business | C
+spectrum | 範囲、スペクトル | Opinions cover the whole spectrum. | noun | society | B
+speculation | 投機、推測 | Land speculation drove prices up. | noun | business | B
+spree | 熱狂的な行い | A shopping spree emptied his wallet. | noun | daily | C
+stalemate | 膠着状態 | Negotiations ended in stalemate. | noun | business | B
+statute | 法令 | The statute dates from 1949. | noun | society | B
+stewardship | 管理責任 | Good stewardship protects the forest. | noun | environment | C
+stint | 任期、期間 | She did a two-year stint overseas. | noun | business | C
+stipend | 手当、奨学金 | Interns receive a small stipend. | noun | education | C
+stipulation | 規定、条件 | One stipulation concerns noise levels. | noun | business | C
+subordinate | 部下 | He rarely praises his subordinates. | noun | business | B
+subsidence | 地盤沈下 | Subsidence cracked the old wall. | noun | environment | C
+subsidiary | 子会社 | The subsidiary was sold last spring. | noun | business | B
+subsistence | 最低限の生活 | Many families live at subsistence level. | noun | society | C
+subtlety | 微妙さ | The subtlety of the joke was lost. | noun | education | C
+succession plan | 後継者計画 | The board approved a succession plan. | noun | business | C
+suffrage | 選挙権 | Universal suffrage came gradually. | noun | society | C
+surge in demand | 需要の急増 | A surge in demand emptied the shelves. | noun | business | B
+surveillance state | 監視国家 | The essay warns of a surveillance state. | noun | society | C
+sustenance | 栄養、生計 | Rice provides basic sustenance here. | noun | health | C
+symposium | シンポジウム | The symposium drew forty scholars. | noun | education | B
+syndicate | 企業連合 | A syndicate financed the stadium. | noun | business | C
+synopsis | あらすじ | Send a one-page synopsis. | noun | education | B
+synthesis | 合成、統合 | The paper offers a useful synthesis. | noun | education | B
+temperament | 気質 | The job suits a calm temperament. | noun | health | B
+tenacity | 粘り強さ | Her tenacity impressed the panel. | noun | education | B
+tenet | 信条、教義 | Fairness is a central tenet here. | noun | society | C
+terrain | 地形 | The terrain is steep and rocky. | noun | environment | B
+thoroughfare | 主要道路 | Trucks avoid the narrow thoroughfare. | noun | society | C
+threshold of pain | 痛みの閾値 | Everyone has a different threshold of pain. | noun | health | C
+throng | 群衆 | A throng filled the narrow street. | noun | society | C
+torrent | 奔流、殺到 | A torrent of messages followed. | noun | technology | C
+tranquility | 静けさ | The village prizes its tranquility. | noun | environment | C
+transcript | 記録、成績証明書 | Please attach your academic transcript. | noun | education | B
+treatise | 論文、専門書 | He wrote a treatise on water rights. | noun | education | C
+tremor | 揺れ、震え | A small tremor woke the town. | noun | environment | B
+tribunal | 審判所 | The tribunal heard forty witnesses. | noun | society | C
+tumult | 騒動 | The tumult died down by evening. | noun | society | C
+turbulence | 乱気流、動揺 | The flight met heavy turbulence. | noun | technology | B
+turmoil | 混乱 | The market fell into turmoil. | noun | business | B
+tycoon | 大物実業家 | A steel tycoon built the library. | noun | business | C
+tyranny | 圧政 | The play is about petty tyranny. | noun | society | C
+underpinning | 土台、根拠 | Data is the underpinning of the claim. | noun | education | C
+upheaval | 激変 | The industry faced a major upheaval. | noun | business | B
+upsurge | 急増 | There was an upsurge in applications. | noun | business | B
+usury | 高利貸し | The law bans usury. | noun | business | C
+vantage point | 見晴らしのよい地点 | The tower is a fine vantage point. | noun | general | C
+vapor | 蒸気 | Water vapor condenses on the glass. | noun | environment | B
+vendor | 販売業者 | Each vendor signs the same terms. | noun | business | B
+venture into new markets | 新市場への進出 | Their venture into new markets paid off. | noun | business | B
+venue for talks | 協議の場 | The city offered a venue for talks. | noun | society | C
+verge | 縁、寸前 | The firm was on the verge of closing. | noun | business | B
+vernacular | 土地の言葉 | The play uses the local vernacular. | noun | education | C
+vestige | 名残 | Only a vestige of the wall remains. | noun | education | C
+viability | 実行可能性 | The study questions its viability. | noun | business | B
+vicinity | 近所 | No clinic exists in the vicinity. | noun | society | B
+vicissitude | 移り変わり | The family survived many vicissitudes. | noun | society | C
+vigilante | 自警団員 | Vigilante patrols worried the police. | noun | society | C
+virtue | 美徳 | Patience is an underrated virtue. | noun | society | B
+viscosity | 粘度 | Cold raises the oil's viscosity. | noun | technology | C
+vocation | 天職 | Nursing became her vocation. | noun | business | B
+void | 空白、虚無 | Her retirement left a void. | noun | business | B
+vortex | 渦 | A vortex formed behind the rock. | noun | technology | C
+warrant | 令状 | Officers arrived with a search warrant. | noun | society | B
+warrant for concern | 懸念の根拠 | There is little warrant for concern. | noun | society | C
+whim | 気まぐれ | The trip began on a whim. | noun | daily | B
+whirlwind | 旋風 | The tour was a whirlwind of events. | noun | general | C
+windfall | 棚ぼたの利益 | The sale brought an unexpected windfall. | noun | business | B
+yardstick | 判断基準 | Profit is a poor yardstick for schools. | noun | business | C
+zeal | 熱意 | He works with missionary zeal. | noun | society | C
+zenith | 絶頂 | The empire reached its zenith then. | noun | education | C
+
+# === 句動詞・イディオム 87語 ===
+a far cry from | 〜とはほど遠い | The result is a far cry from last year. | other | general | B
+at loggerheads | 対立して | The two ministries are at loggerheads. | other | society | C
+bank on | 当てにする | Do not bank on quick approval. | other | business | B
+bear the brunt of | 矢面に立つ | Small firms bear the brunt of the tax. | other | business | B
+beat around the bush | 遠回しに言う | Stop beating around the bush. | other | daily | B
+bite the bullet | 歯を食いしばってやる | We bit the bullet and replaced the roof. | other | daily | B
+boil down to | 要するに〜になる | It all boils down to cost. | other | business | B
+brush up on | 学び直す | I need to brush up on my French. | other | education | B
+buckle down | 本腰を入れる | The team buckled down after lunch. | other | business | C
+call into question | 疑問を投げかける | The audit calls the figures into question. | other | business | B
+carry weight | 重みがある | Her opinion carries weight here. | other | society | B
+clamp down on | 取り締まる | Police clamped down on illegal parking. | other | society | B
+come to fruition | 実を結ぶ | The plan came to fruition in spring. | other | business | C
+crop up | 不意に生じる | New problems crop up every week. | other | business | B
+cut corners | 手を抜く | Never cut corners on safety. | other | business | A
+draw a parallel | 類似点を示す | He drew a parallel with the 1970s. | other | education | C
+eke out | 細々と稼ぐ | Farmers eke out a modest living. | other | society | C
+err on the side of caution | 安全策をとる | Let us err on the side of caution. | other | business | B
+fall by the wayside | 途中で脱落する | Several proposals fell by the wayside. | other | business | C
+fend off | 撃退する | The firm fended off a hostile bid. | other | business | B
+ferret out | 探り出す | Auditors ferreted out the error. | other | business | C
+fizzle out | 尻すぼみになる | The campaign fizzled out by July. | other | society | C
+fly in the face of | 真っ向から反する | The claim flies in the face of evidence. | other | education | C
+give the benefit of the doubt | 善意に解釈する | I will give her the benefit of the doubt. | other | society | B
+gloss over | 都合よく省く | The report glosses over the delay. | other | business | C
+go hand in hand | 密接に関係する | Trade and travel go hand in hand. | other | business | B
+hammer out | 苦労してまとめる | They hammered out a compromise. | other | business | B
+hang in the balance | どうなるか分からない | The project hangs in the balance. | other | business | B
+have a bearing on | 影響を及ぼす | Weather has a bearing on the schedule. | other | business | B
+hinge on | 〜次第である | Everything hinges on the survey. | other | business | B
+hold sway | 影響力を持つ | Old customs still hold sway here. | other | society | C
+hold water | 筋が通る | That excuse does not hold water. | other | education | B
+in a nutshell | 要するに | In a nutshell, we need more time. | other | business | B
+in lieu of | 〜の代わりに | Take a day off in lieu of overtime. | other | business | C
+in the offing | 近づいて | A merger seems to be in the offing. | other | business | C
+jump to conclusions | 早合点する | Do not jump to conclusions yet. | other | education | B
+keep at bay | 食い止める | Regular checks keep rust at bay. | other | technology | B
+lay the groundwork | 下準備をする | The visit laid the groundwork for talks. | other | business | B
+leave much to be desired | 不十分である | The translation leaves much to be desired. | other | education | B
+make headway | 前進する | We finally made headway on the backlog. | other | business | B
+mull over | じっくり考える | She mulled over the offer for days. | other | business | B
+nip in the bud | 早めに摘み取る | Nip such rumors in the bud. | other | business | C
+off the beaten track | 人里離れた | The inn lies off the beaten track. | other | daily | B
+on a par with | 〜と同等で | Their service is on a par with ours. | other | business | B
+on the brink of | 〜の瀬戸際で | The species is on the brink of collapse. | other | environment | B
+par for the course | よくあること | Delays are par for the course here. | other | business | C
+pave the way for | 道を開く | The law paved the way for reform. | other | society | B
+peter out | 次第に消える | The trail petered out near the ridge. | other | environment | C
+pin down | 特定する | Experts cannot pin down the cause. | other | education | B
+play down | 軽く扱う | Officials played down the risk. | other | society | B
+put a damper on | 水を差す | Rain put a damper on the festival. | other | daily | C
+raise eyebrows | 眉をひそめさせる | The bonus raised eyebrows. | other | business | C
+ramp up | 増強する | The plant ramped up production. | other | business | B
+read between the lines | 行間を読む | Read between the lines of that notice. | other | education | B
+rein in | 抑制する | The city reined in spending. | other | business | B
+ring true | 本当らしく聞こえる | His account does not ring true. | other | society | C
+roll out | 展開する | The bank rolled out a new app. | other | business | B
+root out | 根絶する | The audit aims to root out waste. | other | business | B
+rub off on | 影響を与える | Her calm rubs off on the team. | other | daily | C
+see eye to eye | 意見が一致する | We do not see eye to eye on this. | other | business | B
+set the stage for | お膳立てをする | The talks set the stage for a deal. | other | business | B
+shore up | 下支えする | Subsidies shore up rural clinics. | other | society | C
+sift through | ふるいにかける | We sifted through hundreds of replies. | other | business | B
+sit on the fence | 態度を決めない | Voters can no longer sit on the fence. | other | society | C
+size up | 値踏みする | He quickly sized up the situation. | other | business | B
+smooth over | 丸く収める | She smoothed over the disagreement. | other | business | C
+spell out | 詳しく説明する | The letter spells out each condition. | other | business | B
+stave off | 食い止める | Savings staved off bankruptcy. | other | business | C
+steal the limelight | 注目をさらう | The newcomer stole the limelight. | other | society | C
+stem the tide | 流れを食い止める | Nothing could stem the tide of departures. | other | business | C
+stumble upon | 偶然見つける | Hikers stumbled upon an old shrine. | other | general | B
+take root | 根づく | The custom took root within a decade. | other | society | B
+take with a grain of salt | 割り引いて聞く | Take that forecast with a grain of salt. | other | business | B
+the tip of the iceberg | 氷山の一角 | These cases are the tip of the iceberg. | other | society | B
+tide over | 切り抜けさせる | The loan tided them over the winter. | other | business | C
+toe the line | 規則に従う | New members must toe the line. | other | business | C
+tone down | 和らげる | The editor toned down the headline. | other | education | B
+turn the tables | 形勢を逆転する | The small team turned the tables. | other | business | C
+under the auspices of | 〜の後援で | The fair runs under the auspices of the city. | other | society | C
+up in arms | 憤慨して | Residents are up in arms over the noise. | other | society | C
+usher in an era | 時代を切り開く | The invention ushered in an era of speed. | other | technology | C
+vie for | 争う | Six firms vie for the contract. | other | business | B
+weather the storm | 難局を乗り切る | The shop weathered the storm. | other | business | B
+weed out | 取り除く | The test weeds out weak applications. | other | business | B
+whip up | かき立てる | The article whipped up needless fear. | other | society | C
+with flying colors | 見事に | She passed the exam with flying colors. | other | education | B
+wriggle out of | 逃れる | He tried to wriggle out of the duty. | other | business | C

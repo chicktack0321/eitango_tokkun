@@ -1,0 +1,421 @@
+# G1（英検1級）の bridge（準1級帯の復習）に置く語。
+# GP1 の core のうち、**準1級専用に書き起こした新規語の頻出度B**からの選抜。1行1語。
+#
+# GP1 core を全量持ち込んではならない（docs/vocab-database-spec.md §4 ルールB）。
+# ここでは 409語（GP1 core 1,491語の 27%）に絞り、準1級アプリの
+# 独自性を70%台に保つ。
+#
+# **2級コア由来の745語（GP1 core の残り）は選ばない。** それらは公開中の2級アプリの
+# 課金対象で、1級アプリの無料帯に出すと2級の独自性が0%になる。
+# 同様に、GP1 新規 core の頻出度C（337語）も1級には載せない（準1級の売り物を守るため）。
+
+# --- GP1 新規 core の頻出度B: 409語 ---
+abolish
+abrupt
+absurd
+accommodation cost
+accountable
+accumulate
+acquisition
+activist
+acute
+adhere
+adjacent
+administer
+admiration
+adolescent
+aggravate
+alleviate
+altitude
+ambition to succeed
+ample
+amplify
+antibody
+applause
+arouse
+arrogant
+articulate
+artifact
+aspiration
+aspire
+assembly
+attorney
+auction
+audit
+avert
+backlash
+ballot
+bandwidth
+benchmark
+betray
+bid
+biofuel
+blueprint
+blur
+boredom
+breed
+bureau
+calorie intake
+cargo
+catastrophe
+cater
+cavity
+cease
+certificate of completion
+chaotic
+cherish
+chore
+circulation
+civic duty
+clause
+climate model
+coincide
+commence
+commuter pass
+competence
+comprehend
+conceive
+concise
+conform
+consequence of delay
+considerate
+constraint
+constructive
+consumer confidence
+contagious
+contamination
+contemplate
+contractor
+contradiction
+corruption
+costly
+criterion
+cuisine
+deadline extension
+deadline pressure
+dealer
+debris
+decay
+dedication
+deem
+defective
+defy
+demanding
+demographics
+denial
+dense
+density
+despair
+detection
+deter
+determination to win
+detrimental
+devastating
+diameter
+differentiate
+disclosure
+disparity
+disposable
+disregard
+distinctive
+distress
+district office
+diverse backgrounds
+donor
+dosage
+downturn
+draft contract
+drain
+drawback
+dwindle
+embark
+emergence
+emission standard
+encounter with
+endorsement
+enforcement
+envision
+equity
+eradicate
+erosion
+escalate
+etiquette
+evacuation drill
+evoke
+exotic
+extent of damage
+faint
+fairness
+fame
+fatigue
+fertile
+finite
+fiscal
+flaw
+fluctuation
+formula
+formulate a plan
+fraction
+fragment
+franchise
+frank
+fraud
+friction
+fundraising
+furnish
+galaxy
+generic
+genetics
+gesture of thanks
+glimpse
+gloomy
+governance
+gravity
+groundwater
+guardian
+hamper
+harass
+hardship
+hazardous
+hectic
+heighten
+heritage site
+hinder
+hollow
+hospitality industry
+humanity
+idle
+ignorance
+illuminate
+illusion
+imbalance
+immature
+immerse
+immigration policy
+immune
+implication
+impulsive
+incentive to study
+incur
+indicator
+indifferent
+infer
+inferior
+infinite
+inhabit
+inhabitant
+inherent
+initiative to reduce waste
+injustice
+innovate
+insist firmly
+inspection report
+installment
+insulation
+intact
+intake of salt
+integral
+integration
+intensify
+intentional
+interval
+intervention
+invasion
+inventory
+ironic
+itinerary
+jeopardize
+juggle
+landlord
+layoff
+lease
+legacy
+lengthy
+lessen
+liberty
+lifespan
+likelihood
+linger
+literal
+livelihood
+logistics
+machinery
+magnificent
+magnify
+malfunction
+malnutrition
+marginal
+mastery
+mentor
+merchandise
+merger
+metabolism
+metaphor
+migration route
+milestone
+mimic
+ministry of health
+misconception
+miserable
+misleading
+mitigate
+mold
+momentum
+morale
+mortgage payment
+motive
+mutation
+naive
+narrative
+nonprofit organization
+norm
+nostalgic
+nourish
+nuisance
+nutrition label
+objection
+obsolete
+offensive
+organism
+outlet store
+outrage
+outweigh
+oversight
+overtake
+partial
+passive
+payroll
+peculiar
+penetrate
+perseverance
+petition
+plausible
+plentiful
+portfolio
+pragmatic
+predator
+preliminary
+premature
+premium
+prestigious
+presume
+prevalent
+primitive
+profound
+prolonged
+prosper
+prosperous
+protocol
+province
+purify
+quarantine
+questionable
+quota
+reasoning
+rebound
+reckless
+recycling rate
+redundant
+reef
+refined
+rehabilitation
+reimbursement
+remodel
+renowned
+repetitive
+resent
+reservoir
+resilient
+resolution to exercise
+respectable
+respiratory illness
+responsive
+restless
+restrain
+revenue stream
+rivalry
+robust
+sacred
+sanitation
+satellite image
+scandal
+scenic
+selective
+semiconductor
+sentiment
+settlement
+sheer
+simplicity
+simulation
+simultaneous
+sluggish
+soar
+species diversity
+spectator
+sponsorship
+stagnant
+standpoint
+stereotype
+streamline
+stubborn
+sturdy
+subjective
+subsidize
+subsidy
+superficial
+supervision
+supreme
+surge
+surplus
+surveillance
+symbolic
+systematic
+tangible
+tariff
+tedious
+tentative
+threshold
+thrive
+thriving
+tolerant
+trademark
+trait
+transplant
+treaty
+trivial
+turbine
+turnout
+turnover
+unanimous
+unavoidable
+uncommon
+unconscious
+uncover
+underlying
+undermine
+undesirable
+unethical
+unfavorable
+unprecedented
+unreliable
+unveil
+upright
+vaccination rate
+vain
+validate
+vegetation
+ventilation
+venture
+venture capital
+verbal
+vibrant
+viewpoint
+wary
+wastewater
+weave
+welfare benefits
+wholesale price
+widen the gap
+withdrawal
+workplace safety
+worthy

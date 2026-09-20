@@ -1,0 +1,188 @@
+# GP1（準1級）専用の bridge 語（新規）
+#
+# 形式: <word> | <訳> | <例文> | <partOfSpeech> | <domain> | <category>
+# 位置づけ: master.json に無い準1級帯の語のうち、**頻出度A・副詞・句動詞**。
+#           2級帯のすぐ上にあたる語で、無料帯（bridge）に置く。
+#           core は名詞・動詞・形容詞の B/C 帯で構成する。
+# 理由: 新規語914語を全部 core に入れると core が1,659語になり、§3 の上限1,500語を超える。
+#       「完走できる分量」を保つため、頻出度Aの語と、2級帯の語と組み合わせて使う
+#       副詞・句動詞を無料帯へ降ろした。
+#       無料帯に置いても他エディションの課金対象を侵さない（新規語なので重複が無い）。
+
+# === 動詞 20語 ===
+attain | 達成する | She attained fluency within two years. | verb | education | A
+broaden | 広げる | Travel broadens a young person's outlook. | verb | education | A
+cite | 引用する | The essay cites three recent studies. | verb | education | A
+compensate | 埋め合わせる | The airline compensated delayed passengers. | verb | business | A
+cope | 対処する | Nurses cope with heavy night shifts. | verb | health | A
+flourish | 繁栄する | Small shops flourish near the new station. | verb | business | A
+frustrate | 挫折させる | Delays frustrated the whole research team. | verb | general | A
+implement | 実施する | The city implemented the new rule in April. | verb | society | A
+inquire | 尋ねる | She inquired about the refund policy. | verb | daily | A
+minimize | 最小限にする | Good planning minimizes waste. | verb | business | A
+perceive | 知覚する、理解する | Customers perceive the brand as reliable. | verb | business | A
+postpone | 延期する | Heavy snow postponed the entrance exam. | verb | education | A
+reconsider | 考え直す | Please reconsider your resignation. | verb | business | A
+refrain | 控える | Please refrain from talking in the hall. | verb | daily | A
+resume work | 仕事を再開する | The crew resumed work after the storm. | verb | business | A
+strive | 努力する | We strive to cut waste every year. | verb | business | A
+tackle a problem | 問題に取り組む | Volunteers tackled the litter problem. | verb | society | A
+trigger | 引き起こす | Dust can trigger an asthma attack. | verb | health | A
+underestimate | 過小評価する | Never underestimate the cost of repairs. | verb | business | A
+vanish | 消える | The morning mist vanished by noon. | verb | environment | A
+
+# === 形容詞 27語 ===
+abundant | 豊富な | The island has abundant rainfall. | adjective | environment | A
+alert | 油断のない | Drivers must stay alert at night. | adjective | health | A
+concrete | 具体的な | Give me a concrete example, please. | adjective | education | A
+confidential | 機密の | These files are strictly confidential. | adjective | business | A
+decent | まともな、きちんとした | Everyone deserves a decent wage. | adjective | society | A
+energetic | 精力的な | The new coach is young and energetic. | adjective | health | A
+humid | 湿気の多い | Summers here are hot and humid. | adjective | environment | A
+influential | 影響力のある | She is an influential voice in education. | adjective | society | A
+mandatory | 義務的な | Helmets are mandatory on this course. | adjective | society | A
+massive | 巨大な | A massive storm hit the coast. | adjective | environment | A
+meaningful | 意味のある | Volunteers want meaningful work. | adjective | society | A
+outdated | 旧式の | The manual is badly outdated. | adjective | technology | A
+persistent | 根気強い、しつこい | A persistent cough needs attention. | adjective | health | A
+portable | 携帯用の | The clinic uses a portable scanner. | adjective | technology | A
+predictable | 予測できる | The ending was rather predictable. | adjective | general | A
+prior | 前の、優先する | No prior experience is required. | adjective | business | A
+rational | 合理的な | Try to make a rational choice. | adjective | education | A
+reluctant | 気が進まない | Farmers are reluctant to change methods. | adjective | society | A
+sensible | 分別のある | Wearing boots was a sensible choice. | adjective | daily | A
+sophisticated | 洗練された、高度な | The lab uses sophisticated equipment. | adjective | technology | A
+substantial | かなりの | The project needs substantial funding. | adjective | business | A
+toxic | 有毒な | Old batteries contain toxic metals. | adjective | environment | A
+ultimate | 究極の、最終の | Our ultimate goal is zero waste. | adjective | business | A
+unpredictable | 予測できない | Mountain weather is unpredictable. | adjective | environment | A
+unrealistic | 非現実的な | The schedule looks unrealistic. | adjective | business | A
+vulnerable | 傷つきやすい、弱い | Elderly people are vulnerable to heat. | adjective | health | A
+worthwhile | やりがいのある | Learning a second language is worthwhile. | adjective | education | A
+
+# === 副詞 23語 ===
+abruptly | 突然に | The music stopped abruptly. | adverb | general | B
+accordingly | それに応じて | Costs rose, and prices changed accordingly. | adverb | business | B
+alternatively | 代わりに | Alternatively, you can send a photo. | adverb | general | B
+arguably | 間違いなく、おそらく | This is arguably the best option. | adverb | education | B
+deliberately | 故意に | The switch was moved deliberately. | adverb | society | B
+extensively | 広範囲に | The site has been studied extensively. | adverb | education | B
+inevitably | 必然的に | Costs inevitably rise with fuel prices. | adverb | business | B
+initially | 当初は | Initially the plan looked simple. | adverb | business | A
+largely | 主として | The delay was largely due to weather. | adverb | general | A
+merely | 単に | This is merely a first draft. | adverb | education | B
+notably | 特に | Sales grew, notably in rural areas. | adverb | business | B
+occasionally | 時々 | We occasionally work on Saturdays. | adverb | daily | A
+partially | 部分的に | The road is only partially open. | adverb | society | B
+presumably | おそらく | Presumably the meeting was canceled. | adverb | general | B
+readily | すぐに、容易に | Spare parts are readily available. | adverb | business | B
+reluctantly | しぶしぶ | He reluctantly agreed to the change. | adverb | daily | B
+scarcely | ほとんど〜ない | She scarcely spoke during dinner. | adverb | daily | B
+seemingly | 見たところ | The seemingly small error cost millions. | adverb | business | B
+solely | もっぱら | The fund relies solely on donations. | adverb | society | B
+subsequently | その後 | He subsequently moved to Osaka. | adverb | general | B
+substantially | 大幅に | Fuel use fell substantially. | adverb | environment | B
+undoubtedly | 疑いなく | She is undoubtedly the best candidate. | adverb | general | B
+willingly | 進んで | Neighbors willingly joined the cleanup. | adverb | society | B
+
+# === 名詞 55語 ===
+agenda | 議題、課題 | Housing is high on the city agenda. | noun | society | A
+algorithm | アルゴリズム | The algorithm sorts photos by date. | noun | technology | A
+asset | 資産 | Trust is our most valuable asset. | noun | business | A
+bias | 偏見 | The survey may contain a small bias. | noun | education | A
+bullying | いじめ | The school has a program against bullying. | noun | education | A
+commerce | 商業 | Online commerce keeps expanding. | noun | business | A
+compromise | 妥協 | Both sides made a fair compromise. | noun | business | A
+controversy | 論争 | The design caused wide controversy. | noun | society | A
+curiosity | 好奇心 | Curiosity drives good research. | noun | education | A
+database | データベース | The database holds ten million records. | noun | technology | A
+diabetes | 糖尿病 | Diet helps control type two diabetes. | noun | health | A
+dilemma | 板挟み、ジレンマ | Working parents face a daily dilemma. | noun | society | A
+distraction | 気を散らすもの | Phones are a common distraction. | noun | education | A
+enterprise | 企業、事業 | The family enterprise is a century old. | noun | business | A
+epidemic | 流行病 | The epidemic spread through three towns. | noun | health | A
+evolution | 進化 | The lecture covered human evolution. | noun | education | A
+fossil fuel | 化石燃料 | Fossil fuel use is falling slowly. | noun | environment | A
+framework | 枠組み | The report offers a clear framework. | noun | education | A
+globalization | グローバル化 | Globalization changed local industries. | noun | society | A
+habitat loss | 生息地の喪失 | Habitat loss threatens many birds. | noun | environment | A
+hygiene | 衛生 | Hand hygiene prevents many infections. | noun | health | A
+immune system | 免疫系 | Sleep supports the immune system. | noun | health | A
+inequality | 不平等 | Income inequality remains a key issue. | noun | society | A
+inflation rate | インフレ率 | The inflation rate eased in summer. | noun | business | A
+insight into | 〜への洞察 | The book gives insight into village life. | noun | education | A
+interest rate | 金利 | The bank raised its interest rate. | noun | business | A
+invoice | 請求書 | Please attach the invoice to the email. | noun | business | A
+labor shortage | 人手不足 | A labor shortage delayed construction. | noun | business | A
+legislation | 法律、立法 | New legislation limits plastic bags. | noun | society | A
+lifestyle change | 生活習慣の改善 | Small lifestyle changes lower the risk. | noun | health | A
+loyalty | 忠誠、愛顧 | Customer loyalty takes years to build. | noun | business | A
+maintenance cost | 維持費 | Maintenance costs rose after ten years. | noun | business | A
+mechanism | 仕組み | Scientists explained the whole mechanism. | noun | technology | A
+medication | 薬物治療 | Take the medication after meals. | noun | health | A
+mindset | 考え方 | A growth mindset helps learners. | noun | education | A
+obstacle | 障害 | Cost is the biggest obstacle. | noun | general | A
+outbreak | 発生、勃発 | An outbreak closed two schools. | noun | health | A
+outlook | 見通し | The outlook for exports is bright. | noun | business | A
+pandemic | 世界的流行 | The pandemic changed how we work. | noun | health | A
+patent | 特許 | The lab filed a patent last week. | noun | technology | A
+population decline | 人口減少 | Population decline threatens rural schools. | noun | society | A
+proficiency | 熟達度 | The test measures reading proficiency. | noun | education | A
+profit margin | 利益率 | Thin profit margins worry retailers. | noun | business | A
+public opinion | 世論 | Public opinion shifted within months. | noun | society | A
+recession | 景気後退 | Many shops closed during the recession. | noun | business | A
+recruitment | 採用活動 | Recruitment starts in early spring. | noun | business | A
+renewable source | 再生可能エネルギー源 | Wind is a reliable renewable source. | noun | environment | A
+retailer | 小売業者 | Online retailers cut their prices. | noun | business | A
+setback | 挫折 | The project met an early setback. | noun | business | A
+shareholder | 株主 | Shareholders approved the plan. | noun | business | A
+startup company | 新興企業 | The startup company hired ten engineers. | noun | business | A
+supply chain | 供給網 | The storm disrupted the supply chain. | noun | business | A
+tendency | 傾向 | There is a tendency to overwork here. | noun | health | A
+turning point | 転機 | The award was a turning point. | noun | general | A
+workload | 仕事量 | Her workload doubled after the merger. | noun | business | A
+
+# === 句動詞・イディオム 43語 ===
+at the expense of | 〜を犠牲にして | Growth came at the expense of clean air. | other | society | B
+be bound to | きっと〜する | Costs are bound to rise next year. | other | business | B
+be on the verge of | 〜の寸前である | The species is on the verge of extinction. | other | environment | B
+bear with | 辛抱する | Please bear with us during the repairs. | other | daily | B
+bring to light | 明るみに出す | The audit brought the errors to light. | other | business | C
+by and large | 概して | By and large, the trial went well. | other | general | B
+come down with | 病気にかかる | He came down with a bad cold. | other | health | A
+come to terms with | 折り合いをつける | She came to terms with the loss. | other | health | B
+cut back on | 減らす | We should cut back on sugar. | other | health | A
+do away with | 廃止する | The school did away with paper forms. | other | education | B
+draw up | 作成する | The lawyer drew up a simple contract. | other | business | B
+fall through | 実現しない | The housing deal fell through. | other | business | B
+get by | どうにかやっていく | They get by on one small income. | other | society | B
+give rise to | 引き起こす | The delay gave rise to complaints. | other | business | B
+go along with | 賛同する | Most members went along with the plan. | other | society | B
+hold off | 延期する、持ちこたえる | Let us hold off the decision until Friday. | other | business | B
+in hindsight | 後から考えると | In hindsight, the warning was clear. | other | general | C
+in light of | 〜を考慮して | In light of the data, we changed course. | other | business | B
+in the wake of | 〜の後を受けて | Rules tightened in the wake of the accident. | other | society | C
+iron out | 解決する | We ironed out the final details. | other | business | C
+keep abreast of | 遅れずについていく | Doctors keep abreast of new research. | other | education | C
+let alone | 〜はもちろん | He cannot swim, let alone dive. | other | general | B
+live up to | 期待に応える | The film did not live up to the reviews. | other | general | B
+look down on | 見下す | Never look down on manual work. | other | society | B
+make do with | 間に合わせる | We made do with a smaller room. | other | daily | B
+narrow down | 絞り込む | We narrowed down the list to three. | other | business | A
+opt out | 参加しない | Members may opt out at any time. | other | business | B
+phase out | 段階的に廃止する | The city will phase out old buses. | other | environment | B
+put forward | 提案する | She put forward a simple solution. | other | business | B
+rule out | 除外する | Police ruled out an electrical fault. | other | society | A
+set aside | 取っておく | Set aside time for daily reading. | other | education | A
+shed light on | 解明する | The study sheds light on sleep habits. | other | education | B
+sort out | 整理する、解決する | Let us sort out the schedule first. | other | business | A
+stem from | 〜に起因する | The delay stems from a parts shortage. | other | business | B
+step down | 辞任する | The chairman stepped down in June. | other | business | B
+take a toll on | 打撃を与える | Night shifts take a toll on health. | other | health | B
+take into account | 考慮に入れる | Take the weather into account. | other | general | A
+tap into | 活用する | The campaign tapped into local pride. | other | business | C
+touch on | 軽く触れる | The talk touched on funding briefly. | other | education | B
+turn a blind eye | 見て見ぬふりをする | Managers turned a blind eye to overtime. | other | business | C
+weigh up | 比べて考える | Weigh up the risks before deciding. | other | business | B
+wind up | 結局〜になる | We wound up walking home. | other | daily | B
+write off | 帳消しにする、見限る | The bank wrote off the small debt. | other | business | C
