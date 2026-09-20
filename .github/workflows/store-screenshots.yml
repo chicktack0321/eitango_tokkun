@@ -15,6 +15,8 @@ on:
         options:
           - G2
           - GP2
+          - GP1
+          - G1
           - G3
           - G4
       device:
@@ -41,6 +43,8 @@ jobs:
           case "${{ inputs.edition }}" in
             G2)  scheme=EitangoApp; uitests=EitangoAppUITests ;;
             GP2) scheme=EitangoGP2; uitests=EitangoGP2UITests ;;
+            GP1) scheme=EitangoGP1; uitests=EitangoGP1UITests ;;
+            G1)  scheme=EitangoG1;  uitests=EitangoG1UITests ;;
             G3)  scheme=EitangoG3;  uitests=EitangoG3UITests ;;
             G4)  scheme=EitangoG4;  uitests=EitangoG4UITests ;;
             *)   echo "::error::未対応のエディション: ${{ inputs.edition }}"; exit 1 ;;

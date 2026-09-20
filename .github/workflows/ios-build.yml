@@ -60,6 +60,10 @@ jobs:
             run_tests: true
           - edition: GP2
             scheme: EitangoGP2
+          - edition: GP1
+            scheme: EitangoGP1
+          - edition: G1
+            scheme: EitangoG1
           - edition: G3
             scheme: EitangoG3
           - edition: G4

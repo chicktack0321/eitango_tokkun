@@ -266,6 +266,61 @@ core のレベル妥当性のサンプリング確認（仕様書§9）。
 **準1級・1級で同じことをしないこと。** 上位級は core に当該級固有の語を新規に書けるため
 独自性を達成でき、無料にすると単に収益を捨てることになる。
 
+## 3.6 Phase 3 — 上位級（準1級・1級）
+
+> **語彙設計とアプリ本体は完了（2026-09-20）**。ブランチ `feature/upper-grades` で実施。
+> 残るのは公開準備（P1-3 と同じ作業）と、手描きアイコン素材への差し替え。
+
+英検準1級・1級を追加した。**どちらも買い切り課金あり**（準1級 ¥600 / 1級 ¥800）。
+下位級と違って core に当該級固有の語を新規に書けるため、独自性ルールを満たせる。
+
+| | 語数 | basic | bridge | core | 課金 | core 独自性 |
+| --- | --- | --- | --- | --- | --- | --- |
+| GP1（準1級） | 4,869 | 2,681 | 697 | 1,491 | ¥600 | 72.6% |
+| G1（1級） | 5,006 | 3,378 | 409 | 1,219 | ¥800 | 100.0% |
+
+やったこと（TOEIC 版を作るときはこの順でなぞる）:
+
+1. **2級コアからの選抜を529語（41.5%）に抑えた**（`vocab/gp1_bridge_words.txt`）。
+   頻出度Aの325語を全量、Bから204語を選抜。これで**公開中の2級アプリの独自性が
+   58.5%** に収まる。全量スライドさせると0%になり、¥500 で売っているものを
+   自社の新作が無料で配ることになる（禁止事項の表を参照）
+2. **準1級専用の新規語を914語書いた**（`vocab/gp1_new_core.txt` 746語 +
+   `vocab/gp1_new_bridge.txt` 168語）。全部 core に入れると1,659語となり
+   「完走できる分量」（1,000〜1,500語）を超えるため、頻出度A・副詞・句動詞は無料帯へ
+3. **選抜から漏れた2級コア745語は GP1 の core に据えた。** 実質B2帯の語
+   （`abstract` `advocate` `ambiguous` など）が準1級アプリから抜け落ちる方が不自然で、
+   かつ有料帯どうしの重複は独自性ルールに抵触しない
+4. **1級専用の新規語を1,219語書いた**（`vocab/g1_new_core.txt`）。1級 core は全語が
+   1級専用で、他のどのアプリでも学べない
+5. **1級の bridge は「準1級の*新規*コア」からだけ選抜した**（409語）。GP1 core の半分は
+   2級コア由来で、それを1級の無料帯へ流すと2級の独自性が0%に戻る。
+   `apply_g1_placement.py` が選定リストを検査して、その事故をその場で止める
+
+検証（すべて通ることを確認済み）:
+
+```bash
+python scripts/apply_gp1_placement.py     # → GP1: 4869語 (2681/697/1491)
+python scripts/apply_g1_placement.py      # → G1: 5006語 (3378/409/1219)
+python scripts/build_seed.py --edition GP1
+python scripts/build_seed.py --edition G1
+python scripts/check_core_exclusivity.py --gate   # G2 58.5 / GP2 54.5 / GP1 72.6 / G1 100
+python scripts/build_seed.py --edition G2 --check  # 公開中アプリに影響なし
+```
+
+エディション一式（P1-2 と同じ5ファイル + project.yml + CI 3本）も入れてある。
+**アイコンは `scripts/make_edition_logo.py` の生成物**（準1級=紫 / 1級=青緑）。
+書体がWindows標準フォントの近似なので、他の級と同じく手描き素材への差し替えが望ましい。
+差し替えたら `python scripts/make_app_icon.py --edition GP1` を流し直す。
+
+残作業:
+
+- Googleサイトに `/support-gp1` と `/support-g1` を新設（`docs/series-publishing.md` 1-2）
+- App Store Connect でアプリ2本と課金アイテム2本を登録
+  （掲載文は `docs/gp1/store-listing.md` / `docs/g1/store-listing.md`）
+- 審査用スクリーンショットの取得（`store-screenshots.yml -f edition=GP1` / `G1`）
+- core のレベル妥当性サンプリング（仕様書§9）。特に1級 core は語義の硬さを確認する
+
 ## 4. 検証のやり方（共通）
 
 ```bash
@@ -287,7 +342,7 @@ gh workflow run testflight.yml --repo <repo> --ref main -f edition=GP2 -f whats_
 | --- | --- |
 | 解答・打鍵のホットパスに fetch 全件走査や毎回の `context.save()` を入れる | 判定が体感で遅れ、ユーザー指摘→2ビルド分の修正になった |
 | wordId・canonical key の改名 | 学習履歴が全ユーザーで消える |
-| 下位級の core（課金対象）を上位級の無料帯へ全量スライドさせる | あるアプリの売り物が別の自社アプリで無料になる。GP2 で実際に起きた（独自性0%）。**特に GP1 の bridge を G2 core 1,274語の全量にすると、販売中の2級アプリの価値を自社で毀損する**。`check_core_exclusivity.py` で検証すること |
+| 下位級の core（課金対象）を上位級の無料帯へ全量スライドさせる | あるアプリの売り物が別の自社アプリで無料になる。GP2 で実際に起きた（独自性0%）。GP1 では G2 core の41.5%（529語）に絞って回避した。**1級の bridge に2級コア由来の語を入れると同じ事故が再発する**（`apply_g1_placement.py` が検査する）。`check_core_exclusivity.py` で必ず検証すること |
 | `Info.plist` を XcodeGen の `info:` 生成に切り替える | 手書き plist が上書きされ、バックグラウンド再生等の宣言が消えた前歴（project.yml のコメント参照） |
 | アイコンに角丸・透過を焼き込む | Apple のマスクで角が欠ける／審査で弾かれる。`make_app_icon.py` の検証を通すこと |
 | 審査中に main のコード変更・TestFlight 連発 | 審査対象とのズレ、テスター通知の氾濫 |

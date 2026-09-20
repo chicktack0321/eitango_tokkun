@@ -1,4 +1,4 @@
-# シリーズ公開の手順（準2級・3級・4級）
+# シリーズ公開の手順（準2級・準1級・1級・3級・4級）
 
 2級はすでに公開済み。ここでは**2級のときと違うところだけ**を書く。共通の手順は
 `docs/appstore-submission.md`（提出手順）と `docs/site-content.md`（公開ページ）が正。
@@ -6,9 +6,13 @@
 
 | | バンドルID | 課金 | サポートURLのパス |
 | --- | --- | --- | --- |
+| 1級 | `com.eitango.g1` | 買い切り ¥800 | `/support-g1` |
+| 準1級 | `com.eitango.gp1` | 買い切り ¥600 | `/support-gp1` |
 | 準2級 | `com.eitango.gp2` | 買い切り ¥500 | `/support-gp2` |
 | 3級 | `com.eitango.g3` | **なし** | `/support-g3` |
 | 4級 | `com.eitango.g4` | **なし** | `/support-g4` |
+
+上位級の価格が高いのは語数と執筆量の差（準1級 4,869語 / 1級 5,006語）。
 
 無料の2本は、課金まわりの手順（課金アイテムの登録・審査用スクリーンショット・
 バージョンページでの紐付け）がまるごと不要になる。ここが2級との最大の違い。
@@ -62,6 +66,8 @@ Appleのサーバーとの通信が発生します。英検®3級 / 英検®4級
 | ページ | URLパス | 元にする文面 |
 | --- | --- | --- |
 | サポート（準2級） | `support-gp2` | 既存 `support` をそのまま。語数を3,325語・1,182語に、級名を準2級に置換 |
+| サポート（準1級） | `support-gp1` | 同上。語数を4,869語・1,491語に、級名を準1級に、価格を¥600に置換 |
+| サポート（1級） | `support-g1` | 同上。語数を5,006語・1,219語に、級名を1級に、価格を¥800に置換 |
 | サポート（3級） | `support-g3` | 下記の無料版テンプレート。語数1,686語 |
 | サポート（4級） | `support-g4` | 下記の無料版テンプレート。語数980語 |
 
@@ -194,11 +200,16 @@ Googleアカウントへのログインは不要です。
 | 4-4 バージョンページでの課金アイテム紐付け | **不要**（2級で忘れやすいと書いてある箇所） |
 | 2 価格と配信状況 | 価格を「無料」にする |
 
-### 準2級で必要な追加手順
+### 課金のある3本（準2級・準1級・1級）で必要な追加手順
 
-2級とまったく同じ。課金アイテムを登録し、審査用スクリーンショット
-（`docs/assets/gp2/iap-review-screenshot.png`）と説明文を添え、
+2級とまったく同じ。課金アイテムを登録し、審査用スクリーンショットと説明文を添え、
 **バージョンページで課金アイテムを紐付ける**。紐付けを忘れると「送信準備完了」にならない。
+
+| | 製品ID | 価格 | 審査用スクリーンショット |
+| --- | --- | --- | --- |
+| 準2級 | `com.eitango.gp2.unlock.core` | ¥500 | `docs/assets/gp2/iap-review-screenshot.png` |
+| 準1級 | `com.eitango.gp1.unlock.core` | ¥600 | 未取得（下記コマンドで撮る） |
+| 1級 | `com.eitango.g1.unlock.core` | ¥800 | 未取得（同上） |
 
 ---
 
@@ -206,6 +217,8 @@ Googleアカウントへのログインは不要です。
 
 ```bash
 gh workflow run testflight.yml --ref main -f edition=GP2 -f whats_new="初回リリース"
+gh workflow run testflight.yml --ref main -f edition=GP1 -f whats_new="初回リリース"
+gh workflow run testflight.yml --ref main -f edition=G1  -f whats_new="初回リリース"
 gh workflow run testflight.yml --ref main -f edition=G3  -f whats_new="初回リリース"
 gh workflow run testflight.yml --ref main -f edition=G4  -f whats_new="初回リリース"
 ```
@@ -214,7 +227,12 @@ gh workflow run testflight.yml --ref main -f edition=G4  -f whats_new="初回リ
 
 ```bash
 gh workflow run store-screenshots.yml --ref main -f edition=GP2 -f device="iPhone 16 Pro Max"
+gh workflow run store-screenshots.yml --ref main -f edition=GP1 -f device="iPhone 16 Pro Max"
+gh workflow run store-screenshots.yml --ref main -f edition=G1  -f device="iPhone 16 Pro Max"
 ```
+
+課金のある級では、同じ実行で審査用の購入画面（`testCapturePurchaseScreen`）も撮れる。
+撮れた画像は `docs/assets/<小文字ID>/iap-review-screenshot.png` に置く。
 
 6.9インチ（1320×2868）を出しておけば6.5インチの掲載は省略できる。
 
@@ -227,6 +245,8 @@ gh workflow run store-screenshots.yml --ref main -f edition=GP2 -f device="iPhon
 | 準2級 | **審査中** | 2026-09-12 提出 | 25 |
 | 3級 | 未提出 | — | — |
 | 4級 | 未提出 | — | — |
+| 準1級 | 未提出（実装完了 2026-09-20） | — | — |
+| 1級 | 未提出（実装完了 2026-09-20） | — | — |
 
 **準2級の審査中は main のコードを変更しない。** docs と vocab の準備は進めてよい。
 3級・4級は現在の main からそのまま上げて提出できる（main を変えないので凍結に反しない）。
@@ -238,6 +258,10 @@ gh workflow run store-screenshots.yml --ref main -f edition=GP2 -f device="iPhon
 準2級で備考の文面を確定させてから、無料の2本に流用するほうが手戻りが少ない。
 
 無料の2本は同時に出してよい。中身の差は語彙データだけで、審査で聞かれることも同じ。
+
+**上位級（準1級・1級）はそのあと。** 課金の手順は準2級と同じで、確定した備考の文面を
+そのまま流用できる。先に出す理由が無く、審査を同時に何本も走らせると、指摘が来たときに
+どのビルドの話か追いにくくなる。
 
 **審査中は main のコードを変更しない。** 審査対象のビルドと手元のコードがずれると、
 追加質問への回答や再提出で何を出したのか分からなくなる。作業はブランチに積む
