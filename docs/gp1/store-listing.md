@@ -136,8 +136,8 @@ Apple の「正確な説明」の要件にも触れる。
 
 ## 審査メモ（App Review に関する情報 → 備考）
 
-`docs/gp2/app-review-notes.md` の文面をそのまま使える（級名と語数だけ置換する）。
-2級の初回審査で受けた 2.1（Information Needed）の8項目を、最初から備考に入れて提出する。
+**貼り付ける文面は `docs/gp1/app-review-notes.md` にある。** 2級の初回審査で受けた
+2.1（Information Needed）の8項目を、最初から備考に入れて提出する。
 
 要点:
 
