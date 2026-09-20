@@ -309,9 +309,9 @@ python scripts/build_seed.py --edition G2 --check  # 公開中アプリに影響
 ```
 
 エディション一式（P1-2 と同じ5ファイル + project.yml + CI 3本）も入れてある。
-**アイコンは `scripts/make_edition_logo.py` の生成物**（準1級=紫 / 1級=青緑）。
-書体がWindows標準フォントの近似なので、他の級と同じく手描き素材への差し替えが望ましい。
-差し替えたら `python scripts/make_app_icon.py --edition GP1` を流し直す。
+**アイコンは手描きの素材**（準1級=マゼンタ / 1級=紫。2026-09-20 に差し替え）。
+これで全6級が色で見分けられる: 紺(2級) / 赤橙(準2級) / 緑(3級) / 橙(4級) /
+マゼンタ(準1級) / 紫(1級)。素材は `docs/assets/eitango-tokkun-logo-<小文字ID>.png`。
 
 残作業:
 
