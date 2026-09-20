@@ -111,9 +111,10 @@ Apple の「正確な説明」の要件にも触れる。
 **製品IDは `Editions/GP1/Edition.swift` に焼き込んである。1文字でも違うと価格が読めず、
 購入ボタンが無効のままになる。**
 
-審査用スクリーンショットは未取得。
-`gh workflow run store-screenshots.yml -f edition=GP1 -f device="iPhone 16 Pro Max"` で撮り、
-`docs/assets/gp1/iap-review-screenshot.png` に置く。
+審査用スクリーンショット: `docs/assets/gp1/iap-review-screenshot.png`
+（1320×2868。価格・解放語数・「購入を復元」・規約リンクが1枚に写っている）
+撮り直すときは
+`gh workflow run store-screenshots.yml -f edition=GP1 -f device="iPhone 16 Pro Max"`。
 
 ---
 

@@ -318,7 +318,7 @@ python scripts/build_seed.py --edition G2 --check  # 公開中アプリに影響
 - Googleサイトに `/support-gp1` と `/support-g1` を新設（`docs/series-publishing.md` 1-2）
 - App Store Connect でアプリ2本と課金アイテム2本を登録
   （掲載文は `docs/gp1/store-listing.md` / `docs/g1/store-listing.md`）
-- 審査用スクリーンショットの取得（`store-screenshots.yml -f edition=GP1` / `G1`）
+- ~~審査用スクリーンショットの取得~~ 取得済み（`docs/assets/gp1|g1/iap-review-screenshot.png`）
 - core のレベル妥当性サンプリング（仕様書§9）。特に1級 core は語義の硬さを確認する
 
 ## 4. 検証のやり方（共通）

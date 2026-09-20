@@ -208,8 +208,8 @@ Googleアカウントへのログインは不要です。
 | | 製品ID | 価格 | 審査用スクリーンショット |
 | --- | --- | --- | --- |
 | 準2級 | `com.eitango.gp2.unlock.core` | ¥500 | `docs/assets/gp2/iap-review-screenshot.png` |
-| 準1級 | `com.eitango.gp1.unlock.core` | ¥600 | 未取得（下記コマンドで撮る） |
-| 1級 | `com.eitango.g1.unlock.core` | ¥800 | 未取得（同上） |
+| 準1級 | `com.eitango.gp1.unlock.core` | ¥600 | `docs/assets/gp1/iap-review-screenshot.png` |
+| 1級 | `com.eitango.g1.unlock.core` | ¥800 | `docs/assets/g1/iap-review-screenshot.png` |
 
 ---
 
