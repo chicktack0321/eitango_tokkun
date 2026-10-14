@@ -35,8 +35,7 @@ final class ListeningStepTests: XCTestCase {
 
     /// 例文の無い語で無音の発話を作ると、その間だけ止まったように聞こえる
     func testExampleModeFallsBackToWordWhenExampleIsBlank() {
-        for blank in ["", "   ", "
-"] {
+        for blank in ["", "   ", "\n"] {
             let steps = ListeningStep.steps(for: item(example: blank), mode: .example, pauses: pauses)
             XCTAssertEqual(steps.map(\.kind), [.word, .meaning], "例文 \(blank.debugDescription)")
         }
