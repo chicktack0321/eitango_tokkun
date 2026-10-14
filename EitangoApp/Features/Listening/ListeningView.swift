@@ -13,6 +13,7 @@ struct ListeningView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
+                    modeCard
                     filterCard
                     nowPlayingCard
                     controls
@@ -29,12 +30,42 @@ struct ListeningView: View {
             .onChange(of: viewModel.filter) { _, _ in
                 audioManager.stop()
             }
+            // 読み上げの流れが変わるので、途中から切り替えず最初から掛け直してもらう
+            .onChange(of: viewModel.mode) { _, _ in
+                audioManager.stop()
+            }
+        }
+    }
+
+    private var modeCard: some View {
+        DashboardCard(title: "聞き流す内容") {
+            VStack(alignment: .leading, spacing: 8) {
+                Picker("聞き流す内容", selection: $viewModel.mode) {
+                    ForEach(ListeningMode.allCases) { mode in
+                        Text(mode.displayName).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Text(modeDescription)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private var modeDescription: String {
+        switch viewModel.mode {
+        case .word:
+            return "英単語 → 日本語訳 の順に流します"
+        case .example:
+            return "例文を2回 → 英単語 → 日本語訳 の順に流します（例文のある語のみ）"
         }
     }
 
     /// 単語帳と同じ軸で絞り込む。「要復習だけ流す」が聞き流しの主な使い道になる。
     private var filterCard: some View {
-        DashboardCard(title: "再生する単語（\(viewModel.words.count)語）") {
+        DashboardCard(title: "再生する単語（\(viewModel.playbackWords.count)語）") {
             VStack(spacing: 12) {
                 Picker("学習ステータス", selection: $viewModel.filter.status) {
                     Text("すべて").tag(LearningStatus?.none)
@@ -113,19 +144,27 @@ struct ListeningView: View {
     private var nowPlayingCard: some View {
         VStack(spacing: 8) {
             if let item = audioManager.currentItem {
+                if audioManager.mode == .example, item.hasExample {
+                    Text(item.example)
+                        .font(.title3)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(audioManager.currentStepKind == .example ? .primary : .secondary)
+                        .padding(.bottom, 4)
+                }
                 Text(item.word)
                     .font(.system(size: 34, weight: .bold))
+                    .foregroundStyle(audioManager.currentStepKind == .example ? .secondary : .primary)
                 Text(item.meaning)
                     .font(.title3)
                     .foregroundStyle(.secondary)
-                Text("\(currentPosition) / \(viewModel.words.count)")
+                Text("\(currentPosition) / \(viewModel.playbackWords.count)")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .padding(.top, 4)
             } else {
                 Text("再生を開始すると単語が表示されます")
                     .foregroundStyle(.secondary)
-                Text("全\(viewModel.words.count)語")
+                Text("全\(viewModel.playbackWords.count)語")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -136,7 +175,7 @@ struct ListeningView: View {
     }
 
     private var currentPosition: Int {
-        min(audioManager.currentIndex + 1, viewModel.words.count)
+        min(audioManager.currentIndex + 1, viewModel.playbackWords.count)
     }
 
     private var controls: some View {
@@ -165,7 +204,7 @@ struct ListeningView: View {
                 Image(systemName: playPauseSymbolName)
                     .font(.system(size: 44))
             }
-            .disabled(viewModel.words.isEmpty)
+            .disabled(viewModel.playbackWords.isEmpty)
             .accessibilityLabel(audioManager.state == .playing ? "一時停止" : "再生")
 
             Button {
@@ -190,7 +229,7 @@ struct ListeningView: View {
     private func togglePlayPause() {
         switch audioManager.state {
         case .stopped:
-            audioManager.play(items: viewModel.makePlaybackItems())
+            audioManager.play(items: viewModel.makePlaybackItems(), mode: viewModel.mode)
         case .playing:
             audioManager.pause()
         case .paused:

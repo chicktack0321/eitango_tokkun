@@ -4,11 +4,72 @@ import MediaPlayer
 import Observation
 import os
 
-/// 聞き流し機能の再生単位（英単語 → 日本語訳の順で読み上げる1セット）
+/// 聞き流しで何を読み上げるか
+enum ListeningMode: String, CaseIterable, Identifiable {
+    /// 英単語 → 日本語訳
+    case word
+    /// 例文 → 例文（もう一度）→ 英単語 → 日本語訳
+    case example
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .word: return "単語"
+        case .example: return "例文"
+        }
+    }
+}
+
+/// 聞き流し機能の再生単位（1語ぶんの読み上げ1セット）
 struct ListeningItem: Identifiable {
     let id: String // wordId をそのまま使う
     let word: String
     let meaning: String
+    var example: String = ""
+
+    var hasExample: Bool {
+        !example.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+}
+
+/// 発話と発話の間に挟む無音（秒）。短すぎると聞き取りにくく、長すぎるとテンポが悪くなる
+struct ListeningPauses: Equatable {
+    var wordToMeaning: TimeInterval = 0.4
+    var betweenItems: TimeInterval = 0.8
+    /// 1回目と2回目の例文の間。1回目を頭の中で反すうする間を取る
+    var betweenExamples: TimeInterval = 1.0
+    /// 2回目の例文から見出し語へ。文から語に切り替わったと分かる間を取る
+    var exampleToWord: TimeInterval = 0.8
+}
+
+/// 1回分の発話。読み上げ順は `steps(for:mode:pauses:)` が決める
+struct ListeningStep: Equatable {
+    enum Kind: Equatable {
+        case example, word, meaning
+    }
+
+    let kind: Kind
+    let text: String
+    let languageCode: String
+    /// この発話を読み終えてから次の発話までの無音
+    let postDelay: TimeInterval
+
+    /// 1語ぶんの読み上げ順を組み立てる。
+    ///
+    /// 例文モードは「文で聞く → 2回目で聞き取れなかった所を拾う → 語と意味で答え合わせ」の順にする。
+    /// 例文が無い語は単語モードと同じ流れにする（その語だけ無音で飛ばすと、止まったように聞こえるため）。
+    static func steps(for item: ListeningItem, mode: ListeningMode, pauses: ListeningPauses) -> [ListeningStep] {
+        let wordAndMeaning = [
+            ListeningStep(kind: .word, text: item.word, languageCode: "en-US", postDelay: pauses.wordToMeaning),
+            ListeningStep(kind: .meaning, text: item.meaning, languageCode: "ja-JP", postDelay: pauses.betweenItems)
+        ]
+        guard mode == .example, item.hasExample else { return wordAndMeaning }
+        return [
+            ListeningStep(kind: .example, text: item.example, languageCode: "en-US", postDelay: pauses.betweenExamples),
+            ListeningStep(kind: .example, text: item.example, languageCode: "en-US", postDelay: pauses.exampleToWord)
+        ] + wordAndMeaning
+    }
 }
 
 /// `AVSpeechSynthesizer` のみで完結する聞き流しプレイヤー。
@@ -30,11 +91,11 @@ final class AudioPlaybackManager: NSObject {
     private(set) var state: PlaybackState = .stopped
     private(set) var currentIndex: Int = 0
     private(set) var currentItem: ListeningItem?
+    /// いま読み上げている部分。画面で例文・単語・訳のどれを読んでいるかを強調するのに使う
+    private(set) var currentStepKind: ListeningStep.Kind?
+    private(set) var mode: ListeningMode = .word
 
-    /// 単語→訳の間に挟む無音のポーズ（秒）。短すぎると聞き取りにくく、長すぎるとテンポが悪くなる
-    var pauseBetweenWordAndMeaning: TimeInterval = 0.4
-    /// 1語読み終えてから次の語に移るまでのポーズ（秒）
-    var pauseBetweenWords: TimeInterval = 0.8
+    var pauses = ListeningPauses()
     /// 読み上げ速度の倍率。1.0が標準の聞き取りやすさ。
     /// `AVSpeechUtteranceDefaultSpeechRate` を1.0とみなして換算する。
     var speedMultiplier: Double = 1.0
@@ -63,9 +124,11 @@ final class AudioPlaybackManager: NSObject {
 
     /// synthesizer は1つのUtteranceずつしか話せないため、キューを自前で管理し
     /// didFinish のたびに「次の1文（英語 or 日本語）」を発話させて連続再生を実現する
-    private enum QueuedUtterance {
-        case word(ListeningItem)
-        case meaning(ListeningItem)
+    private struct QueuedUtterance {
+        let item: ListeningItem
+        let step: ListeningStep
+        /// その語の最初の発話か。ここで表示中の語を切り替える
+        let startsItem: Bool
     }
     private var utteranceQueue: [QueuedUtterance] = []
 
@@ -128,9 +191,10 @@ final class AudioPlaybackManager: NSObject {
 
     // MARK: - 再生制御
 
-    func play(items: [ListeningItem], startAt index: Int = 0) {
+    func play(items: [ListeningItem], mode: ListeningMode = .word, startAt index: Int = 0) {
         guard !items.isEmpty else { return }
         activateSessionIfNeeded()
+        self.mode = mode
         playlist = items
         currentIndex = min(max(index, 0), items.count - 1)
         rebuildQueue(from: currentIndex)
@@ -172,6 +236,7 @@ final class AudioPlaybackManager: NSObject {
         utteranceQueue.removeAll()
         state = .stopped
         currentItem = nil
+        currentStepKind = nil
         clearNowPlayingInfo()
         deactivateSession()
     }
@@ -207,7 +272,9 @@ final class AudioPlaybackManager: NSObject {
 
     private func rebuildQueue(from index: Int) {
         utteranceQueue = playlist[index...].flatMap { item in
-            [QueuedUtterance.word(item), .meaning(item)]
+            ListeningStep.steps(for: item, mode: mode, pauses: pauses).enumerated().map { offset, step in
+                QueuedUtterance(item: item, step: step, startsItem: offset == 0)
+            }
         }
     }
 
@@ -220,17 +287,15 @@ final class AudioPlaybackManager: NSObject {
         }
         utteranceQueue.removeFirst()
 
-        switch next {
-        case .word(let item):
-            currentItem = item
-            if let index = playlist.firstIndex(where: { $0.id == item.id }) {
+        if next.startsItem {
+            currentItem = next.item
+            if let index = playlist.firstIndex(where: { $0.id == next.item.id }) {
                 currentIndex = index
             }
             updateNowPlayingInfo()
-            speak(text: item.word, languageCode: "en-US", postDelay: pauseBetweenWordAndMeaning)
-        case .meaning(let item):
-            speak(text: item.meaning, languageCode: "ja-JP", postDelay: pauseBetweenWords)
         }
+        currentStepKind = next.step.kind
+        speak(text: next.step.text, languageCode: next.step.languageCode, postDelay: next.step.postDelay)
     }
 
     private func speak(text: String, languageCode: String, postDelay: TimeInterval) {

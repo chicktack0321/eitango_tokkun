@@ -9,6 +9,17 @@ import Observation
 final class ListeningViewModel {
     private(set) var words: [WordMaster] = []
 
+    var mode: ListeningMode = .word
+
+    /// 実際に流す語。例文モードでは例文のある語だけにする。
+    /// 例文の無い語を混ぜると、その語だけ単語モードと同じ流れになり、聞いていてリズムが崩れるため。
+    var playbackWords: [WordMaster] {
+        switch mode {
+        case .word: return words
+        case .example: return words.filter { !$0.example.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        }
+    }
+
     /// 絞り込み条件は単語帳と同じ軸（頻出度・品詞・学習ステータス）を使う。
     /// 「要復習の語だけ流し続ける」ができないと、聞き流しが復習の役に立たないため。
     var filter = WordFilter() {
@@ -24,7 +35,9 @@ final class ListeningViewModel {
     /// 後ろの語にいつまでも触れられない。停止して掛け直すたびに順番を変える。
     /// 一時停止からの再開では作り直さないので、聞いている途中で並びが変わることはない。
     func makePlaybackItems() -> [ListeningItem] {
-        words.shuffled().map { ListeningItem(id: $0.wordId, word: $0.word, meaning: $0.meaning) }
+        playbackWords.shuffled().map {
+            ListeningItem(id: $0.wordId, word: $0.word, meaning: $0.meaning, example: $0.example)
+        }
     }
 
     func configure(context: ModelContext) {
