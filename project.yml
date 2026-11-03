@@ -46,7 +46,7 @@ targetTemplates:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
-        MARKETING_VERSION: "1.0"
+        MARKETING_VERSION: "1.1"
         # TestFlightへ上げるたびにワークフローの実行番号で上書きする（同じ番号は再アップロードできない）
         CURRENT_PROJECT_VERSION: "1"
         # 証明書とProvisioning ProfileはApp Store Connect APIキー経由でXcodeに作らせる。
