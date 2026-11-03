@@ -59,7 +59,7 @@ struct ListeningView: View {
         case .word:
             return "英単語 → 日本語訳 の順に流します"
         case .example:
-            return "例文を2回 → 英単語 → 日本語訳 の順に流します（例文のある語のみ）"
+            return "例文を2回 → 例文の和訳 → 英単語 → 日本語訳 → 解説 の順に流します（例文のある語のみ）"
         }
     }
 
@@ -148,15 +148,29 @@ struct ListeningView: View {
                     Text(item.example)
                         .font(.title3)
                         .multilineTextAlignment(.center)
-                        .foregroundStyle(audioManager.currentStepKind == .example ? .primary : .secondary)
-                        .padding(.bottom, 4)
+                        .foregroundStyle(style(for: .example))
+                    // 和訳は読み上げるまで伏せる。先に見えると、耳で文意を取ろうとしなくなるため
+                    if !item.exampleTranslation.isEmpty, hasReached(.exampleTranslation) {
+                        Text(item.exampleTranslation)
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(style(for: .exampleTranslation))
+                    }
+                    Divider().padding(.vertical, 4)
                 }
                 Text(item.word)
                     .font(.system(size: 34, weight: .bold))
-                    .foregroundStyle(audioManager.currentStepKind == .example ? .secondary : .primary)
+                    .foregroundStyle(style(for: .word))
                 Text(item.meaning)
                     .font(.title3)
                     .foregroundStyle(.secondary)
+                if audioManager.mode == .example, !item.explanation.isEmpty, hasReached(.explanation) {
+                    Text(item.explanation)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(style(for: .explanation))
+                        .padding(.top, 2)
+                }
                 Text("\(currentPosition) / \(viewModel.playbackWords.count)")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -172,6 +186,27 @@ struct ListeningView: View {
         .frame(maxWidth: .infinity, minHeight: 140)
         .padding()
         .background(.background, in: RoundedRectangle(cornerRadius: 16))
+    }
+
+    /// 1語ぶんの読み上げ順。表示の出し分けに使う（実際の順は `ListeningStep.steps` が決める）
+    private static let stepOrder: [ListeningStep.Kind] = [.example, .exampleTranslation, .word, .meaning, .explanation]
+
+    /// いま読んでいる部分、またはそれより先まで進んだか
+    private func hasReached(_ kind: ListeningStep.Kind) -> Bool {
+        guard
+            let current = audioManager.currentStepKind,
+            let currentIndex = Self.stepOrder.firstIndex(of: current),
+            let targetIndex = Self.stepOrder.firstIndex(of: kind)
+        else { return false }
+        return currentIndex >= targetIndex
+    }
+
+    /// 読み上げ中の部分だけを濃く表示して、どこを聞いているかを示す。
+    /// 単語と訳は1組で読むので、訳を読んでいる間も単語を濃いままにする
+    private func style(for kind: ListeningStep.Kind) -> HierarchicalShapeStyle {
+        let current = audioManager.currentStepKind
+        let isActive = current == kind || (kind == .word && current == .meaning)
+        return isActive ? .primary : .secondary
     }
 
     private var currentPosition: Int {

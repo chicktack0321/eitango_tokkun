@@ -36,7 +36,14 @@ final class ListeningViewModel {
     /// 一時停止からの再開では作り直さないので、聞いている途中で並びが変わることはない。
     func makePlaybackItems() -> [ListeningItem] {
         playbackWords.shuffled().map {
-            ListeningItem(id: $0.wordId, word: $0.word, meaning: $0.meaning, example: $0.example)
+            ListeningItem(
+                id: $0.wordId,
+                word: $0.word,
+                meaning: $0.meaning,
+                example: $0.example,
+                exampleTranslation: $0.exampleTranslation,
+                explanation: $0.explanation
+            )
         }
     }
 

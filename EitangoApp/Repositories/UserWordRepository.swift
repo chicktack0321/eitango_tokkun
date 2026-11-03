@@ -137,6 +137,14 @@ struct UserWordRepository {
 
     private func mirror(_ userWord: UserWord) {
         if let existing = master(for: userWord.wordId) {
+            // 同梱の和訳・解説は元の例文・単語に合わせて書いたもの。ユーザーが書き換えたら
+            // 聞き流しで食い違った和訳や解説を読まないよう消す（無ければ読み上げは飛ばされる）
+            if existing.example != userWord.example {
+                existing.exampleTranslation = ""
+            }
+            if existing.word != userWord.word || existing.meaning != userWord.meaning {
+                existing.explanation = ""
+            }
             existing.word = userWord.word
             existing.meaning = userWord.meaning
             existing.example = userWord.example

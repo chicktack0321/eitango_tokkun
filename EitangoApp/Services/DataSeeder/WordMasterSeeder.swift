@@ -21,6 +21,9 @@ private struct WordSeedEntry: Decodable {
     let tier: Int?
     let domain: String?
     let isIdiom: Bool?
+    /// 聞き流しの例文モード用（seed v22 以降）。古いJSONに無くても読めるよう省略可能にする。
+    let exampleTranslation: String?
+    let explanation: String?
 }
 
 enum WordMasterSeederError: Error {
@@ -100,6 +103,8 @@ enum WordMasterSeeder {
                 word.tier = tier
                 word.domain = domain
                 word.isIdiom = entry.isIdiom ?? false
+                word.exampleTranslation = entry.exampleTranslation ?? ""
+                word.explanation = entry.explanation ?? ""
                 word.updatedAt = .now
                 existingById.removeValue(forKey: entry.wordId)
             } else {
@@ -113,7 +118,9 @@ enum WordMasterSeeder {
                     partOfSpeech: partOfSpeech,
                     tier: tier,
                     domain: domain,
-                    isIdiom: entry.isIdiom ?? false
+                    isIdiom: entry.isIdiom ?? false,
+                    exampleTranslation: entry.exampleTranslation ?? "",
+                    explanation: entry.explanation ?? ""
                 )
                 context.insert(word)
             }

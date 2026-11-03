@@ -40,6 +40,14 @@ final class WordMaster {
     /// 熟語・句動詞かどうか（"take part in" のような複数語の見出し）
     var isIdiom: Bool = false
 
+    /// 例文の日本語訳。聞き流しの例文モードで、例文の直後に読み上げる。
+    /// 既存ストアからのアップデートでも既定値が入るよう、省略可能な初期値を持たせている。
+    var exampleTranslation: String = ""
+
+    /// 見出し語の日本語での短い解説（ニュアンス・使い方）。聞き流しの例文モードで最後に読み上げる。
+    /// 日本語の音声で読むため、英字は含めない運用にしている（英字が混ざると日本語読みされて聞き取れない）。
+    var explanation: String = ""
+
     init(
         wordId: String,
         word: String,
@@ -52,7 +60,9 @@ final class WordMaster {
         source: WordSource = .bundled,
         tier: VocabularyTier = .core,
         domain: VocabularyDomain = .general,
-        isIdiom: Bool = false
+        isIdiom: Bool = false,
+        exampleTranslation: String = "",
+        explanation: String = ""
     ) {
         self.wordId = wordId
         self.word = word
@@ -66,6 +76,8 @@ final class WordMaster {
         self.tierRaw = tier.rawValue
         self.domainRaw = domain.rawValue
         self.isIdiom = isIdiom
+        self.exampleTranslation = exampleTranslation
+        self.explanation = explanation
     }
 
     var source: WordSource {

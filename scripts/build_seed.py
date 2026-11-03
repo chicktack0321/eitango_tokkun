@@ -11,14 +11,22 @@ docs/series-implementation-handoff.md P0-3 の受け入れ基準）。
 - wordId は <プレフィクス>_<key>。key は公開後改名禁止
 - editions.<ID> 内の meaning / example / category / domain は正本値を上書きできる
 - core(3)・bridge(2) の例文カバレッジは100%でなければならない（basic は例文なしでよい）
+- 聞き流し用の例文の和訳は vocab/example_translations.json（例文の英文 → 和訳）から、
+  解説は vocab/explanations.json（key → 解説）から引く。editions.<ID>.explanation で上書きできる。
+  和訳を例文の英文で引くのは、例文を直したときに古い和訳が黙って残らないようにするため
+  （英文が変われば引けなくなり、未訳として数えられる）。
+- 和訳・解説は日本語の音声で読むため英字を含めてはならない（英字は日本語読みされて聞き取れない）
 """
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MASTER = ROOT / "vocab/master.json"
+TRANSLATIONS = ROOT / "vocab/example_translations.json"
+EXPLANATIONS = ROOT / "vocab/explanations.json"
 
 EDITIONS = {
     "G4": "EIKEN_G4_",
@@ -34,10 +42,18 @@ def default_out(edition):
     """同梱先。エディション一式は Editions/<ID>/ に閉じ込めてある（設計書§7）"""
     return ROOT / f"Editions/{edition}/word_master_seed.json"
 
-OVERRIDABLE = ["meaning", "example", "category", "domain"]
+OVERRIDABLE = ["meaning", "example", "category", "domain", "explanation"]
+
+LATIN = re.compile(r"[A-Za-zＡ-Ｚａ-ｚ]")
 
 
-def build(master, edition):
+def load_optional(path):
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def build(master, edition, translations=None, explanations=None):
+    translations = translations or {}
+    explanations = explanations or {}
     prefix = EDITIONS[edition]
     out = []
     problems = []
@@ -61,9 +77,22 @@ def build(master, edition):
             "domain": entry["domain"],
             "isIdiom": entry.get("isIdiom", False),
         }
+        if entry["key"] in explanations:
+            record["explanation"] = explanations[entry["key"]]
         for field in OVERRIDABLE:
             if field in placement:
                 record[field] = placement[field]
+        translation = translations.get(record["example"].strip())
+        if translation:
+            record["exampleTranslation"] = translation
+        # 空の解説と、例文の無い語の解説は出力しない。解説を読むのは例文モードだけで、
+        # 例文の無い語はそもそも流れないため、入れても seed が膨らむだけになる
+        # （アプリ側は欠けていれば読まずに飛ばす）
+        if not record.get("explanation", "").strip() or not record["example"].strip():
+            record.pop("explanation", None)
+        for field in ("exampleTranslation", "explanation"):
+            if field in record and LATIN.search(record[field]):
+                problems.append(f"{entry['key']}: {field} に英字が含まれている ({record[field]})")
         if tier in (2, 3) and not record["example"].strip():
             problems.append(f"{entry['key']}: tier{tier} なのに例文が無い")
         out.append(record)
@@ -90,7 +119,7 @@ def main():
     args = parser.parse_args()
 
     master = json.loads(MASTER.read_text(encoding="utf-8"))
-    words, problems = build(master, args.edition)
+    words, problems = build(master, args.edition, load_optional(TRANSLATIONS), load_optional(EXPLANATIONS))
 
     if not words:
         print(f"error: {args.edition} に配置された語がありません", file=sys.stderr)
@@ -102,6 +131,10 @@ def main():
 
     counts = summarize(words)
     print(f"{args.edition}: {len(words)}語 (basic {counts[1]} / bridge {counts[2]} / core {counts[3]})")
+    with_example = [w for w in words if w["example"].strip()]
+    translated = sum(1 for w in with_example if w.get("exampleTranslation"))
+    explained = sum(1 for w in with_example if w.get("explanation"))
+    print(f"  例文あり {len(with_example)}語のうち 和訳 {translated} / 解説 {explained}")
 
     if args.check:
         current_path = default_out(args.edition)

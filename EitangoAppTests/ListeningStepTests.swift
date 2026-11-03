@@ -9,25 +9,49 @@ final class ListeningStepTests: XCTestCase {
 
     private let pauses = ListeningPauses()
 
-    private func item(example: String) -> ListeningItem {
-        ListeningItem(id: "TEST_ABANDON", word: "abandon", meaning: "捨てる", example: example)
+    private func item(example: String, translation: String = "", explanation: String = "") -> ListeningItem {
+        ListeningItem(
+            id: "TEST_ABANDON", word: "abandon", meaning: "捨てる",
+            example: example, exampleTranslation: translation, explanation: explanation
+        )
+    }
+
+    private func fullItem() -> ListeningItem {
+        item(
+            example: "They abandoned the plan.",
+            translation: "彼らはその計画を断念した。",
+            explanation: "途中で投げ出す、見捨てるという意味合いです。"
+        )
     }
 
     func testWordModeReadsWordThenMeaning() {
-        let steps = ListeningStep.steps(for: item(example: "They abandoned the plan."), mode: .word, pauses: pauses)
+        let steps = ListeningStep.steps(for: fullItem(), mode: .word, pauses: pauses)
         XCTAssertEqual(steps.map(\.kind), [.word, .meaning])
         XCTAssertEqual(steps.map(\.languageCode), ["en-US", "ja-JP"])
     }
 
-    func testExampleModeReadsExampleTwiceThenWordAndMeaning() {
-        let steps = ListeningStep.steps(for: item(example: "They abandoned the plan."), mode: .example, pauses: pauses)
-        XCTAssertEqual(steps.map(\.kind), [.example, .example, .word, .meaning])
-        XCTAssertEqual(steps.map(\.text), ["They abandoned the plan.", "They abandoned the plan.", "abandon", "捨てる"])
-        XCTAssertEqual(steps.map(\.languageCode), ["en-US", "en-US", "en-US", "ja-JP"])
+    func testExampleModeReadsExampleTwiceThenTranslationWordMeaningAndExplanation() {
+        let steps = ListeningStep.steps(for: fullItem(), mode: .example, pauses: pauses)
+        XCTAssertEqual(steps.map(\.kind), [.example, .example, .exampleTranslation, .word, .meaning, .explanation])
+        XCTAssertEqual(steps.map(\.text), [
+            "They abandoned the plan.", "They abandoned the plan.", "彼らはその計画を断念した。",
+            "abandon", "捨てる", "途中で投げ出す、見捨てるという意味合いです。"
+        ])
+        XCTAssertEqual(steps.map(\.languageCode), ["en-US", "en-US", "ja-JP", "en-US", "ja-JP", "ja-JP"])
     }
 
     func testExampleModePausesBetweenParts() {
-        let steps = ListeningStep.steps(for: item(example: "They abandoned the plan."), mode: .example, pauses: pauses)
+        let steps = ListeningStep.steps(for: fullItem(), mode: .example, pauses: pauses)
+        XCTAssertEqual(steps.map(\.postDelay), [
+            pauses.betweenExamples, pauses.exampleToTranslation, pauses.exampleToWord,
+            pauses.wordToMeaning, pauses.meaningToExplanation, pauses.betweenItems
+        ])
+    }
+
+    /// ユーザーが追加した語には和訳・解説が無い。無音の発話を挟まず、その部分だけ飛ばす
+    func testExampleModeSkipsMissingTranslationAndExplanation() {
+        let steps = ListeningStep.steps(for: item(example: "They abandoned the plan.", translation: " ", explanation: ""), mode: .example, pauses: pauses)
+        XCTAssertEqual(steps.map(\.kind), [.example, .example, .word, .meaning])
         XCTAssertEqual(steps.map(\.postDelay), [
             pauses.betweenExamples, pauses.exampleToWord, pauses.wordToMeaning, pauses.betweenItems
         ])
@@ -36,7 +60,9 @@ final class ListeningStepTests: XCTestCase {
     /// 例文の無い語で無音の発話を作ると、その間だけ止まったように聞こえる
     func testExampleModeFallsBackToWordWhenExampleIsBlank() {
         for blank in ["", "   ", "\n"] {
-            let steps = ListeningStep.steps(for: item(example: blank), mode: .example, pauses: pauses)
+            let steps = ListeningStep.steps(
+                for: item(example: blank, translation: "訳", explanation: "解説"), mode: .example, pauses: pauses
+            )
             XCTAssertEqual(steps.map(\.kind), [.word, .meaning], "例文 \(blank.debugDescription)")
         }
     }

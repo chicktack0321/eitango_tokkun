@@ -8,7 +8,7 @@ import os
 enum ListeningMode: String, CaseIterable, Identifiable {
     /// 英単語 → 日本語訳
     case word
-    /// 例文 → 例文（もう一度）→ 英単語 → 日本語訳
+    /// 例文 → 例文（もう一度）→ 例文の和訳 → 英単語 → 日本語訳 → 解説
     case example
 
     var id: String { rawValue }
@@ -27,10 +27,14 @@ struct ListeningItem: Identifiable {
     let word: String
     let meaning: String
     var example: String = ""
+    var exampleTranslation: String = ""
+    var explanation: String = ""
 
-    var hasExample: Bool {
-        !example.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
+    var hasExample: Bool { !example.isBlank }
+}
+
+private extension String {
+    var isBlank: Bool { trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 }
 
 /// 発話と発話の間に挟む無音（秒）。短すぎると聞き取りにくく、長すぎるとテンポが悪くなる
@@ -39,14 +43,18 @@ struct ListeningPauses: Equatable {
     var betweenItems: TimeInterval = 0.8
     /// 1回目と2回目の例文の間。1回目を頭の中で反すうする間を取る
     var betweenExamples: TimeInterval = 1.0
-    /// 2回目の例文から見出し語へ。文から語に切り替わったと分かる間を取る
+    /// 2回目の例文から和訳へ。自分で訳してみる間を取る
+    var exampleToTranslation: TimeInterval = 1.2
+    /// 例文（または和訳）から見出し語へ。文から語に切り替わったと分かる間を取る
     var exampleToWord: TimeInterval = 0.8
+    /// 訳から解説へ。続けて読むと訳の一部に聞こえるため、少しだけ区切る
+    var meaningToExplanation: TimeInterval = 0.5
 }
 
 /// 1回分の発話。読み上げ順は `steps(for:mode:pauses:)` が決める
 struct ListeningStep: Equatable {
     enum Kind: Equatable {
-        case example, word, meaning
+        case example, exampleTranslation, word, meaning, explanation
     }
 
     let kind: Kind
@@ -57,18 +65,45 @@ struct ListeningStep: Equatable {
 
     /// 1語ぶんの読み上げ順を組み立てる。
     ///
-    /// 例文モードは「文で聞く → 2回目で聞き取れなかった所を拾う → 語と意味で答え合わせ」の順にする。
+    /// 例文モードは「文で聞く → 2回目で聞き取れなかった所を拾う → 和訳で文意を確かめる
+    /// → 語と意味で答え合わせ → 解説で使い方を押さえる」の順にする。
+    /// 和訳・解説はデータが無い語では飛ばす（ユーザーが追加した語には入っていない）。
     /// 例文が無い語は単語モードと同じ流れにする（その語だけ無音で飛ばすと、止まったように聞こえるため）。
     static func steps(for item: ListeningItem, mode: ListeningMode, pauses: ListeningPauses) -> [ListeningStep] {
-        let wordAndMeaning = [
-            ListeningStep(kind: .word, text: item.word, languageCode: "en-US", postDelay: pauses.wordToMeaning),
-            ListeningStep(kind: .meaning, text: item.meaning, languageCode: "ja-JP", postDelay: pauses.betweenItems)
+        guard mode == .example, item.hasExample else {
+            return [
+                ListeningStep(kind: .word, text: item.word, languageCode: "en-US", postDelay: pauses.wordToMeaning),
+                ListeningStep(kind: .meaning, text: item.meaning, languageCode: "ja-JP", postDelay: pauses.betweenItems)
+            ]
+        }
+
+        var steps: [ListeningStep] = [
+            ListeningStep(kind: .example, text: item.example, languageCode: "en-US", postDelay: pauses.betweenExamples)
         ]
-        guard mode == .example, item.hasExample else { return wordAndMeaning }
-        return [
-            ListeningStep(kind: .example, text: item.example, languageCode: "en-US", postDelay: pauses.betweenExamples),
-            ListeningStep(kind: .example, text: item.example, languageCode: "en-US", postDelay: pauses.exampleToWord)
-        ] + wordAndMeaning
+        let hasTranslation = !item.exampleTranslation.isBlank
+        steps.append(ListeningStep(
+            kind: .example, text: item.example, languageCode: "en-US",
+            postDelay: hasTranslation ? pauses.exampleToTranslation : pauses.exampleToWord
+        ))
+        if hasTranslation {
+            steps.append(ListeningStep(
+                kind: .exampleTranslation, text: item.exampleTranslation, languageCode: "ja-JP",
+                postDelay: pauses.exampleToWord
+            ))
+        }
+        steps.append(ListeningStep(kind: .word, text: item.word, languageCode: "en-US", postDelay: pauses.wordToMeaning))
+
+        let hasExplanation = !item.explanation.isBlank
+        steps.append(ListeningStep(
+            kind: .meaning, text: item.meaning, languageCode: "ja-JP",
+            postDelay: hasExplanation ? pauses.meaningToExplanation : pauses.betweenItems
+        ))
+        if hasExplanation {
+            steps.append(ListeningStep(
+                kind: .explanation, text: item.explanation, languageCode: "ja-JP", postDelay: pauses.betweenItems
+            ))
+        }
+        return steps
     }
 }
 
