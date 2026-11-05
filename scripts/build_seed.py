@@ -15,7 +15,8 @@ docs/series-implementation-handoff.md P0-3 の受け入れ基準）。
   解説は vocab/explanations.json（key → 解説）から引く。editions.<ID>.explanation で上書きできる。
   和訳を例文の英文で引くのは、例文を直したときに古い和訳が黙って残らないようにするため
   （英文が変われば引けなくなり、未訳として数えられる）。
-- 和訳・解説は日本語の音声で読むため英字を含めてはならない（英字は日本語読みされて聞き取れない）
+- 和訳は日本語の音声で読むため英字を含めてはならない（英字は日本語読みされて聞き取れない）。
+  解説は画面表示だけだが、読み上げに戻す場合に備えて同じ制約を守る
 """
 import argparse
 import json
@@ -85,9 +86,9 @@ def build(master, edition, translations=None, explanations=None):
         translation = translations.get(record["example"].strip())
         if translation:
             record["exampleTranslation"] = translation
-        # 空の解説と、例文の無い語の解説は出力しない。解説を読むのは例文モードだけで、
+        # 空の解説と、例文の無い語の解説は出力しない。解説を出すのは例文モードの画面だけで、
         # 例文の無い語はそもそも流れないため、入れても seed が膨らむだけになる
-        # （アプリ側は欠けていれば読まずに飛ばす）
+        # （アプリ側は欠けていれば表示しない）
         if not record.get("explanation", "").strip() or not record["example"].strip():
             record.pop("explanation", None)
         for field in ("exampleTranslation", "explanation"):

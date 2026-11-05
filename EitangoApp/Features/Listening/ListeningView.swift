@@ -59,7 +59,7 @@ struct ListeningView: View {
         case .word:
             return "英単語 → 日本語訳 の順に流します"
         case .example:
-            return "例文を2回 → 例文の和訳 → 英単語 → 日本語訳 → 解説 の順に流します（例文のある語のみ）"
+            return "例文を2回 → 例文の和訳 → 英単語 → 日本語訳 の順に流し、解説を画面に表示します（例文のある語のみ）"
         }
     }
 
@@ -164,11 +164,12 @@ struct ListeningView: View {
                 Text(item.meaning)
                     .font(.title3)
                     .foregroundStyle(.secondary)
-                if audioManager.mode == .example, !item.explanation.isEmpty, hasReached(.explanation) {
+                // 解説は読み上げず、訳を読むところで画面に出す（答え合わせと一緒に目で読む）
+                if audioManager.mode == .example, !item.explanation.isEmpty, hasReached(.meaning) {
                     Text(item.explanation)
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
-                        .foregroundStyle(style(for: .explanation))
+                        .foregroundStyle(.secondary)
                         .padding(.top, 2)
                 }
                 Text("\(currentPosition) / \(viewModel.playbackWords.count)")
@@ -189,7 +190,7 @@ struct ListeningView: View {
     }
 
     /// 1語ぶんの読み上げ順。表示の出し分けに使う（実際の順は `ListeningStep.steps` が決める）
-    private static let stepOrder: [ListeningStep.Kind] = [.example, .exampleTranslation, .word, .meaning, .explanation]
+    private static let stepOrder: [ListeningStep.Kind] = [.example, .exampleTranslation, .word, .meaning]
 
     /// いま読んでいる部分、またはそれより先まで進んだか
     private func hasReached(_ kind: ListeningStep.Kind) -> Bool {

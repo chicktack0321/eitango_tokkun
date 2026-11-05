@@ -47,14 +47,12 @@ struct ListeningPauses: Equatable {
     var exampleToTranslation: TimeInterval = 1.2
     /// 例文（または和訳）から見出し語へ。文から語に切り替わったと分かる間を取る
     var exampleToWord: TimeInterval = 0.8
-    /// 訳から解説へ。続けて読むと訳の一部に聞こえるため、少しだけ区切る
-    var meaningToExplanation: TimeInterval = 0.5
 }
 
 /// 1回分の発話。読み上げ順は `steps(for:mode:pauses:)` が決める
 struct ListeningStep: Equatable {
     enum Kind: Equatable {
-        case example, exampleTranslation, word, meaning, explanation
+        case example, exampleTranslation, word, meaning
     }
 
     let kind: Kind
@@ -66,8 +64,9 @@ struct ListeningStep: Equatable {
     /// 1語ぶんの読み上げ順を組み立てる。
     ///
     /// 例文モードは「文で聞く → 2回目で聞き取れなかった所を拾う → 和訳で文意を確かめる
-    /// → 語と意味で答え合わせ → 解説で使い方を押さえる」の順にする。
-    /// 和訳・解説はデータが無い語では飛ばす（ユーザーが追加した語には入っていない）。
+    /// → 語と意味で答え合わせ」の順にする。解説は読み上げず画面に出すだけにする
+    /// （1語ごとに長い日本語が入ると聞き流しのテンポが落ちるため）。
+    /// 和訳はデータが無い語では飛ばす（ユーザーが追加した語には入っていない）。
     /// 例文が無い語は単語モードと同じ流れにする（その語だけ無音で飛ばすと、止まったように聞こえるため）。
     static func steps(for item: ListeningItem, mode: ListeningMode, pauses: ListeningPauses) -> [ListeningStep] {
         guard mode == .example, item.hasExample else {
@@ -92,17 +91,7 @@ struct ListeningStep: Equatable {
             ))
         }
         steps.append(ListeningStep(kind: .word, text: item.word, languageCode: "en-US", postDelay: pauses.wordToMeaning))
-
-        let hasExplanation = !item.explanation.isBlank
-        steps.append(ListeningStep(
-            kind: .meaning, text: item.meaning, languageCode: "ja-JP",
-            postDelay: hasExplanation ? pauses.meaningToExplanation : pauses.betweenItems
-        ))
-        if hasExplanation {
-            steps.append(ListeningStep(
-                kind: .explanation, text: item.explanation, languageCode: "ja-JP", postDelay: pauses.betweenItems
-            ))
-        }
+        steps.append(ListeningStep(kind: .meaning, text: item.meaning, languageCode: "ja-JP", postDelay: pauses.betweenItems))
         return steps
     }
 }

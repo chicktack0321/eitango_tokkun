@@ -30,26 +30,27 @@ final class ListeningStepTests: XCTestCase {
         XCTAssertEqual(steps.map(\.languageCode), ["en-US", "ja-JP"])
     }
 
-    func testExampleModeReadsExampleTwiceThenTranslationWordMeaningAndExplanation() {
+    /// 解説は画面に出すだけで読み上げない
+    func testExampleModeReadsExampleTwiceThenTranslationWordAndMeaning() {
         let steps = ListeningStep.steps(for: fullItem(), mode: .example, pauses: pauses)
-        XCTAssertEqual(steps.map(\.kind), [.example, .example, .exampleTranslation, .word, .meaning, .explanation])
+        XCTAssertEqual(steps.map(\.kind), [.example, .example, .exampleTranslation, .word, .meaning])
         XCTAssertEqual(steps.map(\.text), [
             "They abandoned the plan.", "They abandoned the plan.", "彼らはその計画を断念した。",
-            "abandon", "捨てる", "途中で投げ出す、見捨てるという意味合いです。"
+            "abandon", "捨てる"
         ])
-        XCTAssertEqual(steps.map(\.languageCode), ["en-US", "en-US", "ja-JP", "en-US", "ja-JP", "ja-JP"])
+        XCTAssertEqual(steps.map(\.languageCode), ["en-US", "en-US", "ja-JP", "en-US", "ja-JP"])
     }
 
     func testExampleModePausesBetweenParts() {
         let steps = ListeningStep.steps(for: fullItem(), mode: .example, pauses: pauses)
         XCTAssertEqual(steps.map(\.postDelay), [
             pauses.betweenExamples, pauses.exampleToTranslation, pauses.exampleToWord,
-            pauses.wordToMeaning, pauses.meaningToExplanation, pauses.betweenItems
+            pauses.wordToMeaning, pauses.betweenItems
         ])
     }
 
-    /// ユーザーが追加した語には和訳・解説が無い。無音の発話を挟まず、その部分だけ飛ばす
-    func testExampleModeSkipsMissingTranslationAndExplanation() {
+    /// ユーザーが追加した語には和訳が無い。無音の発話を挟まず、その部分だけ飛ばす
+    func testExampleModeSkipsMissingTranslation() {
         let steps = ListeningStep.steps(for: item(example: "They abandoned the plan.", translation: " ", explanation: ""), mode: .example, pauses: pauses)
         XCTAssertEqual(steps.map(\.kind), [.example, .example, .word, .meaning])
         XCTAssertEqual(steps.map(\.postDelay), [
