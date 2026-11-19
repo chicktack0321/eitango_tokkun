@@ -76,6 +76,22 @@ targets:
       bundle_id: com.eitango.gp2
       product_name: EitangoGP2
 
+  # 英検準1級。2級コアの非選抜語＋準1級専用の新規語を core（¥600）にする。
+  EitangoGP1:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: GP1
+      bundle_id: com.eitango.gp1
+      product_name: EitangoGP1
+
+  # 英検1級。準1級コアからの選抜を bridge、1級専用の新規語を core（¥800）にする。
+  EitangoG1:
+    templates: [EditionApp]
+    templateAttributes:
+      edition_dir: G1
+      bundle_id: com.eitango.g1
+      product_name: EitangoG1
+
   # 英検3級（無料）。課金が無いので Products.storekit を持たない。
   EitangoG3:
     templates: [EditionApp]
@@ -153,6 +169,44 @@ targets:
 
     dependencies:
       - target: EitangoGP2
+
+  EitangoGP1UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppUITests
+      - path: Editions/GP1/Products.storekit
+        buildPhase: resources
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.gp1.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoGP1
+
+  EitangoG1UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+
+    sources:
+      - path: EitangoAppUITests
+      - path: Editions/G1/Products.storekit
+        buildPhase: resources
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.eitango.g1.uitests
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+    dependencies:
+      - target: EitangoG1
 
   # 掲載用スクリーンショットの撮影に使う。課金が無いので storekit は同梱せず、
   # 審査用の購入画面を撮るテストは自分で skip する（バンドルに storekit が無いことで判定）。
@@ -241,6 +295,36 @@ schemes:
       config: Debug
       targets:
         - EitangoG4UITests
+    archive:
+      config: Release
+
+  EitangoGP1:
+    build:
+      targets:
+        EitangoGP1: all
+        EitangoGP1UITests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: Editions/GP1/Products.storekit
+    test:
+      config: Debug
+      targets:
+        - EitangoGP1UITests
+    archive:
+      config: Release
+
+  EitangoG1:
+    build:
+      targets:
+        EitangoG1: all
+        EitangoG1UITests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: Editions/G1/Products.storekit
+    test:
+      config: Debug
+      targets:
+        - EitangoG1UITests
     archive:
       config: Release
 

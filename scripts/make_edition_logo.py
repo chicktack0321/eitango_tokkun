@@ -1,14 +1,17 @@
 """級ごとのアイコン元画像を描き起こす（手描きの素材が無いときの叩き台）。
 
-**2級・準2級・3級・4級は手描きの素材に差し替え済み**（2026-09-12）。このスクリプトが
-作るのはWindows標準フォントによる近似で、書体が本物と違う。既にある素材は
-`--force` を付けない限り上書きしない。
+**全級（2級・準2級・3級・4級・準1級・1級）が手描きの素材に差し替え済み**
+（2026-09-12 / 準1級・1級は 2026-09-20）。このスクリプトが作るのはWindows標準
+フォントによる近似で、書体が本物と違う。既にある素材は `--force` を付けない限り
+上書きしない。
 
-残りの級（準1級・1級）を作るときの出発点として残してある。出力した画像を
+TOEIC 版など新しいエディションを作るときの出発点として残してある。出力した画像を
 そのまま使うのではなく、デザインの当たりを見るために使うこと。
 
 配色と背景グラデーションは2級の元画像から実測する。目分量で近い色を置くと、
 ホーム画面に並べたときに違う青に見える。
+
+背景色は級ごとに PALETTE で決める（2級の紺をそのまま流用すると見分けがつかない）。
 
 使い方:
     python scripts/make_edition_logo.py --edition GP1
@@ -38,6 +41,19 @@ YELLOW = (254, 217, 104)
 SHADOW = (20, 18, 70)
 SHADOW_OFFSET = 9
 
+# 級ごとの背景色（上端→下端の線形グラデーション）。
+#
+# 既存の手描き素材は級ごとに色が違う（2級=紺 / 準2級=橙〜赤 / 3級=緑 / 4級=橙）。
+# ホーム画面にシリーズを並べたとき、**色が級の識別子**になっている。
+# 生成する級もここで色を決める。2級の実測グラデーションをそのまま使うと、
+# 公開中の2級アプリと同じ紺色のアイコンができてしまう。
+# 値は手描き素材の左端上下の実測。目分量で近い色を置くと、描き直したときに
+# ホーム画面で「同じ級なのに違う色」に見える。
+PALETTE = {
+    "GP1": ((204, 0, 126), (255, 31, 169)),   # マゼンタ。赤橙（準2級）より赤紫寄り
+    "G1": ((107, 31, 173), (188, 63, 222)),   # 紫。紺（2級）とは明度も色相も離してある
+}
+
 # 級の表記。lead は数字の上に載せる「準」（無い級は None）
 GRADES = {
     "G4": {"lead": None, "number": "4"},
@@ -48,25 +64,33 @@ GRADES = {
 }
 
 
-def gradient_background(reference):
-    """背景は2級の元画像の左端1列をそのまま縦に伸ばす。
+def gradient_background(reference, palette=None):
+    """背景を描く。
 
-    近い色を目分量で置くと、ホーム画面に2つ並べたときに違う青に見える。
-    実測値を使えばシリーズとしての一貫性が保証される。
+    palette が無い級は2級の元画像の左端1列をそのまま縦に伸ばす（同じ紺にするため。
+    近い色を目分量で置くと、ホーム画面に2つ並べたときに違う青に見える）。
+    palette がある級は、その2色の線形グラデーションを敷く。手描きの素材（準2級・3級・
+    4級）と同じ作りで、級を色で見分けられるようにする。
     """
     bg = Image.new("RGB", (SIZE, SIZE))
     draw = ImageDraw.Draw(bg)
     for y in range(SIZE):
-        draw.line([(0, y), (SIZE, y)], fill=reference.getpixel((2, y)))
+        if palette is None:
+            color = reference.getpixel((2, y))
+        else:
+            top, bottom = palette
+            t = y / (SIZE - 1)
+            color = tuple(round(top[i] + (bottom[i] - top[i]) * t) for i in range(3))
+        draw.line([(0, y), (SIZE, y)], fill=color)
     return bg
 
 
-def render(grade):
+def render(grade, palette=None):
     reference = Image.open(REFERENCE).convert("RGB")
     if reference.size != (SIZE, SIZE):
         raise SystemExit(f"error: 実測元が {SIZE}×{SIZE} ではありません（{reference.size}）")
 
-    image = gradient_background(reference)
+    image = gradient_background(reference, palette)
     draw = ImageDraw.Draw(image)
 
     def text(xy, body, size, fill, anchor="la"):
@@ -124,7 +148,7 @@ def main():
               "本当に描き直すなら --force", file=sys.stderr)
         return 1
 
-    image = render(grade)
+    image = render(grade, PALETTE.get(args.edition))
     # アルファを持たせない。透過つきのアイコンは審査で弾かれる
     image.convert("RGB").save(out, "PNG", optimize=True)
     print(f"wrote {out} {image.size}")
